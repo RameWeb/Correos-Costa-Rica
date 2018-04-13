@@ -5,16 +5,7 @@
     background-color: $white;
     max-height: 100vh;
     overflow: scroll;
-    form.frmRegistroSucursal{
-      .direccionGoogle{
-        #map{
-          width: 100%;
-          height: 400px;
-        }
-      }
-    }
   }
-
   .panelIzquierdo{
     background-image: $background;
     background-size: cover;
@@ -25,8 +16,8 @@
       text-decoration: none;
     }
   }
-
-
+  
+  
   .btnAccion{
     background-color: $slateblue;
     color: $white;
@@ -43,5 +34,4 @@
   textarea{
     resize: none;
   }
-
 }

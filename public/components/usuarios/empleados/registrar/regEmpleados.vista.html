@@ -8,49 +8,100 @@
       </div>
       <div class="col-md-9 py-5 px-5 contenido">
         <h2>Registrar Empleados</h2>
-        <form ng-submit="vm.registrarEmpleados(vm.nuevoEmpleado)" class="col-md-8">
+        <form name="formRegistrarEmpleados" ng-submit="vm.registrarEmpleados(vm.nuevoEmpleado)" class="col-md-8">
           <div class="form-group">
             <label for="inputRoles">Seleccione el rol del empleado:</label>
-            <input type="text" class="form-control" id="inputRoles" ng-model="vm.nuevoEmpleado.rol" list="listaRoles">
+            <input type="text" class="form-control" id="inputRoles" ng-model="vm.nuevoEmpleado.rol" list="listaRoles" name="sltRolEmpleado" required>
             <datalist id="listaRoles">
               <option ng-repeat="rol in vm.roles" value="{{rol}}">
             </datalist>
+            <!-- validación -->
+            <div ng-messages="formRegistrarEmpleados.sltRolEmpleado.$error" role="alert">
+              <div ng-message="required">
+                <small class="form-text text-muted">Este campo es requerido</small>
+              </div>
+            </div>
           </div>
           <!-- Información Personal -->
           <div class="my-3">
             <h3>Información Personal</h3>
             <div class="form-group">
               <label for="inputIdentificacion">Nº de Identificación:</label>
-              <input type="number" class="form-control" id="inputIdentificacion" ng-model="vm.nuevoEmpleado.identificacion">
+              <input type="number" class="form-control" id="inputIdentificacion" name="txtIdEmpleado" ng-model="vm.nuevoEmpleado.identificacion" minlength="9" maxlength="13" pattern="[A-Z0-9]+"  required>
+              <!-- validación -->
+              <div ng-messages="formRegistrarEmpleados.txtIdEmpleado.$error" role="alert">
+                <div ng-message="required">
+                  <small class="form-text text-muted">Este campo es requerido</small>
+                </div>
+                <div ng-message="pattern">
+                  <small class="form-text text-muted">Formato incorrecto, solo se permite ingresar letras en mayúscula y números</small>
+                </div>
+              </div>
             </div>
             <div class="form-row">
               <div class="form-group col-md-6">
                 <label for="inputNombre">Nombre</label>
-                <input type="text" class="form-control" id="inputNombre" ng-model="vm.nuevoEmpleado.nombre">
+                <input type="text" class="form-control" id="inputNombre" name="txtNombre" ng-model="vm.nuevoEmpleado.nombre" required>
+                <!-- validación -->
+                <div ng-messages="formRegistrarEmpleados.txtNombre.$error" role="alert">
+                  <div ng-message="required">
+                    <small class="form-text text-muted">Este campo es requerido</small>
+                  </div>
+                </div>
               </div>
               <div class="form-group col-md-6">
                 <label for="inputApellido1">Primer Apellido</label>
-                <input type="text" class="form-control" id="inputApellido1" ng-model="vm.nuevoEmpleado.apellido1">
+                <input type="text" class="form-control" id="inputApellido1" name="txtApellido1" ng-model="vm.nuevoEmpleado.apellido1" required>
+                <!-- validación -->
+                <div ng-messages="formRegistrarEmpleados.txtApellido1.$error" role="alert">
+                  <div ng-message="required">
+                    <small class="form-text text-muted">Este campo es requerido</small>
+                  </div>
+                </div>
               </div>
             </div>
             <div class="form-row">
               <div class="form-group col-md-6">
                 <label for="inputEmail">Correo Electrónico:</label>
-                <input type="email" class="form-control" id="inputEmail" ng-model="vm.nuevoEmpleado.email">
+                <input type="email" class="form-control" id="inputEmail" name="txtEmail" ng-model="vm.nuevoEmpleado.email" required>
+                <!-- validación -->
+                <div ng-messages="formRegistrarEmpleados.txtEmail.$error" role="alert">
+                  <div ng-message="required">
+                    <small class="form-text text-muted">Este campo es requerido</small>
+                  </div>
+                </div>
               </div>
               <div class="form-group col-md-6">
                 <label for="inputContrasenna">Contraseña:</label>
-                <input type="password" class="form-control" id="inputContrasenna" ng-model="vm.nuevoEmpleado.contrasenna">
+                <input type="password" class="form-control" id="inputContrasenna" name="txtContrasenna" ng-model="vm.nuevoEmpleado.contrasenna" required>
+                <div ng-messages="formRegistrarEmpleados.txtContrasenna.$error" role="alert">
+                  <div ng-message="required">
+                    <small class="form-text text-muted">Este campo es requerido</small>
+                  </div>
+                </div>
               </div>
             </div>
             <div class="form-row">
               <div class="form-group col-md-6">
                 <label for="inputFechaNacimiento">Fecha de Nacimiento</label>
-                <input type="date" class="form-control" id="inputFechaNacimiento" ng-model="vm.nuevoEmpleado.fechaNacimiento">
+                <input type="date" class="form-control" id="inputFechaNacimiento" name="txtFechaNacimiento" ng-model="vm.nuevoEmpleado.fechaNacimiento" required>
+                <div ng-messages="formRegistrarEmpleados.txtFechaNacimiento.$error" role="alert">
+                  <div ng-message="required">
+                    <small class="form-text text-muted">Este campo es requerido</small>
+                  </div>
+                </div>
               </div>
               <div class="form-group col-md-6">
                 <label for="inputTelefono">Teléfono</label>
-                <input type="number" class="form-control" id="inputTelefono" ng-model="vm.nuevoEmpleado.telefono">
+                <input type="number" class="form-control" id="inputTelefono" name="txtTelefono" ng-model="vm.nuevoEmpleado.telefono" minlength="8" maxlength="8" pattern="^[2|6|7|8]\d{7}$" required>
+                <div ng-messages="formRegistrarEmpleados.txtTelefono.$error" role="alert">
+                  <div ng-message="required">
+                    <small class="form-text text-muted">Este campo es requerido</small>
+                  </div>
+                  <div ng-message="pattern">
+                    <small class="form-text text-muted">Formato de teléfono incorrecto</small>
+                  </div>
+                </div>
               </div> 
             </div>
           </div>
@@ -60,20 +111,40 @@
             <div class="form-row">
               <div class="form-group col-md-4">
                 <label for="inputProvincia">Provincia</label>
-                <input type="text" class="form-control" id="inputProvincia" ng-model="vm.nuevoEmpleado.provincia">
+                <input type="text" class="form-control" id="inputProvincia" name="txtProvincia" ng-model="vm.nuevoEmpleado.provincia" required>
+                <div ng-messages="formRegistrarEmpleados.txtProvincia.$error" role="alert">
+                  <div ng-message="required">
+                    <small class="form-text text-muted">Este campo es requerido</small>
+                  </div>
+                </div>
               </div>
               <div class="form-group col-md-4">
                 <label for="inputCanton">Cantón</label>
-                <input type="text" class="form-control" id="inputCanton" ng-model="vm.nuevoEmpleado.canton">
+                <input type="text" class="form-control" id="inputCanton" name="txtCanton" ng-model="vm.nuevoEmpleado.canton" required>
+                <div ng-messages="formRegistrarEmpleados.txtCanton.$error" role="alert">
+                  <div ng-message="required">
+                    <small class="form-text text-muted">Este campo es requerido</small>
+                  </div>
+                </div>
               </div>
               <div class="form-group col-md-4">
                 <label for="inputDistrito">Distrito</label>
-                <input type="text" class="form-control" id="inputDistrito" ng-model="vm.nuevoEmpleado.distrito">
+                <input type="text" class="form-control" id="inputDistrito" name="txtDistrito" ng-model="vm.nuevoEmpleado.distrito" required>
+                <div ng-messages="formRegistrarEmpleados.txtDistrito.$error" role="alert">
+                  <div ng-message="required">
+                    <small class="form-text text-muted">Este campo es requerido</small>
+                  </div>
+                </div>
               </div>
             </div>
             <div class="form-group">
               <label for="inputDireccion">Dirección exacta:</label>
-              <textarea class="form-control" id="inputDireccion" rows="3" ng-model="vm.nuevoEmpleado.direccion"></textarea>
+              <textarea class="form-control" id="inputDireccion" rows="3" ng-model="vm.nuevoEmpleado.direccion" name="txtDireccion" required></textarea>
+              <div ng-messages="formRegistrarEmpleados.txtDireccion.$error" role="alert">
+                <div ng-message="required">
+                  <small class="form-text text-muted">Este campo es requerido</small>
+                </div>
+              </div>
             </div>
           </div>
           <!-- Roles de encargado de aduana -->
@@ -81,10 +152,15 @@
             <h3>Información Laboral</h3>
             <div class="form-group">
               <label for="inputRolAduana">Seleccione el rol del encargado:</label>
-              <input type="text" class="form-control" id="inputRolAduana" ng-model="vm.nuevoEmpleado.rolAduana" list="listaRolesAduana">
+              <input type="text" class="form-control" id="inputRolAduana" ng-model="vm.nuevoEmpleado.rolAduana" list="listaRolesAduana" name="txtRolAduana" required>
               <datalist id="listaRolesAduana">
                 <option data-ng-repeat="rolAduana in vm.rolesAduana" value="{{rolAduana}}">
               </datalist>
+              <div ng-messages="formRegistrarEmpleados.txtRolAduana.$error" role="alert">
+                <div ng-message="required">
+                  <small class="form-text text-muted">Este campo es requerido</small>
+                </div>
+              </div>
             </div>
           </div>
 
@@ -93,10 +169,15 @@
             <h3>Información Laboral</h3>
             <div class="form-group">
               <label for="inputSucursal">Sucursal asignada:</label>
-              <input type="text" class="form-control" id="inputSucursal" ng-model="vm.nuevoEmpleado.sucursal" list="listaSucursales">
+              <input type="text" class="form-control" id="inputSucursal" ng-model="vm.nuevoEmpleado.sucursal" list="listaSucursales" name="txtSucursalAsignada" required>
               <datalist id="listaSucursales">
                 <option data-ng-repeat="sucursal in vm.sucursales" value="{{sucursal}}">
               </datalist>
+              <div ng-messages="formRegistrarEmpleados.txtSucursalAsignada.$error" role="alert">
+                <div ng-message="required">
+                  <small class="form-text text-muted">Este campo es requerido</small>
+                </div>
+              </div>
             </div>
           </div>
 
@@ -106,24 +187,39 @@
             <div class="form-group">
               <div class="form-group">
                 <label for="inputSucursal">Sucursal asignada:</label>
-                <input type="text" class="form-control" id="inputSucursal" ng-model="vm.nuevoEmpleado.sucursal" list="listaSucursales">
+                <input type="text" class="form-control" id="inputSucursal" name="txtSucursalAsignada" ng-model="vm.nuevoEmpleado.sucursal" list="listaSucursales" required>
                 <datalist id="listaSucursales">
                   <option data-ng-repeat="sucursal in vm.sucursales" value="{{sucursal}}">
                 </datalist>
+                <div ng-messages="formRegistrarEmpleados.txtSucursalAsignada.$error" role="alert">
+                  <div ng-message="required">
+                    <small class="form-text text-muted">Este campo es requerido</small>
+                  </div>
+                </div>
               </div>
             </div>
             <div class="form-group">
               <label for="inputPassword4">Tipo de Licencia</label>
               <div class="form-check">
                 <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" ng-model="vm.nuevoEmpleado.licencia"
-                  ng-value="'Motocicleta'">
+                  ng-value="'Motocicleta'" name="optLicencia" required>
+                  <div ng-messages="formRegistrarEmpleados.optLicencia.$error" role="alert">
+                    <div ng-message="required">
+                      <small class="form-text text-muted">Este campo es requerido</small>
+                    </div>
+                  </div>
                 <label class="form-check-label" for="exampleRadios2">
                   Motocicleta(A1, A2, A3, A4)
                 </label>
               </div>
               <div class="form-check disabled">
                 <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" ng-model="vm.nuevoEmpleado.licencia"
-                  ng-value="'Vehiculo'">
+                  ng-value="'Vehiculo'" name="optLicencia" required>
+                  <div ng-messages="formRegistrarEmpleados.optLicencia.$error" role="alert">
+                    <div ng-message="required">
+                      <small class="form-text text-muted">Este campo es requerido</small>
+                    </div>
+                  </div>
                 <label class="form-check-label" for="exampleRadios3">
                   Vehículo (B2, B3)
                 </label>
@@ -134,11 +230,16 @@
               </div>
               <div class="form-group">
                 <label for="inputVencimiento">Fecha de vencimiento de la licencia</label>
-                <input type="date" class="form-control" id="inputVencimiento" ng-model="vm.nuevoEmpleado.vencimientoLicencia">
+                <input type="date" class="form-control" id="inputVencimiento" ng-model="vm.nuevoEmpleado.vencimientoLicencia" name="txtvencimientoLicencia" required>
+                <div ng-messages="formRegistrarEmpleados.txtvencimientoLicencia.$error" role="alert">
+                  <div ng-message="required">
+                    <small class="form-text text-muted">Este campo es requerido</small>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-          <button type="submit" class="btn btnAccion">Registrar Empleado</button> 
+          <button type="submit" class="btn btnAccion" ng-disabled="formRegistrarEmpleados.$invalid">Registrar Empleado</button> 
         </form>
       </div>
     </div>

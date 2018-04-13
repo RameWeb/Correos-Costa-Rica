@@ -9,7 +9,7 @@
   function controladorEmpleados($stateParams, $state, servicioUsuarios){
     let vm = this;
 
-    vm.roles = ["Administrador", "Encargado de Aduana", "Encargado de Sucursal", "Repartidor"];
+    vm.roles = ["Encargado de Aduana", "Encargado de Sucursal", "Repartidor"];
 
     vm.sucursales = ["San Jose", "Alajuela", "Heredia", "Cartago", "Guanacaste","Puntarenas", "Limon"];
 

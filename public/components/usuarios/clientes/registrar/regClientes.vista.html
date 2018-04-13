@@ -1,72 +1,205 @@
 <main id="registrarClientes">
 <section class="container-fluid">
   <div class="row">
-    <div class="col-md-4 py-5 px-5 panelIzquierdo">
+    <div class="col-md-3 py-5 px-5 panelIzquierdo">
       <a href="#!/"><img src="../../../sources/img/chevron-left.svg" height="30px" width="30px" alt="">Regresar al Inicio</a>
       <img src="../../../sources/img/logo_slateblue.svg" class="my-5" alt="">
       <!-- <a href="#!/mantClientes" class="btn btnAccion">Lista de Clientes</a> -->
     </div>
-    <div class="col-md-8 py-5 px-5 contenido">
+    <div class="col-md-9 py-5 px-5 contenido">
       <h2>Registrar Clientes</h2>
-      <form ng-submit="vm.registrarCliente(vm.nuevoCliente)" class="col-md-8">
+      <form name="formRegistrarCliente" ng-submit="vm.preRegistrarUsuario(vm.nuevoCliente)" class="col-md-8" >
         <!-- Información Personal -->
         <div class="my-3">
           <h3>Información Personal</h3>
+          <!-- Agregar un campo para tipo de cedula, Datalist -->
+          <!-- Agregar un campo para el sexo -->
+          <div class="form-group">
+            <label for="inputTipoIdentificacion">Tipo de Identificación:</label>
+            <input type="text" class="form-control" id="inputTipoIdentificacion" ng-model="vm.nuevoCliente.tipoIdentificacion" list="listaTipoId" name="txtClienteTipoId" required>
+            <datalist id="listaTipoId">
+              <option data-ng-repeat="tipo in vm.tipoIdentificacion" value="{{tipo}}">
+            </datalist>
+            <div ng-messages="formRegistrarCliente.txtClienteTipoId.$error" role="alert">
+              <div ng-message="required">
+                <small class="form-text text-muted">Este campo es requerido</small>
+              </div>
+            </div>
+          </div>
           <div class="form-group">
             <label for="inputIdentificacion">Nº de Identificación:</label>
-            <input type="number" class="form-control" id="inputIdentificacion" ng-model="vm.nuevoCliente.identificacion" required>
+            <input type="number" class="form-control" id="inputIdentificacion" ng-model="vm.nuevoCliente.identificacion" name="txtClienteId" pattern="[A-Z0-9]+" minlength="9" maxlength="13" required>
+            <div ng-messages="formRegistrarCliente.txtClienteId.$error" role="alert">
+              <div ng-message="required">
+                <small class="form-text text-muted">Este campo es requerido</small>
+              </div>
+              <div ng-message="pattern">
+                <small class="form-text text-muted">Formato incorrecto, solo se permite ingresar letras en mayúscula y números</small>
+              </div>
+            </div>
           </div>
           <div class="form-row">
             <div class="form-group col-md-6">
-              <label for="inputNombre">Nombre</label>
-              <input type="text" class="form-control" id="inputNombre" ng-model="vm.nuevoCliente.nombre" required>
+              <label for="inputPrimerNombre">Primer nombre</label>
+              <input type="text" class="form-control" id="inputPrimerNombre" ng-model="vm.nuevoCliente.primerNombre" name="txtPrimerNombre" pattern="[ñáéíóúA-Za-z ]+" required>
+              <div ng-messages="formRegistrarCliente.txtPrimerNombre.$error" role="alert">
+                <div ng-message="required">
+                  <small class="form-text text-muted">Este campo es requerido</small>
+                </div>
+                <div ng-message="pattern">
+                  <small class="form-text text-muted">Formato incorrecto, no se permite ingresar numeros</small>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group col-md-6">
+              <label for="inputSegundoNombre">Segundo nombre</label>
+              <input type="text" class="form-control" id="inputSegundoNombre" ng-model="vm.nuevoCliente.segundoNombre" name="txtSegundoNombre" pattern="[ñáéíóúA-Za-z ]+">
+              <div ng-messages="formRegistrarCliente.txtSegundoNombre.$error" role="alert">
+                <div ng-message="pattern">
+                  <small class="form-text text-muted">Formato incorrecto, no se permite ingresar numeros</small>
+                </div>
+              </div>
+            </div>
+            
+            <div class="form-group col-md-6">
+              <label for="inputPrimerApellido">Primer Apellido</label>
+              <input type="text" class="form-control" id="inputPrimerApellido" ng-model="vm.nuevoCliente.primerApellido" name="txtPrimerApellido" pattern="[ñáéíóúA-Za-z ]+" required>
+              <div ng-messages="formRegistrarCliente.txtPrimerApellido.$error" role="alert">
+                <div ng-message="required">
+                  <small class="form-text text-muted">Este campo es requerido</small>
+                </div>
+                <div ng-message="pattern">
+                  <small class="form-text text-muted">Formato incorrecto, no se permite ingresar numeros</small>
+                </div>
+              </div>
             </div>
             <div class="form-group col-md-6">
-              <label for="inputApellido1">Primer Apellido</label>
-              <input type="text" class="form-control" id="inputApellido1" ng-model="vm.nuevoCliente.apellido1" required>
+              <label for="inputSegundoApellido">Segundo Apellido</label>
+              <input type="text" class="form-control" id="inputSegundoApellido" ng-model="vm.nuevoCliente.segundoApellido" name="txtSegundoApellido" pattern="[ñáéíóúA-Za-z ]+">
+              <div ng-messages="formRegistrarCliente.txtSegundoApellido.$error" role="alert">
+                <div ng-message="pattern">
+                  <small class="form-text text-muted">Formato incorrecto, no se permite ingresar numeros</small>
+                </div>
+              </div>
             </div>
           </div>
+
+          <div class="form-group">
+            <label for="inputSexo">Sexo</label>
+            <input type="text" class="form-control" id="inputSexo" name="txtSexo" ng-model="vm.nuevoCliente.sexo" list="listaSexo" name="txtSexo" required>
+            <datalist id="listaSexo">
+              <option data-ng-repeat="sexo in vm.sexo" value="{{sexo}}">
+            </datalist>
+            <div ng-messages="formRegistrarCliente.txtSexo.$error" role="alert">
+              <div ng-message="required">
+                <small class="form-text text-muted">Este campo es requerido</small>
+              </div>
+            </div>
+          </div>
+
           <div class="form-row">
             <div class="form-group col-md-6">
               <label for="inputEmail">Correo Electrónico:</label>
-              <input type="email" class="form-control" id="inputEmail" ng-model="vm.nuevoCliente.email" required>
+              <input type="email" class="form-control" id="inputEmail" ng-model="vm.nuevoCliente.email" name="txtEmailCliente" required>
+              <div ng-messages="formRegistrarCliente.txtEmailCliente.$error" role="alert">
+                <div ng-message="required">
+                  <small class="form-text text-muted">Este campo es requerido</small>
+                </div>
+              </div>
+              <!-- pattern="[\w.%+-]+@domain\.com" -->
             </div>
             <div class="form-group col-md-6">
               <label for="inputContrasenna">Contraseña:</label>
-              <input type="password" class="form-control" id="inputContrasenna" ng-model="vm.nuevoCliente.contrasenna" required>
+              <input type="password" class="form-control" id="inputContrasenna" ng-model="vm.nuevoCliente.contrasenna" name="txtContrasenna" required>
+              <div ng-messages="formRegistrarCliente.txtContrasenna.$error" role="alert">
+                <div ng-message="required">
+                  <small class="form-text text-muted">Este campo es requerido</small>
+                </div>
+              </div>
             </div>
           </div>
           <div class="form-row">
             <div class="form-group col-md-6">
               <label for="inputFechaNacimiento">Fecha de Nacimiento</label>
-              <input type="date" class="form-control" id="inputFechaNacimiento" ng-model="vm.nuevoCliente.fechaNacimiento" required>
+              <input type="date" class="form-control" id="inputFechaNacimiento" ng-model="vm.nuevoCliente.fechaNacimiento" name="txtFechaNacimiento" required>
+              <div ng-messages="formRegistrarCliente.txtFechaNacimiento.$error" role="alert">
+                <div ng-message="required">
+                  <small class="form-text text-muted">Este campo es requerido</small>
+                </div>
+              </div>
             </div>
             <div class="form-group col-md-6">
               <label for="inputTelefono">Teléfono</label>
-              <input type="number" class="form-control" id="inputTelefono" ng-model="vm.nuevoCliente.telefono" required>
+              <input type="number" class="form-control" id="inputTelefono" ng-model="vm.nuevoCliente.telefono" name="txtTelefono" minlength="8" maxlength="8" pattern="^[2|6|7|8]\d{7}$" required>
+              <div ng-messages="formRegistrarCliente.txtTelefono.$error" role="alert">
+                <div ng-message="required">
+                  <small class="form-text text-muted">Este campo es requerido</small>
+                </div>
+                <div ng-message="pattern">
+                  <small class="form-text text-muted">Formato de teléfono incorrecto</small>
+                </div>
+              </div>
             </div> 
+            <div class="form-group">
+              <label for="filePerfil">Foto de perfil</label>
+              <input type="file" class="form-control-file" id="filePerfil" files-input ng-model="vm.nuevoCliente.fotoPerfil">
+            </div>
           </div>
         </div>
         <!-- Direccion -->
         <div class="my-3">
           <h3>Dirección</h3>
+          <a class="btn btnSecundario" ng-click="vm.googlemap()">Google Maps</a>
           <div class="form-row">
             <div class="form-group col-md-4">
               <label for="inputProvincia">Provincia</label>
-              <input type="text" class="form-control" id="inputProvincia" ng-model="vm.nuevoCliente.provincia" required>
+              <input type="text" class="form-control" id="inputProvincia" ng-model="vm.nuevoCliente.provincia" name="txtProvincia" required>
+              <div ng-messages="formRegistrarCliente.txtProvincia.$error" role="alert">
+                <div ng-message="required">
+                  <small class="form-text text-muted">Este campo es requerido</small>
+                </div>
+              </div>
             </div>
             <div class="form-group col-md-4">
               <label for="inputCanton">Cantón</label>
-              <input type="text" class="form-control" id="inputCanton" ng-model="vm.nuevoCliente.canton" required>
+              <input type="text" class="form-control" id="inputCanton" ng-model="vm.nuevoCliente.canton" name="txtCanton" required>
+              <div ng-messages="formRegistrarCliente.txtCanton.$error" role="alert">
+                <div ng-message="required">
+                  <small class="form-text text-muted">Este campo es requerido</small>
+                </div>
+              </div>
             </div>
             <div class="form-group col-md-4">
               <label for="inputDistrito">Distrito</label>
-              <input type="text" class="form-control" id="inputDistrito" ng-model="vm.nuevoCliente.distrito" required>
+              <input type="text" class="form-control" id="inputDistrito" ng-model="vm.nuevoCliente.distrito" name="txtDistrito" required>
+              <div ng-messages="formRegistrarCliente.txtDistrito.$error" role="alert">
+                <div ng-message="required">
+                  <small class="form-text text-muted">Este campo es requerido</small>
+                </div>
+              </div>
             </div>
           </div>
           <div class="form-group">
             <label for="inputDireccion">Dirección exacta:</label>
-            <textarea class="form-control" id="inputDireccion" rows="3" ng-model="vm.nuevoCliente.direccion" required></textarea>
+            <textarea class="form-control" id="inputDireccion" rows="3" ng-model="vm.nuevoCliente.direccion" name="txtDireccion" required></textarea>
+            <div ng-messages="formRegistrarCliente.txtDireccion.$error" role="alert">
+              <div ng-message="required">
+                <small class="form-text text-muted">Este campo es requerido</small>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="inputSucursalPreferencia">Sucursal de preferencia:</label>
+            <input type="text" class="form-control" id="inputSucursalPreferencia" name="txtSucursalPreferencia" ng-model="vm.nuevoCliente.sucursalPreferencia" list="listaSucursales" name="txtSucursalPreferencia" required>
+            <datalist id="listaSucursales">
+              <option data-ng-repeat="sucursal in vm.sucursales" value="{{sucursal}}">
+            </datalist>
+            <div ng-messages="formRegistrarCliente.txtSucursalPreferencia.$error" role="alert">
+              <div ng-message="required">
+                <small class="form-text text-muted">Este campo es requerido</small>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -75,28 +208,53 @@
           <!-- Otros datos -->
           <div class="form-group">
             <label for="inputTitularTarjeta">Titular de la tarjeta</label>
-            <input type="text" class="form-control" id="inputTitularTarjeta" ng-model="vm.nuevoCliente.titularTarjeta" required>
+            <input type="text" class="form-control" id="inputTitularTarjeta" ng-model="vm.nuevoCliente.titularTarjeta" name="txtTitularTarjeta" required>
+            <div ng-messages="formRegistrarCliente.txtTitularTarjeta.$error" role="alert">
+              <div ng-message="required">
+                <small class="form-text text-muted">Este campo es requerido</small>
+              </div>
+            </div>
           </div>
           <div class="form-group">
             <label for="inputNumeroTarjeta">Numero de tarjeta:</label>
-            <input type="number" class="form-control" id="inputNumeroTarjeta" ng-model="vm.nuevoCliente.numeroTarjeta" required>
+            <input type="text" class="form-control" id="inputNumeroTarjeta" ng-model="vm.nuevoCliente.numeroTarjeta" name="txtNumeroTarjeta" minlength="15" maxlength="16" required>
+            <div ng-messages="formRegistrarCliente.txtNumeroTarjeta.$error" role="alert">
+              <div ng-message="required">
+                <small class="form-text text-muted">Este campo es requerido</small>
+              </div>
+            </div>
           </div>
           <div class="form-row">
             <div class="form-group col-md-4">
               <label for="inputMesVencimiento">Mes</label>
-              <input type="text" class="form-control" id="inputMesVencimiento" ng-model="vm.nuevoCliente.mesVencimiento" required>
+              <input type="text" class="form-control" id="inputMesVencimiento" ng-model="vm.nuevoCliente.mesVencimiento" name="txtMesVencimiento" required>
+              <div ng-messages="formRegistrarCliente.txtMesVencimiento.$error" role="alert">
+                <div ng-message="required">
+                  <small class="form-text text-muted">Este campo es requerido</small>
+                </div>
+              </div>
             </div>
             <div class="form-group col-md-4">
               <label for="inputAnnoVencimiento">Año</label>
-              <input type="number" class="form-control" id="inputAnnoVencimiento" ng-model="vm.nuevoCliente.annoVencimiento" required>
+              <input type="text" class="form-control" id="inputAnnoVencimiento" ng-model="vm.nuevoCliente.annoVencimiento" name="txtAnnoVencimiento" min="2019" max="2029" required>
+              <div ng-messages="formRegistrarCliente.txtAnnoVencimiento.$error" role="alert">
+                <div ng-message="required">
+                  <small class="form-text text-muted">Este campo es requerido</small>
+                </div>
+              </div>
             </div>
             <div class="form-group col-md-4">
-              <label for="inputCcv">Codigo de Seguridad (CCV)</label>
-              <input type="number" class="form-control" id="inputCcv" ng-model="vm.nuevoCliente.ccv" required>
+              <label for="inputCcv">CCV</label>
+              <input type="text" class="form-control" id="inputCcv" ng-model="vm.nuevoCliente.ccv" name="txtCcv" minlength="3" maxlength="4" required>
+              <div ng-messages="formRegistrarCliente.txtCcv.$error" role="alert">
+                <div ng-message="required">
+                  <small class="form-text text-muted">Este campo es requerido</small>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-        <button type="submit" class="btn btnAccion">Registrar Cliente</button> 
+        <button type="submit" class="btn btnAccion" ng-disabled="formRegistrarCliente.$invalid">Registrar Cliente</button> 
     </form>
   </div>
 </section>

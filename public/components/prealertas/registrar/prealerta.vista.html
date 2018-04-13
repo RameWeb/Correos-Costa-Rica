@@ -35,7 +35,7 @@
     
             <div class="form-group">
               <label for="txtUrl">URL del producto:</label>
-              <input type="text" class="form-control" name="url" id="txtUrl" placeholder="www.example.com" ng-model="vm.nuevaPrealerta.url" required>
+              <input type="text" class="form-control" name="url" id="txtUrl" ng-model="vm.nuevaPrealerta.url" required>
               <div ng-messages="formRegistrarPrealerta.url.$error" role="alert">
                 <div ng-message="required">
                   <small class="form-text text-muted">Este campo es requerido</small>
@@ -89,10 +89,14 @@
               </div>
             </div>
       
-            <button type="submit" class="btn btnAccion" ng-disabled="formRegistrarPrealerta.$invalid">Prealertar</button>
+            <button type="submit" class="btn btnAccion" ng-disabled="formRegistrarPrealerta.$invalid" ng-click="vm.registrarPrealerta()">Prealertar</button>
 
           </form>
         </div>
+
+        <div class="col-6">
+        </div>
+
       </div>
     </div>
   </div>

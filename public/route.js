@@ -129,21 +129,6 @@
       controllerAs: 'vm'
     })
 
-    .state('registrarConvClienteEmpleado',{
-      url: '/registrarConvClienteEmpleado',
-      templateUrl: './components/convenioCliente/registrar/conveniosEmpleado.vista.html',
-      data:{
-        pageTitle: 'Registrar Convenios'
-      },
-      resolve: {
-        load: ['$ocLazyLoad', ($ocLazyLoad) => {
-          return $ocLazyLoad.load('./components/convenioCliente/registrar/convenios.controlador.js')
-        }]
-      },
-      controller: 'controladorConveniosCliente',
-      controllerAs: 'vm'
-    })
-
     .state('modificarConvCliente',{
       url: '/modificarConvCliente',
       templateUrl: './components/convenioCliente/modificar/modificarConvenios.vista.html',
@@ -165,21 +150,6 @@
     .state('listarConvCliente',{
       url: '/listarConvCliente',
       templateUrl: './components/convenioCliente/listarBuscar/mantenimientoConvenios.vista.html',
-      data:{
-        pageTitle: 'Listar Convenios'
-      },
-      resolve: {
-        load: ['$ocLazyLoad', ($ocLazyLoad) => {
-          return $ocLazyLoad.load('./components/convenioCliente/registrar/convenios.controlador.js')
-        }]
-      },
-      controller: 'controladorConveniosCliente',
-      controllerAs: 'vm'
-    })
-
-    .state('listarConvClienteEmpleado',{
-      url: '/listarConvClienteEmpleado',
-      templateUrl: './components/convenioCliente/listarBuscar/mantenimientoConveniosEmpleado.vista.html',
       data:{
         pageTitle: 'Listar Convenios'
       },
@@ -255,24 +225,9 @@
       controllerAs: 'vm'
     })
 
-    .state('listarPaquetesAdmin', {
-      url: '/listarPaquetesAdmin',
-      templateUrl: './components/paquetes/listarPaquetes/listarPaquetesAdmin.vista.html',
-      data:{
-        pageTitle: 'Lista de Paquetes | Correos CR'
-      },
-      resolve: {
-        load: ['$ocLazyLoad', ($ocLazyLoad) => {
-          return $ocLazyLoad.load('./components/paquetes/registrarPaquetes/paquetes.controlador.js')
-        }]
-      },
-      controller: 'controladorPaquetes',
-      controllerAs: 'vm'
-    })
-
-    .state('listarPaquetesEmpleado', {
-      url: '/listarPaquetesEmpleado',
-      templateUrl: './components/paquetes/listarPaquetes/listarPaquetesEmpleado.vista.html',
+    .state('listarPaquetes', {
+      url: '/listarPaquetes',
+      templateUrl: './components/paquetes/listarPaquetes/listarPaquetes.vista.html',
       data:{
         pageTitle: 'Lista llegada de paquetes | Correos CR'
       },
@@ -598,65 +553,9 @@
       controllerAs: 'vm'
     })
 
-    .state('regClientesAdmin', {
-      url: '/regClientesAdmin',
-      templateUrl: './components/usuarios/clientes/registrar/regClientesAdmin.vista.html',
-      data:{
-        pageTitle: 'Registrar Clientes'
-      },
-      params: {
-        objUsuarioTemp: ''
-      },
-      css: './sources/styles/components/clientes.style.scss',
-      resolve: {
-        load: ['$ocLazyLoad', ($ocLazyLoad) => {
-          return $ocLazyLoad.load('./components/usuarios/clientes/registrar/clientes.controlador.js')
-        }]
-      },
-      controller: 'controladorClientes',
-      controllerAs: 'vm'
-    })
-
-    .state('regClientesEmpleado', {
-      url: '/regClientesEmpleado',
-      templateUrl: './components/usuarios/clientes/registrar/regClientesEmpleado.vista.html',
-      data:{
-        pageTitle: 'Registrar Clientes'
-      },
-      params: {
-        objUsuarioTemp: ''
-      },
-      css: './sources/styles/components/clientes.style.scss',
-      resolve: {
-        load: ['$ocLazyLoad', ($ocLazyLoad) => {
-          return $ocLazyLoad.load('./components/usuarios/clientes/registrar/clientes.controlador.js')
-        }]
-      },
-      controller: 'controladorClientes',
-      controllerAs: 'vm'
-    })
-
     .state('mantClientes', {
       url: '/mantClientes',
       templateUrl: './components/usuarios/clientes/listarBuscar/mantClientes.vista.html',
-      data:{
-        pageTitle: 'Mantenimiento de Clientes'
-      },
-      params: {
-        objUsuarioTemp: ''
-      },
-      resolve: {
-        load: ['$ocLazyLoad', ($ocLazyLoad) => {
-          return $ocLazyLoad.load('./components/usuarios/clientes/registrar/clientes.controlador.js')
-        }]
-      },
-      controller: 'controladorClientes',
-      controllerAs: 'vm'
-    })
-
-    .state('mantClientesEmpleado', {
-      url: '/mantClientesEmpleado',
-      templateUrl: './components/usuarios/clientes/listarBuscar/mantClientesEmpleado.vista.html',
       data:{
         pageTitle: 'Mantenimiento de Clientes'
       },

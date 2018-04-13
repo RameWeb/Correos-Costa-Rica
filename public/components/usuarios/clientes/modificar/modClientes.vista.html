@@ -1,12 +1,12 @@
 <main id="registrarClientes">
   <section class="container-fluid">
     <div class="row">
-      <div class="col-md-4 py-5 px-5 panelIzquierdo">
+      <div class="col-md-3 py-5 px-5 panelIzquierdo">
         <a href="#!/admin"><img src="../../../sources/img/chevron-left.svg" height="30px" width="30px" alt="">Regresar al dashboard</a>
         <img src="../../../sources/img/logo_slateblue.svg" class="my-5" alt="">
         <a href="#!/mantClientes" class="btn btnAccion">Lista de Clientes</a>
       </div>
-      <div class="col-md-8 py-5 px-5 contenido">
+      <div class="col-md-9 py-5 px-5 contenido">
         <h2>Modificar Cliente</h2>
         <form ng-submit="vm.modificarCliente(vm.nuevoClienteModificado)" class="col-md-8">
           <!-- Información Personal -->
@@ -71,30 +71,40 @@
           </div>
   
           <div class="my-3">
-            <h3>Información de Pago</h3>
+            <h3>Información de Tarjetas</h3>
+            <a class="btn btnSecundario" ng-click="vm.agregarTarjeta()">Agregar Nueva Tarjeta</a>
+            <div class="form-group">
+              <label for="inputBuscar">Buscar Tarjeta</label>
+              <input type="text" class="form-control" id="inputBuscar" ng-model="buscarCliente.nombre">
+            </div>
             <!-- Otros datos -->
-            <div class="form-group">
-              <label for="inputTitularTarjeta">Titular de la tarjeta</label>
-              <input type="text" class="form-control" id="inputTitularTarjeta" ng-model="vm.nuevoClienteModificado.titularTarjeta">
-            </div>
-            <div class="form-group">
-              <label for="inputNumeroTarjeta">Numero de tarjeta:</label>
-              <input type="number" class="form-control" id="inputNumeroTarjeta" ng-model="vm.nuevoClienteModificado.numeroTarjeta">
-            </div>
-            <div class="form-row">
-              <div class="form-group col-md-4">
-                <label for="inputMesVencimiento">Mes</label>
-                <input type="text" class="form-control" id="inputMesVencimiento" ng-model="vm.nuevoClienteModificado.mesVencimiento">
-              </div>
-              <div class="form-group col-md-4">
-                <label for="inputAnnoVencimiento">Año</label>
-                <input type="number" class="form-control" id="inputAnnoVencimiento" ng-model="vm.nuevoClienteModificado.annoVencimiento">
-              </div>
-              <div class="form-group col-md-4">
-                <label for="inputCcv">Codigo de Seguridad (CCV)</label>
-                <input type="number" class="form-control" id="inputCcv" ng-model="vm.nuevoClienteModificado.ccv">
-              </div>
-            </div>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Nº de Tarjeta</th>
+                  <th>Fecha Vencimiento</th>
+                  <th>Año Vencimiento</th>
+                  <th>Emisor</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr ng-repeat="tarjeta in vm.tarjetas | filter:buscarTarjeta">
+                  <td>{{tarjeta.numeroTarjeta}}</td>
+                  <td>{{tarjeta.fechaVencimiento}}</td>
+                  <td>{{tarjeta.ccv}}</td>
+                  <td>Emisor</td>
+                  <td>
+                    <li class="nav-item dropdown btnAccion" style="list-style:none">
+                      <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Acciones</a>
+                      <div class="dropdown-menu">
+                        <a class="dropdown-item" ng-click="vm.modificar(cliente)">Modificar Tarjeta</a>
+                        <a class="dropdown-item" ng-click="vm.desactivar(cliente)">Eliminar Tarjeta</a>
+                      </div>
+                    </li>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
           </div>
           <button type="submit" class="btn btnAccion">Guardar cambios</button>
           <a href="/#!/mantClientes" class="btn btn-light">Cancelar</a>

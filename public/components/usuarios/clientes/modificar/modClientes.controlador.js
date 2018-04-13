@@ -14,15 +14,17 @@
       $state.go('mantClientes');
     }
 
-    clienteSeleccionado = servicioUsuarios.obtenerUsuarioEspecifico(JSON.parse($stateParams.identificacion));
+    clienteSeleccionado = servicioUsuarios.obtenerUsuarioEspecifico($stateParams.identificacion);
 
     console.log(clienteSeleccionado);
 
     let vm = this;
 
+    vm.tarjetas = clienteSeleccionado.tarjetas;
+
     vm.nuevoClienteModificado = {
       identificacion: clienteSeleccionado.identificacion,
-      nombre: clienteSeleccionado.nombre,
+      nombre: clienteSeleccionado.nombre1,
       apellido1: clienteSeleccionado.apellido1,
       email: clienteSeleccionado.email,
       contrasenna: clienteSeleccionado.contrasenna,
@@ -32,11 +34,6 @@
       canton: clienteSeleccionado.canton,
       distrito: clienteSeleccionado.distrito,
       direccion: clienteSeleccionado.direccion,
-      titularTarjeta: clienteSeleccionado.tarjeta.titularTarjeta,
-      numeroTarjeta: clienteSeleccionado.tarjeta.numeroTarjeta,
-      mesVencimiento: clienteSeleccionado.tarjeta.fechaVencimiento,
-      annoVencimiento: clienteSeleccionado.tarjeta.annoVencimiento,
-      ccv: clienteSeleccionado.tarjeta.ccv
     };
 
     vm.modificarCliente = (pNuevoCliente) =>{

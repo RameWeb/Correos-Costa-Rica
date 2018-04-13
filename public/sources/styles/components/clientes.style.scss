@@ -1,13 +1,16 @@
 @import "../setting";
 
 #registrarClientes{
+  textarea{
+    resize: none;
+  }
   .contenido{
     background-color: $white;
     max-height: 100vh;
     overflow: scroll;
   }
   .panelIzquierdo{
-    background-image: $background;
+    background-image: url(img/herobackground.jpg);
     color: $white;
     min-height: 100vh;
     overflow: scroll;
@@ -18,6 +21,11 @@
   }
   .btnAccion{
     background-color: $slateblue;
+    color: $white;
+    font-family: $fuenteContenido;
+  }
+  .btnSecundario{
+    background-color: $midnight;
     color: $white;
     font-family: $fuenteContenido;
   }
