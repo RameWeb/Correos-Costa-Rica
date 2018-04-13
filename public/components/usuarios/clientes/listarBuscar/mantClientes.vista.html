@@ -1,31 +1,31 @@
 <main id="registrarClientes">
 <section class="container-fluid">
     <div class="row">
-      <div class="col-md-4 py-5 px-5 panelIzquierdo">
-        <a href="#!/admin"><img src="../../../sources/img/chevron-left.svg" height="30px" width="30px" alt="">Regresar al Dashboard</a>
+      <div class="col-md-3 py-5 px-5 panelIzquierdo">
+        <a href="#!/admin"><img src="../../../sources/img/chevron-left.svg" height="30px" width="30px" alt="">Regresar al dashboard</a>
         <img src="../../../sources/img/logo_slateblue.svg" class="my-5" alt="">
-        <a href="#!/regClientesAdmin" class="btn btnAccion">Registrar Clientes</a>
+        <a href="#!/regClientes" class="btn btnAccion">Registrar Clientes</a>
       </div>
-      <div class="col-md-8 py-5 px-5 contenido">
+      <div class="col-md-9 py-5 px-5 contenido">
         <h2>Lista de Clientes</h2>
         <div class="form-group">
           <label for="inputBuscar">Buscar cliente</label>
-          <input type="text" class="form-control" id="inputBuscar" ng-model="buscarCliente.nombre">
-          </div>
+          <input type="text" class="form-control" id="inputBuscar" ng-model="buscarTarjeta">
+        </div>
         <table class="table">
           <thead>
             <tr>
               <th>Nº Identificación</th>
-              <th>Nombre</th>
-              <th>1er Apellido</th>
+              <th>Primer Nombre</th>
+              <th>Primer Apellido</th>
               <th>Correo Electrónico</th>
               <th>Teléfono</th>
             </tr>
           </thead>
           <tbody>
-            <tr ng-repeat="cliente in vm.listaClientes | filter:buscarCliente">
+            <tr ng-repeat="cliente in vm.listaClientes | filter:buscarTarjeta">
               <td>{{cliente.identificacion}}</td>
-              <td>{{cliente.nombre}}</td>
+              <td>{{cliente.nombre1}}</td>
               <td>{{cliente.apellido1}}</td>
               <td>{{cliente.email}}</td>
               <td>{{cliente.telefono}}</td>

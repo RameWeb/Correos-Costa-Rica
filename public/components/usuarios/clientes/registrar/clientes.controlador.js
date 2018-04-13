@@ -1,15 +1,21 @@
 (() => {
   'use strict';
   angular
-  .module('correos-cr')
-  .controller('controladorClientes', controladorClientes);
+    .module('correos-cr')
+    .controller('controladorClientes', controladorClientes);
 
-  controladorClientes.$inject = ['$stateParams', '$state','servicioUsuarios'];
+  controladorClientes.$inject = ['$stateParams', '$state', 'servicioUsuarios', 'imageUpload', 'Upload'];
 
-  function controladorClientes($stateParams, $state, servicioUsuarios){
+  function controladorClientes($stateParams, $state, servicioUsuarios, imageUpload, Upload) {
     let vm = this;
 
-    vm.sucursales = ["San Jose", "Alajuela", "Heredia", "Cartago", "Guanacaste","Puntarenas", "Limon"];
+    vm.sucursales = ["San Jose", "Alajuela", "Heredia", "Cartago", "Guanacaste", "Puntarenas", "Limon"];
+
+    vm.sexo = ["Femenino", "Masculino", "Sin especificar"];
+
+    vm.tipoIdentificacion = ["Nacional", "Residente", "Pasaporte"];
+
+
 
     // Objeto sin formato
     vm.nuevoCliente = {};
@@ -18,16 +24,28 @@
 
     listarClientes();
 
+    // ***********Guardar imagen en Cloudinary
+    vm.cloudObj = imageUpload.getConfiguration();
+
+    vm.preRegistrarUsuario = (pnuevoUsuario) => {
+      vm.cloudObj.data.file = pnuevoUsuario.fotoPerfil[0];
+      Upload.upload(vm.cloudObj).success((data) => {
+        vm.registrarCliente(pnuevoUsuario, data.url);
+      });
+    }
+    // *****************************
+
     // Guardar un nuevo repartidor
-    vm.registrarCliente = (pNuevoCliente) => {
+    vm.registrarCliente = (pNuevoCliente, urlImagen) => {
       console.log(pNuevoCliente);
 
-      let nuevaTarjeta = new Tarjeta(vm.nuevoCliente.titularTarjeta,vm.nuevoCliente.numeroTarjeta,vm.nuevoCliente.mesVencimiento,vm.nuevoCliente.annoVencimiento,vm.nuevoCliente.ccv);
+      let nuevoCliente = new Cliente(pNuevoCliente.tipoIdentificacion, pNuevoCliente.identificacion, pNuevoCliente.primerNombre, pNuevoCliente.segundoNombre, pNuevoCliente.primerApellido, pNuevoCliente.segundoApellido, urlImagen, pNuevoCliente.sexo, pNuevoCliente.fechaNacimiento, pNuevoCliente.email, pNuevoCliente.contrasenna, pNuevoCliente.provincia, pNuevoCliente.canton, pNuevoCliente.distrito, pNuevoCliente.direccion, 1, 'Cliente', pNuevoCliente.telefono, pNuevoCliente.sucursalPreferencia);
 
-      let nuevoCliente= new Cliente(vm.nuevoCliente.identificacion, vm.nuevoCliente.nombre,vm.nuevoCliente.apellido1,vm.nuevoCliente.fechaNacimiento,vm.nuevoCliente.email,vm.nuevoCliente.contrasenna,vm.nuevoCliente.provincia,vm.nuevoCliente.canton,vm.nuevoCliente.distrito,vm.nuevoCliente.direccion,1,'Cliente',vm.nuevoCliente.telefono);
-      console.log(nuevoCliente);
+      let nuevaTarjeta = new Tarjeta(pNuevoCliente.titularTarjeta, pNuevoCliente.numeroTarjeta, pNuevoCliente.mesVencimiento, pNuevoCliente.annoVencimiento, pNuevoCliente.ccv, nuevoCliente.getEmail());
 
       nuevoCliente.agregarTarjeta(nuevaTarjeta);
+
+      console.log(nuevoCliente);
 
       // Pasamos al servicio el nuevo obj de tipo cliente para ser almacenado en el localStorage
       servicioUsuarios.agregarUsuario(nuevoCliente);
@@ -39,19 +57,19 @@
       // $state.go('mantClientes');
 
       // Se limpia el formulario
-      vm.nuevoCliente = null;
+      // vm.nuevoCliente = null;
 
       listarClientes();
     }
 
     // Imprimir lista de repartidores en el sistema
-    function listarClientes(){
+    function listarClientes() {
       vm.listaClientes = servicioUsuarios.obtenerUsuarioPorRol("Cliente");
     }
 
-    vm.modificar = (pCliente) =>{
+    vm.modificar = (pCliente) => {
       console.log(pCliente.identificacion);
-      $state.go('modClientes', {identificacion: JSON.stringify(pCliente.identificacion)})
+      $state.go('modClientes', { identificacion: JSON.stringify(pCliente.identificacion) })
     }
 
     vm.desactivar = (pCliente) => {
@@ -62,18 +80,18 @@
         buttons: true,
         dangerMode: true,
       })
-      .then((willDelete) => {
-        if (willDelete) {
-          pCliente.estado = false;
-          console.log(pCliente.estado);
-          servicioUsuarios.actualizarUsuario(pCliente);
-          swal("Poof! Your imaginary file has been deleted!", {
-            icon: "success",
-          });
-        } else {
-          swal("Your imaginary file is safe!");
-        }
-      });
+        .then((willDelete) => {
+          if (willDelete) {
+            pCliente.estado = false;
+            console.log(pCliente.estado);
+            servicioUsuarios.actualizarUsuario(pCliente);
+            swal("El usuario ha sido desactivado", {
+              icon: "success",
+            });
+          } else {
+            swal("Cancelando acción");
+          }
+        });
     }
   }
 })();

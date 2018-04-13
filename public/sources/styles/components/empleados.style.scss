@@ -1,13 +1,16 @@
 @import "../setting";
 
 #registrarEmpleados{
+  textarea{
+    resize: none;
+  }
   .contenido{
     background-color: $white;
     max-height: 100vh;
     overflow: scroll;
   }
   .panelIzquierdo{
-    background-image: $background;
+    background-image: url(img/herobackground.jpg);
     color: $white;
     min-height: 100vh;
     overflow: scroll;

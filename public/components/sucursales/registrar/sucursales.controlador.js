@@ -56,7 +56,7 @@
     // }
 
     listarSucursales();
-
+    
     // Funcion que es llamada desde el html para regustra un nuevo usuario
     vm.registrarSucursal = (pnuevaSucursal) => {
 
@@ -69,7 +69,7 @@
       console.log(idRandom);
 
       // Tomamos el objeto sin formato y lo comvertimos en un objeto de tipo cliente
-      let objNuevaSucursal = new Sucursales(pnuevaSucursal.provincia, pnuevaSucursal.canton, pnuevaSucursal.distrito,  pnuevaSucursal.direccion, pnuevaSucursal.latLong, pnuevaSucursal.telefono, idRandom);
+      let objNuevaSucursal = new Sucursales(pnuevaSucursal.provincia, pnuevaSucursal.canton, pnuevaSucursal.distrito,  pnuevaSucursal.direccion, pnuevaSucursal.telefono, idRandom);
         
       console.log(objNuevaSucursal);
 

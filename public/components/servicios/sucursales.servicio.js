@@ -33,7 +33,7 @@
       }else{
         listaSucursalesLocal.forEach(obj => {
           
-          let objSucursales = new Sucursales(obj.provincia, obj.canton, obj.distrito, obj.direccion, obj.latLong, obj.telefono, obj.idSucursal);
+          let objSucursales = new Sucursales(obj.provincia, obj.canton, obj.distrito, obj.direccion, obj.telefono, obj.idSucursal);
 
           listaSucursales.push(objSucursales);
         })
