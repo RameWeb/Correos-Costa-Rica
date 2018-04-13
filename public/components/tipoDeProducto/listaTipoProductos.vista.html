@@ -1,0 +1,48 @@
+<main id="registroSucursales">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-3 py-5 px-5 panelIzquierdo">
+          
+          <a href="/#!/registrarTipoProducto" class="btn btnAccion">Regresar</a>
+          <img src="../../../sources/img/logo_slateblue.svg" class="" alt="">
+  
+        </div>
+        <div class="col-md-8 py-5 px-5 contenido">
+          <h2>Tipos de productos</h2>
+  
+          <div class="form-group col-md-8">
+            <label for="txtBuscar">Buscar</label>
+            <input type="text" id="txtBuscar" class="form-control col-md-8" ng-model="buscarTipoProducto">
+          </div>
+  <div class="col-9">
+      <table class="table">
+      <thead>
+          <tr>
+              <th>Tipo de producto</th>
+              <th>Impuesto asignado</th> 
+          </tr>
+      </thead>
+      <tbody>
+          <tr ng-repeat="tipoProducto in  vm.listaTipoProductos | filter:buscarTipoProducto">
+              <td>{{tipoProducto.nombreTipoProducto}}</td>
+              <td>{{tipoProducto.impuesto}}</td>
+              <td>
+                  <li class="nav-item dropdown btnAccion" style="list-style:none">
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Acciones</a>
+                    <div class="dropdown-menu">
+                      <a class="dropdown-item" href="" ng-click="vm.modificar(tipoProducto)">Modificar tipo de producto</a>
+                      <a class="dropdown-item" href="">Eliminar tipo de producto</a>
+                    </div>
+                  </li>
+                </td>
+              </tr>
+      </tbody>
+    </table>
+  </div>
+  </div>
+  </div>
+  </main>
+          
+          
+       
+

@@ -1,0 +1,40 @@
+<main id="registrarPaquetes">
+<div class="container-fluid">
+    <div class="row">
+
+            <div class="col-md-3 py-5 px-5 panelIzquierdo">
+                    <a href="#!/cliente"><img src="../../../sources/img/chevron-left.svg" height="30px" width="30px" alt="">Regresar al dashboard</a>
+                    <img src="../../../sources/img/logo_slateblue.svg" class="mt-5" alt="">
+          
+                </div>
+
+            <div class="col-md-8 py-5 px-5 contenido">
+                    <h2>Lista de Paquetes</h2>
+                  <input ng-model="searchText" class="form-control" placeholder="Buscar paquete" >
+                 
+           
+            <table class="table">
+                <thead>
+                        <tr>
+                            <th>N. Tracking</th>
+                            <th>Peso</th>
+                            <th>Valor</th>
+                            <th>Estado de paquete</th>
+                        </tr>
+                        
+                    </thead>
+                    
+                    <tbody>
+                      <tr ng-repeat="paquetes in vm.listaPaquetes | filter:searchText">
+                        <td>{{paquetes.tracking}}</td>
+                        <td>{{paquetes.peso}}</td>
+                        <td>{{paquetes.valor}}</td>
+                        <td>{{paquetes.estado}}</td>
+                      </tr>
+                    </tbody>
+        </table>
+        </div>
+    </div>
+    </div>
+    </div>
+</main>

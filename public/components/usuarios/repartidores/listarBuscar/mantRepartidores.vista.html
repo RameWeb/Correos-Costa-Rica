@@ -1,0 +1,47 @@
+<main id="registrarRepartidores">
+<section class="container-fluid">
+  <div class="row">
+    <div class="col-md-3 py-5 px-5 panelIzquierdo">
+      <a href="#!/admin"><img src="../../../sources/img/chevron-left.svg" height="30px" width="30px" alt="">Regresar al dashboard</a>
+      <img src="../../../sources/img/logo_slateblue.svg" class="my-5" alt="">
+      <a href="#!/regRepartidores" class="btn btnAccion">Registrar Repartidores</a>
+    </div>
+    <div class="col-md-9 py-5 px-5 contenido">
+      <h2>Lista de Repartidores</h2>
+      <div class="form-group">
+        <label for="inputBuscar">Buscar repartidor</label>
+        <input type="text" class="form-control" id="inputBuscar" ng-model="buscarRepartidor.nombre">
+        </div>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Sucursal</th>
+            <th>Licencia</th>
+            <th>Vencimiento</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="repartidor in vm.listaRepartidores | filter:buscarRepartidor">
+            <td>{{repartidor.nombre}}</td>
+            <td>{{repartidor.apellido1}}</td>
+            <td>{{repartidor.sucursal}}</td>
+            <td>{{repartidor.licencia}}</td>
+            <td>{{repartidor.licenciaVencimiento | date : 'mediumDate'}}</td>
+            <td>
+              <li class="nav-item dropdown btnAccion" style="list-style:none">
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Acciones</a>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item" ng-click="vm.modificar(repartidor)">Modificar Repartidor</a>
+                  <a class="dropdown-item" href="">Desactivar Repartido</a>
+                </div>
+              </li>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+</main>

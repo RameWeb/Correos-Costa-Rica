@@ -1,0 +1,72 @@
+[
+    {
+        "idCategoria": "101",
+        "name": "Licencia para Motos pequeñas, Bicimotos y Cuadraciclos.",
+        "_id": "10101"
+    },
+    {
+        "idCategoria": "102",
+        "name": "Licencia para Moto mediana.",
+        "_id": "10201"
+    },
+    {
+        "idCategoria": "103",
+        "name": "Licencia para cualquier Moto.",
+        "_id": "10301"
+    },
+    {
+        "idCategoria": "104",
+        "name": "Licencia para Automóvil liviano.",
+        "_id": "10401"
+    },
+    {
+        "idCategoria": "105",
+        "name": "Licencia para Camión pequeño.",
+        "_id": "10501"
+    },
+    {
+        "idCategoria": "106",
+        "name": "Licencia para Camión pesado.",
+        "_id": "10601"
+    },
+    {
+        "idCategoria": "107",
+        "name": "Licencia para Camión articulado.",
+        "_id": "10701"
+    },
+    {
+        "idCategoria": "108",
+        "name": "Licencia para Taxi.",
+        "_id": "10801"
+    },
+    {
+        "idCategoria": "109",
+        "name": "Licencia para Bus y Buseta.",
+        "_id": "10901"
+    },
+    {
+        "idCategoria": "110",
+        "name": "Licencia para Tractor de Llantas.",
+        "_id": "11001"
+    },
+    {
+        "idCategoria": "111",
+        "name": "Licencia para Tractor de Orugas.",
+        "_id": "11101"
+    },
+    {
+        "idCategoria": "112",
+        "name": "Licencia para Equipo Especial.",
+        "_id": "11201"
+    },
+    {
+        "idCategoria": "113",
+        "name": "Licencia para todo tipo de vehículo de pasajeros y camión.",
+        "_id": "11301"
+    },
+    {
+        "idCategoria": "114",
+        "name": "Licencia para todos los vehículos incluyendo la maquinaria agrícola y equipo especial.",
+        "_id": "11401"
+    }
+]

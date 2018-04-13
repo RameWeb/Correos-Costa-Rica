@@ -1,0 +1,53 @@
+<main id="registroConvenioClientes">
+<div class="container-fluid">
+<div class="row">
+    <div class="col-md-3 py-5 px-5 panelIzquierdo">
+        <a href="#!/admin"><img src="../../../sources/img/chevron-left.svg" height="30px" width="30px" alt="">Regresar al dashboard</a>
+        <img src="../../../sources/img/logo_slateblue.svg" class="mt-5" alt="">
+
+    </div>
+
+           
+        <div class="col-md-8 py-5 px-5 contenido">
+              <input ng-model="searchText" class="form-control" placeholder="Buscar convenio" >
+             
+        
+      <table class="table">
+              <thead>
+                      <tr>
+                          <th>Institución</th>
+                          <th>Tipo</th>
+                          <th>Tiempo</th>
+                          <th>Costo</th>
+                          <th>Acciones</th>
+                      </tr>
+                      
+                  </thead>
+                  
+                  <tbody>
+                    <tr ng-repeat="convenios in vm.listaConvenios | filter:searchText">
+                      <td>{{convenios.nombreInstitucion}}</td>
+                      <td>{{convenios.tipo}}</td>
+                      <td>{{convenios.tiempo}}</td>
+                      <td>{{convenios.costo}}</td>
+                      <td>
+                            <li class="nav-item dropdown" style="list-style:none">
+                                    <a class="nav-link dropdown-toggle btnAccion" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Acciones</a>
+                                    <div class="dropdown-menu">
+                                      <a class="dropdown-item" href="/#!/modificar-convenios" ng-click="vm.modificar(convenios)">Modificar convenio</a>
+                                      <a class="dropdown-item" href="">Eliminar convenio</a>
+
+                      </td>
+                      
+                      <td>
+                          <!--aqui va boton de asignar repartidor -->
+                        </td>
+                      
+                    </tr>
+                  </tbody>
+      </table>
+    </div>
+</div>
+</div>
+</div>
+</main>

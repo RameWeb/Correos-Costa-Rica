@@ -1,0 +1,30 @@
+// -----------------------------------------------------------------------------
+// LIBRERIAS
+// -----------------------------------------------------------------------------
+
+// Bootstrap
+@import '../../../node_modules/bootstrap/scss/bootstrap.scss';
+
+
+// -----------------------------------------------------------------------------
+// Estilos de la aplicación
+// -----------------------------------------------------------------------------
+
+@import 'components/cliente.style';
+@import 'components/clientes.style';
+@import 'components/convenio.style';
+@import 'components/courier.style';
+@import 'components/dashboardAdmin.style';
+@import 'components/empleados.style';
+@import 'components/landingPage.style';
+@import 'components/paquetes.style';
+@import 'components/prealertas.style';
+@import 'components/repartidores.style';
+@import 'components/sucursales.style';
+@import 'components/tipoProducto.style';
+
+
+//@import 'components/casillero.style';
+//@import 'components/notificarCorreo.style';
+//@import 'components/listaConvenios.style';
+//@import 'components/modificarConvenios.style';

@@ -1,0 +1,131 @@
+<!-- <navegacion-Principal></navegacion-Principal> -->
+
+<main id="registroSucursales">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-3 py-5 px-5 panelIzquierdo">
+        <img src="../../../sources/img/logo_slateblue.svg" class="" alt="">
+        <a href="/#!/listarSucursal" class="btn btnAccion mt-4">Lista de sucursales</a>
+      </div>
+
+      <div class="col-md-9 py-5 px-5 contenido">
+        <h2> Sucursales</h2>
+        <form ng-submit="vm.registrarSucursal(vm.nuevaSucursal)" name="formRegistrarSucursales" autocomplete="off" class="col-md-8 frmRegistroSucursal" novalidate>
+          
+          <div class="form-group">
+            <label for="txtProvincia">Provincia:</label>
+            <!-- <select id="sltProvincia" name="sltProvincia"class="form-control" ng-change="vm.rellenarCantones(vm.nuevaSucursal.provincia._id)" ng-options="provincia as provincia.name for provincia in vm.provincias track by provincia._id" ng-model="vm.nuevaSucursal.provincia" required>
+              <option>-- Seleccione una Provincia --</option>
+            </select> -->
+            <input type="text" name="provincia" class="form-control" id="txtProvincia" ng-model="vm.nuevaSucursal.provincia" pattern="[ñáéíóúA-Za-z ]+" required>
+            <div ng-messages="formRegistrarSucursales.provincia.$error" role="alert">
+              <div ng-message="required">
+                <small class="form-text text-muted">Este campo es requerido</small>
+              </div>
+              <div ng-message="pattern">
+                <small class="form-text text-muted">Formato incorrecto, ingrese únicamente letras</small>
+              </div>
+            </div>
+          </div> 
+
+          <div class="form-group">
+            <label for="txtCanton">Cantón:</label>
+            <!-- <select id="sltCanton" name="sltCanton" class="form-control" ng-change="vm.rellenarDistrito(vm.nuevaSucursal.canton._id)" ng-options="canton as canton.name for canton in vm.cantones track by canton._id" ng-model="vm.nuevaSucursal.canton">
+              <option>--Seleccione un cantón--</option>
+            </select> -->
+            <input type="text" name="canton" class="form-control" id="txtCanton" ng-model="vm.nuevaSucursal.canton" pattern="[ñáéíóúA-Za-z ]+" required>
+            <div ng-messages="formRegistrarSucursales.canton.$error" role="alert">
+              <div ng-message="required">
+                <small class="form-text text-muted">Este campo es requerido</small>
+              </div>
+              <div ng-message="pattern">
+                <small class="form-text text-muted">Formato incorrecto, ingrese únicamente letras</small>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="txtDistrito">Distrito:</label>
+            <!-- <select id="sltDistrito" name="sltDistrito" class="form-control" ng-options="distrito as distrito.name for distrito in vm.distritos track by distrito._id" ng-model="vm.nuevaSucursal.distrito">
+              <option>--Seleccione un distrito</option>
+            </select> -->
+
+            <input type="text" name="distrito" class="form-control" id="txtDistrito" ng-model="vm.nuevaSucursal.distrito" pattern="[ñáéíóúA-Za-z ]+" required>
+            <div ng-messages="formRegistrarSucursales.distrito.$error" role="alert">
+              <div ng-message="required">
+                <small class="form-text text-muted">Este campo es requerido</small>
+              </div>
+              <div ng-message="pattern">
+                <small class="form-text text-muted">Formato incorrecto, ingrese únicamente letras</small>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for=txtDireccion"">Dirección exacta:</label>
+            <textarea type="text" name="direccion" class="form-control" id="txtDireccion" ng-model="vm.nuevaSucursal.direccion" rows="3" required></textarea>
+            <div ng-messages="formRegistrarSucursales.direccion.$error" role="alert">
+              <div ng-message="required">
+                <small class="form-text text-muted">Este campo es requerido</small>
+              </div>
+            </div>
+          </div>
+
+          <div class="direccionGoogle">
+            <h6>Dirección Google Maps</h6>         
+            <div id="map" style="width:100%; height:400px" ng-model="vm.nuevaSucursal.latLong">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for=txtTelefono>Teléfono</label>
+            <input type="tel" name="telefono" class="form-control" id="txtTelefono" ng-model="vm.nuevaSucursal.telefono" pattern="^[2|8]\d{7}$" maxlength="8" minlength="8" required>
+
+            <div ng-messages="formRegistrarSucursales.telefono.$error" role="alert">
+              <div ng-message="required">
+                <small class="form-text text-muted">Este campo es requerido</small>
+              </div>
+              <div ng-message="maxlength">
+                <small class="form-text text-muted">Formato incorrecto</small>
+              </div>
+              <div ng-message="minlength">
+                <small class="form-text text-muted">Formato incorrecto</small>
+              </div>
+              <div ng-message="pattern">
+                <small class="form-text text-muted">Formato incorrecto, número debe de empezar con 2 u 8</small>
+              </div>
+            </div>
+          </div>
+
+          <button type="submit" class="btn btnAccion" ng-disabled="formRegistrarSucursales.$invalid">Registrar</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</main>
+
+<!--Google Mapa-->
+<script>
+  function initMap() {
+    var map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 7,
+      center: {lat: 9.7489166, lng: -83.7534256 }
+    });
+
+    map.addListener('click', function(e) {
+      placeMarkerAndPanTo(e.latLng, map);
+    });
+  }
+
+  function placeMarkerAndPanTo(latLng, map) {
+    var marker = new google.maps.Marker({
+      position: latLng,
+      map: map
+    });
+    map.panTo(latLng);
+  }
+</script>
+
+<script async defer
+src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCy8ifb_Jup1mxpCIbrbJMI0S2YEzX3aVA&callback=initMap">
+</script>

@@ -1,0 +1,47 @@
+<main id="registrarEmpleados">
+  <section class="container-fluid">
+    <div class="row">
+      <div class="col-md-3 py-5 px-5 panelIzquierdo">
+        <a href="#!/admin"><img src="../../../sources/img/chevron-left.svg" height="30px" width="30px" alt="">Regresar al dashboard</a>
+        <img src="../../../sources/img/logo_slateblue.svg" class="my-5" alt="">
+        <a href="#!/regEmpleados" class="btn btnAccion">Registrar Empleados</a>
+      </div>
+      <div class="col-md-9 py-5 px-5 contenido">
+        <h2>Lista de Empleados</h2>
+        <div class="form-group">
+          <label for="inputBuscar">Buscar empleado por identificacion:</label>
+          <input type="text" class="form-control" id="inputBuscar" ng-model="buscarEmpleado.identificacion">
+          </div>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Nº Identificación</th>
+              <th>Nombre</th>
+              <th>1er Apellido</th>
+              <th>Puesto</th>
+              <th>Sucursal</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="empleado in vm.listaEmpleados | filter:buscarEmpleado" >
+              <td>{{empleado.identificacion}}</td>
+              <td>{{empleado.nombre}}</td>
+              <td>{{empleado.apellido1}}</td>
+              <td>{{empleado.tipoUsuario}}</td>
+              <td>{{empleado.sucursal}}</td>
+              <td>
+                <li class="nav-item dropdown btnAccion" style="list-style:none">
+                  <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Acciones</a>
+                  <div class="dropdown-menu">
+                    <a class="dropdown-item" ng-click="vm.modificar(empleado)">Modificar Empleado</a>
+                    <a class="dropdown-item" href="">Desactivar Empleado</a>
+                  </div>
+                </li>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+</main>

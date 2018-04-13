@@ -1,0 +1,51 @@
+<main id="registroSucursales">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-3 py-5 px-5 panelIzquierdo">
+          
+          <a href="#!/admin"><img src="../../../sources/img/chevron-left.svg" height="35px" width="35px" alt="">Regresar al dashboard</a>
+          <img src="../../../sources/img/logo_slateblue.svg" class="my-5" alt="">
+          <a href="/#!/registrarTipoProducto" class="btn btnAccion">Regresar</a>
+          
+  
+        </div>
+        <div class="col-md-9 py-4 px-4 contenido">
+          <h2>Consultar bitácora</h2>
+  
+          <div class="form-group col-md-8">
+              <label for="txtBuscar">Buscar por fecha</label>
+              <input type="text" id="txtBuscar" class="form-control" ng-model="buscarestadosDePaquetes.fecha">
+          </div>
+  <div class="col-12">
+      <table class="table">
+      <thead>
+          <tr>
+              <th>Estado del paquete</th>
+              <th>Fecha</th>
+              <th>Hora</th>
+              <th>Cliente </th>
+              <th>Encargado </th> 
+          </tr>
+      </thead>
+      <tbody>
+          <tr ng-repeat="estadoDelPaquete in vm.bitacora.estadosDePaquetes | filter:buscarestadosDePaquetes.fecha">
+              <td>{{estadoDelPaquete.estadoDelPaquete}}</td>
+              <td>{{estadoDelPaquete.fecha}}</td>
+              <td>{{estadoDelPaquete.Hora}}</td>
+              <td>{{estadoDelPaquete.nombreCliente}}</td>
+              <td>{{estadoDelPaquete.encargadoDePaquete}}</td>
+              
+      </tbody>
+    </table>
+  </div>
+  </div>
+  </div>
+  </main>
+          
+          
+       
+
+
+  
+
+  

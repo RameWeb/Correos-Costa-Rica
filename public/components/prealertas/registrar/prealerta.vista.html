@@ -1,0 +1,99 @@
+<!-- <navegacion-Principal></navegacion-Principal> -->
+
+<main id="registroPrealertas">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-3 py-5 px-5 panelIzquierdo">
+        <img src="../../../sources/img/logo_slateblue.svg" class="" alt="">
+        <a href="/#!/listarPrealerta" class="btn btnAccion mt-4">Lista de prealertas</a>
+
+      </div>
+
+      <div class="col-md-9 py-5 px-5 contenido">
+        <div class="col-6">
+          <h2>Prealertar un paquete</h2>
+          <form name="formRegistrarPrealerta" autocomplete="off" ng-submit="vm.registrarPrealerta(vm.nuevaPrealerta)" novalidate>
+
+            <div class="form-group">
+              <label for="txtTracking">Tracking:</label>
+              <input type="text" class="form-control" name="tracking" id="txtTracking" ng-model="vm.nuevaPrealerta.tracking" maxlength="25" minlength="7" pattern="[A-Za-z0-9]+" required>
+              <div ng-messages="formRegistrarPrealerta.tracking.$error" role="alert">
+                <div ng-message="required">
+                  <small class="form-text text-muted">Este campo es requerido</small>
+                </div>
+                <div ng-message="maxlength">
+                  <small class="form-text text-muted">Máximo 25 caracteres</small>
+                </div>
+                <div ng-message="minlength">
+                  <small class="form-text text-muted">Mínimo 7 caracteres</small>
+                </div>
+                <div ng-message="pattern">
+                  <small class="form-text text-muted">Formato incorrecto, ingrese únicamente números y letras</small>
+                </div>
+              </div>
+            </div>
+    
+            <div class="form-group">
+              <label for="txtUrl">URL del producto:</label>
+              <input type="text" class="form-control" name="url" id="txtUrl" placeholder="www.example.com" ng-model="vm.nuevaPrealerta.url" required>
+              <div ng-messages="formRegistrarPrealerta.url.$error" role="alert">
+                <div ng-message="required">
+                  <small class="form-text text-muted">Este campo es requerido</small>
+                </div>
+              </div>
+            </div>
+              
+            <div class="form-group">
+              <label for="txtTipoProdcuto">Tipo de producto:</label>
+              <input type="text" class="form-control" name="tipoProducto" id="txtTipoProdcuto" ng-model="vm.nuevaPrealerta.tipoProducto" list="listaProductos" required>
+              <datalist id="listaProductos">
+                <option data-ng-repeat="tipoProducto in vm.tipoProducto" value="{{tipoProducto}}">
+              </datalist>
+              <div ng-messages="formRegistrarPrealerta.tipoProducto.$error" role="alert">
+                <div ng-message="required">
+                  <small class="form-text text-muted">Este campo es requerido</small>
+                </div>
+              </div>
+            </div>
+        
+            <div class="form-group">
+              <label for=txtValor"">Valor del paquete:</label>
+              <input type="text" class="form-control" name="valor" id="txtValor" ng-model="vm.nuevaPrealerta.valor" required>
+              <div ng-messages="formRegistrarPrealerta.valor.$error" role="alert">
+                <div ng-message="required">
+                  <small class="form-text text-muted">Este campo es requerido</small>
+                </div>
+              </div>
+            </div>
+      
+            <div class="form-group">
+              <label for=txtPeso"">Peso del paquete (kg):</label>
+              <input type="text" class="form-control" name="peso" id="txtPeso" ng-model="vm.nuevaPrealerta.peso" required>
+              <div ng-messages="formRegistrarPrealerta.peso.$error" role="alert">
+                <div ng-message="required">
+                  <small class="form-text text-muted">Este campo es requerido</small>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="txtCourier">Courier:</label>
+              <input type="text" class="form-control" name="courier" id="txtCourier" ng-model="vm.nuevaPrealerta.courier" list="listaCourier" required>
+              <datalist id="listaCourier">
+                <option data-ng-repeat="courier in vm.courier" value="{{courier}}">
+              </datalist>
+              <div ng-messages="formRegistrarPrealerta.courier.$error" role="alert">
+                <div ng-message="required">
+                  <small class="form-text text-muted">Este campo es requerido</small>
+                </div>
+              </div>
+            </div>
+      
+            <button type="submit" class="btn btnAccion" ng-disabled="formRegistrarPrealerta.$invalid">Prealertar</button>
+
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>

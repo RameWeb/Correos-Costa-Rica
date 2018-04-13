@@ -1,0 +1,132 @@
+<main id="registrarRepartidores">
+    <section class="container-fluid">
+      <div class="row">
+        <div class="col-md-3 py-5 px-5 panelIzquierdo">
+          <a href="#!/admin"><img src="../../../sources/img/chevron-left.svg" height="30px" width="30px" alt="">Regresar al dashboard</a>
+          <img src="../../../sources/img/logo_slateblue.svg" class="my-5" alt="">
+          <a href="#!/mantRepartidores" class="btn btnAccion">Lista de Repartidores</a>
+        </div>
+        <div class="col-md-9 py-5 px-5 contenido">
+          <h2>Modificar Repartidores</h2>
+          <div>
+            <form ng-submit="vm.modificarRepartidor(vm.nuevoRepartidor)" class="col-md-8">
+              <!-- Información Personal -->
+              <div class="my-3">
+                <h3>Información Personal</h3>
+                <div class="form-group">
+                  <label for="inputIdentificacion">Número de Identificación:</label>
+                  <input type="number" class="form-control" id="inputIdentificacion" ng-model="vm.nuevoRepartidor.identificacion" disabled>
+                </div>
+                <div class="form-row">
+                  <div class="form-group col-md-6">
+                    <label for="inputNombre">Nombre</label>
+                    <input type="text" class="form-control" id="inputNombre" ng-model="vm.nuevoRepartidor.nombre">
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for="inputApellido1">Primer Apellido</label>
+                    <input type="text" class="form-control" id="inputApellido1" ng-model="vm.nuevoRepartidor.apellido1">
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="form-group col-md-6">
+                    <label for="inputFechaNacimiento">Fecha de Nacimiento</label>
+                    <input type="date" class="form-control" id="inputFechaNacimiento" ng-model="vm.nuevoRepartidor.fechaNacimiento">
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for="inputTelefono">Teléfono</label>
+                    <input type="number" class="form-control" id="inputTelefono" ng-model="vm.nuevoRepartidor.telefono">
+                  </div>
+                </div>
+              </div>
+  
+              <div class="my-3">
+                <h3>Dirección</h3>
+                <div class="form-row">
+                  <div class="form-group col-md-4">
+                    <label for="inputProvincia">Provincia</label>
+                    <input type="text" class="form-control" id="inputProvincia" ng-model="vm.nuevoRepartidor.provincia">
+                  </div>
+                  <div class="form-group col-md-4">
+                    <label for="inputCanton">Cantón</label>
+                    <input type="text" class="form-control" id="inputCanton" ng-model="vm.nuevoRepartidor.canton">
+                  </div>
+                  <div class="form-group col-md-4">
+                    <label for="inputDistrito">Distrito</label>
+                    <input type="text" class="form-control" id="inputDistrito" ng-model="vm.nuevoRepartidor.distrito">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="inputDireccion">Dirección exacta:</label>
+                  <textarea class="form-control" id="inputDireccion" rows="3" ng-model="vm.nuevoRepartidor.direccion"></textarea>
+                </div>
+              </div>
+  
+              <div class="my-3">
+                <h3>Información Laboral</h3>
+                <!-- Otros datos -->
+                <div class="form-group">
+                  <label for="inputPuesto">Puesto</label>
+                  <input type="text" class="form-control" id="inputPuesto" ng-model="vm.nuevoRepartidor.puesto" ng-init="vm.nuevoRepartidor.puesto ='Repartidor'"
+                    disabled>
+                </div>
+                <div class="form-group">
+                  <label for="inputSucursal">Sucursal asignada:</label>
+                  <input type="text" class="form-control" id="inputSucursal" ng-model="vm.nuevoRepartidor.sucursal" list="listaSucursales">
+                  <datalist id="listaSucursales">
+                    <option data-ng-repeat="sucursal in vm.sucursales" value="{{sucursal}}">
+                  </datalist>
+                </div>
+                <div class="form-row">
+                  <div class="form-group col-md-6">
+                    <label for="inputEmail">Correo Electrónico:</label>
+                    <input type="email" class="form-control" id="inputEmail" ng-model="vm.nuevoRepartidor.email" disabled>
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for="inputContrasenna">Contraseña:</label>
+                    <input type="password" class="form-control" id="inputContrasenna" ng-model="vm.nuevoRepartidor.contrasenna">
+                  </div>
+                </div>
+  
+                <div class="form-group">
+                  <label for="inputPassword4">Tipo de Licencia</label>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" ng-model="vm.nuevoRepartidor.licencia"
+                      ng-value="'Motocicleta'">
+                    <label class="form-check-label" for="exampleRadios2">
+                      Motocicleta(A1, A2, A3, A4)
+                    </label>
+                  </div>
+                  <div class="form-check disabled">
+                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" ng-model="vm.nuevoRepartidor.licencia"
+                      ng-value="'Vehiculo'">
+                    <label class="form-check-label" for="exampleRadios3">
+                      Vehículo (B2, B3)
+                    </label>
+                  </div>
+                </div>
+  
+                <div class="form-group">
+                  <label for="fileLicencia">Foto de Licencia</label>
+                  <input type="file" class="form-control-file" id="fileLicencia" ng-model="vm.nuevoRepartidor.fotoLicencia" ng-init=" vm.nuevoRepartidor.fotoLicencia.file.name">
+                  <!-- <div class="custom-file">
+                  <input type="file" class="custom-file-input" id="customFile" ng-model="vm.nuevoRepartidor.fotoLicencia">
+                  <label class="custom-file-label" for="customFile">Seleccionar imagen de licencia</label>
+                </div> -->
+                </div>
+  
+                <div class="form-group">
+                  <label for="inputVencimiento">Fecha de vencimiento de la licencia</label>
+                  <input type="date" class="form-control" id="inputVencimiento" ng-model="vm.nuevoRepartidor.vencimientoLicencia">
+                </div>
+  
+                <button type="submit" class="btn btnAccion">Guardar cambios</button>
+                <a href="/#!/mantRepartidores" class="btn btn-light">Cancelar</a>
+              </div>
+  
+            </form>
+          </div>
+  
+        </div>
+      </div>
+    </section>
+  </main>

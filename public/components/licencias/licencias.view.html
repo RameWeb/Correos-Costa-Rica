@@ -1,0 +1,65 @@
+<h1>Registro de Licencias</h1>
+
+<div>
+
+  <div class="col-6 my-4">
+  <form ng-submit="vm.registrarLicencia(vm.nuevaLicencia)">
+      <div class="form-group">
+          <label for="sltTipo">Tipo</label>
+          <select id="sltTipo" class="form-control" name="sltTipos" ng-change="vm.rellenarCategorias(vm.nuevaLicencia.tipo._id)" ng-options="tipo as tipo.name for tipo in vm.tipos track by tipo._id" ng-model="vm.nuevaLicencia.tipo" required>
+            <option value="">-- Seleccione un Tipo --</option>
+          </select>
+          <div ng-messages="formRegistroUsuarios.sltTipos.$error" role="alert">
+            <div ng-message="required">
+              <small class="form-text text-muted">Este campo es requerido</small>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="sltCategoria">Categoria</label>
+          <select id="sltCategoria" class="form-control" name="sltCategorias" ng-change="vm.rellenarDescripcion(vm.nuevaLicencia.categoria._id)" ng-options="categoria as categoria.name for categoria in vm.categorias track by categoria._id" ng-model="vm.nuevaLicencia.categoria" required>
+            <option value="">-- Seleccione una Categoria --</option>
+          </select>
+          <div ng-messages="formRegistroUsuarios.sltCategorias.$error" role="alert">
+            <div ng-message="required">
+              <small class="form-text text-muted">Este campo es requerido</small>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="sltDescripcion">Descripcion</label>
+          <select id="sltDescripcion" class="form-control" name="sltDescripciones" ng-options="descripcion as descripcion.name for descripcion in vm.descripciones track by descripcion._id" ng-model="vm.nuevaLicencia.descripcion" required>
+            <option value="">-- Seleccione una Descripcion --</option>
+          </select>
+          <div ng-messages="formRegistroUsuarios.sltDescripciones.$error" role="alert">
+              <div ng-message="required">
+                <small class="form-text text-muted">Este campo es requerido</small>
+              </div>
+
+      <button type="submit" class="btn btn-success">Registrar</button>
+      
+    </form>
+  </div>
+
+</div>
+
+<div class="col-12">
+  <table class="table">
+    <thead>
+        <tr>
+          <th>Tipo</th>
+          <th>Categoria</th>
+          <th>Descripcion</th>
+        </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="licencia in vm.listaLicencias">
+        <td>{{licencia.tipo.name}}</td>
+        <td>{{licencia.categoria.name}}</td>
+        <td>{{licencia.descripcion.name}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

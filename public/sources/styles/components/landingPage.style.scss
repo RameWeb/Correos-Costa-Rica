@@ -1,0 +1,162 @@
+@import "../setting";
+
+.bg-black{
+  background: #000;
+}
+
+.headlines{
+  font-family: $fuenteTitulos;
+  font-weight: 700;
+}
+
+.gray{
+  background-color: #ffffff;
+  color: #000;
+  border: none;
+}
+.call{
+  background-color: #8979e4;
+  color: #fff;
+}
+input.myCheckbox[type=checkbox]:checked + label:before{
+  background-color: #8979e4 !important;
+}
+input.myInput, select.mySelect{
+  // background-color: #222222 !important;
+  color: #8979e4 !important;
+  border: none !important;
+}
+hr{
+  color: #f6f6f6;
+}
+.mylogo{
+  color: #2B2B2B !important;
+  font-weight: 700;
+}
+
+.btnAction{
+  background-color: #8979e4;
+  color: #fff;
+  font-family: $fuenteContenido;
+}
+.blueNav{
+  background-color: #333945;
+  /* height: 65px; */
+}
+a.myNavLinks{
+  font-family: $fuenteContenido;
+  font-weight: 700;
+  font-size: 1em;
+}
+.cover{
+  background-image: $background;
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+}
+.jumboContent{
+  color: #fff;
+  font-size: 3em;
+}
+
+#nosotros{
+  padding-top: 130px;
+}
+
+#nuestrosclientes, #servicios {
+  padding-top: 130px;
+  padding-bottom: 150px;
+}
+
+.ourServices{
+  background-color: #f6f6f6;
+  border: 5px solid #8979e4;
+  border-radius: 50%;
+  height: 150px;
+  width: 150px;
+  margin: 0 auto;
+}
+
+.ourTestimonies{
+  background-color: #f6f6f6;
+  border: 5px solid #8979e4;
+  border-radius: 50%;
+  height: 150px;
+  width: 150px;
+  margin: 0 auto;
+}
+
+.content{
+  font-weight: 300;
+}
+
+footer{
+  background-color: #333945;
+  font-family: $fuenteContenido;
+  height: 200px;
+}
+
+.navFooter ul{
+  list-style: none;
+}
+
+.navFooter ul li{
+  margin-bottom: 8px;
+  text-align: center;
+}
+
+.navFooter ul li a{
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.contactoFooter img{
+  margin: 20px 20px;
+}
+
+.contactoFooter h3{
+  margin-bottom: 20px;
+}
+
+h3.titularMenu{
+  color: #fff;
+  text-align: center; 
+  font-weight: 600;
+  margin-top: 20px;
+}
+
+h3.titularContacto{
+  color:#fff;
+  text-align: center;
+  font-weight: 600;
+}
+
+.navbar {
+  position: fixed; /* Set the navbar to fixed position */
+  top: 0; /* Position the navbar at the top of the page */
+  width: 100%;
+  z-index: 1;
+}
+
+
+/* Media Queries */
+@media (max-width: 320px) {
+  .jumboContent{
+    font-size: 1rem;
+    max-width: 200px;
+  }
+  .cover{
+    height: 20vh;
+  }
+}
+
+@media (max-width: 768px) {
+  .jumboContent{
+    font-size: 1.5rem;
+    max-width: 300px;
+  }
+  .cover{
+    height: 35vh;
+  }
+}

@@ -1,0 +1,30 @@
+@import "../setting";
+
+#registroTipoProducto{
+  .contenido{
+    background-color: $white;
+    max-height: 100vh;
+    overflow: scroll;
+  }
+  
+  .panelIzquierdo{
+    background-image: $background;
+    color: $white;
+    min-height: 100vh;
+  }
+  .btnAccion{
+    background-color: $slateblue;
+    color: $white;
+    font-family: $fuenteContenido;
+  }
+
+  h1,h2{
+    font-family: $fuenteTitulos;
+    }
+
+  h3,p,label{
+    font-family: $fuenteContenido;
+  }
+
+  
+}

@@ -1,0 +1,146 @@
+<main id="registrarEmpleados">
+  <section class="container-fluid">
+    <div class="row">
+      <div class="col-md-3 py-5 px-5 panelIzquierdo">
+        <a href="#!/admin"><img src="../../../sources/img/chevron-left.svg" height="30px" width="30px" alt="">Regresar al dashboard</a>
+        <img src="../../../sources/img/logo_slateblue.svg" class="my-5" alt="">
+        <a href="#!/mantEmpleados" class="btn btnAccion">Lista de Empleados</a>
+      </div>
+      <div class="col-md-9 py-5 px-5 contenido">
+        <h2>Registrar Empleados</h2>
+        <form ng-submit="vm.registrarEmpleados(vm.nuevoEmpleado)" class="col-md-8">
+          <div class="form-group">
+            <label for="inputRoles">Seleccione el rol del empleado:</label>
+            <input type="text" class="form-control" id="inputRoles" ng-model="vm.nuevoEmpleado.rol" list="listaRoles">
+            <datalist id="listaRoles">
+              <option ng-repeat="rol in vm.roles" value="{{rol}}">
+            </datalist>
+          </div>
+          <!-- Información Personal -->
+          <div class="my-3">
+            <h3>Información Personal</h3>
+            <div class="form-group">
+              <label for="inputIdentificacion">Nº de Identificación:</label>
+              <input type="number" class="form-control" id="inputIdentificacion" ng-model="vm.nuevoEmpleado.identificacion">
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="inputNombre">Nombre</label>
+                <input type="text" class="form-control" id="inputNombre" ng-model="vm.nuevoEmpleado.nombre">
+              </div>
+              <div class="form-group col-md-6">
+                <label for="inputApellido1">Primer Apellido</label>
+                <input type="text" class="form-control" id="inputApellido1" ng-model="vm.nuevoEmpleado.apellido1">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="inputEmail">Correo Electrónico:</label>
+                <input type="email" class="form-control" id="inputEmail" ng-model="vm.nuevoEmpleado.email">
+              </div>
+              <div class="form-group col-md-6">
+                <label for="inputContrasenna">Contraseña:</label>
+                <input type="password" class="form-control" id="inputContrasenna" ng-model="vm.nuevoEmpleado.contrasenna">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="inputFechaNacimiento">Fecha de Nacimiento</label>
+                <input type="date" class="form-control" id="inputFechaNacimiento" ng-model="vm.nuevoEmpleado.fechaNacimiento">
+              </div>
+              <div class="form-group col-md-6">
+                <label for="inputTelefono">Teléfono</label>
+                <input type="number" class="form-control" id="inputTelefono" ng-model="vm.nuevoEmpleado.telefono">
+              </div> 
+            </div>
+          </div>
+          <!-- Direccion -->
+          <div class="my-3">
+            <h3>Dirección</h3>
+            <div class="form-row">
+              <div class="form-group col-md-4">
+                <label for="inputProvincia">Provincia</label>
+                <input type="text" class="form-control" id="inputProvincia" ng-model="vm.nuevoEmpleado.provincia">
+              </div>
+              <div class="form-group col-md-4">
+                <label for="inputCanton">Cantón</label>
+                <input type="text" class="form-control" id="inputCanton" ng-model="vm.nuevoEmpleado.canton">
+              </div>
+              <div class="form-group col-md-4">
+                <label for="inputDistrito">Distrito</label>
+                <input type="text" class="form-control" id="inputDistrito" ng-model="vm.nuevoEmpleado.distrito">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="inputDireccion">Dirección exacta:</label>
+              <textarea class="form-control" id="inputDireccion" rows="3" ng-model="vm.nuevoEmpleado.direccion"></textarea>
+            </div>
+          </div>
+          <!-- Roles de encargado de aduana -->
+          <div class="my-3" id="rolEncargado" ng-if="vm.nuevoEmpleado.rol == 'Encargado de Aduana'">
+            <h3>Información Laboral</h3>
+            <div class="form-group">
+              <label for="inputRolAduana">Seleccione el rol del encargado:</label>
+              <input type="text" class="form-control" id="inputRolAduana" ng-model="vm.nuevoEmpleado.rolAduana" list="listaRolesAduana">
+              <datalist id="listaRolesAduana">
+                <option data-ng-repeat="rolAduana in vm.rolesAduana" value="{{rolAduana}}">
+              </datalist>
+            </div>
+          </div>
+
+          <!-- Sucursal asignada a encargado de sucursal -->
+          <div class="my-3" id="sucursalEncargado" ng-if="vm.nuevoEmpleado.rol == 'Encargado de Sucursal'">
+            <h3>Información Laboral</h3>
+            <div class="form-group">
+              <label for="inputSucursal">Sucursal asignada:</label>
+              <input type="text" class="form-control" id="inputSucursal" ng-model="vm.nuevoEmpleado.sucursal" list="listaSucursales">
+              <datalist id="listaSucursales">
+                <option data-ng-repeat="sucursal in vm.sucursales" value="{{sucursal}}">
+              </datalist>
+            </div>
+          </div>
+
+          <!-- Datos del puesto del Repartidor -->
+          <div class="my-3" id="repartidor" ng-if="vm.nuevoEmpleado.rol == 'Repartidor'">
+            <h3>Información Laboral</h3>
+            <div class="form-group">
+              <div class="form-group">
+                <label for="inputSucursal">Sucursal asignada:</label>
+                <input type="text" class="form-control" id="inputSucursal" ng-model="vm.nuevoEmpleado.sucursal" list="listaSucursales">
+                <datalist id="listaSucursales">
+                  <option data-ng-repeat="sucursal in vm.sucursales" value="{{sucursal}}">
+                </datalist>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="inputPassword4">Tipo de Licencia</label>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" ng-model="vm.nuevoEmpleado.licencia"
+                  ng-value="'Motocicleta'">
+                <label class="form-check-label" for="exampleRadios2">
+                  Motocicleta(A1, A2, A3, A4)
+                </label>
+              </div>
+              <div class="form-check disabled">
+                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" ng-model="vm.nuevoEmpleado.licencia"
+                  ng-value="'Vehiculo'">
+                <label class="form-check-label" for="exampleRadios3">
+                  Vehículo (B2, B3)
+                </label>
+              </div>
+              <div class="form-group">
+                <label for="fileLicencia">Foto de Licencia</label>
+                <input type="file" class="form-control-file" id="fileLicencia" ng-model="vm.nuevoEmpleado.fotoLicencia" ng-init=" vm.nuevoEmpleado.fotoLicencia.file.name">
+              </div>
+              <div class="form-group">
+                <label for="inputVencimiento">Fecha de vencimiento de la licencia</label>
+                <input type="date" class="form-control" id="inputVencimiento" ng-model="vm.nuevoEmpleado.vencimientoLicencia">
+              </div>
+            </div>
+          </div>
+          <button type="submit" class="btn btnAccion">Registrar Empleado</button> 
+        </form>
+      </div>
+    </div>
+  </section>
+</main>

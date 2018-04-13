@@ -1,0 +1,39 @@
+<!-- <navegacion-Principal></navegacion-Principal> -->
+
+
+<main id="registroSucursales">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-3 py-5 px-5 panelIzquierdo">
+            <a href="#!/"><img src="../../../sources/img/chevron-left.svg" height="35px" width="35px" alt="">Regresar a la pagina principal</a>
+             <img src="../../../sources/img/logo_slateblue.svg" class="my-5" alt="">
+          <a href="/#!/listaCourier" class="btn btnAccion">Lista de Couriers</a>
+          
+        </div>
+  
+        <div class="col-md-9 py-4 px-4 contenido">
+          <div class="col-6">
+            <h2> Registrar un nuevo courier</h2>
+            <form ng-submit="vm.registrarCourier(vm.nuevoCourier)" name="registroCourier" autocomplete="off" novalidate>
+              
+              <div class="form-group">
+                  <label for="txtCourier">Nombre del courier</label>
+                <input type="text" id="txtCourierNombre"class="form-control col-md-8 "  ng-model="vm.nuevoCourier.nombreCourier"  required>
+              </div>
+              <button type="submit" class="btn btnAccion" id="btnGuardar">Registrar</button>
+ 
+            </form>
+          </div>
+  
+          <div class="col-6">
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+
+  
+  
+  

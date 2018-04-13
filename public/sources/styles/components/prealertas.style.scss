@@ -1,0 +1,41 @@
+@import "../setting";
+
+#registroPrealertas{
+  .contenido{
+    background-color: $white;
+    max-height: 100vh;
+    overflow: scroll;
+  }
+  
+  .panelIzquierdo{
+    background-image: $background;
+    background-size: cover;
+    color: $white;
+    min-height: 100vh;
+    a{
+      color: $white;
+      text-decoration: none;
+    }
+  }
+
+  .btnAccion{
+    background-color: $slateblue;
+    color: $white;
+  }
+
+  a.linkRegresar{
+    color: $white;
+  }
+
+  h1,h2{
+    font-family: $fuenteTitulos;
+    }
+
+  h3,p,label{
+    font-family: $fuenteContenido;
+  }
+
+  textarea{
+    resize: none;
+  }
+}

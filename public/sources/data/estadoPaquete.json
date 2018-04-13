@@ -1,0 +1,22 @@
+[
+    {
+        "name": "En proceso de almacenaje",
+        "_id": "0"
+    },
+    {
+        "name": "En tránsito al centro de distribución",
+        "_id": "1"
+    },
+    {
+        "name": "Recibido en centro de distribución",
+        "_id": "2"
+    },
+    {
+        "name": "En tránsito a destino",
+        "_id": "3"
+    },
+    {
+        "name": "Entregado",
+        "_id": "4"
+    }
+]

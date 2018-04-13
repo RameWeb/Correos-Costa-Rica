@@ -1,0 +1,46 @@
+<main id="registroSucursales">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-3 py-5 px-5 panelIzquierdo">
+        <a href="#!/admin"><img src="../../../sources/img/chevron-left.svg" height="35px" width="35px" alt="">Regresar al Dashboard</a>
+        <img src="../../../sources/img/logo_slateblue.svg" class="my-5" alt="">
+        
+        <a href="/#!/registrarCourier" class="btn btnAccion">Regresar</a>
+
+      </div>
+      <div class="col-md-9 py-4 px-4 contenido">
+        <h2>Lista Couriers</h2>
+
+        <div class="form-group col-md-8">
+          <label for="txtBuscar">Buscar</label>
+          <input type="text" id="txtBuscar" class="form-control col-md-8" ng-model="buscarCourier">
+        </div>
+<div class="col-9">
+    <table class="table">
+    <thead>
+        <tr>
+          <th>Nombre del Courier</th>
+        </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="courier in  vm.listaCouriers| filter:buscarCourier">
+        <td>{{courier.nombreCourier}}</td>
+        <td>
+          <li class="nav-item dropdown btnAccion" style="list-style:none">
+            <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Acciones</a>
+            <div class="dropdown-menu">
+              
+              <a class="dropdown-item" href="">Eliminar courier</a>
+            </div>
+          </li>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+</div>
+</div>
+</main>
+        
+        
+     

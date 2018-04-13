@@ -1,0 +1,55 @@
+@import "../setting";
+
+#cliente{
+  .contenido{
+    background-color: $white;
+    max-height: 100vh;
+    overflow: scroll;
+    margin-top: 170px;
+  }
+  
+  .panelIzquierdo{
+    background-image: $background;
+    background-size: cover;
+    color: $white;
+    min-height: 100vh;
+    a{
+      color: $white;
+      text-decoration: none;
+    }
+  }
+
+  .panelIzquierdo img{
+    padding-top: 200px;
+  }
+  
+  .btnAccion{
+    background-color: $slateblue;
+    color: $white;
+  }
+
+  button{
+    width: 300px;
+  }
+  
+  h1,h2{
+    font-family: $fuenteTitulos;
+    }
+
+  h3,p,label{
+    font-family: $fuenteContenido;
+  }
+
+  i {
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 3px;
+  }
+
+  .right {
+    transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+  }
+
+}

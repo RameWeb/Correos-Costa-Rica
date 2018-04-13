@@ -1,0 +1,105 @@
+<main id="registrarClientes">
+  <section class="container-fluid">
+    <div class="row">
+      <div class="col-md-4 py-5 px-5 panelIzquierdo">
+        <a href="#!/admin"><img src="../../../sources/img/chevron-left.svg" height="30px" width="30px" alt="">Regresar al dashboard</a>
+        <img src="../../../sources/img/logo_slateblue.svg" class="my-5" alt="">
+        <a href="#!/mantClientes" class="btn btnAccion">Lista de Clientes</a>
+      </div>
+      <div class="col-md-8 py-5 px-5 contenido">
+        <h2>Modificar Cliente</h2>
+        <form ng-submit="vm.modificarCliente(vm.nuevoClienteModificado)" class="col-md-8">
+          <!-- Información Personal -->
+          <div class="my-3">
+            <h3>Información Personal</h3>
+            <div class="form-group">
+              <label for="inputIdentificacion">Nº de Identificación:</label>
+              <input type="number" class="form-control" id="inputIdentificacion" ng-model="vm.nuevoClienteModificado.identificacion" disabled>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="inputNombre">Nombre</label>
+                <input type="text" class="form-control" id="inputNombre" ng-model="vm.nuevoClienteModificado.nombre">
+              </div>
+              <div class="form-group col-md-6">
+                <label for="inputApellido1">Primer Apellido</label>
+                <input type="text" class="form-control" id="inputApellido1" ng-model="vm.nuevoClienteModificado.apellido1">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="inputEmail">Correo Electrónico:</label>
+                <input type="email" class="form-control" id="inputEmail" ng-model="vm.nuevoClienteModificado.email" disabled>
+              </div>
+              <div class="form-group col-md-6">
+                <label for="inputContrasenna">Contraseña:</label>
+                <input type="password" class="form-control" id="inputContrasenna" ng-model="vm.nuevoClienteModificado.contrasenna">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="inputFechaNacimiento">Fecha de Nacimiento</label>
+                <input type="date" class="form-control" id="inputFechaNacimiento" ng-model="vm.nuevoClienteModificado.fechaNacimiento">
+              </div>
+              <div class="form-group col-md-6">
+                <label for="inputTelefono">Teléfono</label>
+                <input type="number" class="form-control" id="inputTelefono" ng-model="vm.nuevoClienteModificado.telefono">
+              </div> 
+            </div>
+          </div>
+          <!-- Direccion -->
+          <div class="my-3">
+            <h3>Dirección</h3>
+            <div class="form-row">
+              <div class="form-group col-md-4">
+                <label for="inputProvincia">Provincia</label>
+                <input type="text" class="form-control" id="inputProvincia" ng-model="vm.nuevoClienteModificado.provincia">
+              </div>
+              <div class="form-group col-md-4">
+                <label for="inputCanton">Cantón</label>
+                <input type="text" class="form-control" id="inputCanton" ng-model="vm.nuevoClienteModificado.canton">
+              </div>
+              <div class="form-group col-md-4">
+                <label for="inputDistrito">Distrito</label>
+                <input type="text" class="form-control" id="inputDistrito" ng-model="vm.nuevoClienteModificado.distrito">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="inputDireccion">Dirección exacta:</label>
+              <textarea class="form-control" id="inputDireccion" rows="3" ng-model="vm.nuevoClienteModificado.direccion"></textarea>
+            </div>
+          </div>
+  
+          <div class="my-3">
+            <h3>Información de Pago</h3>
+            <!-- Otros datos -->
+            <div class="form-group">
+              <label for="inputTitularTarjeta">Titular de la tarjeta</label>
+              <input type="text" class="form-control" id="inputTitularTarjeta" ng-model="vm.nuevoClienteModificado.titularTarjeta">
+            </div>
+            <div class="form-group">
+              <label for="inputNumeroTarjeta">Numero de tarjeta:</label>
+              <input type="number" class="form-control" id="inputNumeroTarjeta" ng-model="vm.nuevoClienteModificado.numeroTarjeta">
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-4">
+                <label for="inputMesVencimiento">Mes</label>
+                <input type="text" class="form-control" id="inputMesVencimiento" ng-model="vm.nuevoClienteModificado.mesVencimiento">
+              </div>
+              <div class="form-group col-md-4">
+                <label for="inputAnnoVencimiento">Año</label>
+                <input type="number" class="form-control" id="inputAnnoVencimiento" ng-model="vm.nuevoClienteModificado.annoVencimiento">
+              </div>
+              <div class="form-group col-md-4">
+                <label for="inputCcv">Codigo de Seguridad (CCV)</label>
+                <input type="number" class="form-control" id="inputCcv" ng-model="vm.nuevoClienteModificado.ccv">
+              </div>
+            </div>
+          </div>
+          <button type="submit" class="btn btnAccion">Guardar cambios</button>
+          <a href="/#!/mantClientes" class="btn btn-light">Cancelar</a>
+      </form>
+    </div>
+  </section>
+</main>
+      

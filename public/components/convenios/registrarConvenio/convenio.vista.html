@@ -1,0 +1,42 @@
+<main id="registroConvenioClientes">
+<div class="container-fluid">
+    <div class="row">
+            <div class="col-md-3 py-5 px-5 panelIzquierdo">
+                <img src="../../../sources/img/logo_slateblue.svg" class="" alt="">
+                <a href="/#!/lista-convenios" class="btn btnAccion mt-4">Lista de convenios</a>
+            </div>
+
+        <div class="col-md-8 py-5 px-5 contenido">
+          <h2>Registro de Convenios</h2>
+        
+
+        <div class="col-md-6">
+            <form ng-submit="vm.registrarConvenios(vm.nuevoConvenios)" autocomplete="off" novalidate>
+
+              <div class="form-group">
+                <label for="">Nombre de la institución</label>
+                <input type="text" class="form-control myInput" ng-model="vm.nuevoConvenios.nombreInstitucion" required>
+              </div>
+              
+              <div class="form-group">
+                  <label for="">Tipo de convenio</label>
+                  <input type="text" class="form-control myInput" ng-model="vm.nuevoConvenios.tipo" required>
+              </div>
+
+              <div class="form-group">
+                  <label for="">Tiempo de convenio</label>
+                  <input type="text" class="form-control myInput" ng-model="vm.nuevoConvenios.tiempo" required>
+              </div>
+
+              <div class="form-group">
+                  <label for="">Costo de transporte</label>
+                  <input type="number" class="form-control myInput" ng-model="vm.nuevoConvenios.costo" required>
+              </div>
+
+              <button type="submit" class="btn btnAccion" ng-click="vm.registrarConvenios()" >Registrar</button>
+            </form>
+        </div>
+    </div>
+</div>
+</div>
+</main>

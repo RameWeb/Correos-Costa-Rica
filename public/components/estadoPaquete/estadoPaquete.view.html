@@ -1,0 +1,24 @@
+<h1>Registro de Estado de Paquetes</h1>
+
+<div>
+
+  <div class="col-6 my-4">
+  <form ng-submit="vm.registrarEstadoPaquete(vm.nuevoEstadoPaquete)">
+      <div class="form-group">
+          <label for="sltEstadoPaquete">Estado</label>
+          <select id="sltEstadoPaquete" class="form-control" name="sltEstadoPaquete" ng-options="estadoPaquete as estadoPaquete.name for estadoPaquete in vm.estadoPaquete track by estadoPaquete._id" ng-model="vm.nuevoEstadoPaquete.estadoPaquete" required>
+            <option value="">-- Seleccione un Estado --</option>
+          </select>
+          <div ng-messages="formRegistroUsuarios.sltEstadoPaquete.$error" role="alert">
+            <div ng-message="required">
+              <small class="form-text text-muted">Este campo es requerido</small>
+            </div>
+          </div>
+        </div>
+
+      <button type="submit" class="btn btn-success">Registrar</button>
+      
+    </form>
+  </div>
+
+</div>

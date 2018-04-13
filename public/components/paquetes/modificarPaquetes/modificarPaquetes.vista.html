@@ -1,0 +1,51 @@
+<main id="registrarPaquetes">
+  <div class="container-fluid">
+    <div class="row">
+  
+          <div class="col-md-4 py-5 px-5 panelIzquierdo">
+                  <h2>Correos de Costa Rica</h2>
+               </div>
+        <div class="col-md-8 py-5 px-5 contenido">
+          <h2>Editar Paquete</h2>
+       
+  
+        <div class="col-md-6">
+            <form name="formRegistrarSucursales" autocomplete="off" ng-submit="vm.modificarPaquetes(vm.nuevoPaquetes)" novalidate>
+  
+              <div class="form-group">
+                <label for="">Número de tracking</label>
+                <input type="number" class="form-control myInput" ng-model="vm.nuevoPaquetes.tracking" required>
+              </div>
+              
+              <div class="form-group">
+                  <label for="">Dueno de paquete</label>
+                  <input type="text" class="form-control myInput" ng-model="vm.nuevoPaquetes.nombre" required>
+              </div>
+  
+              <div class="form-group">
+                  <label for="">Peso</label>
+                  <input type="text" class="form-control myInput" ng-model="vm.nuevoPaquetes.peso" required>
+              </div>
+  
+              <div class="form-group">
+                  <label for="">Valor</label>
+                  <input type="number" class="form-control myInput" ng-model="vm.nuevoPaquetes.valor" required>
+              </div>
+              <div class="form-group">
+                     <label for="">Estado de paquete</label>
+              <select class="selectpicker form-control" ng-model="vm.nuevoPaquetes.estado">
+                  <option>En proceso de almacenaje</option>
+                  <option>En tránsito al centro de distribución</option>
+                  <option>Entregado</option>
+                </select>
+              </div>
+  
+              <button type="submit" class="btn btnAccion">Registrar</button>
+              <a href="/#!/listarPaquetes" class="btn btn-light">Cancelar</a>
+  
+            </form>
+        </div>
+    </div>
+  </div>
+  </div>
+  </main>

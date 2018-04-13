@@ -1,0 +1,97 @@
+<!-- <navegacion-Principal></navegacion-Principal> -->
+
+<main id="registroPrealertas">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-3 py-5 px-5 panelIzquierdo">
+        <a href="#!/cliente"><img src="../../../sources/img/chevron-left.svg" height="30px" width="30px" alt="">Regresar al dashboard</a>
+        <img src="../../../sources/img/logo_slateblue.svg" class="my-5" alt="">
+
+      </div>
+
+      <div class="col-md-9 py-4 px-4 contenido">
+        <h2>Lista Prealertas</h2>
+
+        <div class="form-group col-md-8">
+          <label for="txtBuscar">Buscar</label>
+          <input type="text" id="txtBuscar" class="form-control" ng-model="buscarPrealerta.tracking">
+        </div>
+
+        <table class="table">
+          <thead>
+              <tr>
+                <th>Tracking</th>
+                <th>URL</th>
+                <th>Tipo producto</th>
+                <th>Valor</th>
+                <th>Peso</th>
+                <th>Courier</th>
+                <th>Acciones</th>
+              </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="prealerta in vm.listaPrealertas | filter:buscarPrealerta">
+              <td>{{prealerta.tracking}}</td>
+              <td>{{prealerta.url}}</td>
+              <td>{{prealerta.tipoProducto}}</td>
+              <td>{{prealerta.valor}}</td>
+              <td>{{prealerta.peso}}</td>
+              <td>{{prealerta.courier}}</td>
+              <td>
+                <li class="nav-item dropdown btnAccion" style="list-style:none">
+                  <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Acciones</a>
+                  <div class="dropdown-menu">
+                    <a class="dropdown-item" href="" ng-click="vm.modificar(prealerta)">Modificar prealerta</a>
+                    <a class="dropdown-item" href="">Desactivar prealerta</a>
+                  </div>
+                </li>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!-- <h2>Lista Prealertas desactivadas</h2>
+        <div class="form-group col-7">
+            <label for="txtBuscar">Buscar</label>
+            <input type="text" id="txtBuscar" class="form-control" ng-model="buscarPrealerta.tracking">
+          </div>
+  
+          <table class="table">
+            <thead>
+                <tr>
+                  <th>Tracking</th>
+                  <th>URL</th>
+                  <th>Tipo producto</th>
+                  <th>Valor</th>
+                  <th>Peso</th>
+                  <th>Courier</th>
+                  <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat="prealerta in vm.listaPrealertas | filter:buscarPrealerta">
+                <td>{{prealerta.tracking}}</td>
+                <td>{{prealerta.url}}</td>
+                <td>{{prealerta.tipoProducto}}</td>
+                <td>{{prealerta.valor}}</td>
+                <td>{{prealerta.peso}}</td>
+                <td>{{prealerta.courier}}</td>
+                <td>
+                  <li class="nav-item dropdown btnAccion" style="list-style:none">
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Acciones</a>
+                    <div class="dropdown-menu">
+                      <a class="dropdown-item" href="">Reactivar prealerta</a>
+                    </div>
+                  </li>
+                </td>
+              </tr>
+            </tbody>
+          </table> -->
+      </div>
+    </div>
+  </div>
+</main>
+
+<script>
+  feather.replace()
+</script>

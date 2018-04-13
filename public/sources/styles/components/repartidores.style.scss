@@ -1,0 +1,27 @@
+@import "../setting";
+
+#registrarRepartidores{
+  .contenido{
+    background-image: $white;
+  }
+  .btnAccion{
+    background-color: $slateblue;
+    color: $white;
+  }
+  .panelIzquierdo{
+    background-image: $background;
+    color: $white;
+    min-height: 100vh;
+    overflow: scroll;
+    a{
+      color: $white;
+      text-decoration: none;
+    }
+  }
+  h1,h2{
+    font-family: $fuenteTitulos;
+  }
+  h3,p,label{
+    font-family: $fuenteContenido;
+  }
+}
