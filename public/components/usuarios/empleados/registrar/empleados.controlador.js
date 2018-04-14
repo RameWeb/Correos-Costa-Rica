@@ -32,19 +32,19 @@
     vm.preRegistrarUsuario = (pnuevoUsuario) => {
       vm.cloudObj.data.file = pnuevoUsuario.fotoPerfil[0];
       Upload.upload(vm.cloudObj).success((data) => {
-        vm.registrarEmpleados(pnuevoUsuario, data.url);
+        vm.registrarEmpleado(pnuevoUsuario, data.url);
       });
     }
     // *****************************
 
     // Guardar un nuevo empleado
-    vm.registrarEmpleados = (pNuevoEmpleado, urlImagen) => {
+    vm.registrarEmpleado = (pNuevoEmpleado, urlImagen) => {
       console.log(pNuevoEmpleado);
 
       switch (pNuevoEmpleado.rol) {
 
         case "Encargado de Aduana":
-          let nuevoEncargadoAduana = new EmpleadoAduana(pNuevoEmpleado.tipoIdentificacion,pNuevoEmpleado.identificacion,pNuevoEmpleado.primerNombre, pNuevoEmpleado.segundoNombre, pNuevoEmpleado.primerApellido, pNuevoEmpleado.segundoApellido,urlImagen, pNuevoEmpleado.sexo, pNuevoEmpleado.fechaNacimiento,pNuevoEmpleado.email, pNuevoEmpleado.contrasenna, pNuevoEmpleado.provincia, pNuevoEmpleado.canton, pNuevoEmpleado.distrito,pNuevoEmpleado.direccion, 1,'Empleado', pNuevoEmpleado.rolAduana)
+          let nuevoEncargadoAduana = new EmpleadoAduana(pNuevoEmpleado.tipoIdentificacion,pNuevoEmpleado.identificacion,pNuevoEmpleado.primerNombre, pNuevoEmpleado.segundoNombre, pNuevoEmpleado.primerApellido, pNuevoEmpleado.segundoApellido,urlImagen,pNuevoEmpleado.sexo, pNuevoEmpleado.fechaNacimiento,pNuevoEmpleado.email, pNuevoEmpleado.contrasenna, pNuevoEmpleado.provincia, pNuevoEmpleado.canton, pNuevoEmpleado.distrito,pNuevoEmpleado.direccion, 1,'Empleado', pNuevoEmpleado.rolAduana)
 
           console.log(nuevoEncargadoAduana);
 
