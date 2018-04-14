@@ -8,7 +8,7 @@
       </div>
       <div class="col-md-9 py-5 px-5 contenido">
         <h2>Registrar Empleados</h2>
-        <form ng-submit="vm.registrarEmpleados(vm.nuevoEmpleado)" class="col-md-8" name="formRegistroEmpleados" novalidate autocomplete="off">
+        <form ng-submit="vm.preRegistrarUsuario(vm.nuevoEmpleado)" class="col-md-8" name="formRegistroEmpleados" novalidate autocomplete="off">
           <div class="form-group">
             <label for="inputRoles">Seleccione el rol del empleado:</label>
             <input type="text" class="form-control" id="inputRoles" ng-model="vm.nuevoEmpleado.rol" list="listaRoles">
