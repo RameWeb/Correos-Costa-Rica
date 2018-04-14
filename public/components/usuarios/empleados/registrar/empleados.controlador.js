@@ -48,7 +48,7 @@
 
           console.log(nuevoEncargadoAduana);
 
-          servicioUsuarios.agregarUsuario(nuevoEncargadoAduana);
+          servicioUsuarios.agregarEmpleado(nuevoEncargadoAduana);
         break;
 
         // Encargado de Sucursal
@@ -58,7 +58,7 @@
 
           console.log(nuevoEncargadoSucursal);
 
-          servicioUsuarios.agregarUsuario(nuevoEncargadoSucursal);
+          servicioUsuarios.agregarEmpleado(nuevoEncargadoSucursal);
 
         break;
 
@@ -69,7 +69,7 @@
 
           console.log(nuevoRepartidor);
 
-          servicioUsuarios.agregarUsuario(nuevoRepartidor);
+          servicioUsuarios.agregarEmpleado(nuevoRepartidor);
 
         break;
       
@@ -78,7 +78,7 @@
 
           console.log(nuevoUsuario);
 
-          servicioUsuarios.agregarUsuario(nuevoUsuario);
+          servicioUsuarios.agregarEmpleado(nuevoUsuario);
         break;
       }
 
