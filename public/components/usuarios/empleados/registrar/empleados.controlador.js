@@ -4,9 +4,9 @@
   .module('correos-cr')
   .controller('controladorEmpleados', controladorEmpleados);
 
-  controladorEmpleados.$inject = ['$stateParams', '$state','servicioUsuarios'];
+  controladorEmpleados.$inject = ['$http','$stateParams', '$state','servicioUsuarios'];
 
-  function controladorEmpleados($stateParams, $state, servicioUsuarios){
+  function controladorEmpleados($http,$stateParams, $state, servicioUsuarios){
     let vm = this;
 
     vm.roles = ["Encargado de Aduana", "Encargado de Sucursal", "Repartidor"];
@@ -43,7 +43,7 @@
         // Encargado de Sucursal
         case "Encargado de Sucursal":
 
-          let nuevoEncargadoSucursal = new EmpleadoSucursal(pNuevoEmpleado.identificacion, pNuevoEmpleado.nombre, pNuevoEmpleado.apellido1, pNuevoEmpleado.fechaNacimiento, pNuevoEmpleado.email, pNuevoEmpleado.contrasenna, pNuevoEmpleado.provincia, pNuevoEmpleado.canton, pNuevoEmpleado.distrito, pNuevoEmpleado.direccion, estado, pNuevoEmpleado.rol, pNuevoEmpleado.sucursal);
+          let nuevoEncargadoSucursal = new EmpleadoSucursal(pNuevoEmpleado.identificacion, pNuevoEmpleado.nombre, pNuevoEmpleado.apellido1, pNuevoEmpleado.fechaNacimiento, pNuevoEmpleado.email, pNuevoEmpleado.contrasenna, pNuevoEmpleado.provincia.name, pNuevoEmpleado.canton.name, pNuevoEmpleado.distrito.name, pNuevoEmpleado.direccion, estado, pNuevoEmpleado.rol, pNuevoEmpleado.sucursal);
 
           console.log(nuevoEncargadoSucursal);
 
@@ -54,7 +54,7 @@
         // Repartidor
         case "Repartidor":
 
-          let nuevoRepartidor= new Repartidor(pNuevoEmpleado.identificacion, pNuevoEmpleado.nombre, pNuevoEmpleado.apellido1, pNuevoEmpleado.fechaNacimiento, pNuevoEmpleado.email, pNuevoEmpleado.contrasenna, pNuevoEmpleado.provincia, pNuevoEmpleado.canton, pNuevoEmpleado.distrito, pNuevoEmpleado.direccion, estado,pNuevoEmpleado.rol,pNuevoEmpleado.telefono, pNuevoEmpleado.sucursal, pNuevoEmpleado.licencia, pNuevoEmpleado.fotoLicencia, pNuevoEmpleado.vencimientoLicencia);
+          let nuevoRepartidor= new Repartidor(pNuevoEmpleado.identificacion, pNuevoEmpleado.nombre, pNuevoEmpleado.apellido1, pNuevoEmpleado.fechaNacimiento, pNuevoEmpleado.email, pNuevoEmpleado.contrasenna, pNuevoEmpleado.provincia.name, pNuevoEmpleado.canton.name, pNuevoEmpleado.distrito.name, pNuevoEmpleado.direccion, estado,pNuevoEmpleado.rol,pNuevoEmpleado.telefono, pNuevoEmpleado.sucursal, pNuevoEmpleado.licencia, pNuevoEmpleado.fotoLicencia, pNuevoEmpleado.vencimientoLicencia);
 
           console.log(nuevoRepartidor);
 
@@ -63,7 +63,7 @@
         break;
       
         default:
-          let nuevoUsuario = new Usuario(pNuevoEmpleado.identificacion, pNuevoEmpleado.nombre, pNuevoEmpleado.apellido1, pNuevoEmpleado.fechaNacimiento, pNuevoEmpleado.email, pNuevoEmpleado.contrasenna, pNuevoEmpleado.provincia, pNuevoEmpleado.canton, pNuevoEmpleado.distrito, pNuevoEmpleado.direccion, estado, pNuevoEmpleado.rol);
+          let nuevoUsuario = new Usuario(pNuevoEmpleado.identificacion, pNuevoEmpleado.nombre, pNuevoEmpleado.apellido1, pNuevoEmpleado.fechaNacimiento, pNuevoEmpleado.email, pNuevoEmpleado.contrasenna, pNuevoEmpleado.provincia.name, pNuevoEmpleado.canton.name, pNuevoEmpleado.distrito.name, pNuevoEmpleado.direccion, estado, pNuevoEmpleado.rol);
 
           console.log(nuevoUsuario);
 
@@ -72,7 +72,7 @@
       }
 
       if(registroExitoso == true){
-        swal("Registro exitoso", "El empleado se ha sido registrado correctamente", "success", {
+        swal("Registro exitoso", "El empleado ha sido registrado correctamente", "success", {
           button: "Aceptar",
         });
         // Se limpia el formulario
@@ -80,7 +80,7 @@
 
         $state.go('mantEmpleados');
       }else{
-        swal("Ha ocurrido un error", "El empleado se ha sido registrado correctamente", "error", {
+        swal("Ha ocurrido un error", "El empleado no se ha registrado correctamente", "error", {
           button: "Aceptar",
         });
       }
@@ -93,6 +93,49 @@
 
     vm.modificar = (pEmpleado) =>{
       $state.go('modEmpleados', {identificacion: JSON.stringify(pEmpleado.identificacion)})
+    }
+
+    vm.provincias = $http({
+      method: 'GET',
+      url: './sources/data/provincias.json'
+    }).then( (success) => {
+      vm.provincias = success.data;
+    }, (error) => {
+      console.log("Ocurrió un error " + error.data);
+    });
+
+    vm.rellenarCantones = (pidProvincia) => {
+      vm.cantones = $http({
+        method: 'GET',
+        url: './sources/data/cantones.json'
+      }).then((success) => {
+        let cantones = [];
+        for (let i = 0; i < success.data.length; i++) {
+          if (pidProvincia == success.data[i].idProvincia) {
+            cantones.push(success.data[i]);
+          }
+        }
+        vm.cantones = cantones;
+      }, (error) => {
+        console.log("Ocurrió un error " + error.data)
+      });
+    }
+
+    vm.rellenarDistrito = (pidCanton) => {
+      vm.distritos = $http({
+        method: 'GET',
+        url: './sources/data/distritos.json'
+      }).then((success) => {
+        let distritos = [];
+        for (let i = 0; i < success.data.length; i++) {
+          if (pidCanton == success.data[i].idCanton) {
+            distritos.push(success.data[i]);
+          }
+        }
+        vm.distritos = distritos;
+      }, (error) => {
+        console.log("Ocurrió un error " + error.data);
+      });
     }
   }
 })();
