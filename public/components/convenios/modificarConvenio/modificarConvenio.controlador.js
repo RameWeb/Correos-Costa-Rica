@@ -6,43 +6,29 @@
 
   controladorModificarConvenios.$inject = ['$http', '$stateParams', '$state', 'servicioConvenios'];
 
-  function controladorModificarConvenios($http, $stateParams, $state, servicioConvenios){
+  function controladorModProducto($http, $stateParams, $state, servicioConvenios){
+    let vm = this;
 
-    let conveniosSeleccionada;
+    let ConvenioSeleccionado;
 
     if($stateParams.idConvenios == ''){
-      $state.go('lista-convenios');
-    }else{
-      conveniosSeleccionada = servicioConvenios.getConveniosSeleccionada($stateParams.idConvenios);
+      $state.go('ListaConvenio');
     }
 
-    // console.log(conveniosSeleccionada);
+    ConvenioSeleccionado = servicioConvenios.obtenerConvenioSeleccionado(JSON.parse($stateParams.idConvenios));
 
-    let vm = this;
-    
+    vm.nuevoConvenio  = ConvenioSeleccionado;
 
-    vm.nuevoConvenios = {
-      nombreInstitucion: conveniosSeleccionada.nombreInstitucion,
-      tipo: conveniosSeleccionada.tipo,
-      tiempo: conveniosSeleccionada.tiempo,
-      costo: conveniosSeleccionada.costo,
-      
-    };
+    vm.modificarConvenio = (pnuevoConvenio) =>{
 
-    // listarSucursales();
-    
-    // Funcion que es llamada desde el html para regustra un nuevo usuario
-    vm.modificarConvenios = (pnuevoConvenios) => {
+      let convenioModificado = new Convenios(pnuevoConvenio.nombreInstitucion, pnuevoConvenio.tipo, pnuevoConvenio.tiempo,pnuevoConvenio.costo,pnuevoConvenio.idConvenios);
 
-      let idConvenios = conveniosSeleccionada.idConvenios;
-
-      let objConveniosModificada = new Convenios(vm.nuevoConvenios.nombreInstitucion, vm.nuevoConvenios.tipo, vm.nuevoConvenios.tiempo, vm.nuevoConvenios.costo, idConvenios);
-        
-      console.log(objConveniosModificada);
+    console.log(convenioModificado);
 
       // Pasamos al servicio el nuevo obj de tipo cliente para ser almacenado en el localStorage
-      vm.conveniosSeleccionada = servicioConvenios.actualizarConvenios(objConveniosModificada);
+      vm.convenioSeleccionado = servicioConvenios.actualizarConvenio(convenioModificado);
 
+      // Retroalimentacion Visual para los usuarios: SweetAlert
       swal("Registro exitoso", "El convenio se ha sido modificado correctamente", "success", {
         button: "Aceptar",
       });
@@ -50,13 +36,16 @@
       $state.go('lista-convenios');
 
       listarConvenios();
+
       // Se limpia el formulario
-      vm.nuevoConvenios = null;
+      vm.nuevoConvenio = null;
     }
 
+    // Imprimir lista de repartidores en el sistema
     function listarConvenios(){
-      vm.listaConvenios = servicioConvenios.getConvenios();
+      vm.listaConvenios= servicioConvenios.getConvenios();
     }
-
   }
 })();
+
+

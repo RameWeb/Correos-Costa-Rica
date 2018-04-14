@@ -196,7 +196,7 @@
     
     .state('modificar-convenios', {
       url: '/modificar-convenios',
-      templateUrl: './components/convenios/modificarConvenio/modificarConvenios.vista.html',
+      templateUrl: './components/convenios/modificarConvenio/modificarConvenio.vista.html',
       data:{
         pageTitle: 'Lista convenios | Correos CR'
       },
