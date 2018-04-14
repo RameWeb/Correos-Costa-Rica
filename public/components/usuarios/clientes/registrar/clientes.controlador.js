@@ -9,11 +9,11 @@
   function controladorClientes($stateParams, $state, servicioUsuarios, imageUpload, Upload) {
     let vm = this;
 
-    vm.sucursales = ["San Jose", "Alajuela", "Heredia", "Cartago", "Guanacaste", "Puntarenas", "Limon"];
+    vm.sucursales = ["San José", "Alajuela", "Heredia", "Cartago", "Guanacaste", "Puntarenas", "Limón"];
 
     vm.sexo = ["Femenino", "Masculino", "Sin especificar"];
 
-    vm.tipoIdentificacion = ["Nacional", "Residente", "Pasaporte"];
+    vm.tipoIdentificacion = ["Cédula nacional", "Residente", "Pasaporte", "DIMEX"];
 
 
 
