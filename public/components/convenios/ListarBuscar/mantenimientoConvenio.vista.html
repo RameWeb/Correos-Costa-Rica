@@ -2,11 +2,11 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-md-4 py-5 px-5 panelIzquierdo">
-        <a href="#!/cliente"><img src="../../../sources/img/chevron-left.svg" height="30px" width="30px" alt="">Regresar al dashboard</a>
+        <a href="#!/admin"><img src="../../../sources/img/chevron-left.svg" height="30px" width="30px" alt="">Regresar al menú principal</a>
         <img src="../../../sources/img/logo_slateblue.svg" class="mt-5" alt="">
       </div>
       <div class="col-md-8 py-5 px-5 contenido">
-        <h2>Convenios Cliente</h2>
+        <h2>Convenios</h2>
 
         <div class="form-group">
           <label for="txtBuscar">Buscar</label>
@@ -16,17 +16,20 @@
         <table class="table">
           <thead>
               <tr>
-                <th>Servicio</th>
-                <th>Cliente</th>
-                <th>Dirección</th>
-                <th>Aciones</th>
+                <th>id del convenio</th>
+                <th>Tipo de convenio</th>
+                <th>Institución</th>
+                <th>Tiempo convenio</th>
+                <th>Costo transporte</th>
               </tr>
           </thead>
           <tbody>
-            <tr ng-repeat="convenio in vm.listaConvClientes | filter:buscarConvenio">
-              <td>{{convenio.servicio}}</td>
-              <td>{{convenio.cliente.nombre}}</td>
-              <td>{{convenio.direccion}}</td>
+            <tr ng-repeat="convenio in vm.listaConvenios | filter:buscarConvenio">
+              <td>{{convenio.idConvenios}}</td>
+              <td>{{convenio.tipo}}</td>
+              <td>{{convenio.nombreInstitucion}}</td>
+              <td>{{convenio.tiempo}}</td>
+              <td>{{convenio.costo}}</td>
               <td>
                 <li class="nav-item dropdown btnAccion" style="list-style:none">
                   <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Acciones</a>

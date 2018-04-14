@@ -179,13 +179,13 @@
 
     .state('lista-convenios', {
       url: '/lista-convenios',
-      templateUrl: './components/convenios/listarConvenio/listaConvenios.vista.html',
+      templateUrl: './components/convenios/ListarBuscar/mantenimientoConvenio.vista.html',
       data:{
         pageTitle: 'Lista convenios | Correos CR'
       },
       resolve: {
         load: ['$ocLazyLoad', ($ocLazyLoad) => {
-          return $ocLazyLoad.load('./components/convenios/registrarConvenio/convenios.controlador.js')
+          return $ocLazyLoad.load('./components/convenios/registrarConvenio/convenio.controlador.js')
         }]
       },
       controller: 'controladorConvenios',
