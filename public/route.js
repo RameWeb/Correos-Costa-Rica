@@ -170,7 +170,7 @@
       },
       resolve: {
         load: ['$ocLazyLoad', ($ocLazyLoad) => {
-          return $ocLazyLoad.load('./components/convenios/registrarConvenio/convenios.controlador.js')
+          return $ocLazyLoad.load('./components/convenios/registrarConvenio/convenio.controlador.js')
         }]
       },
       controller: 'controladorConvenios',

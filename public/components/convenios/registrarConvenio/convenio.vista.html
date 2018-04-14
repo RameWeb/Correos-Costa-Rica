@@ -1,42 +1,52 @@
-<main id="registroConvenios">
-<div class="container-fluid">
-    <div class="row">
-         <div class="col-md-4 py-5 px-5 panelIzquierdo">
-            <h2>Correos de Costa Rica</h2>
-         </div>
 
-        <div class="col-md-8 py-5 px-5 contenido">
-          <h2>Registro de Convenios</h2>
-        
-
-        <div class="col-md-6">
-            <form ng-submit="vm.registrarConvenios(vm.nuevoConvenios)" autocomplete="off" novalidate>
+<main id="registroSucursales">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-3 py-5 px-5 panelIzquierdo">
+            <a href="#!/admin"><img src="../../../sources/img/chevron-left.svg" height="35px" width="35px" alt="">Regresar a la pagina principal</a>
+          <a href="/#!/ListaTipoProducto" class=" btn btnAccion">Lista de convenios</a>
+          <img src="../../../sources/img/logo_slateblue.svg" class="my-5" alt="">
+        </div>
+  
+        <div class="col-md-9 py-4 px-4 contenido">
+          <div class="col-6">
+            <h2> Registrar un nuevo convenio</h2>
+            <form ng-submit=" vm.registrarConvenio(vm.nuevoConvenio)"></form>
+              
+              <div class="form-group">
+                  <label for="">Id del convenio</label>
+                  <input type="text"id="txtIdConvenio"class="form-control col-md-8"  ng-model="vm.nuevoConvenio.idConvenios">
+              </div> 
+  
+              <div class="form-group">
+                  <label for="">Tipo de convenio</label>
+                  <input type="number" min="0" id="txtTipoConvenio" class="form-control col-md-8" ng-model="vm.nuevoConvenio.tipo" required>
+              </div>
 
               <div class="form-group">
                 <label for="">Nombre de la institución</label>
-                <input type="text" class="form-control myInput" ng-model="vm.nuevoConvenios.nombreInstitucion" required>
-              </div>
-              
-              <div class="form-group">
-                  <label for="">Tipo de convenio</label>
-                  <input type="text" class="form-control myInput" ng-model="vm.nuevoConvenios.tipo" required>
-              </div>
+                <input type="number" min="0" id="txtNombreInstitucion" class="form-control col-md-8" ng-model="vm.nuevoConvenio.nombreInstitucion" required>
+            </div>
 
-              <div class="form-group">
-                  <label for="">Tiempo de convenio</label>
-                  <input type="text" class="form-control myInput" ng-model="vm.nuevoConvenios.tiempo" required>
-              </div>
+            <div class="form-group">
+                <label for="">Tiempo de convenio</label>
+                <input type="number" min="0" id="txtTiempo" class="form-control col-md-8" ng-model="vm.nuevoConvenio.tiempo" required>
+            </div>
 
-              <div class="form-group">
-                  <label for="">Costo de transporte</label>
-                  <input type="number" class="form-control myInput" ng-model="vm.nuevoConvenios.costo" required>
-              </div>
-
-              <button type="submit" class="btn btnAccion" ng-click="vm.registrarConvenios()" >Registrar</button>
-              <a href="/#!/lista-convenios" class="btn btn-light">Listar</a>
+            <div class="form-group">
+                <label for="">Costo de transporte</label>
+                <input type="number" min="0" id="txtCosto" class="form-control col-md-8" ng-model="vm.nuevoConvenio.costo" required>
+            </div>
+              <button type="submit" ng-click="vm.registrarConvenio(vm.nuevoConvenio)" class=" btn btnAccion" id="btnGuardar">Guardar</button>
+ 
             </form>
+          </div>
+  
+          <div class="col-6">
+
+          </div>
         </div>
+      </div>
     </div>
-</div>
-</div>
-</main>
+  </main>
+

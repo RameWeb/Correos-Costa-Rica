@@ -4,74 +4,67 @@
   .module('correos-cr')
   .service('servicioConvenios', servicioConvenios);
 
-  servicioConvenios.$inject = ['$log','$http'];
+  servicioConvenios.$inject =  ['$log', '$http'];
 
   function servicioConvenios($log, $http){
-
-    let publicAPI = {
-      addConvenios : _addConvenios,
+    const publicAPI = {
+      addConvenio : _addConvenio,
       getConvenios : _getConvenios,
-      getConveniosSeleccionada: _getConveniosSeleccionada,
-      actualizarConvenios: _actualizarConvenios
-    }
+      obtenerConvenioSeleccionado : _obtenerConvenioSeleccionado,
+      actualizarConvenio : _actualizarConvenio
+    };
     return publicAPI;
 
-    function _addConvenios(pnuevoConvenios){
+    // Funcion que almacena en el localStorage todas las fiestas programadas
+    function _addConvenio(pnuevoConvenio){
       let listaConvenios = _getConvenios();
-      listaConvenios.push(pnuevoConvenios);
-      localStorage.setItem('conveniosLS', JSON.stringify(listaConvenios));
+      listaConvenios.push(pnuevoConvenio);
+      localStorage.setItem('ConvenioLS', JSON.stringify(listaConvenios));
     }
 
-  
+    // Funcion que trae todas las fiestas programadas del localStorage y a partir de esos datos vuelve a crear un arreglo con todos los objetos de tipo fiesta
     function _getConvenios(){
       let listaConvenios = [];
-      let listaConveniosLocal = JSON.parse(localStorage.getItem("conveniosLS"));
+      let listaConveniosLocal = JSON.parse(localStorage.getItem("ConvenioLS"));
 
-      if(listaConveniosLocal == null){
+      if(!listaConveniosLocal){
         listaConvenios = [];
       }else{
         listaConveniosLocal.forEach(obj => {
-          
-          let objConvenios = new Convenios(obj.nombreInstitucion, obj.tipo, obj.tiempo, obj.costo, obj.idConvenios);
+          let objConvenio = new Convenios(obj.nombreInstitucion, obj.tipo, obj.tiempo,obj.costo,obj.idConvenios);
 
-          listaConvenios.push(objConvenios);
+          listaConvenios.push(objConvenio);
         })
       }
-
       return listaConvenios;
     }
 
-    
-      actualizarLocal(listaConvenios);
+    function _obtenerConvenioSeleccionado(idConvenios){
+      let  listaConvenios = _getConvenios();
+      let ConvenioSeleccionado;
 
-      function _getConveniosSeleccionada(idConvenios){
-        let listaConvenios = _getConvenios();
-        let conveniosSeleccionada;
-  
-        for(let i = 0; i < listaConvenios.length; i++){
-          if (idConvenios == listaConvenios[i].idConvenios){
-            conveniosSeleccionada = listaConvenios[i];
-            // console.log(sucursalSeleccionada);
-            return conveniosSeleccionada;
-          }
+      for(let i = 0; i < listaTipoProductos.length; i++){
+        if (idConvenios == listaConvenios[i].idConvenios){
+          ConvenioSeleccionado = listaConvenios[i];
+          // console.log(sucursalSeleccionada);
         }
       }
-  
-      function _actualizarConvenios(pconveniosModificada){
-        let listaConvenios = _getConvenios();
-  
-        for(let i = 0; i < listaConvenios.length; i++){
-          if (pconveniosModificada.idConvenios == listaConvenios[i].idConvenios){
-            listaConvenios[i] = pconveniosModificada;
-            // console.log(listaSucursales[i]);
-  
-            localStorage.setItem('conveniosLS', JSON.stringify(listaConvenios)); 
-          }
-        }
-      }
-  
+      return ConvenioSeleccionado;
     }
 
-  
- 
+    function _actualizarConvenio(pconvenioModificado){
+      let listaConvenios = _getConvenios();
+
+      for(let i = 0; i <listaConvenios.length; i++){
+        if (pconvenioModificado.idConvenios == listaConvenios[i].idConvenios){
+          listaConvenios[i] = pconvenioModificado;
+          // console.log(listaSucursales[i]);
+
+          localStorage.setItem('ConvenioLS', JSON.stringify(listaConvenios)); 
+        }
+      }
+    }
+
+
+  };
 })();
