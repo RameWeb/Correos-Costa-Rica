@@ -59,7 +59,7 @@ app.use( (req, res, next) => {
  * Exportamos las funcionalidades
  */
 const index = require('./index'),
-      usuarios = require('./components/usuarios/usuarios.route');
+      usuarios = require('./components/usuarios/usuarios.route'),
       convenios = require('./components/convenios/convenios.route');
 
 /**

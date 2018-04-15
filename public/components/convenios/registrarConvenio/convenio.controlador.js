@@ -40,7 +40,7 @@
     }
     vm.modificar = (pConvenios) =>{
       console.log(pConvenios);
-      $state.go('/modificar-convenios', {idConvenios: JSON.stringify(pConvenios.idConvenios)})
+      $state.go('modificarConvenios', {idConvenios: JSON.stringify(pConvenios.idConvenios)})
     }
    
   }

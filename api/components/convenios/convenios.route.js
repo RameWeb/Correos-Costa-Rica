@@ -1,6 +1,6 @@
 const express = require('express'),
       router = express.Router(),
-      users = require('./convenios.api');
+      convenios = require('./convenios.api');
 
 /**
  * 
@@ -13,30 +13,30 @@ router.param('id', (req, res, next, id) => {
 /**
  * Función que se encarga de registrar los usuarios dentro del local storage
  */
-router.route('/save_ConvAd')
+router.route('/save_convenios')
   .post((req, res) => {
-    users.registrar(req,res);
+    convenios.registrar(req,res);
 });
 
 /**
  * Función que obtiene todos los usuarios
  */
-router.route('/get_all_ConvAd')
+router.route('/get_all_convenios')
   .get((req, res) => {
-    users.listarTodos(req,res);
+    convenios.listarTodos(req,res);
 });
 
 /**
  * Función que actualiza los usuarios
  */
-router.route('/update_ConvAd')
+router.route('/update_convenios')
   .put((req, res) => {
-    users.actualizar(req,res);
+    convenios.actualizar(req,res);
 });
 
 router.route('/login')
   .put((req,res) => {
-    users.iniciarSesion(req,res);
+    convenios.iniciarSesion(req,res);
   });
 
 module.exports = router;

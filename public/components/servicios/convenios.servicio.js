@@ -4,9 +4,9 @@
   .module('correos-cr')
   .service('servicioConvenios', servicioConvenios);
 
-  servicioConvenios.$inject =  ['$log', '$http'];
+  servicioConvenios.$inject =  ['$log', '$http', 'localStorageFactories'];
 
-  function servicioConvenios($log, $http){
+  function servicioConvenios($log, $http, localStorageFactories){
     const publicAPI = {
       addConvenio : _addConvenio,
       getConvenios : _getConvenios,
@@ -18,8 +18,10 @@
     // Funcion que almacena en el localStorage todas las fiestas programadas
     function _addConvenio(pnuevoConvenio){
       let listaConvenios = _getConvenios();
-      listaConvenios.push(pnuevoConvenio);
-      localStorage.setItem('ConvenioLS', JSON.stringify(listaConvenios));
+      let registro = localStorageFactories.setConvenios(pnuevoConvenio);
+
+      return registro;
+      
     }
 
     // Funcion que trae todas las fiestas programadas del localStorage y a partir de esos datos vuelve a crear un arreglo con todos los objetos de tipo fiesta

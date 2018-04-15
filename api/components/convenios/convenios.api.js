@@ -1,4 +1,4 @@
-const ConvAdModel = require('./convenios.model');
+const conveniosModel = require('./convenios.model');
 /**
  * Se exporta la funcion de registrar para que sea entendible para el usuario.route.js
  * @param {peticion} req 
@@ -8,14 +8,14 @@ module.exports.registrar = function(req, res) {
   /**
    * Creamos un nuevo dato con el formato del UserModel
    */
-  let newConvAd = new ConvAdModel({
-    nombreInstitucion: req.body.nombreInstitucion,
+  let newconvenios = new conveniosModel({
+    idConvenios: req.body.idConvenios,
     tipo: req.body.tipo,
-    tiempo : req.body.tiempo,
-    costo : req.body.costo ,
-    idConvenios : req.body.idConvenios
+    nombreInstitucion: req.body.nombreInstitucion,
+    tiempo: req.body.tiempo,
+    costo: req.body.costo 
   });
-  newConvAd.save(function(error) {
+  newconvenios.save(function(error) {
     if (error) {
       res.json({ success: false, msg: 'Ha ocurrido un error en el registro del convenio' + error });
     } else {
@@ -32,7 +32,7 @@ module.exports.listarTodos = function(req, res) {
   /**
    * Esta funcion busca todos los datos que tengan la misma estructura del userModel y los retorna
    */
-  ConvAdModel.find().then(function(convenios) {
+  conveniosModel.find().then(function(convenios) {
     res.send(convenios);
   });
 };
