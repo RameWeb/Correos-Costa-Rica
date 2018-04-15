@@ -578,7 +578,7 @@
         pageTitle: 'Modificar Clientes'
       },
       params: {
-        identificacion: ''
+        email: ''
       },
       resolve: {
         load: ['$ocLazyLoad', ($ocLazyLoad) => {

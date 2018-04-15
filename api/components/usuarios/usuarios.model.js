@@ -22,7 +22,9 @@ let UserSchema = new mongoose.Schema({
   direccion : {type: String, required: true},
   estado : {type: String, required: true},
   tipoUsuario : {type: String, required: true},
-  tarjetas : {type: Array}
+  tarjetas : {type: Array},
+  latitud : {type: String},
+  longitud : {type: String}
 });
 
 
