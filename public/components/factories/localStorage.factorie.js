@@ -243,7 +243,7 @@
     };
 
     function _getSession() {
-      let sessionActive = JSON.stringify(sessionStorage.setItem('session'));
+      let sessionActive = JSON.parse(sessionStorage.getItem('session'));
 
       return sessionActive;
     };

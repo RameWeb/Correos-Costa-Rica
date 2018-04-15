@@ -1,13 +1,6 @@
 @import "../setting";
 
-#dashboard{
-  .contenido{
-    background-color: $white;
-    max-height: 100vh;
-    overflow: scroll;
-    margin-top: 100px;
-  }
-  
+#dashboard{  
   .panelIzquierdo{
     background-image: $background;
     background-size: cover;

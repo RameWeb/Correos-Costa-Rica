@@ -9,7 +9,9 @@
 // -----------------------------------------------------------------------------
 // Estilos de la aplicación
 // -----------------------------------------------------------------------------
-
+.active{
+  color: $white !important;
+}
 @import 'components/cliente.style';
 @import 'components/clientes.style';
 @import 'components/convenios.style';
