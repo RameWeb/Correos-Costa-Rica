@@ -16,23 +16,17 @@
             <div class="form-group">
               <label for="txtiIdSucursal">Id de la sucursal:</label>
               <input type="text" name="IdSucursal" class="form-control" id="txtIdSucursal" ng-model="vm.nuevaSucursal.idSucursal" required>
-              <div ng-messages="formRegistrarSucursales.provincia.$error" role="alert">
+              <div ng-messages="formRegistrarSucursales.idSucursal.$error" role="alert">
                 <div ng-message="required">
                   <small class="form-text text-muted">Este campo es requerido</small>
-                </div>
-                <div ng-message="pattern">
-                  <small class="form-text text-muted">Formato incorrecto, ingrese únicamente letras</small>
                 </div>
               </div>
             </div> 
 
             <div class="form-group">
-              <label for="txtCanton">Cantón:</label>
-              <!-- <select id="sltCanton" name="sltCanton" class="form-control" ng-change="vm.rellenarDistrito(vm.nuevaSucursal.canton._id)" ng-options="canton as canton.name for canton in vm.cantones track by canton._id" ng-model="vm.nuevaSucursal.canton">
-                <option>--Seleccione un cantón--</option>
-              </select> -->
-              <input type="text" name="canton" class="form-control" id="txtCanton" ng-model="vm.nuevaSucursal.canton" pattern="[ñáéíóúA-Za-z ]+" required>
-              <div ng-messages="formRegistrarSucursales.canton.$error" role="alert">
+              <label for="txtNombreSucursal">Nombre de la sucursal:</label>
+              <input type="text" name="NombreSucursal" class="form-control" id="txtNombreSucursal" ng-model="vm.nuevaSucursal.nombreSucursal" pattern="[ñáéíóúA-Za-z ]+" required>
+              <div ng-messages="formRegistrarSucursales.nombreSucursal.$error" role="alert">
                 <div ng-message="required">
                   <small class="form-text text-muted">Este campo es requerido</small>
                 </div>
@@ -43,13 +37,9 @@
             </div>
 
             <div class="form-group">
-              <label for="txtDistrito">Distrito:</label>
-              <!-- <select id="sltDistrito" name="sltDistrito" class="form-control" ng-options="distrito as distrito.name for distrito in vm.distritos track by distrito._id" ng-model="vm.nuevaSucursal.distrito">
-                <option>--Seleccione un distrito</option>
-              </select> -->
-
-              <input type="text" name="distrito" class="form-control" id="txtDistrito" ng-model="vm.nuevaSucursal.distrito" pattern="[ñáéíóúA-Za-z ]+" required>
-              <div ng-messages="formRegistrarSucursales.distrito.$error" role="alert">
+              <label for="txtUbicacion">Ubicacion</label>
+              <input type="text" name="Ubicacion" class="form-control" id="txtUbicacion" ng-model="vm.nuevaSucursal.ubicacion" pattern="[ñáéíóúA-Za-z ]+" required>
+              <div ng-messages="formRegistrarSucursales.ubicacion.$error" role="alert">
                 <div ng-message="required">
                   <small class="form-text text-muted">Este campo es requerido</small>
                 </div>

@@ -24,13 +24,12 @@ class canton{
 }
      
 class Sucursales{
-  constructor(pnombreSucursal, pubicacion, pDireccion, pTelefono, pidSucursal, pEstado){
+  constructor(pidSucursal, pnombreSucursal, pubicacion, pDireccion, pTelefono){
     this.idSucursal = pidSucursal;
     this.nombreSucursal = pnombreSucursal;
     this.ubicacion = pubicacion;
     this.direccion = pDireccion;
     this.telefono = pTelefono;
-    this.estadoSucursal = pEstado;
   }
 }
 
