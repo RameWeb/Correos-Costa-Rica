@@ -9,10 +9,10 @@ const gulp = require('gulp'),
       todo = require('gulp-todo'),
       browserSync = require('browser-sync'),
       paths = {
-        views : './public/components/*//.html',
-        styles: './public/sources/styles/*/.scss',
+        views : './public/components/*/*.html',
+        styles: './public/sources/styles/**/*.scss',
         impSass : './public/sources/styles/style.scss',
-        js: './public/components/*//.js',
+        js: './public/components/**/*.js',
         excss: './public/*.css'
       };
 
@@ -41,6 +41,7 @@ gulp.task('dependencies', () => {
     './node_modules/angular-password/angular-password.min.js',
     './node_modules/angular-scroll/angular-scroll.min.js',
     './node_modules/ng-file-upload/dist/ng-file-upload-all.min.js',
+    './node_modules/ngmap/build/scripts/ng-map.min.js',
     './node_modules/ng-file-upload/dist/ng-file-upload-shim.min.js'
   ])
     .pipe(gulp.dest('./public/lib/angular'));
