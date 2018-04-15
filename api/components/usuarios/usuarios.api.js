@@ -35,7 +35,7 @@ module.exports.registrar = (req, res) => {
         annoVencimiento: req.body.annoVencimiento,
         ccv: req.body.ccv
       }
-
+      // metodo de tarjetas al registrar cliente por primera vez
       newUser.tarjetas.push(objTarj);
     break;
     default:
