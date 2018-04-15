@@ -1,6 +1,6 @@
 @import "../setting";
 
-#admin{
+#dashboard{
   .contenido{
     background-color: $white;
     max-height: 100vh;
@@ -13,17 +13,21 @@
     background-size: cover;
     color: $white;
     min-height: 100vh;
+    z-index: 10000;
   }
 
   .list-group-item{
     background-color: transparent !important;
     border: none;
-    &:hover{
-      background-color: rgba(0,0,0,0.5);
+    a{
+      color: $slateblue;
+      text-decoration: none;
+      &:hover{
+        color: $white;
+      }
     }
   }
-
-  
+ 
   .btnAccion{
     background-color: $slateblue;
     color: $white;
@@ -52,5 +56,4 @@
     transform: rotate(-45deg);
     -webkit-transform: rotate(-45deg);
   }
-
 }

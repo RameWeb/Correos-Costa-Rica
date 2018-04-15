@@ -9,10 +9,10 @@ const gulp = require('gulp'),
       todo = require('gulp-todo'),
       browserSync = require('browser-sync'),
       paths = {
-        views : './public/components/*//.html',
-        styles: './public/sources/styles/*/.scss',
+        views : './public/components/*/*.html',
+        styles: './public/sources/styles/**/*.scss',
         impSass : './public/sources/styles/style.scss',
-        js: './public/components/*//.js',
+        js: './public/components/**/*.js',
         excss: './public/*.css'
       };
 
