@@ -14,11 +14,8 @@
           <form ng-submit="vm.registrarSucursal(vm.nuevaSucursal)" name="formRegistrarSucursales" autocomplete="off" class="col-md-8" novalidate>
             
             <div class="form-group">
-              <label for="txtProvincia">Provincia:</label>
-              <!-- <select id="sltProvincia" name="sltProvincia"class="form-control" ng-change="vm.rellenarCantones(vm.nuevaSucursal.provincia._id)" ng-options="provincia as provincia.name for provincia in vm.provincias track by provincia._id" ng-model="vm.nuevaSucursal.provincia" required>
-                <option>-- Seleccione una Provincia --</option>
-              </select> -->
-              <input type="text" name="provincia" class="form-control" id="txtProvincia" ng-model="vm.nuevaSucursal.provincia" pattern="[ñáéíóúA-Za-z ]+" required>
+              <label for="txtiIdSucursal">Id de la sucursal:</label>
+              <input type="text" name="IdSucursal" class="form-control" id="txtIdSucursal" ng-model="vm.nuevaSucursal.idSucursal" required>
               <div ng-messages="formRegistrarSucursales.provincia.$error" role="alert">
                 <div ng-message="required">
                   <small class="form-text text-muted">Este campo es requerido</small>
