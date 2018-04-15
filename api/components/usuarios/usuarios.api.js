@@ -30,6 +30,8 @@ module.exports.registrar = (req, res) => {
     case "Cliente":
       newUser.telefono = req.body.telefono;
       newUser.sucursalPreferencia = req.body.sucursalPreferencia;
+      newUser.latitud = req.body.latitud;
+      newUser.longitud = req.body.longitud;
 
       let objTarj = {
         titularTarjeta : req.body.titularTarjeta, 

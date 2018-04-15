@@ -158,7 +158,7 @@
             </div>
 
             <div class="form-row">
-              <div class="form-group col-md-6">
+              <div class="form-group col-md-12">
                 <label for="inputEmail">Correo Electrónico:</label>
                 <input type="email" class="form-control" id="inputEmail" ng-model="vm.nuevoCliente.email" name="txtEmailCliente" autocomplete="off"
                   required>
@@ -169,7 +169,7 @@
                 </div>
                 <!-- pattern="[\w.%+-]+@domain\.com" -->
               </div>
-              <!-- <div class="form-group col-md-6">
+              <div class="form-group col-md-6">
               <label for="inputContrasenna">Contraseña:</label>
               <input type="password" class="form-control" id="inputContrasenna" ng-model="vm.nuevoCliente.contrasenna" name="txtContrasenna" autocomplete="off" required>
               <div ng-messages="formRegistrarCliente.txtContrasenna.$error" role="alert">
@@ -177,7 +177,7 @@
                   <small class="form-text text-muted">Este campo es requerido</small>
                 </div>
               </div>
-            </div> -->
+            </div>
             </div>
 
             <div class="form-row">
@@ -345,7 +345,7 @@
                   </button>
                 </div>
                 <div class="modal-body">
-                  <ng-map id="map" center="current-location" styles="width: 50%; height: 20em;">
+                  <ng-map id="map" center="current-location" geo-callback="vm.callbackFunc('you')" styles="width: 50%, height: 20em">
                     <marker position="current-location" draggable="true" on-dragend="vm.getCurrentLocation()" coords="marker.coords" options="marker.options" ></marker>
                   </ng-map>
                 </div>
@@ -356,7 +356,6 @@
               </div>
             </div>
           </div>
-
         </form>
       </div>
   </section>

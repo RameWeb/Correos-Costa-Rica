@@ -4,9 +4,9 @@
     .module('correos-cr')
     .controller('controladorClientes', controladorClientes);
 
-  controladorClientes.$inject = ['$stateParams', '$state', 'servicioUsuarios', 'imageUpload', 'Upload'];
+  controladorClientes.$inject = ['$stateParams', '$state', 'servicioUsuarios', 'imageUpload', 'Upload', 'NgMap'];
 
-  function controladorClientes($stateParams, $state, servicioUsuarios, imageUpload, Upload) {
+  function controladorClientes($stateParams, $state, servicioUsuarios, imageUpload, Upload, NgMap){
     let vm = this;
 
     vm.sucursales = ["Alajuelita", "Bagaces", "Cañas", "Desamparados", "Cartago Centro", "Moravia", "Pavas", "Venecia"];
@@ -15,6 +15,14 @@
 
     vm.tipoIdentificacion = ["Cédula nacional", "Residente", "Pasaporte", "DIMEX"];
 
+    NgMap.getMap("map").then(function (map) {
+      vm.map = map;
+    });
+
+    vm.callbackFunc = function (param) {
+      vm.latitude = vm.map.getCenter().lat();
+      vm.longitude = vm.map.getCenter().lng();
+    };
 
 
     // Objeto sin formato
@@ -39,7 +47,7 @@
     vm.registrarCliente = (pNuevoCliente, urlImagen) => {
       console.log(pNuevoCliente);
 
-      let nuevoCliente = new Cliente(pNuevoCliente.tipoIdentificacion, pNuevoCliente.identificacion, pNuevoCliente.primerNombre, pNuevoCliente.segundoNombre, pNuevoCliente.primerApellido, pNuevoCliente.segundoApellido, urlImagen, pNuevoCliente.sexo, pNuevoCliente.fechaNacimiento, pNuevoCliente.email, pNuevoCliente.contrasenna, pNuevoCliente.provincia, pNuevoCliente.canton, pNuevoCliente.distrito, pNuevoCliente.direccion, 1, 'Cliente', pNuevoCliente.telefono, pNuevoCliente.sucursalPreferencia);
+      let nuevoCliente = new Cliente(pNuevoCliente.tipoIdentificacion, pNuevoCliente.identificacion, pNuevoCliente.primerNombre, pNuevoCliente.segundoNombre, pNuevoCliente.primerApellido, pNuevoCliente.segundoApellido, urlImagen, pNuevoCliente.sexo, pNuevoCliente.fechaNacimiento, pNuevoCliente.email, pNuevoCliente.contrasenna, pNuevoCliente.provincia, pNuevoCliente.canton, pNuevoCliente.distrito, pNuevoCliente.direccion, 1, 'Cliente', pNuevoCliente.telefono, pNuevoCliente.sucursalPreferencia, pNuevoCliente.latitud, pNuevoCliente.longitud);
 
       let nuevaTarjeta = new Tarjeta(pNuevoCliente.titularTarjeta, pNuevoCliente.numeroTarjeta, pNuevoCliente.mesVencimiento, pNuevoCliente.annoVencimiento, pNuevoCliente.ccv, nuevoCliente.getEmail());
 
@@ -68,8 +76,8 @@
     }
 
     vm.modificar = (pCliente) => {
-      console.log(pCliente.identificacion);
-      $state.go('modClientes', { identificacion: JSON.stringify(pCliente.identificacion) })
+      console.log(pCliente.email);
+      $state.go('modClientes', { email: JSON.stringify(pCliente.email) })
     }
 
     vm.desactivar = (pCliente) => {
