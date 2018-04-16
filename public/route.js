@@ -69,6 +69,20 @@
           pageTitle: 'Inicio | Correos de Costa Rica'
         }
       })
+      .state('main.convenios', {
+        url: '/convenios',
+        templateUrl: './components/main/registrarConvenio/convenio.vista.html',
+        data: {
+          pageTitle: 'Registro convenios | Correos CR'
+        },
+        resolve: {
+          load: ['$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/main/registrarConvenio/convenio.controlador.js')
+          }]
+        },
+        controller: 'controladorConvenios',
+        controllerAs: 'vm'
+      })
 
 
 
