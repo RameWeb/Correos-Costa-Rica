@@ -45,7 +45,7 @@
       let  listaConvenios = _getConvenios();
       let ConvenioSeleccionado;
 
-      for(let i = 0; i < listaTipoProductos.length; i++){
+      for(let i = 0; i < listaConvenios.length; i++){
         if (idConvenios == listaConvenios[i].idConvenios){
           ConvenioSeleccionado = listaConvenios[i];
           // console.log(sucursalSeleccionada);

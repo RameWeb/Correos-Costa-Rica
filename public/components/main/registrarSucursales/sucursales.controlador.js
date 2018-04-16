@@ -2,13 +2,21 @@
   'use strict';
   angular
   .module('correos-cr')
-  .controller('controladorSucursales', controladorSucursales);
+  
+  controladorSucursales.$inject = ['$stateParams', '$state', 'servicioSucursales','Upload','NgMap'];
 
-  controladorSucursales.$inject = ['$http', '$stateParams', '$state', 'servicioSucursales'];
-
-  function controladorSucursales($http, $stateParams, $state, servicioSucursales){
+  function controladorSucursales( $stateParams, $state, servicioSucursales,Upload,NgMap){
     let vm = this;
+    
+    NgMap.getMap("map").then(function (map) {
+      vm.map = map;
+    });
 
+    vm.callbackFunc = function (param) {
+      vm.latitude = vm.map.getCenter().lat();
+      vm.longitude = vm.map.getCenter().lng();
+    };
+    
     vm.nuevaSucursal = {};
     listarSucursales();
     

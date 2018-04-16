@@ -3,6 +3,7 @@
 <main id="registroSucursales">
   <div class="container-fluid">
     <div class="row">
+      
       <div class="col-md-3 py-5 px-5 panelIzquierdo">
         <img src="../../../sources/img/logo_slateblue.svg" class="" alt="">
         <a href="/#!/listarSucursal" class="btn btnAccion mt-4">Lista de sucursales</a>
@@ -38,6 +39,9 @@
 
             <div class="form-group">
               <label for="txtUbicacion">Ubicacion</label>
+              <a class="btn btnSecundario" ng-click="vm.googlemap()" data-toggle="modal" data-target="#exampleModal" class="">
+                <img src="../../../../sources/img/google.svg" width="15px" height="15px" class="" alt="">  Mi ubicación
+              </a>
               <input type="text" name="Ubicacion" class="form-control" id="txtUbicacion" ng-model="vm.nuevaSucursal.ubicacion" pattern="[ñáéíóúA-Za-z ]+" required>
               <div ng-messages="formRegistrarSucursales.ubicacion.$error" role="alert">
                 <div ng-message="required">
@@ -81,11 +85,29 @@
 
             <button type="submit" class="btn btnAccion" ng-disabled="formRegistrarSucursales.$invalid">Registrar</button>
 
-            <!-- <button type="submit" class="btn btn-info" ng-disabled="formRegistrarSucursales.$invalid  ">Registrar</button> -->
-
-          </form>
-        </div>
+           <!-- Modal -->
+           <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Ubicación</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <ng-map id="map" center="current-location" geo-callback="vm.callbackFunc('you')" styles="width: 50%, height: 20em">
+                    <marker position="current-location" draggable="true" on-dragend="vm.getCurrentLocation()" coords="marker.coords" options="marker.options" ></marker>
+                  </ng-map>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                  <button type="button" class="btn btn-primary">Guardar localización</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
       </div>
-    </div>
-  </div>
+  </section>
 </main>

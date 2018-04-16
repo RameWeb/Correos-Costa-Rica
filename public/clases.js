@@ -206,7 +206,7 @@ class EstadoPaquete{
 }
 
 class Convenios{
-  constructor(pNombreInstitucion, pTipo, pTiempo, pCosto, pidConvenios){
+  constructor(pidConvenios, pTipo, pNombreInstitucion, pTiempo, pCosto ){
     this.idConvenios = pidConvenios;
     this.tipo = pTipo;
     this.nombreInstitucion = pNombreInstitucion;

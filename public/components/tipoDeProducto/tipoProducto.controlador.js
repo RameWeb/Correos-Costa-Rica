@@ -38,11 +38,11 @@
     function listarTiposProductos(){
       vm.listaTipoProductos= servicioTipoProductos.getTipoProductos();
     }
+    
     vm.modificar = (ptipoProducto) =>{
       console.log(ptipoProducto);
       $state.go('modificarTipoProducto', {nombreTipoProducto: JSON.stringify(ptipoProducto.nombreTipoProducto)})
     }
-
   }
 })();
  

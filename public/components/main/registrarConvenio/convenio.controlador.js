@@ -38,11 +38,11 @@
     function listarConvenios(){
       vm.listaConvenios= servicioConvenios.getConvenios();
     }
-    vm.modificar = (pConvenios) =>{
-      console.log(pConvenios);
-      $state.go('modificarConvenios', {idConvenios: JSON.stringify(pConvenios.idConvenios)})
-    }
-   
+
+      vm.modificar = (pConvenios) =>{
+        console.log(pConvenios);
+        $state.go('modificar-convenios', {idConvenios: JSON.stringify(pConvenios)})
+      }
   }
 })();
  
