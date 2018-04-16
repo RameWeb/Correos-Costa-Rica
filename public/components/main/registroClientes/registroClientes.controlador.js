@@ -4,7 +4,7 @@
     .module('correos-cr')
     .controller('controladorClientes', controladorClientes);
 
-  controladorClientes.$inject = ['$stateParams', '$state', 'servicioUsuarios', 'imageUpload', 'Upload', 'NgMap'];
+    controladorClientes.$inject = ['$stateParams', '$state', 'servicioUsuarios', 'imageUpload', 'Upload', 'NgMap'];
 
   function controladorClientes($stateParams, $state, servicioUsuarios, imageUpload, Upload, NgMap){
     let vm = this;
@@ -15,8 +15,6 @@
 
     vm.tipoIdentificacion = ["Cédula nacional", "Residente", "Pasaporte", "DIMEX"];
 
-    vm.map = '';
-
     NgMap.getMap("map").then(function (map) {
       vm.map = map;
     });
@@ -25,7 +23,6 @@
       vm.latitude = vm.map.getCenter().lat();
       vm.longitude = vm.map.getCenter().lng();
     };
-
 
     // Objeto sin formato
     vm.nuevoCliente = {};
@@ -49,7 +46,7 @@
     vm.registrarCliente = (pNuevoCliente, urlImagen) => {
       console.log(pNuevoCliente);
 
-      let nuevoCliente = new Cliente(pNuevoCliente.tipoIdentificacion, pNuevoCliente.identificacion, pNuevoCliente.primerNombre, pNuevoCliente.segundoNombre, pNuevoCliente.primerApellido, pNuevoCliente.segundoApellido, urlImagen, pNuevoCliente.sexo, pNuevoCliente.fechaNacimiento, pNuevoCliente.email, pNuevoCliente.contrasenna, pNuevoCliente.provincia, pNuevoCliente.canton, pNuevoCliente.distrito, pNuevoCliente.direccion, 1, 'Cliente', pNuevoCliente.telefono, pNuevoCliente.sucursalPreferencia, vm.latitude, vm.longitude);
+      let nuevoCliente = new Cliente(pNuevoCliente.tipoIdentificacion, pNuevoCliente.identificacion, pNuevoCliente.primerNombre, pNuevoCliente.segundoNombre, pNuevoCliente.primerApellido, pNuevoCliente.segundoApellido, urlImagen, pNuevoCliente.sexo, pNuevoCliente.fechaNacimiento, pNuevoCliente.email, pNuevoCliente.contrasenna, pNuevoCliente.provincia, pNuevoCliente.canton, pNuevoCliente.distrito, pNuevoCliente.direccion, 1, 'Cliente', pNuevoCliente.telefono, pNuevoCliente.sucursalPreferencia, pNuevoCliente.latitud, pNuevoCliente.longitud);
 
       let nuevaTarjeta = new Tarjeta(pNuevoCliente.titularTarjeta, pNuevoCliente.numeroTarjeta, pNuevoCliente.mesVencimiento, pNuevoCliente.annoVencimiento, pNuevoCliente.ccv, nuevoCliente.getEmail());
 

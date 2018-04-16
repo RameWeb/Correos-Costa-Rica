@@ -67,7 +67,14 @@
         templateUrl: './components/main/registroClientes/registroClientes.vista.html',
         data: {
           pageTitle: 'Inicio | Correos de Costa Rica'
-        }
+        },
+        resolve: {
+          load: ['$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/main/registroClientes/registroClientes.controlador.js')
+          }]
+        },
+        controller: 'controladorClientes',
+        controllerAs: 'vm'
       })
 
 
