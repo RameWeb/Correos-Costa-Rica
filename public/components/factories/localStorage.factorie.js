@@ -60,7 +60,9 @@
           'numeroTarjeta' : data.tarjetas[0].numeroTarjeta,
           'mesVencimiento' : data.tarjetas[0].mesVencimiento,
           'annoVencimiento': data.tarjetas[0].annoVencimiento,
-          'ccv': data.tarjetas[0]
+          'ccv': data.tarjetas[0],
+          'latitud': data.latitud,
+          'longitud': data.longitud,
         }
       });
 
@@ -136,7 +138,7 @@
     };
 
     function _getSession() {
-      let sessionActive = JSON.stringify(sessionStorage.setItem('session'));
+      let sessionActive = JSON.parse(sessionStorage.getItem('session'));
 
       return sessionActive;
     };

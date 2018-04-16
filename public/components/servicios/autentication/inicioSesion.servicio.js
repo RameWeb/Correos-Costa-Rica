@@ -47,7 +47,7 @@
      * Funcion que retorna los datos del usuario activo
      */
     function _getAuthUser() {
-      let sessionActiva = localStorageFactory.getSession(),
+      let sessionActiva = localStorageFactories.getSession(),
         usuarioActivo;
 
       if (!sessionActiva) {
@@ -68,7 +68,7 @@
           datosUsuario;
 
       for(let i = 0; i < listaUsuarios.length; i++){
-        if(listaUsuarios[i].getEmail() == sessionActiva.email){
+        if(listaUsuarios[i].getEmail() == sessionActiva.correo){
           datosUsuario = listaUsuarios[i];
         }
       };

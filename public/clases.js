@@ -144,12 +144,14 @@ class Repartidor extends Usuario{
 }
 
 class Cliente extends Usuario{
-  constructor(pTipoIdentificacion, pIdentificacion, pNombre1, pNombre2, pApellido1, pApellido2, pfoto, pSexo, pFechaNacimiento, pEmail, pContrasenna, pProvincia, pCanton, pDistrito, pDireccion, pestado, pTipoUsuario, pTelefono, pSucursalPreferencia){
+  constructor(pTipoIdentificacion, pIdentificacion, pNombre1, pNombre2, pApellido1, pApellido2, pfoto, pSexo, pFechaNacimiento, pEmail, pContrasenna, pProvincia, pCanton, pDistrito, pDireccion, pestado, pTipoUsuario, pTelefono, pSucursalPreferencia, pLat, pLong){
     super(pTipoIdentificacion, pIdentificacion, pNombre1, pNombre2, pApellido1, pApellido2, pfoto, pSexo, pFechaNacimiento, pEmail, pContrasenna, pProvincia, pCanton, pDistrito, pDireccion, pestado, pTipoUsuario);
     this.telefono = pTelefono;
     this.sucursalPreferencia = pSucursalPreferencia;
     this.tarjetas = [];
     this.prealertas = [];
+    this.latitud = pLat;
+    this.longitud = pLong;
   }
 
   agregarTarjeta(pObjTarjeta){
@@ -177,7 +179,15 @@ class Cliente extends Usuario{
   }
 
   setPrealertas(aPrealertas){
-    this.prealertas = aVehiculos;
+    this.prealertas = aPrealertas;
+  }
+
+  obtenerLatitud(){
+    return this.latitud;
+  }
+
+  obtenerLongitud(){
+    return this.longitud;
   }
 }
 

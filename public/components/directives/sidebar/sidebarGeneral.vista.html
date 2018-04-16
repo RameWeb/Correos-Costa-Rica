@@ -1,0 +1,45 @@
+<aside id="dashboard">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12 panelIzquierdo py-5 px-5">
+        <img type="image/svg+xml" src="/../sources/img/logo_white.svg" class="my-5">
+        <ul class="list-group" class="my-5">
+          <li class="list-group-item" ng-hide="vm.rolUsuario == 'Cliente'">
+            <a href="#!/regEmpleados">Empleados</a>
+          </li>
+          <li class="list-group-item" ng-hide="vm.rolUsuario == 'Cliente'">
+            <a href="" ui-sref="main.registroClientes" ui-sref-active="active">Clientes</a>
+          </li>
+          <li class="list-group-item" ng-hide="vm.rolUsuario == 'Cliente'">
+            <a href="#!/registrarCourier">Couriers</a>
+          </li>
+          <li class="list-group-item" ng-hide="vm.rolUsuario == 'Cliente'">
+            <a href="#!/registroSucursal">Sucursales</a>
+          </li>
+          <li class="list-group-item" ng-hide="vm.rolUsuario == 'Cliente'">
+            <a href="#!/registrarTipoProducto">Productos</a>
+          </li>
+          <li class="list-group-item">
+            <a href="#!/convenios">Convenios</a>
+          </li>
+          <li class="list-group-item">
+            <a href="#!/listarPaquetes">Paquetes</a>
+          </li>
+          <li class="list-group-item" ng-hide="vm.rolUsuario == 'Cliente'">
+            <a href="#!/consultarBitacora">Bitácora</a>
+          </li>
+          <li class="list-group-item">
+            <a href="#!/registroPrealerta">Prealertar Paquete</a>
+          </li>
+          <li class="list-group-item">
+            <a href="#!/registrarConvCliente">Solicitar Convenio</a>
+          </li>
+          <li class="list-group-item" ng-hide="vm.rolUsuario == 'Administrador' || vm.rolUsuario == 'Encargado de Aduana'">
+            <a href="#!/listarPaquetesCliente">Mis Paquetes</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  </div>
+</aside>

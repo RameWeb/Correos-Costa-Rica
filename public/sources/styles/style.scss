@@ -3,18 +3,20 @@
 // -----------------------------------------------------------------------------
 
 // Bootstrap
-@import '../../../node_modules/bootstrap/scss/bootstrap.scss';
+@import '../../../node_modules/bootstrap/scss/bootstrap';
 
 
 // -----------------------------------------------------------------------------
 // Estilos de la aplicación
 // -----------------------------------------------------------------------------
-
+.active{
+  color: $white !important;
+}
 @import 'components/cliente.style';
 @import 'components/clientes.style';
 @import 'components/convenios.style';
 @import 'components/courier.style';
-@import 'components/dashboardAdmin.style';
+@import 'components/dashboard.style';
 @import 'components/empleados.style';
 @import 'components/landingPage.style';
 @import 'components/paquetes.style';

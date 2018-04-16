@@ -4,21 +4,37 @@
   .module('correos-cr')
   .controller('controladorModClientes', controladorModClientes);
 
-  controladorModClientes.$inject = ['$http','$stateParams', '$state','servicioUsuarios'];
+  controladorModClientes.$inject = ['$http','$stateParams', '$state','servicioUsuarios', 'imageUpload', 'Upload', 'NgMap'];
 
-  function controladorModClientes($http, $stateParams, $state, servicioUsuarios){
+  function controladorModClientes($http, $stateParams, $state, servicioUsuarios, imageUpload, Upload, NgMap){
 
     let clienteSeleccionado;
 
-    if(!$stateParams.identificacion){
+    if(!$stateParams.email){
       $state.go('mantClientes');
     }
 
-    clienteSeleccionado = servicioUsuarios.obtenerUsuarioEspecifico($stateParams.identificacion);
+    clienteSeleccionado = servicioUsuarios.obtenerUsuarioEspecifico($stateParams.email);
 
     console.log(clienteSeleccionado);
 
     let vm = this;
+
+    vm.sucursales = ["Alajuelita", "Bagaces", "Cañas", "Desamparados", "Cartago Centro", "Moravia", "Pavas", "Venecia"];
+
+    vm.sexo = ["Femenino", "Masculino", "Sin especificar"];
+
+    vm.tipoIdentificacion = ["Cédula nacional", "Residente", "Pasaporte", "DIMEX"];
+
+    NgMap.getMap("map").then(function (map) {
+      vm.map = map;
+    });
+
+    vm.callbackFunc = function (param) {
+      vm.latitude = vm.map.getCenter().lat();
+      vm.longitude = vm.map.getCenter().lng();
+    };
+
 
     vm.tarjetas = clienteSeleccionado.tarjetas;
 

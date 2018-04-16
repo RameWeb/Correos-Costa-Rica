@@ -2,114 +2,344 @@
   <section class="container-fluid">
     <div class="row">
       <div class="col-md-3 py-5 px-5 panelIzquierdo">
-        <a href="#!/admin"><img src="../../../sources/img/chevron-left.svg" height="30px" width="30px" alt="">Regresar al dashboard</a>
+        <a href="#!/admin">
+          <img src="../../../sources/img/chevron-left.svg" height="30px" width="30px" alt="">Regresar al dashboard</a>
         <img src="../../../sources/img/logo_slateblue.svg" class="my-5" alt="">
         <a href="#!/mantClientes" class="btn btnAccion">Lista de Clientes</a>
       </div>
       <div class="col-md-9 py-5 px-5 contenido">
         <h2>Modificar Cliente</h2>
         <form ng-submit="vm.modificarCliente(vm.nuevoClienteModificado)" class="col-md-8">
-          <!-- Información Personal -->
+          <!— Información Personal —>
           <div class="my-3">
-            <h3>Información Personal</h3>
-            <div class="form-group">
-              <label for="inputIdentificacion">Nº de Identificación:</label>
-              <input type="number" class="form-control" id="inputIdentificacion" ng-model="vm.nuevoClienteModificado.identificacion" disabled>
-            </div>
-            <div class="form-row">
-              <div class="form-group col-md-6">
-                <label for="inputNombre">Nombre</label>
-                <input type="text" class="form-control" id="inputNombre" ng-model="vm.nuevoClienteModificado.nombre">
+              <h3>Información Personal</h3>
+              <!-- Agregar un campo para tipo de cedula, Datalist -->
+              <!-- Agregar un campo para el sexo -->
+              <div class="form-group">
+                <label for="inputTipoIdentificacion">Tipo de Identificación:</label>
+                <input type="text" class="form-control" id="inputTipoIdentificacion" ng-model="vm.nuevoCliente.tipoIdentificacion" list="listaTipoId"
+                  name="txtClienteTipoId" autocomplete="off" required>
+                <datalist id="listaTipoId">
+                  <option data-ng-repeat="tipo in vm.tipoIdentificacion" value="{{tipo}}">
+                </datalist>
+                <div ng-messages="formRegistrarCliente.txtClienteTipoId.$error" role="alert">
+                  <div ng-message="required">
+                    <small class="form-text text-muted">Este campo es requerido</small>
+                  </div>
+                </div>
               </div>
-              <div class="form-group col-md-6">
-                <label for="inputApellido1">Primer Apellido</label>
-                <input type="text" class="form-control" id="inputApellido1" ng-model="vm.nuevoClienteModificado.apellido1">
-              </div>
-            </div>
-            <div class="form-row">
-              <div class="form-group col-md-6">
-                <label for="inputEmail">Correo Electrónico:</label>
-                <input type="email" class="form-control" id="inputEmail" ng-model="vm.nuevoClienteModificado.email" disabled>
-              </div>
-              <div class="form-group col-md-6">
-                <label for="inputContrasenna">Contraseña:</label>
-                <input type="password" class="form-control" id="inputContrasenna" ng-model="vm.nuevoClienteModificado.contrasenna">
-              </div>
-            </div>
-            <div class="form-row">
-              <div class="form-group col-md-6">
-                <label for="inputFechaNacimiento">Fecha de Nacimiento</label>
-                <input type="date" class="form-control" id="inputFechaNacimiento" ng-model="vm.nuevoClienteModificado.fechaNacimiento">
-              </div>
-              <div class="form-group col-md-6">
-                <label for="inputTelefono">Teléfono</label>
-                <input type="number" class="form-control" id="inputTelefono" ng-model="vm.nuevoClienteModificado.telefono">
-              </div> 
-            </div>
-          </div>
-          <!-- Direccion -->
-          <div class="my-3">
-            <h3>Dirección</h3>
-            <div class="form-row">
-              <div class="form-group col-md-4">
-                <label for="inputProvincia">Provincia</label>
-                <input type="text" class="form-control" id="inputProvincia" ng-model="vm.nuevoClienteModificado.provincia">
-              </div>
-              <div class="form-group col-md-4">
-                <label for="inputCanton">Cantón</label>
-                <input type="text" class="form-control" id="inputCanton" ng-model="vm.nuevoClienteModificado.canton">
-              </div>
-              <div class="form-group col-md-4">
-                <label for="inputDistrito">Distrito</label>
-                <input type="text" class="form-control" id="inputDistrito" ng-model="vm.nuevoClienteModificado.distrito">
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="inputDireccion">Dirección exacta:</label>
-              <textarea class="form-control" id="inputDireccion" rows="3" ng-model="vm.nuevoClienteModificado.direccion"></textarea>
-            </div>
-          </div>
   
-          <div class="my-3">
-            <h3>Información de Tarjetas</h3>
-            <a class="btn btnSecundario" ng-click="vm.agregarTarjeta()">Agregar Nueva Tarjeta</a>
-            <div class="form-group">
-              <label for="inputBuscar">Buscar Tarjeta</label>
-              <input type="text" class="form-control" id="inputBuscar" ng-model="buscarCliente.nombre">
+              <div class="form-group" ng-if="vm.nuevoCliente.tipoIdentificacion == 'Cédula nacional'">
+                <label for="inputIdentificacion">Nº de Identificación:</label>
+                <input type="number" class="form-control" id="inputIdentificacion" ng-model="vm.nuevoCliente.identificacion" name="txtClienteId"
+                  pattern="^[0-7]\d{8}$" minlength="9" maxlength="9" autocomplete="off" required>
+                <div ng-messages="formRegistrarCliente.txtClienteId.$error" role="alert">
+                  <div ng-message="required">
+                    <small class="form-text text-muted">Este campo es requerido</small>
+                  </div>
+                  <div ng-message="pattern">
+                    <small class="form-text text-muted">Formato incorrecto, solo se permite ingresar números</small>
+                  </div>
+                  <div ng-message="maxlength">
+                    <small class="form-text text-muted">Formato incorrecto</small>
+                  </div>
+                  <div ng-message="minlength">
+                    <small class="form-text text-muted">Formato incorrecto</small>
+                  </div>
+                </div>
+              </div>
+  
+              <div class="form-group" ng-if="vm.nuevoCliente.tipoIdentificacion == 'Residente'">
+                <label for="inputIdentificacion">Nº de Identificación:</label>
+                <input type="number" class="form-control" id="inputIdentificacion" ng-model="vm.nuevoCliente.identificacion" name="txtClienteId"
+                  pattern="" minlength="9" maxlength="9" autocomplete="off" required>
+                <div ng-messages="formRegistrarCliente.txtClienteId.$error" role="alert">
+                  <div ng-message="required">
+                    <small class="form-text text-muted">Este campo es requerido</small>
+                  </div>
+                  <div ng-message="pattern">
+                    <small class="form-text text-muted">Formato incorrecto, solo se permite ingresar letras en mayúscula y números</small>
+                  </div>
+                </div>
+              </div>
+  
+              <div class="form-group" ng-if="vm.nuevoCliente.tipoIdentificacion == 'Pasaporte'">
+                <label for="inputIdentificacion">Nº de Identificación:</label>
+                <input type="number" class="form-control" id="inputIdentificacion" ng-model="vm.nuevoCliente.identificacion" name="txtClienteId"
+                  pattern="" minlength="9" maxlength="13" autocomplete="off" required>
+                <div ng-messages="formRegistrarCliente.txtClienteId.$error" role="alert">
+                  <div ng-message="required">
+                    <small class="form-text text-muted">Este campo es requerido</small>
+                  </div>
+                  <div ng-message="pattern">
+                    <small class="form-text text-muted">Formato incorrecto, solo se permite ingresar letras en mayúscula y números</small>
+                  </div>
+                </div>
+              </div>
+  
+              <div class="form-group" ng-if="vm.nuevoCliente.tipoIdentificacion == 'DIMEX'">
+                <label for="inputIdentificacion">Nº de Identificación:</label>
+                <input type="number" class="form-control" id="inputIdentificacion" ng-model="vm.nuevoCliente.identificacion" name="txtClienteId"
+                  pattern="" minlength="9" maxlength="13" autocomplete="off" required>
+                <div ng-messages="formRegistrarCliente.txtClienteId.$error" role="alert">
+                  <div ng-message="required">
+                    <small class="form-text text-muted">Este campo es requerido</small>
+                  </div>
+                  <div ng-message="pattern">
+                    <small class="form-text text-muted">Formato incorrecto, solo se permite ingresar letras en mayúscula y números</small>
+                  </div>
+                </div>
+              </div>
+  
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="inputPrimerNombre">Primer nombre</label>
+                  <input type="text" class="form-control" id="inputPrimerNombre" ng-model="vm.nuevoCliente.primerNombre" name="txtPrimerNombre"
+                    pattern="[ñáéíóúA-Za-z ]+" autocomplete="off" required>
+                  <div ng-messages="formRegistrarCliente.txtPrimerNombre.$error" role="alert">
+                    <div ng-message="required">
+                      <small class="form-text text-muted">Este campo es requerido</small>
+                    </div>
+                    <div ng-message="pattern">
+                      <small class="form-text text-muted">Formato incorrecto, no se permite ingresar numeros</small>
+                    </div>
+                  </div>
+                </div>
+  
+                <div class="form-group col-md-6">
+                  <label for="inputSegundoNombre">Segundo nombre</label>
+                  <input type="text" class="form-control" id="inputSegundoNombre" ng-model="vm.nuevoCliente.segundoNombre" name="txtSegundoNombre"
+                    pattern="[ñáéíóúA-Za-z ]+" autocomplete="off">
+                  <div ng-messages="formRegistrarCliente.txtSegundoNombre.$error" role="alert">
+                    <div ng-message="pattern">
+                      <small class="form-text text-muted">Formato incorrecto, no se permite ingresar numeros</small>
+                    </div>
+                  </div>
+                </div>
+  
+                <div class="form-group col-md-6">
+                  <label for="inputPrimerApellido">Primer Apellido</label>
+                  <input type="text" class="form-control" id="inputPrimerApellido" ng-model="vm.nuevoCliente.primerApellido" name="txtPrimerApellido"
+                    pattern="[ñáéíóúA-Za-z ]+" autocomplete="off" required>
+                  <div ng-messages="formRegistrarCliente.txtPrimerApellido.$error" role="alert">
+                    <div ng-message="required">
+                      <small class="form-text text-muted">Este campo es requerido</small>
+                    </div>
+                    <div ng-message="pattern">
+                      <small class="form-text text-muted">Formato incorrecto, no se permite ingresar numeros</small>
+                    </div>
+                  </div>
+                </div>
+  
+                <div class="form-group col-md-6">
+                  <label for="inputSegundoApellido">Segundo Apellido</label>
+                  <input type="text" class="form-control" id="inputSegundoApellido" ng-model="vm.nuevoCliente.segundoApellido" name="txtSegundoApellido"
+                    pattern="[ñáéíóúA-Za-z ]+" autocomplete="off">
+                  <div ng-messages="formRegistrarCliente.txtSegundoApellido.$error" role="alert">
+                    <div ng-message="pattern">
+                      <small class="form-text text-muted">Formato incorrecto, no se permite ingresar numeros</small>
+                    </div>
+                  </div>
+                </div>
+              </div>
+  
+              <div class="form-group">
+                <label for="inputSexo">Sexo</label>
+                <input type="text" class="form-control" id="inputSexo" name="txtSexo" ng-model="vm.nuevoCliente.sexo" list="listaSexo" name="txtSexo"
+                  required>
+                <datalist id="listaSexo" autocomplete="off">
+                  <option data-ng-repeat="sexo in vm.sexo" value="{{sexo}}">
+                </datalist>
+                <div ng-messages="formRegistrarCliente.txtSexo.$error" role="alert">
+                  <div ng-message="required">
+                    <small class="form-text text-muted">Este campo es requerido</small>
+                  </div>
+                </div>
+              </div>
+  
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="inputEmail">Correo Electrónico:</label>
+                  <input type="email" class="form-control" id="inputEmail" ng-model="vm.nuevoCliente.email" name="txtEmailCliente" autocomplete="off"
+                    required>
+                  <div ng-messages="formRegistrarCliente.txtEmailCliente.$error" role="alert">
+                    <div ng-message="required">
+                      <small class="form-text text-muted">Este campo es requerido</small>
+                    </div>
+                  </div>
+                  <!-- pattern="[\w.%+-]+@domain\.com" -->
+                </div>
+                <!-- <div class="form-group col-md-6">
+                <label for="inputContrasenna">Contraseña:</label>
+                <input type="password" class="form-control" id="inputContrasenna" ng-model="vm.nuevoCliente.contrasenna" name="txtContrasenna" autocomplete="off" required>
+                <div ng-messages="formRegistrarCliente.txtContrasenna.$error" role="alert">
+                  <div ng-message="required">
+                    <small class="form-text text-muted">Este campo es requerido</small>
+                  </div>
+                </div>
+              </div> -->
+              </div>
+  
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="inputFechaNacimiento">Fecha de Nacimiento</label>
+                  <input type="date" class="form-control" id="inputFechaNacimiento" ng-model="vm.nuevoCliente.fechaNacimiento" name="txtFechaNacimiento"
+                    autocomplete="off" required>
+                  <div ng-messages="formRegistrarCliente.txtFechaNacimiento.$error" role="alert">
+                    <div ng-message="required">
+                      <small class="form-text text-muted">Este campo es requerido</small>
+                    </div>
+                  </div>
+                </div>
+  
+                <div class="form-group col-md-6">
+                  <label for="inputTelefono">Teléfono</label>
+                  <input type="number" class="form-control" id="inputTelefono" ng-model="vm.nuevoCliente.telefono" name="txtTelefono" minlength="8"
+                    maxlength="8" pattern="^[2|6|7|8]\d{7}$" autocomplete="off" required>
+                  <div ng-messages="formRegistrarCliente.txtTelefono.$error" role="alert">
+                    <div ng-message="required">
+                      <small class="form-text text-muted">Este campo es requerido</small>
+                    </div>
+                    <div ng-message="pattern">
+                      <small class="form-text text-muted">Formato de teléfono incorrecto</small>
+                    </div>
+                  </div>
+                </div>
+  
+                <div class="form-group">
+                  <label for="filePerfil">Foto de perfil</label>
+                  <input type="file" class="form-control-file" id="filePerfil" files-input ng-model="vm.nuevoCliente.fotoPerfil">
+                </div>
+              </div>
             </div>
-            <!-- Otros datos -->
-            <table class="table">
-              <thead>
-                <tr>
-                  <th>Nº de Tarjeta</th>
-                  <th>Fecha Vencimiento</th>
-                  <th>Año Vencimiento</th>
-                  <th>Emisor</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr ng-repeat="tarjeta in vm.tarjetas | filter:buscarTarjeta">
-                  <td>{{tarjeta.numeroTarjeta}}</td>
-                  <td>{{tarjeta.fechaVencimiento}}</td>
-                  <td>{{tarjeta.ccv}}</td>
-                  <td>Emisor</td>
-                  <td>
-                    <li class="nav-item dropdown btnAccion" style="list-style:none">
-                      <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Acciones</a>
-                      <div class="dropdown-menu">
-                        <a class="dropdown-item" ng-click="vm.modificar(cliente)">Modificar Tarjeta</a>
-                        <a class="dropdown-item" ng-click="vm.desactivar(cliente)">Eliminar Tarjeta</a>
-                      </div>
-                    </li>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+  
+            <!-- Direccion -->
+            <div class="my-3">
+              <h3>Dirección</h3>
+              <a class="btn btnSecundario" ng-click="vm.googlemap()" data-toggle="modal" data-target="#exampleModal" class="">
+                <img src="../../../../sources/img/google.svg" width="15px" height="15px" class="" alt="">  Mi ubicación
+              </a>
+              <div class="form-row">
+                <div class="form-group col-md-4">
+                  <label for="inputProvincia">Provincia</label>
+                  <input type="text" class="form-control" id="inputProvincia" ng-model="vm.nuevoCliente.provincia" name="txtProvincia" autocomplete="off"
+                    required>
+                  <div ng-messages="formRegistrarCliente.txtProvincia.$error" role="alert">
+                    <div ng-message="required">
+                      <small class="form-text text-muted">Este campo es requerido</small>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group col-md-4">
+                  <label for="inputCanton">Cantón</label>
+                  <input type="text" class="form-control" id="inputCanton" ng-model="vm.nuevoCliente.canton" name="txtCanton" autocomplete="off"
+                    required>
+                  <div ng-messages="formRegistrarCliente.txtCanton.$error" role="alert">
+                    <div ng-message="required">
+                      <small class="form-text text-muted">Este campo es requerido</small>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group col-md-4">
+                  <label for="inputDistrito">Distrito</label>
+                  <input type="text" class="form-control" id="inputDistrito" ng-model="vm.nuevoCliente.distrito" name="txtDistrito" autocomplete="off"
+                    required>
+                  <div ng-messages="formRegistrarCliente.txtDistrito.$error" role="alert">
+                    <div ng-message="required">
+                      <small class="form-text text-muted">Este campo es requerido</small>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="inputDireccion">Dirección exacta:</label>
+                <textarea class="form-control" id="inputDireccion" rows="3" ng-model="vm.nuevoCliente.direccion" name="txtDireccion" autocomplete="off"
+                  required></textarea>
+                <div ng-messages="formRegistrarCliente.txtDireccion.$error" role="alert">
+                  <div ng-message="required">
+                    <small class="form-text text-muted">Este campo es requerido</small>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="inputSucursalPreferencia">Sucursal de preferencia:</label>
+                <input type="text" class="form-control" id="inputSucursalPreferencia" name="txtSucursalPreferencia" ng-model="vm.nuevoCliente.sucursalPreferencia"
+                  list="listaSucursales" name="txtSucursalPreferencia" autocomplete="off" required>
+                <datalist id="listaSucursales">
+                  <option data-ng-repeat="sucursal in vm.sucursales" value="{{sucursal}}">
+                </datalist>
+                <div ng-messages="formRegistrarCliente.txtSucursalPreferencia.$error" role="alert">
+                  <div ng-message="required">
+                    <small class="form-text text-muted">Este campo es requerido</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+  
+            <div class="my-3">
+                <h3>Información de Tarjetas</h3>
+                <a class="btn btnSecundario" ng-click="vm.agregarTarjeta()">Agregar Nueva Tarjeta</a>
+                <div class="form-group">
+                  <label for="inputBuscar">Buscar Tarjeta</label>
+                  <input type="text" class="form-control" id="inputBuscar" ng-model="buscarCliente.nombre">
+                </div>
+                <!— Otros datos —>
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th>Nº de Tarjeta</th>
+                      <th>Fecha Vencimiento</th>
+                      <th>Año Vencimiento</th>
+                      <th>Emisor</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr ng-repeat="tarjeta in vm.tarjetas | filter:buscarTarjeta">
+                      <td>{{tarjeta.numeroTarjeta}}</td>
+                      <td>{{tarjeta.fechaVencimiento}}</td>
+                      <td>{{tarjeta.ccv}}</td>
+                      <td>Emisor</td>
+                      <td>
+                        <li class="nav-item dropdown btnAccion" style="list-style:none">
+                          <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Acciones</a>
+                          <div class="dropdown-menu">
+                            <a class="dropdown-item" ng-click="vm.modificar(cliente)">Modificar Tarjeta</a>
+                            <a class="dropdown-item" ng-click="vm.desactivar(cliente)">Eliminar Tarjeta</a>
+                          </div>
+                        </li>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
           <button type="submit" class="btn btnAccion">Guardar cambios</button>
           <a href="/#!/mantClientes" class="btn btn-light">Cancelar</a>
-      </form>
-    </div>
+
+            
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel">Ubicación</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <ng-map id="map" center="current-location" styles="width: 50%; height: 20em;">
+                        <marker position="current-location" draggable="true" on-dragend="vm.getCurrentLocation()" coords="marker.coords" options="marker.options" ></marker>
+                      </ng-map>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                      <button type="button" class="btn btn-primary">Guardar localización</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+        </form>
+      </div>
   </section>
 </main>
-      
