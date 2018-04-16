@@ -45,6 +45,22 @@ class Prealertas{
     this.courier = pCourier;
     this.estado = pEstado; 
   }
+
+  getTipoProducto(){
+    return this.tipoProducto;
+  }
+
+  gettracking(){
+    return this.tracking;
+  }
+
+  getInfoPrealerta(){
+    return `${this.tracking} ${this.tipoProducto}`;
+  }
+
+  getCedulaDuenno(){
+    return this.idCliente;
+  }
 }
 
 class ConveniosClientes{
@@ -133,6 +149,7 @@ class Cliente extends Usuario{
     this.telefono = pTelefono;
     this.sucursalPreferencia = pSucursalPreferencia;
     this.tarjetas = [];
+    this.prealertas = [];
   }
 
   agregarTarjeta(pObjTarjeta){
@@ -142,7 +159,28 @@ class Cliente extends Usuario{
   getTarjeta(){
     return this.tarjetas;
   }
+
+  agregarPrealerta(pnuevaPrealerta) {
+    this.prealertas.push(pnuevaPrealerta);
+  }
+
+  getCantidadPrealertas(){
+    return this.prealertas.length;
+  }
+
+  getPrealertas(){
+    return this.prealertas;
+  }
+
+  getCedula(){
+    return this.identificacion;
+  }
+
+  setPrealertas(aPrealertas){
+    this.prealertas = aVehiculos;
+  }
 }
+
 
 /**
  * Clase de la tarjeta
@@ -175,14 +213,6 @@ class Tarjeta{
 }
 
 // TODO Dentro de este archivo se crean los objetos con sus respectivos mÃƒÂ©todos
-class Direccion{
-  constructor(pProvincia,pCanton,pDistrito){
-    this.provincia = pProvincia;
-    this.canton = pCanton;
-    this.distrito = pDistrito;
-  }
-}
-
 class Licencia{
     constructor(pTipo,pCategoria,pDescripcion){
       this.tipo = pTipo;

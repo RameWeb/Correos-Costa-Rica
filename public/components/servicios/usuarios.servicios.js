@@ -12,12 +12,15 @@
 
     let publicAPI = {
       agregarUsuario : _agregarUsuario,
-      agregarEmpleado : _agregarEmpleado,
       obtenerUsuario : _obtenerUsuario,
       obtenerUsuarioEspecifico : _obtenerUsuarioEspecifico,
       actualizarUsuario : _actualizarUsuario,
       obtenerUsuarioPorRol : _obtenerUsuarioPorRol,
-      obtenerEmpleados : _obtenerEmpleados
+      obtenerEmpleados : _obtenerEmpleados,
+      addPrealertas : _addPrealertas,
+      getPrealertas: _getPrealertas,
+      getPrealertasPorUsuario: _getPrealertasPorUsuario,
+      getInfoPrealertas: _getInfoPrealertas
     }
     return publicAPI;
 
@@ -36,27 +39,6 @@
         registroExitoso = false;
       }else{
         registroExitoso = localStorageFactories.setUsuario(pNuevoUsuario);
-      };
-
-      return registroExitoso;
-    };
-
-    //CHRISTINE
-    function _agregarEmpleado(pNuevoEmpleado){
-      let listaUsuarios = _obtenerUsuario(),
-          usuarioRepetido,
-          registroExitoso;
-
-      for(let i = 0; i < listaUsuarios.length; i++){
-        if(pNuevoEmpleado.getEmail() == listaUsuarios[i].getEmail() ){
-          usuarioRepetido = true;
-        };
-      };
-
-      if(usuarioRepetido == true){
-        registroExitoso = false;
-      }else{
-        registroExitoso = localStorageFactories.setEmpleado(pNuevoEmpleado);
       };
 
       return registroExitoso;
@@ -165,6 +147,86 @@
       }
 
       return listaUsuariosFiltrada;
+    }
+
+    /**
+     * Función que retorna todas las prealertas
+     */
+    function _getPrealertas(pprealerta) {
+      let listaPrealertas = [],
+        listaPrealertasBD = localStorageFactories.getPrealertas();
+
+        listaPrealertasBD.forEach(obj => {
+        let objPrealerta = new Prealertas(obj.tracking, obj.Url, obj.tipoproducto,obj.valor, obj.peso, obj.courier);
+
+        listaPrealertas.push(objPrealerta);
+      });
+      return listaPrealertas;
+    }
+
+    /**
+     * Función que registra la prealerta dentro del usuario activo
+     * @param {Cédula del usuario activo} pidUsuarioActivo 
+     * @param {Objeto de tipo prealerta} pprealerta 
+     */
+    function _addPrealertas(pprealerta) {
+      let listaPrealertas = _getPrealertas(),
+          listaUsuariosLocal = localStorageFactories.getDatosUsuarios(),
+          prealertaRepetida = false,
+          registroValido;
+
+      for(let i = 0; i < listaPrealertas.length; i++){
+        if(listaPrealertas[i].gettracking() == pprealerta.gettracking()){
+          prealertaRepetida = true;
+        }
+      }
+
+      if (prealertaRepetida == false) {
+        for(let i = 0; i < listaPrealertas.length; i++){
+          if(listaPrealertas[i].getcedula() == pprealerta.getCedulaDuenno()){
+            listaPrealertas[i].agregarPrealertas(pprealerta.gettracking());
+          }
+        }
+        registroValido = localStorageFactories.setPrealertas(pprealerta);
+      } else {
+        registroValido = false;
+      }
+
+      return registroValido;
+    }
+
+    /**
+     * Función que recibe el número de cédula del usuario activo y retorna las prealertas registrados para ese usuario
+     * @param {Cédula del usuario activo} pidUsuarioActivo 
+     */
+    function _getPrealertasPorUsuario(pidUsuarioActivo) {
+      let listaAllPrealertas = _getPrealertas(),
+        listaPrealertas = [];
+
+      for (let i = 0; i < listaAllPrealertas.length; i++) {
+        if (pidUsuarioActivo == listaAllPrealertas[i].getCedulaDuenno()) {
+          listaPrealertas.push(listaAllPrealertas[i]);
+        }
+      }
+      return listaPrealertas;
+    }
+
+    /**
+     * Función que obtiene los datos de una prealerta y los retorna
+     * @param {Cédula del usuario activo} pidUsuarioActivo 
+     * @param {Tracking de la prealerta} ptrackingid 
+     */
+    function _getInfoPrealertas(pidUsuarioActivo, ptrackingid) {
+      let listaPrealertasPorUsuario = _getPrealertasPorUsuario(pidUsuarioActivo),
+        prealertaActiva;
+
+      for (let i = 0; i < listaPrealertasPorUsuario.length; i++) {
+        if (listaPrealertasPorUsuario[i].gettracking() == ptrackingid) {
+          prealertaActiva = listaPrealertasPorUsuario[i];
+        }
+      }
+
+      return prealertaActiva;
     }
   };
 })();

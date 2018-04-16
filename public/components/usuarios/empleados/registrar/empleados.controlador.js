@@ -48,7 +48,7 @@
 
           console.log(nuevoEncargadoAduana);
 
-          servicioUsuarios.agregarEmpleado(nuevoEncargadoAduana);
+          servicioUsuarios.agregarUsuario(nuevoEncargadoAduana);
         break;
 
         // Encargado de Sucursal
@@ -58,7 +58,7 @@
 
           console.log(nuevoEncargadoSucursal);
 
-          servicioUsuarios.agregarEmpleado(nuevoEncargadoSucursal);
+          servicioUsuarios.agregarUsuario(nuevoEncargadoSucursal);
 
         break;
 
@@ -69,7 +69,7 @@
 
           console.log(nuevoRepartidor);
 
-          servicioUsuarios.agregarEmpleado(nuevoRepartidor);
+          servicioUsuarios.agregarUsuario(nuevoRepartidor);
 
         break;
       
@@ -92,7 +92,7 @@
 
     // Imprimir lista de repartidores en el sistema
     function listarEmpleados(){
-      vm.listaEmpleados = servicioUsuarios.obtenerUsuarioPorRol("Empleado");
+      vm.listaEmpleados = servicioUsuarios.obtenerEmpleados('Empleado');
     }
 
     vm.modificar = (pEmpleado) =>{

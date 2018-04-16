@@ -59,12 +59,14 @@ app.use( (req, res, next) => {
  * Exportamos las funcionalidades
  */
 const index = require('./index'),
-      usuarios = require('./components/usuarios/usuarios.route');
+      usuarios = require('./components/usuarios/usuarios.route'),
+      prealertas = require('./components/prealertas/prealertas.route');
 
 /**
  * Se definien las rutas de ExpressJS
  */
 app.use('/api', usuarios);
+app.use('/api', prealertas);
 app.use('/', index);
 
 /// Se guarda todo lo que se ha realizado

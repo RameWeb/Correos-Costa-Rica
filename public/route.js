@@ -669,21 +669,6 @@
       }
     })
 
-    .state('direcciones', {
-      url: '/direcciones',
-      templateUrl: './components/direcciones/direcciones.view.html',
-      data:{
-        pageTitle: 'Registro Direcciones | Ejemplo Arquitectura'
-      },
-      resolve: {
-        load: ['$ocLazyLoad', ($ocLazyLoad) => {
-          return $ocLazyLoad.load('./components/direcciones/direcciones.controller.js')
-        }]
-      },
-      controller: 'controladorDirecciones',
-      controllerAs: 'vm'
-    })
-
     .state('licencias', {
       url: '/licencias',
       templateUrl: './components/licencias/licencias.view.html',
