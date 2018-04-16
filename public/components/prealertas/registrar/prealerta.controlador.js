@@ -4,10 +4,10 @@
   .module('correos-cr')
   .controller('controladorPrealertas', controladorPrealertas);
 
-  controladorPrealertas.$inject = ['$http', '$stateParams', '$state','servicioUsuarios', /*'loginService'*/];
+  controladorPrealertas.$inject = ['$stateParams', '$state','servicioUsuarios' /*',loginService'*/];
 
-function controladorPrealertas($http, $stateParams, $state, servicioUsuarios, /*loginService*/){
-    const vm = this;
+function controladorPrealertas($stateParams, $state, servicioUsuarios /*,loginService*/){
+    let vm = this;
 
     // const userAuth = loginService.getAuthUser();
 
@@ -26,35 +26,24 @@ function controladorPrealertas($http, $stateParams, $state, servicioUsuarios, /*
     //Objeto sin formato
 
     vm.nuevaPrealerta = {};
-
+    vm.listaPrealertas = listarPrealertas();
     listarPrealertas();
-    
+
     // Funcion que es llamada desde el html para registrar una prealerta
-    vm.registrarPrealerta = (pnuevaprealerta) => {
+
+    vm.registrarPrealerta = (pnuevaPrealerta) => {
       
-      let objPrealertaNueva = new Prealertas(pnuevaprealerta.tracking, pnuevaprealerta.url, pnuevaprealerta.tipoProducto, pnuevaprealerta.valor, pnuevaprealerta.peso, pnuevaprealerta.courier),
-      registroExitoso;
+      let objPrealertaNueva = new Prealertas(pnuevaPrealerta.tracking, pnuevaPrealerta.url, pnuevaPrealerta.tipoProducto, pnuevaPrealerta.valor, pnuevaPrealerta.peso, pnuevaPrealerta.courier);
 
       console.log(objPrealertaNueva);
 
-      registroExitoso = servicioUsuarios.addPrealertas(objPrealertaNueva);
+      servicioUsuarios.addPrealertas(objPrealertaNueva);
 
-      if(registroExitoso == true){
-        swal({
-          title: "Registro exitoso",
-          text: "La prealerta se ha registrado correctamente.",
-          icon: "success",
-          button: "Aceptar",
-        });
-        vm.nuevaPrealerta = null
-      }else{
-        swal({
-          title: "Hubo un error",
-          text: "Ha ocurrido un error, inténtelo más tarde",
-          icon: "error",
-          button: "Aceptar",
-        });
-      }
+      swal("Registro exitoso", "La prealerta se ha sido registrado correctamente", "success", {
+        button: "Aceptar",
+      });
+
+      listarPrealertas();
     };
 
     function listarPrealertas(){
