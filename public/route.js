@@ -612,24 +612,31 @@
       })
       // Fin Jason
 
+       //Christine
+    .state('dashboardAdmin', {
+      url: '/admin',
+      templateUrl: './components/admin/dashboardadmin.vista.html',
+      data:{
+        pageTitle: 'Dashboard | Administrador'
+      }
+    })
 
+    .state('dashboardCliente', {
+      url: '/cliente',
+      templateUrl: './components/cliente/dashboardcliente.vista.html',
+      data:{
+        pageTitle: 'Dashboard | Cliente'
+      }
+    })
 
-
-      .state('direcciones', {
-        url: '/direcciones',
-        templateUrl: './components/direcciones/direcciones.view.html',
-        data: {
-          pageTitle: 'Registro Direcciones | Ejemplo Arquitectura'
-        },
-        resolve: {
-          load: ['$ocLazyLoad', ($ocLazyLoad) => {
-            return $ocLazyLoad.load('./components/direcciones/direcciones.controller.js')
-          }]
-        },
-        controller: 'controladorDirecciones',
-        controllerAs: 'vm'
-      })
-
+    .state('dashboardEmpleado', {
+      url: '/empleado',
+      templateUrl: './components/empleado/dashboardEmpleado.vista.html',
+      data:{
+        pageTitle: 'Dashboard | Empleado'
+      }
+    })
+    
       .state('licencias', {
         url: '/licencias',
         templateUrl: './components/licencias/licencias.view.html',
