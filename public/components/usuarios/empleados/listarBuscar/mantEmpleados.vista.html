@@ -24,11 +24,11 @@
           </thead>
           <tbody>
             <tr ng-repeat="empleado in vm.listaEmpleados | filter:buscarEmpleado" >
-              <td>{{empleado.identificacion}}</td>
-              <td>{{empleado.nombre}}</td>
-              <td>{{empleado.apellido1}}</td>
-              <td>{{empleado.tipoUsuario}}</td>
-              <td>{{empleado.sucursal}}</td>
+              <td>{{empleados.identificacion}}</td>
+              <td>{{empleados.primerNombre}}</td>
+              <td>{{empleados.primerApellido}}</td>
+              <td>{{empleados.tipoUsuario}}</td>
+              <td>{{empleados.sucursal}}</td>
               <td>
                 <li class="nav-item dropdown btnAccion" style="list-style:none">
                   <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Acciones</a>
