@@ -4,9 +4,9 @@
   .module('correos-cr')
   .service('servicioSucursales', servicioSucursales);
 
-  servicioSucursales.$inject = ['$log','$http'];
+  servicioSucursales.$inject = ['$log','$http', 'localStorageFactories'];
 
-  function servicioSucursales($log, $http){
+  function servicioSucursales($log, $http, localStorageFactories){
 
     let publicAPI = {
       agregarSucursal : _agregarSucursal,
@@ -15,12 +15,13 @@
       actualizarSucursal: _actualizarSucursal
     }
     return publicAPI;
-
+    
     // Funcion que almacena en el localStorage todos los usuarios
     function _agregarSucursal(pnuevaSucursal){
       let listaSucursales = _obtenerSucursal();
-      listaSucursales.push(pnuevaSucursal);
-      localStorage.setItem('sucursalesLS', JSON.stringify(listaSucursales));
+      let registro =  localStorageFactories.setSucursales(pnuevaSucursal);
+      
+       return registro;
     }
 
     // Funcion que trae todos los usuarios del localStorage y a partir de esos datos vuelve a crear un arreglo con todos los objetos de tipo usuario
@@ -33,7 +34,7 @@
       }else{
         listaSucursalesLocal.forEach(obj => {
           
-          let objSucursales = new Sucursales(obj.provincia, obj.canton, obj.distrito, obj.direccion, obj.telefono, obj.idSucursal);
+          let objSucursales = new Sucursales(obj.idSucursal, obj.nombreSucursal, obj.ubicacion, obj.direccion, obj.telefono);
 
           listaSucursales.push(objSucursales);
         })

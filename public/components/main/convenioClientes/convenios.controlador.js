@@ -46,9 +46,10 @@
       vm.listaConvClientes = servicioConvenioClientes.obtenerConvenioCliente();
     }
     
-    vm.modificar = (pconvenio) =>{
-      $state.go('modificarConvCliente', {idConvenio: JSON.stringify(pconvenio.idConvenio)})
+    vm.modificar = (pConvenio) =>{
+      $state.go('modificar-convenios', {idConvenio: JSON.stringify(pConvenio.idConvenio)})
     }
+   
 
   }
 })(); 

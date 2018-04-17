@@ -3,6 +3,7 @@
 <main id="registroSucursales">
   <div class="container-fluid">
     <div class="row">
+      
       <div class="col-md-3 py-5 px-5 panelIzquierdo">
         <img src="../../../sources/img/logo_slateblue.svg" class="" alt="">
         <a href="/#!/listarSucursal" class="btn btnAccion mt-4">Lista de sucursales</a>
@@ -14,28 +15,19 @@
           <form ng-submit="vm.registrarSucursal(vm.nuevaSucursal)" name="formRegistrarSucursales" autocomplete="off" class="col-md-8" novalidate>
             
             <div class="form-group">
-              <label for="txtProvincia">Provincia:</label>
-              <!-- <select id="sltProvincia" name="sltProvincia"class="form-control" ng-change="vm.rellenarCantones(vm.nuevaSucursal.provincia._id)" ng-options="provincia as provincia.name for provincia in vm.provincias track by provincia._id" ng-model="vm.nuevaSucursal.provincia" required>
-                <option>-- Seleccione una Provincia --</option>
-              </select> -->
-              <input type="text" name="provincia" class="form-control" id="txtProvincia" ng-model="vm.nuevaSucursal.provincia" pattern="[ñáéíóúA-Za-z ]+" required>
-              <div ng-messages="formRegistrarSucursales.provincia.$error" role="alert">
+              <label for="txtiIdSucursal">Id de la sucursal:</label>
+              <input type="text" name="IdSucursal" class="form-control" id="txtIdSucursal" ng-model="vm.nuevaSucursal.idSucursal" required>
+              <div ng-messages="formRegistrarSucursales.idSucursal.$error" role="alert">
                 <div ng-message="required">
                   <small class="form-text text-muted">Este campo es requerido</small>
-                </div>
-                <div ng-message="pattern">
-                  <small class="form-text text-muted">Formato incorrecto, ingrese únicamente letras</small>
                 </div>
               </div>
             </div> 
 
             <div class="form-group">
-              <label for="txtCanton">Cantón:</label>
-              <!-- <select id="sltCanton" name="sltCanton" class="form-control" ng-change="vm.rellenarDistrito(vm.nuevaSucursal.canton._id)" ng-options="canton as canton.name for canton in vm.cantones track by canton._id" ng-model="vm.nuevaSucursal.canton">
-                <option>--Seleccione un cantón--</option>
-              </select> -->
-              <input type="text" name="canton" class="form-control" id="txtCanton" ng-model="vm.nuevaSucursal.canton" pattern="[ñáéíóúA-Za-z ]+" required>
-              <div ng-messages="formRegistrarSucursales.canton.$error" role="alert">
+              <label for="txtNombreSucursal">Nombre de la sucursal:</label>
+              <input type="text" name="NombreSucursal" class="form-control" id="txtNombreSucursal" ng-model="vm.nuevaSucursal.nombreSucursal" pattern="[ñáéíóúA-Za-z ]+" required>
+              <div ng-messages="formRegistrarSucursales.nombreSucursal.$error" role="alert">
                 <div ng-message="required">
                   <small class="form-text text-muted">Este campo es requerido</small>
                 </div>
@@ -46,13 +38,18 @@
             </div>
 
             <div class="form-group">
-              <label for="txtDistrito">Distrito:</label>
-              <!-- <select id="sltDistrito" name="sltDistrito" class="form-control" ng-options="distrito as distrito.name for distrito in vm.distritos track by distrito._id" ng-model="vm.nuevaSucursal.distrito">
-                <option>--Seleccione un distrito</option>
-              </select> -->
+              <label for="txtUbicacion">Ubicacion</label>
+              <a class="btn btnSecundario" ng-click="vm.googlemap()" data-toggle="modal" data-target="#exampleModal" class="">
+                <img src="../../../../sources/img/google.svg" width="15px" height="15px" class="" alt="">  Mi ubicación
+              </a>
 
-              <input type="text" name="distrito" class="form-control" id="txtDistrito" ng-model="vm.nuevaSucursal.distrito" pattern="[ñáéíóúA-Za-z ]+" required>
-              <div ng-messages="formRegistrarSucursales.distrito.$error" role="alert">
+              <input type="text" name="Ubicacion" class="form-control" id="txtUbicacion" ng-model="vm.ubicacion" pattern="[ñáéíóúA-Za-z ]+" places-auto-complete size=80 component-restrictions="{country: 'Costa Rica'}" required>
+
+              <ng-map id="map" center="{{vm.ubicacion}}" zoom="14" geo-callback="vm.callbackFunc('you')" styles="width: 50%, height: 20em">
+                  <marker position="{{vm.ubicacion}}" draggable="true" on-dragend="vm.getCurrentLocation()" coords="marker.coords" options="marker.options" ></marker>
+              </ng-map>
+
+              <div ng-messages="formRegistrarSucursales.ubicacion.$error" role="alert">
                 <div ng-message="required">
                   <small class="form-text text-muted">Este campo es requerido</small>
                 </div>
@@ -94,11 +91,28 @@
 
             <button type="submit" class="btn btnAccion" ng-disabled="formRegistrarSucursales.$invalid">Registrar</button>
 
-            <!-- <button type="submit" class="btn btn-info" ng-disabled="formRegistrarSucursales.$invalid  ">Registrar</button> -->
-
-          </form>
-        </div>
+           <!-- Modal -->
+           <!-- <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Ubicación</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <input type="text">
+                  
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                  <button type="button" class="btn btn-primary">Guardar localización</button>
+                </div>
+              </div>
+            </div>
+          </div> -->
+        </form>
       </div>
-    </div>
-  </div>
+  </section>
 </main>
