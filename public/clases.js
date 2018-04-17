@@ -133,8 +133,9 @@ class Cliente extends Usuario{
     this.telefono = pTelefono;
     this.sucursalPreferencia = pSucursalPreferencia;
     this.tarjetas = [];
+    this.paquetes = [];
     this.latitud = pLat;
-    this.longitud = pLong;
+    this.longitud = pLong; 
   }
 
   agregarTarjeta(pObjTarjeta){

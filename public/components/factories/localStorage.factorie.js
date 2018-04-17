@@ -58,9 +58,9 @@
           'numeroTarjeta' : data.tarjetas[0].numeroTarjeta,
           'mesVencimiento' : data.tarjetas[0].mesVencimiento,
           'annoVencimiento': data.tarjetas[0].annoVencimiento,
-          'ccv': data.tarjetas[0],
+          'ccv': data.tarjetas[0].ccv,
           'latitud': data.latitud,
-          'longitud': data.longitud,
+          'longitud': data.longitud
         }
       });
 
