@@ -10,7 +10,8 @@
 
     let navegacionPrincipalControlador = function(){
       let vm = this;
-      vm.closeSesion = () => {
+      vm.closeSesion= () => {
+        console.log('entre');
         swal("Desea cerrar la sesión?", {
             buttons: {
               cancel: "Cancelar",
@@ -42,7 +43,7 @@
 
     let navegacion = {
       templateUrl: '/components/directives/nav/navPrinicipal.vista.html',
-      restrict: 'EA',
+      restrict: 'E',
       require: "ngClick",
       controller: navegacionPrincipalControlador,
       controllerAs: 'vm'
