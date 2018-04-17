@@ -52,6 +52,17 @@
       return tipoProductoSeleccionado;
     }
 
+    function convenioId(){
+      let listaConvenios = _getConvenios();
+      let convenioSeleccionado;
+
+      for(let i = 0; i < listaConvenios; i++ ){
+        convenioSeleccionado = listaConvenios[i];
+      }
+      
+      return convenioSeleccionado;
+    }
+
     function _actualizarTipoProducto(ptipoProductoModificado){
       let listaTipoProductos = _getTipoProductos();
 
