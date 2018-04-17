@@ -9,6 +9,7 @@
   function localStorageFactories($log, $http) {
     const localStorageAPI = {
       setUsuario : _setUsuario,
+      setEmpleado : _setEmpleado,
       getDatosUsuarios: _getDatosUsuarios,
       setItem: _setItem,
       getItem: _getItem,
@@ -60,9 +61,9 @@
           'numeroTarjeta' : data.tarjetas[0].numeroTarjeta,
           'mesVencimiento' : data.tarjetas[0].mesVencimiento,
           'annoVencimiento': data.tarjetas[0].annoVencimiento,
-          'ccv': data.tarjetas[0].ccv,
+          'ccv': data.tarjetas[0],
           'latitud': data.latitud,
-          'longitud': data.longitud
+          'longitud': data.longitud,
         }
       });
 
@@ -205,6 +206,55 @@
       });
 
       return response;
+    }
+
+    //CHRISTINE
+
+    function _setEmpleado(data) {
+      let respuesta;
+
+      let peticion = $.ajax({
+        url: 'http://localhost:4000/api/save_user',
+        type: 'post',
+        contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+        dataType: 'json',
+        async: false,
+        data: {
+          'tipoIdentificacion' : data.tipoIdentificacion,
+          'identificacion' : data.identificacion,
+          'nombre1' : data.nombre1,
+          'nombre2' : data.nombre2,
+          'apellido1' : data.apellido1,
+          'apellido2' : data.apellido2,
+          'fotoPerfil' : data.fotoPerfil,
+          'sexo' : data.sexo,
+          'fechaNacimiento' : data.fechaNacimiento,
+          'email' : data.email,
+          'contrasenna' : data.contrasenna,
+          'provincia' : data.provincia,
+          'canton' : data.canton,
+          'distrito' : data.distrito,
+          'direccion' : data.direccion,
+          'estado' : data.estado,
+          'tipoUsuario' : data.tipoUsuario,
+          'sucursal' : data.sucursal,
+          'rolAduana' : data.rolAduana,
+          'telefono' : data.telefono,
+          'sucursal' : data.Sucursal,
+          'licencia' : data.licencia,
+          'fotoLicencia' : data.fotoLicencia,
+          'licenciaVencimiento' : data.licenciaVencimiento,
+        }
+      });
+
+      peticion.done((res) => {
+        respuesta = res.success
+      });
+      peticion.fail(() => {
+        respuesta = false;
+      });
+
+      return respuesta;
     }
 
   };
