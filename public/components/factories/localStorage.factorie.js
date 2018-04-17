@@ -127,6 +127,7 @@
     };
 
     function _closeSession() {
+      
       let response = true;
 
       sessionStorage.removeItem('session');
