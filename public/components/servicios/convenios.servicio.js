@@ -33,7 +33,7 @@
         listaConvenios = [];
       }else{
         listaConveniosLocal.forEach(obj => {
-          let objConvenio = new Convenios(obj.nombreInstitucion, obj.tipo, obj.tiempo,obj.costo,obj.idConvenios);
+          let objConvenio = new Convenios(obj.idConvenios, obj.tipo, obj.nombreInstitucion,  obj.tiempo,obj.costo,);
 
           listaConvenios.push(objConvenio);
         })

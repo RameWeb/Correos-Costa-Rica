@@ -20,32 +20,32 @@
 
     // vm.nuevoConvenio  = ConvenioSeleccionado;
 
-    // vm.modificarConvenio = (pnuevoConvenio) =>{
+    vm.modificarConvenio = (pnuevoConvenio) =>{
 
-    //   let convenioModificado = new Convenios(pnuevoConvenio.nombreInstitucion, pnuevoConvenio.tipo, pnuevoConvenio.tiempo,pnuevoConvenio.costo,pnuevoConvenio.idConvenios);
+      let convenioModificado = new Convenios(pnuevoConvenio.idConvenios,pnuevoConvenio.tipo, pnuevoConvenio.nombreInstitucion, pnuevoConvenio.tiempo,pnuevoConvenio.costo);
 
-    // console.log(convenioModificado);
+    console.log(convenioModificado);
 
     //   // Pasamos al servicio el nuevo obj de tipo cliente para ser almacenado en el localStorage
-    //   vm.convenioSeleccionado = servicioConvenios.actualizarConvenio(convenioModificado);
+       vm.convenioSeleccionado = servicioConvenios.actualizarConvenio(convenioModificado);
 
     //   // Retroalimentacion Visual para los usuarios: SweetAlert
-    //   swal("Registro exitoso", "El convenio se ha sido modificado correctamente", "success", {
-    //     button: "Aceptar",
-    //   });
+       swal("Registro exitoso", "El convenio se ha sido modificado correctamente", "success", {
+       button: "Aceptar",
+      });
 
-    //   $state.go('lista-convenios');
+      $state.go('lista-convenios');
 
-    //   listarConvenios();
+      listarConvenios();
 
     //   // Se limpia el formulario
-    //   vm.nuevoConvenio = null;
-    // }
+      vm.nuevoConvenio = null;
+    }
 
     // Imprimir lista de repartidores en el sistema
-    // function listarConvenios(){
-    //   vm.listaConvenios= servicioConvenios.getConvenios();
-    // }
+     function listarConvenios(){
+       vm.listaConvenios= servicioConvenios.getConvenios();
+     }
   }
 })();
 

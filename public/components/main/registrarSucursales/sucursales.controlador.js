@@ -2,6 +2,7 @@
   'use strict';
   angular
   .module('correos-cr')
+  .controller('controladorSucursales', controladorSucursales);
   
   controladorSucursales.$inject = ['$stateParams', '$state', 'servicioSucursales','Upload','NgMap'];
 
@@ -22,8 +23,10 @@
     
     // Funcion que es llamada desde el html para regustra un nuevo usuario
     vm.registrarSucursal = (pnuevaSucursal) => {
+      pnuevaSucursal.latitud = vm.latitude;
+      pnuevaSucursal.longitud = vm.longitude
       // Tomamos el objeto sin formato y lo comvertimos en un objeto de tipo cliente
-      let objNuevaSucursal = new Sucursales(pnuevaSucursal.idSucursal, pnuevaSucursal.nombreSucursal, pnuevaSucursal.ubicacion,  pnuevaSucursal.direccion, pnuevaSucursal.telefono);
+      let objNuevaSucursal = new Sucursales(pnuevaSucursal.idSucursal, pnuevaSucursal.nombreSucursal, pnuevaSucursal.ubicacion,  pnuevaSucursal.direccion, pnuevaSucursal.telefono, );
         
       console.log(objNuevaSucursal);
 

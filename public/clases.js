@@ -157,7 +157,7 @@ class Cliente extends Usuario{
  */
 class Tarjeta{
   constructor(ptitulartarjeta, pnumerotarjeta, pmesvencimiento, pannovencimiento, pccv, pidcliente){
-    this.titularTarjeta = ptitulartarjeta;
+    this.titularTarjeta = ptitulartarjeta;conve
     this.numeroTarjeta = pnumerotarjeta;
     this.mesVencimiento = pmesvencimiento;
     this.annoVencimiento = pannovencimiento;
