@@ -15,7 +15,8 @@
       getItem: _getItem,
       setSession: _setSession,
       closeSession: _closeSession,
-      getSession: _getSession
+      getSession: _getSession, 
+      sendMail :_sendMail
     };
     return localStorageAPI;
 
@@ -140,6 +141,31 @@
 
       return sessionActive;
     };
+
+    function _sendMail(data){
+      let response;
+
+      let peticion = $.ajax({
+        url: 'http://localhost:4000/api/mail',
+        type: 'post',
+        contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+        dataType: 'json',
+        async: false,
+        data: {
+         'to': data.to,
+         'subject': data.subject,
+         'text': data.text
+        }
+      });
+
+      peticion.done((datos) => {
+        console.log(datos);
+      });
+      peticion.fail((error) => {
+        response = error;
+        console.log(error);
+      });
+    }
 
     //CHRISTINE
 
