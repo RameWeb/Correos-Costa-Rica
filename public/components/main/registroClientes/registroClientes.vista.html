@@ -261,6 +261,64 @@
           </div>
         </div>
       </div>
+
+      <div class="my-3">
+          <h3>Información de Pago</h3>
+          <!-- Otros datos -->
+          <div class="form-group">
+            <label for="inputTitularTarjeta">Titular de la tarjeta</label>
+            <input type="text" class="form-control" id="inputTitularTarjeta" ng-model="vm.nuevoCliente.titularTarjeta" name="txtTitularTarjeta"
+              autocomplete="off" disabled>
+            <div ng-messages="formRegistrarCliente.txtTitularTarjeta.$error" role="alert">
+              <div ng-message="required">
+                <small class="form-text text-muted">Este campo es requerido</small>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="inputNumeroTarjeta">Numero de tarjeta:</label>
+            <input type="text" class="form-control" id="inputNumeroTarjeta" ng-model="vm.nuevoCliente.numeroTarjeta" name="txtNumeroTarjeta"
+              minlength="15" maxlength="16" autocomplete="off" disabled>
+            <div ng-messages="formRegistrarCliente.txtNumeroTarjeta.$error" role="alert">
+              <div ng-message="required">
+                <small class="form-text text-muted">Este campo es requerido</small>
+              </div>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-4">
+              <label for="inputMesVencimiento">Mes</label>
+              <input type="text" class="form-control" id="inputMesVencimiento" ng-model="vm.nuevoCliente.mesVencimiento" name="txtMesVencimiento"
+                autocomplete="off" disabled>
+              <div ng-messages="formRegistrarCliente.txtMesVencimiento.$error" role="alert">
+                <div ng-message="required">
+                  <small class="form-text text-muted">Este campo es requerido</small>
+                </div>
+              </div>
+            </div>
+            <div class="form-group col-md-4">
+              <label for="inputAnnoVencimiento">Año</label>
+              <input type="text" class="form-control" id="inputAnnoVencimiento" ng-model="vm.nuevoCliente.annoVencimiento" name="txtAnnoVencimiento"
+                min="2019" max="2029" disabled>
+              <div ng-messages="formRegistrarCliente.txtAnnoVencimiento.$error" role="alert">
+                <div ng-message="required">
+                  <small class="form-text text-muted">Este campo es requerido</small>
+                </div>
+              </div>
+            </div>
+            <div class="form-group col-md-4">
+              <label for="inputCcv">CCV</label>
+              <input type="text" class="form-control" id="inputCcv" ng-model="vm.nuevoCliente.ccv" name="txtCcv" minlength="3" maxlength="4"
+                disabled>
+              <div ng-messages="formRegistrarCliente.txtCcv.$error" role="alert">
+                <div ng-message="required">
+                  <small class="form-text text-muted">Este campo es requerido</small>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
     </div>
     <button type="submit" class="btn btnAccion" ng-disabled="formRegistrarCliente.$invalid">Registrar Cliente</button>
     <!-- <button type="" class="btn btnAccion" ng-click="listarClientes()">Listar Cliente</button> -->

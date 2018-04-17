@@ -92,7 +92,20 @@
         controllerAs: 'vm'
       })
 
-
+      .state('main.registroConvenioCliente', {
+        url: '/registroConvenioCliente',
+        templateUrl: './components/main/convenioClientes/convenios.vista.html',
+        data: {
+          pageTitle: 'Solicitar convenio | Correos de Costa Rica'
+        },
+        resolve: {
+          load: ['$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/main/convenioClientes/convenios.controlador.js')
+          }]
+        },
+        controller: 'controladorConvenioClientes',
+        controllerAs: 'vm'
+      })
 
 
       // -----------------------------------------------------------------------
@@ -193,20 +206,6 @@
         controllerAs: 'vm'
       })
 
-      .state('registrarConvCliente', {
-        url: '/registrarConvCliente',
-        templateUrl: './components/convenioCliente/registrar/convenios.vista.html',
-        data: {
-          pageTitle: 'Registrar Convenios'
-        },
-        resolve: {
-          load: ['$ocLazyLoad', ($ocLazyLoad) => {
-            return $ocLazyLoad.load('./components/convenioCliente/registrar/convenios.controlador.js')
-          }]
-        },
-        controller: 'controladorConveniosCliente',
-        controllerAs: 'vm'
-      })
 
       .state('modificarConvCliente', {
         url: '/modificarConvCliente',
