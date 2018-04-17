@@ -26,7 +26,7 @@
       pnuevaSucursal.latitud = vm.latitude;
       pnuevaSucursal.longitud = vm.longitude
       // Tomamos el objeto sin formato y lo comvertimos en un objeto de tipo cliente
-      let objNuevaSucursal = new Sucursales(pnuevaSucursal.idSucursal, pnuevaSucursal.nombreSucursal, pnuevaSucursal.ubicacion,  pnuevaSucursal.direccion, pnuevaSucursal.telefono, );
+      let objNuevaSucursal = new Sucursales(pnuevaSucursal.idSucursal, pnuevaSucursal.nombreSucursal, pnuevaSucursal.latitude, pnuevaSucursal.longitude, pnuevaSucursal.direccion, pnuevaSucursal.telefono, );
         
       console.log(objNuevaSucursal);
 

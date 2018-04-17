@@ -34,7 +34,7 @@
       }else{
         listaSucursalesLocal.forEach(obj => {
           
-          let objSucursales = new Sucursales(obj.idSucursal, obj.nombreSucursal, obj.ubicacion, obj.direccion, obj.telefono);
+          let objSucursales = new Sucursales(obj.idSucursal, obj.nombreSucursal, obj.latitude, obj.longitude, obj.direccion, obj.telefono);
 
           listaSucursales.push(objSucursales);
         })

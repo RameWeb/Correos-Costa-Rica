@@ -126,7 +126,7 @@
 
 
 
-
+// inicio de SUCURSALES
 
       .state('registroSucursal', {
         url: '/registroSucursal',
@@ -143,26 +143,27 @@
         controllerAs: 'vm'
       })
 
+      .state('listarSucursal', {
+        url: '/listarSucursal',
+        templateUrl: './components/main/listarBuscarSucursales/listaSucursales.vista.html',
+        data: {
+          pageTitle: 'Listar Sucursales'
+        },
+        resolve: {
+          load: ['$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/main/listarBuscarSucursales/listaSucursales.vista.html')
+          }]
+        },
+        controller: 'controladorSucursales',
+        controllerAs: 'vm'
+      })
 
 
 
       // -----------------------------------------------------------------------
 
       
-      .state('listarSucursal', {
-        url: '/listarSucursal',
-        templateUrl: './components/sucursales/listarBuscar/listaSucursales.vista.html',
-        data: {
-          pageTitle: 'Listar Sucursales'
-        },
-        resolve: {
-          load: ['$ocLazyLoad', ($ocLazyLoad) => {
-            return $ocLazyLoad.load('./components/sucursales/registrar/sucursales.controlador.js')
-          }]
-        },
-        controller: 'controladorSucursales',
-        controllerAs: 'vm'
-      })
+      
 
       .state('modificarSucursal', {
         url: '/modificarSucursal',
