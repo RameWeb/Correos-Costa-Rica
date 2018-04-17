@@ -141,7 +141,7 @@
       </div>
 
       <div class="form-row">
-        <div class="form-group col-md-6">
+        <div class="form-group col-md-12">
           <label for="inputEmail">Correo Electrónico:</label>
           <input type="email" class="form-control" id="inputEmail" ng-model="vm.nuevoCliente.email" name="txtEmailCliente" required>
           <div ng-messages="formRegistrarCliente.txtEmailCliente.$error" role="alert">
@@ -151,7 +151,7 @@
           </div>
           <!-- pattern="[\w.%+-]+@domain\.com" -->
         </div>
-        <div class="form-group col-md-6">
+        <!-- <div class="form-group col-md-6">
           <label for="inputContrasenna">Contraseña:</label>
           <input type="password" class="form-control" id="inputContrasenna" ng-model="vm.nuevoCliente.contrasenna" name="txtContrasenna"
             required>
@@ -160,7 +160,7 @@
               <small class="form-text text-muted">Este campo es requerido</small>
             </div>
           </div>
-        </div>
+        </div> -->
       </div>
       <div class="form-row">
         <div class="form-group col-md-6">
@@ -175,7 +175,7 @@
         </div>
         <div class="form-group col-md-6">
           <label for="inputTelefono">Teléfono</label>
-          <input type="number" class="form-control" id="inputTelefono" ng-model="vm.nuevoCliente.telefono" name="txtTelefono" minlength="8"
+          <input type="text" class="form-control" id="inputTelefono" ng-model="vm.nuevoCliente.telefono" name="txtTelefono" minlength="8"
             maxlength="8" pattern="^[2|6|7|8]\d{7}$" required>
           <div ng-messages="formRegistrarCliente.txtTelefono.$error" role="alert">
             <div ng-message="required">
@@ -201,25 +201,37 @@
       <div class="form-row">
         <div class="form-group col-md-4">
           <label for="inputProvincia">Provincia</label>
-          <input type="text" class="form-control" id="inputProvincia" ng-model="vm.nuevoCliente.provincia" name="txtProvincia" required>
+          <select id="sltProvincia" class="custom-select" name="txtProvincias" ng-model="vm.nuevoCliente.provincia" ng-change="vm.rellenarCantones(vm.nuevoCliente.provincia._id)"
+            ng-options="provincia as provincia.name for provincia in vm.provincias track by provincia._id" required>
+            <option value="">--Seleccione una provincia--</option>
+          </select>
           <div ng-messages="formRegistrarCliente.txtProvincia.$error" role="alert">
             <div ng-message="required">
               <small class="form-text text-muted">Este campo es requerido</small>
             </div>
           </div>
         </div>
+
         <div class="form-group col-md-4">
           <label for="inputCanton">Cantón</label>
-          <input type="text" class="form-control" id="inputCanton" ng-model="vm.nuevoCliente.canton" name="txtCanton" required>
+          <select id="sltCanton" class="custom-select" name="txtCanton" ng-change="vm.rellenarDistrito(vm.nuevoCliente.canton._id)"
+          ng-options="canton as canton.name for canton in vm.cantones track by canton._id" ng-model="vm.nuevoCliente.canton"
+          ng-disabled="!vm.nuevoCliente.provincia" required>
+          <option value="">--Seleccione un cantón--</option>
+        </select>
           <div ng-messages="formRegistrarCliente.txtCanton.$error" role="alert">
             <div ng-message="required">
               <small class="form-text text-muted">Este campo es requerido</small>
             </div>
           </div>
         </div>
+
         <div class="form-group col-md-4">
           <label for="inputDistrito">Distrito</label>
-          <input type="text" class="form-control" id="inputDistrito" ng-model="vm.nuevoCliente.distrito" name="txtDistrito" required>
+          <select id="sltDistrito" class="custom-select" name="campoDistritos" ng-options="distrito as distrito.name for distrito in vm.distritos track by distrito._id"
+              ng-model="vm.nuevoCliente.distrito" ng-disabled="!vm.nuevoCliente.canton" required>
+              <option value="">--Seleccione un distrito--</option>
+            </select>
           <div ng-messages="formRegistrarCliente.txtDistrito.$error" role="alert">
             <div ng-message="required">
               <small class="form-text text-muted">Este campo es requerido</small>
@@ -251,6 +263,7 @@
       </div>
     </div>
     <button type="submit" class="btn btnAccion" ng-disabled="formRegistrarCliente.$invalid">Registrar Cliente</button>
+    <!-- <button type="" class="btn btnAccion" ng-click="listarClientes()">Listar Cliente</button> -->
 
 </div>
 <!-- Modal -->

@@ -46,6 +46,7 @@ module.exports.registrar = (req, res) => {
     default:
     break;
   }
+  console.log(newUser.latitud);
   console.log('Objeto que viene del front-end');
   console.log(newUser);
 

@@ -66,7 +66,7 @@
         url: '/registroClientes',
         templateUrl: './components/main/registroClientes/registroClientes.vista.html',
         data: {
-          pageTitle: 'Inicio | Correos de Costa Rica'
+          pageTitle: 'Clientes | Correos de Costa Rica'
         },
         resolve: {
           load: ['$ocLazyLoad', ($ocLazyLoad) => {
@@ -77,6 +77,20 @@
         controllerAs: 'vm'
       })
 
+      .state('main.listarClientes', {
+        url: '/listarClientes',
+        templateUrl: './components/main/listarClientes/listarClientes.vista.html',
+        data: {
+          pageTitle: 'Clientes | Correos de Costa Rica'
+        },
+        resolve: {
+          load: ['$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/main/registroClientes/registroClientes.controlador.js')
+          }]
+        },
+        controller: 'controladorClientes',
+        controllerAs: 'vm'
+      })
 
 
 
@@ -365,21 +379,6 @@
         controllerAs: 'vm'
       })
 
-      .state('casillero', {
-        url: '/casillero',
-        templateUrl: './components/casillero/casillero.vista.html',
-        data: {
-          pageTitle: 'Mi casillero | Correos CR'
-        },
-        resolve: {
-          load: ['$ocLazyLoad', ($ocLazyLoad) => {
-            return $ocLazyLoad.load('./components/casillero/casillero.controlador.js')
-          }]
-        },
-        controller: 'controladorCasillero',
-        controllerAs: 'vm'
-      })
-
       .state('consultarBitacora', {
         url: '/consultarBitacora',
         templateUrl: './components/consultarBitacora/consultarBitacora.vista.html',
@@ -443,8 +442,6 @@
         controllerAs: 'vm'
       })
 
-
-
       .state('listaCourier', {
         url: '/listaCourier',
         templateUrl: './components/courier/listaCourier.vista.html',
@@ -468,9 +465,6 @@
         controller: 'controladorCourier',
         controllerAs: 'vm'
       })
-
-
-
 
       .state('regRepartidores', {
         url: '/regRepartidores',
@@ -618,55 +612,6 @@
         controllerAs: 'vm'
       })
       // Fin Jason
-
-
-
-
-      .state('direcciones', {
-        url: '/direcciones',
-        templateUrl: './components/direcciones/direcciones.view.html',
-        data: {
-          pageTitle: 'Registro Direcciones | Ejemplo Arquitectura'
-        },
-        resolve: {
-          load: ['$ocLazyLoad', ($ocLazyLoad) => {
-            return $ocLazyLoad.load('./components/direcciones/direcciones.controller.js')
-          }]
-        },
-        controller: 'controladorDirecciones',
-        controllerAs: 'vm'
-      })
-
-      .state('licencias', {
-        url: '/licencias',
-        templateUrl: './components/licencias/licencias.view.html',
-        data: {
-          pageTitle: 'Registro Licencias'
-        },
-        resolve: {
-          load: ['$ocLazyLoad', ($ocLazyLoad) => {
-            return $ocLazyLoad.load('./components/licencias/licencias.controller.js')
-          }]
-        },
-        controller: 'controladorLicencias',
-        controllerAs: 'vm'
-      })
-
-      .state('estados', {
-        url: '/estados',
-        templateUrl: './components/estadoPaquete/estadoPaquete.view.html',
-        data: {
-          pageTitle: 'Registro Estados | Estados Paquete'
-        },
-        resolve: {
-          load: ['$ocLazyLoad', ($ocLazyLoad) => {
-            return $ocLazyLoad.load('./components/estadoPaquete/estadoPaquete.controller.js')
-          }]
-        },
-        controller: 'controladorEstadoPaquete',
-        controllerAs: 'vm'
-      });
-    //fin Christine
 
 
     $urlRouterProvider.otherwise('/');

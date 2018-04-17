@@ -5,23 +5,27 @@ module.exports.enviarCorreo = (req,res)=>{
   let transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-      user: 'CORREO_DEL_EQUIPO',
-      pass: 'CONTRASEÑA_DEL_CORREO_DEL_EQUIPO'
+      user: 'rameweb2018@gmail.com',
+      pass: 'proyecto2018'
     }
   });
 
   let mailOptions = {
-    from: req.body.from,
-    to: 'CORREO_DEL_EQUIPO',
+    from: 'rameweb2018@gmail.com',
+    to: req.body.to,
     subject: req.body.subject,
-    text: req.body.text
+    text: 'Su contraseña temporal es: ' + req.body.text,
   };
 
-  transporter,sendMail(mailOptions, function(error,info){
+  console.log(mailOptions);
+
+  transporter.sendMail(mailOptions,(error, info)=>{
     if(error){
-      console.log(error);
-    } else{
-      console.log('Email sent:'+info.response);
+      res.json({success:false, msg:error});
+    }
+    else{
+      res.json({success:true});
     }
   });
+
 }
