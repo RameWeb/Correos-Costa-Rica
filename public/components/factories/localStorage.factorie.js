@@ -62,7 +62,7 @@
           'annoVencimiento': data.tarjetas[0].annoVencimiento,
           'ccv': data.tarjetas[0].ccv,
           'latitud': data.latitud,
-          'longitud': data.longitud,
+          'longitud': data.longitud
         }
       });
 

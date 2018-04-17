@@ -4,9 +4,9 @@
     .module('correos-cr')
     .controller('controladorClientes', controladorClientes);
 
-  controladorClientes.$inject = ['$stateParams', '$state', 'servicioUsuarios', 'imageUpload', 'Upload', 'NgMap'];
+    controladorClientes.$inject = ['$http', '$stateParams', '$state', 'servicioUsuarios', 'imageUpload', 'Upload', 'NgMap'];
 
-  function controladorClientes($stateParams, $state, servicioUsuarios, imageUpload, Upload, NgMap){
+  function controladorClientes($http, $stateParams, $state, servicioUsuarios, imageUpload, Upload, NgMap){
     let vm = this;
 
     vm.sucursales = ["Alajuelita", "Bagaces", "Cañas", "Desamparados", "Cartago Centro", "Moravia", "Pavas", "Venecia"];
@@ -14,8 +14,6 @@
     vm.sexo = ["Femenino", "Masculino", "Sin especificar"];
 
     vm.tipoIdentificacion = ["Cédula nacional", "Residente", "Pasaporte", "DIMEX"];
-
-    vm.map = '';
 
     NgMap.getMap("map").then(function (map) {
       vm.map = map;
@@ -25,6 +23,48 @@
       vm.latitude = vm.map.getCenter().lat();
       vm.longitude = vm.map.getCenter().lng();
     };
+
+     // Función que obtiene las provincias
+     vm.provincias = $http({
+      method: 'GET',
+      url: '../../../sources/data/provincias.json'
+    }).then((success) => {
+      vm.provincias = success.data;
+    }, (error) => {
+    });
+
+    // Funcion que rellena los los cantones
+    vm.rellenarCantones = (pidProvincia) => {
+      vm.cantones = $http({
+        method: 'GET',
+        url: '../../../sources/data/cantones.json'
+      }).then((success) => {
+        let cantones = [];
+        for (let i = 0; i < success.data.length; i++) {
+          if (pidProvincia == success.data[i].idProvincia) {
+            cantones.push(success.data[i]);
+          }
+        }
+        vm.cantones = cantones;
+      }, (error) => {
+      });
+    }
+
+    vm.rellenarDistrito = (pidCanton) => {
+      vm.distritos = $http({
+        method: 'GET',
+        url: '../../../sources/data/distritos.json'
+      }).then((success) => {
+        let distritos = [];
+        for (let i = 0; i < success.data.length; i++) {
+          if (pidCanton == success.data[i].idCanton) {
+            distritos.push(success.data[i]);
+          }
+        }
+        vm.distritos = distritos;
+      }, (error) => {
+      });
+    }
 
 
     // Objeto sin formato
@@ -37,19 +77,31 @@
     // ***********Guardar imagen en Cloudinary
     vm.cloudObj = imageUpload.getConfiguration();
 
-    vm.preRegistrarUsuario = (pnuevoUsuario) => {
-      vm.cloudObj.data.file = pnuevoUsuario.fotoPerfil[0];
+    vm.preRegistrarUsuario = (pNuevoCliente) => {
+
+      pNuevoCliente.latitud = vm.latitude;
+      pNuevoCliente.longitud = vm.longitude;
+
+      vm.cloudObj.data.file = pNuevoCliente.fotoPerfil[0];
       Upload.upload(vm.cloudObj).success((data) => {
-        vm.registrarCliente(pnuevoUsuario, data.url);
+        vm.registrarCliente(pNuevoCliente, data.url);
       });
     }
     // *****************************
 
-    // Guardar un nuevo repartidor
+    // Guardar un nuevo cliente
     vm.registrarCliente = (pNuevoCliente, urlImagen) => {
       console.log(pNuevoCliente);
 
-      let nuevoCliente = new Cliente(pNuevoCliente.tipoIdentificacion, pNuevoCliente.identificacion, pNuevoCliente.primerNombre, pNuevoCliente.segundoNombre, pNuevoCliente.primerApellido, pNuevoCliente.segundoApellido, urlImagen, pNuevoCliente.sexo, pNuevoCliente.fechaNacimiento, pNuevoCliente.email, pNuevoCliente.contrasenna, pNuevoCliente.provincia, pNuevoCliente.canton, pNuevoCliente.distrito, pNuevoCliente.direccion, 1, 'Cliente', pNuevoCliente.telefono, pNuevoCliente.sucursalPreferencia, vm.latitude, vm.longitude);
+      let chars = "abcdefghijklmnopqrstuvwxyz!@#$%^&*-+<>ABCDEFGHIJKLMNOP1234567890";
+      let contrasenna = "";
+      for (let i = 0; i < 10; i++) {
+        let x = Math.floor(Math.random() * chars.length);
+        contrasenna += chars.charAt(x);
+      }
+
+
+      let nuevoCliente = new Cliente(pNuevoCliente.tipoIdentificacion, pNuevoCliente.identificacion, pNuevoCliente.primerNombre, pNuevoCliente.segundoNombre, pNuevoCliente.primerApellido, pNuevoCliente.segundoApellido, urlImagen, pNuevoCliente.sexo, pNuevoCliente.fechaNacimiento, pNuevoCliente.email, contrasenna, pNuevoCliente.provincia, pNuevoCliente.canton, pNuevoCliente.distrito, pNuevoCliente.direccion, 1, 'Cliente', pNuevoCliente.telefono, pNuevoCliente.sucursalPreferencia, pNuevoCliente.latitud, pNuevoCliente.longitud);
 
       let nuevaTarjeta = new Tarjeta(pNuevoCliente.titularTarjeta, pNuevoCliente.numeroTarjeta, pNuevoCliente.mesVencimiento, pNuevoCliente.annoVencimiento, pNuevoCliente.ccv, nuevoCliente.getEmail());
 
