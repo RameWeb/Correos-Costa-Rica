@@ -24,14 +24,12 @@ class canton{
 }
      
 class Sucursales{
-  constructor(pProvincia, pCanton, pDistrito, pDireccion, pTelefono, pidSucursal, pEstado){
-    this.provincia = pProvincia;
-    this.canton = pCanton;
-    this.distrito = pDistrito;
+  constructor(pidSucursal, pnombreSucursal, pubicacion, pDireccion, pTelefono){
+    this.idSucursal = pidSucursal;
+    this.nombreSucursal = pnombreSucursal;
+    this.ubicacion = pubicacion;
     this.direccion = pDireccion;
     this.telefono = pTelefono;
-    this.idSucursal = pidSucursal;
-    this.estadoSucursal = pEstado;
   }
 }
 
@@ -197,7 +195,7 @@ class Cliente extends Usuario{
  */
 class Tarjeta{
   constructor(ptitulartarjeta, pnumerotarjeta, pmesvencimiento, pannovencimiento, pccv, pidcliente){
-    this.titularTarjeta = ptitulartarjeta;
+    this.titularTarjeta = ptitulartarjeta;conve
     this.numeroTarjeta = pnumerotarjeta;
     this.mesVencimiento = pmesvencimiento;
     this.annoVencimiento = pannovencimiento;
@@ -238,12 +236,13 @@ class EstadoPaquete{
 }
 
 class Convenios{
-  constructor(pNombreInstitucion, pTipo, pTiempo, pCosto, pidConvenios){
-    this.nombreInstitucion = pNombreInstitucion;
+  constructor(pidConvenios, pTipo, pNombreInstitucion, pTiempo, pCosto ){
+    this.idConvenios = pidConvenios;
     this.tipo = pTipo;
+    this.nombreInstitucion = pNombreInstitucion;
     this.tiempo = pTiempo;
     this.costo = pCosto;
-    this.idConvenios = pidConvenios;
+    
   }
 }
 

@@ -17,9 +17,9 @@
         <table class="table">
           <thead>
               <tr>
-                <th>Provincia</th>
-                <th>Cantón</th>
-                <th>Distrito</th>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Ubicación</th>
                 <th>Dirección exacta</th>
                 <th>Teléfono</th>
                 <th>Acciones</th>
@@ -27,9 +27,9 @@
           </thead>
           <tbody>
             <tr ng-repeat="sucursal in vm.listaSucursales | filter:buscarSucursal">
-              <td>{{sucursal.provincia}}</td>
-              <td>{{sucursal.canton}}</td>
-              <td>{{sucursal.distrito}}</td>
+              <td>{{sucursal.idSucursal}}</td>
+              <td>{{sucursal.nombreSucursal}}</td>
+              <td>{{sucursal.ubicacion}}</td>
               <td>{{sucursal.direccion}}</td>
               <td>{{sucursal.telefono}}</td>
               <td>

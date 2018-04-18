@@ -17,7 +17,12 @@
       setPrealertas: _setPrealertas,
       setSession: _setSession,
       closeSession: _closeSession,
-      getSession: _getSession
+      getSession: _getSession,
+      setConvenios:_setConvenios,
+      getConvenios : _getConvenios,
+      setSucursales:_setSucursales,
+      getSucursales: _getSucursales
+      
     };
     return localStorageAPI;
 
@@ -77,6 +82,62 @@
       return respuesta;
     }
 
+    function _setConvenios(data) {
+      let respuesta;
+
+      let peticion = $.ajax({
+        url: 'http://localhost:4000/api/save_convenios',
+        type: 'post',
+        contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+        dataType: 'json',
+        async: false,
+        data: {
+          'idConvenios' : data.idConvenios,
+          'tipo' : data.tipo,
+          'nombreInstitucion' : data.nombreInstitucion,
+          'tiempo' : data.tiempo,
+          'costo' : data.costo,
+        }
+      });
+
+      peticion.done((res) => {
+        respuesta = res.success
+      });
+      peticion.fail(() => {
+        respuesta = false;
+      });
+
+      return respuesta;
+    }
+
+    function _setSucursales(data) {
+      let respuesta;
+
+      let peticion = $.ajax({
+        url: 'http://localhost:4000/api/save_sucursales',
+        type: 'post',
+        contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+        dataType: 'json',
+        async: false,
+        data: {
+          'idSucursal' : data.idSucursal,
+          'nombreSucursal' : data.nombreSucursal,
+          'ubicacion' : data.nombreInstitucion,
+          'direccion' : data.direccion,
+          'telefono' : data.telefono,
+        }
+      });
+
+      peticion.done((res) => {
+        respuesta = res.success
+      });
+      peticion.fail(() => {
+        respuesta = false;
+      });
+
+      return respuesta;
+    }
+
     /**
      * Funcion que obtiene los datos del back-end
      */
@@ -104,6 +165,53 @@
       return listaUsuarios;
     }
 
+    function _getConvenios() {
+      let listaConvenios = [];
+
+      let peticion = $.ajax({
+        url: 'http://localhost:4000/api/get_all_convenios',
+        type: 'get',
+        contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+        dataType: 'json',
+        async: false,
+        data: {}
+      });
+
+      peticion.done((convenios) => {
+        console.log('datos que vienen de la base de datos');
+        console.log(convenios);
+        listaConvenios = convenios;
+      });
+      peticion.fail(() => {
+        listaConvenios = [];
+      });
+
+      return listaConvenios;
+    }
+
+    function _getSucursales() {
+      let listarSucursales = [];
+
+      let peticion = $.ajax({
+        url: 'http://localhost:4000/api/get_all_sucursales',
+        type: 'get',
+        contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+        dataType: 'json',
+        async: false,
+        data: {}
+      });
+
+      peticion.done((sucursales) => {
+        console.log('datos que vienen de la base de datos');
+        console.log(sucursales);
+        listarSucursales = sucursales;
+      });
+      peticion.fail(() => {
+        listarSucursales = [];
+      });
+
+      return listarSucursales;
+    }
     function _setItem(key, value) {
       let response = true;
 
@@ -131,6 +239,7 @@
     };
 
     function _closeSession() {
+      
       let response = true;
 
       sessionStorage.removeItem('session');
