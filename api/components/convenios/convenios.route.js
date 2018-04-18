@@ -27,7 +27,7 @@ router.route('/get_all_convenios')
 });
 
 /**
- * Función que actualiza los usuarios
+ * Función que actualiza los convenios
  */
 router.route('/update_convenios')
   .put((req, res) => {

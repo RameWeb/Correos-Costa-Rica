@@ -19,7 +19,7 @@
     vm.registrarConvenio = (pnuevoConvenio) => {
       console.log(pnuevoConvenio);
 
-      let objNuevoConvenio = new Convenios(pnuevoConvenio.nombreInstitucion, pnuevoConvenio.tipo, pnuevoConvenio.tiempo,pnuevoConvenio.costo,pnuevoConvenio.idConvenios);
+      let objNuevoConvenio = new Convenios(pnuevoConvenio.idConvenios, pnuevoConvenio.tipo,pnuevoConvenio.nombreInstitucion,  pnuevoConvenio.tiempo,pnuevoConvenio.costo);
 
       console.log('Objeto con el convenio');
       console.log(objNuevoConvenio);

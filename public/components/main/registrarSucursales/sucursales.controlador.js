@@ -22,9 +22,9 @@
     listarSucursales();
     
     // Funcion que es llamada desde el html para regustra un nuevo usuario
-    vm.registrarSucursal = (pnuevaSucursal) => {
-      pnuevaSucursal.latitud = vm.latitude;
-      pnuevaSucursal.longitud = vm.longitude
+      vm.registrarSucursal = (pnuevaSucursal) => {
+      pnuevaSucursal.latitude = vm.latitude;
+      pnuevaSucursal.longitude = vm.longitude;
       // Tomamos el objeto sin formato y lo comvertimos en un objeto de tipo cliente
       let objNuevaSucursal = new Sucursales(pnuevaSucursal.idSucursal, pnuevaSucursal.nombreSucursal, pnuevaSucursal.latitude, pnuevaSucursal.longitude, pnuevaSucursal.direccion, pnuevaSucursal.telefono, );
         

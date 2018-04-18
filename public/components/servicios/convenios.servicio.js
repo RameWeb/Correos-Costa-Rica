@@ -15,7 +15,7 @@
     };
     return publicAPI;
 
-    // Funcion que almacena en el localStorage todas las fiestas programadas
+    // Funcion que almacena en el localStorageFactorie todos los convenios
     function _addConvenio(pnuevoConvenio){
       let listaConvenios = _getConvenios();
       let registro = localStorageFactories.setConvenios(pnuevoConvenio);
@@ -24,10 +24,11 @@
       
     }
 
-    // Funcion que trae todas las fiestas programadas del localStorage y a partir de esos datos vuelve a crear un arreglo con todos los objetos de tipo fiesta
+    // Funcion que trae todos los convenios programados del localStorageFactorie y a partir de esos datos vuelve a crear un arreglo con todos los objetos 
     function _getConvenios(){
       let listaConvenios = [];
-      let listaConveniosLocal = JSON.parse(localStorage.getItem("ConvenioLS"));
+      let listaConveniosLocal = localStorageFactories.getConvenios();
+
 
       if(!listaConveniosLocal){
         listaConvenios = [];
