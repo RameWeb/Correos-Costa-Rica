@@ -5,11 +5,11 @@
     <form name="formSolicitarConvenio" autocomplete="off" ng-submit="vm.registrarConvenio(vm.nuevoConvenio)" novalidate>
 
       <div class="form-group">
-        <label for="formGroupExampleInput">Servicio:</label>
-        <input type="text" class="form-control" id="formGroupExampleInput" ng-model="vm.nuevoConvenio.servicio" list="listaServicios">
-        <datalist id="listaServicios">
-          <option data-ng-repeat="servicio in vm.servicio" value="{{servicio}}"></option>
-        </datalist>
+        <label for="sltServicio">Servicio:</label>
+        <select id="sltServicio" class="form-control" ng-options="servicio as servicio.getServicios() for servicio in vm.listaServicios track by servicio.tipo"
+          ng-model="vm.nuevoConvenio.servicio" required>
+          <option></option>
+        </select>
       </div>
 
       <div class="form-group">

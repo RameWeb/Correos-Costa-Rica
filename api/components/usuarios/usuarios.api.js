@@ -40,6 +40,7 @@ module.exports.registrar = (req, res) => {
         annoVencimiento: req.body.annoVencimiento,
         ccv: req.body.ccv
       }
+
       // metodo de tarjetas al registrar cliente por primera vez
       newUser.tarjetas.push(objTarj);
     break;
@@ -75,13 +76,13 @@ module.exports.registrar = (req, res) => {
 };
 
 module.exports.listarTodos = (req,res) => {
-  UserModel.find().then((user) => {
-    res.send(user);
+  UserModel.find().then((usuarios) => {
+    res.send(usuarios);
   });
 };
 
 module.exports.actualizar = (req,res) => {
-  UserModel.findByIdAndUpdate(req.body.email, { $set: req.body}, (err, user) => {
+  UserModel.findByIdAndUpdate(req.body.email, { $set: req.body}, (err, usuarios) => {
     if (err){
       res.json({success:false,msg:'No se ha actualizado.' + handleError(err)});
 

@@ -5,21 +5,11 @@ class tipoProducto{
   }
 }
 
-class courier{
-  constructor(pnombreCourier){
-      this.nombreCourier = pnombreCourier;
-  }
-}
-
-class provincia{
-  constructor(pnombreProvincia){
-      this.nombreProvincia = pnombreProvincia; 
-  }
-}
-
-class canton{
-  constructor(pnombreCanton){
-    this.nombreCanton = pnombreCanton;
+class Courier{
+  constructor(pidCourier, pnombreCourier, pempresaCourier){
+    this.idCourier = pidCourier,
+    this.nombreCourier = pnombreCourier;
+    this.empresaCourier = pempresaCourier;
   }
 }
      
@@ -52,6 +42,7 @@ class ConveniosClientes{
     this.direccion = pDireccion;
     this.idConvenio = pidConvenio;
   }
+
 }
 
 class Usuario{
@@ -96,7 +87,7 @@ class Usuario{
   }
 
   getNombreCompleto(){
-    return `${this.nombre} ${this.apellido1}`;
+    return `${this.nombre1} ${this.apellido1}`;
   }
 }
 
@@ -158,7 +149,7 @@ class Cliente extends Usuario{
  */
 class Tarjeta{
   constructor(ptitulartarjeta, pnumerotarjeta, pmesvencimiento, pannovencimiento, pccv, pidcliente){
-    this.titularTarjeta = ptitulartarjeta;conve
+    this.titularTarjeta = ptitulartarjeta;
     this.numeroTarjeta = pnumerotarjeta;
     this.mesVencimiento = pmesvencimiento;
     this.annoVencimiento = pannovencimiento;
@@ -184,27 +175,6 @@ class Tarjeta{
 }
 
 // TODO Dentro de este archivo se crean los objetos con sus respectivos mÃƒÂ©todos
-class Direccion{
-  constructor(pProvincia,pCanton,pDistrito){
-    this.provincia = pProvincia;
-    this.canton = pCanton;
-    this.distrito = pDistrito;
-  }
-}
-
-class Licencia{
-    constructor(pTipo,pCategoria,pDescripcion){
-      this.tipo = pTipo;
-      this.categoria = pCategoria;
-      this.descripcion = pDescripcion;
-  }
-}
-
-class EstadoPaquete{
-  constructor(pEstadoPaquete){
-    this.estadoPaquete = pEstadoPaquete;
-}
-}
 
 class Convenios{
   constructor(pidConvenios, pTipo, pNombreInstitucion, pTiempo, pCosto ){
@@ -212,8 +182,11 @@ class Convenios{
     this.tipo = pTipo;
     this.nombreInstitucion = pNombreInstitucion;
     this.tiempo = pTiempo;
-    this.costo = pCosto;
-    
+    this.costo = pCosto;  
+  }
+
+  getServicios(){
+    return this.tipo;
   }
 }
 
@@ -226,13 +199,6 @@ class Paquetes{
     this.repartidor = pRepartidor;
     this.estado = pEstado;
     this.idPaquetes = pidPaquetes;
-    
-  }
-}
-
-class Casillero{
-  constructor(pidRandom){
-    this.idRandom = pidRandom;
     
   }
 }

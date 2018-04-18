@@ -72,7 +72,7 @@
             return $ocLazyLoad.load('./components/main/registroClientes/registroClientes.controlador.js')
           }]
         },
-        controller: 'controladorClientes',
+        controller: 'controladorClientesAdmin',
         controllerAs: 'vm'
       })
 
@@ -85,6 +85,21 @@
         resolve: {
           load: ['$ocLazyLoad', ($ocLazyLoad) => {
             return $ocLazyLoad.load('./components/main/registroClientes/registroClientes.controlador.js')
+          }]
+        },
+        controller: 'controladorClientes',
+        controllerAs: 'vm'
+      })
+
+      .state('main.registroCourier', {
+        url: '/registroCourier',
+        templateUrl: './components/main/registroCourier/courier.vista.html',
+        data: {
+          pageTitle: 'Clientes | Correos de Costa Rica'
+        },
+        resolve: {
+          load: ['$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/main/registroCourier/courier.controlador.js')
           }]
         },
         controller: 'controladorClientes',
@@ -124,13 +139,13 @@
 
       .state('main.registroConvenioCliente', {
         url: '/registroConvenioCliente',
-        templateUrl: './components/main/convenioClientes/convenios.vista.html',
+        templateUrl: './components/main/convenioClientes/conveniosCliente.vista.html',
         data: {
           pageTitle: 'Solicitar convenio | Correos de Costa Rica'
         },
         resolve: {
           load: ['$ocLazyLoad', ($ocLazyLoad) => {
-            return $ocLazyLoad.load('./components/main/convenioClientes/convenios.controlador.js')
+            return $ocLazyLoad.load('./components/main/convenioClientes/conveniosCliente.controlador.js')
           }]
         },
         controller: 'controladorConvenioClientes',
@@ -170,7 +185,7 @@
         controller: 'controladorSucursales',
         controllerAs: 'vm'
       })
-      
+
       // -----------------------------------------------------------------------
 
       
