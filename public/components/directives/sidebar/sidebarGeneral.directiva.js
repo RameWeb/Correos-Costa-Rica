@@ -4,13 +4,13 @@
   .module('correos-cr')
   .directive('sidebarPrincipal', sidebarPrincipal);
 
-  sidebarPrincipal.$inject = ['$state' ,'inicioSesionService'];
+  sidebarPrincipal.$inject = ['inicioSesionService'];
 
-  function sidebarPrincipal($state, inicioSesionService){
+  function sidebarPrincipal(inicioSesionService){
 
     let sidebarController = function () {  
-      const userAuth = inicioSesionService.getAuthUser();
-      const vm = this;
+      let userAuth = inicioSesionService.getAuthUser();
+      let vm = this;
       vm.rolUsuario = userAuth.getRol();
     };
 
