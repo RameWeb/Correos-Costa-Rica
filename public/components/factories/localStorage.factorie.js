@@ -19,15 +19,11 @@
       sendMail: _sendMail,
       setConvenios: _setConvenios,
       getConvenios: _getConvenios,
-      setSucursales: _setSucursales,
-      getSucursales: _getSucursales,
       getCouriers: _getCouriers,
       setCouriers: _setCouriers,
       agregarSucursal : _agregarSucursal,
       obtenerSucursal : _obtenerSucursal,
       actualizarConvenio : _actualizarConvenio
-     
-      
     };
     return localStorageAPI;
 
@@ -261,7 +257,17 @@
 
       localStorage.setItem(key, JSON.stringify(value));
     }
-    
+
+    function _getItem(value) {
+      let arrayData = JSON.parse(localStorage.getItem(value));
+
+      if (!arrayData) {
+        arrayData = [];
+      }
+
+      return arrayData;
+    };
+
       /**
      * Funcion que modifica los datos del back-end
      */

@@ -59,16 +59,13 @@ app.use( (req, res, next) => {
  * Exportamos las funcionalidades
  */
 const index = require('./index'),
-
       usuarios = require('./components/usuarios/usuarios.route'),
       mail = require('./components/mail/mail.route'),
-      conveniosCliente = require('./components/conveniosCliente/conveniosCliente.route'),
+      sucursales = require('./components/sucursales/sucursales.route'),      
+      // conveniosCliente = require('./components/conveniosCliente/conveniosCliente.route'),
+      convenios = require('./components/convenios/convenios.route'),
       couriers = require('./components/couriers/couriers.route');
-      sucursales = require('./components/sucursales/sucursales.route'),
-      convenios = require('./components/convenios/convenios.route');
-      
-      
-
+    
 /**
  * Se definien las rutas de ExpressJS
  */
