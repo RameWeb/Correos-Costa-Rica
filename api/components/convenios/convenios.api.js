@@ -48,7 +48,16 @@ module.exports.actualizar = function(req, res) {
   });
 };
 
+module.exports.eliminar = function(req, res) {
+  conveniosModel.remove(req.body.idConvenios, { $set: req.body }, function(err, user) {
+    if (err) {
+      res.json({ success: false, msg: 'No se ha eliminado.' + handleError(err) });
 
+    } else {
+      res.json({ success: true, msg: 'Se ha eliminado correctamente.' + res });
+    }
+  });
+};
 
 
 
