@@ -4,19 +4,31 @@
   .module('correos-cr')
   .controller('controladorModEmpleados', controladorModEmpleados);
 
-  controladorModEmpleados.$inject = ['$http','$stateParams', '$state','servicioUsuarios'];
+  controladorModEmpleados.$inject = ['$http','$stateParams', '$state','servicioUsuarios', 'imageUpload', 'Upload'];
 
-  function controladorModEmpleados($http, $stateParams, $state, servicioUsuarios){
+  function controladorModEmpleados($http, $stateParams, $state, servicioUsuarios, imageUpload, Upload){
+
     let empleadoSeleccionado;
 
-    if($stateParams.identificacion == ''){
+    if(!$stateParams.identificacion){
       $state.go('mantEmpleados');
-    }else{
-      empleadoSeleccionado = servicioUsuarios.obtenerEmpleadoSeleccionado($stateParams.identificacion);
     }
+
+    empleadoSeleccionado = servicioUsuarios.obtenerUsuarioEspecifico($stateParams.identificacion);
+
     console.log(empleadoSeleccionado);
 
     let vm = this;
+
+    vm.roles = ["Encargado de Aduana", "Encargado de Sucursal", "Repartidor"];
+
+    vm.sucursales = ["San Jose", "Alajuela", "Heredia", "Cartago", "Guanacaste","Puntarenas", "Limon"];
+
+    vm.rolesAduana = ["Aforador", "Agente Aduanal", "Gerente Aduanero", "Verificador"];
+
+    vm.sexo = ["Femenino", "Masculino", "Sin especificar"];
+
+    vm.tipoIdentificacion = ["Nacional", "Residente", "Pasaporte"];
 
     vm.nuevoEmpleadoModificado = {
       rolEmpleado: empleadoSeleccionado.rolEmpleado,
@@ -94,15 +106,10 @@
       listarEmpleados();
     }
 
-    // Imprimir lista de repartidores en el sistema
+    // Imprimir lista de empleados en el sistema
     function listarEmpleados(){
-      vm.listaEmpleados = servicioUsuarios.obtenerUsuario();
+      vm.listaEmpleados = servicioUsuarios.obtenerEmpleados('Cliente');
     }
-
-    vm.modificar = (pEmpleado) =>{
-      $state.go('modEmpleados', {identificacion: JSON.stringify(pEmpleado.identificacion)})
-    }
-
 
     vm.roles = ["Administrador", "Encargado de Aduana", "Encargado de Sucursal", "Repartidor"];
 
@@ -110,12 +117,5 @@
 
     vm.rolesAduana = ["Aforador", "Agente Aduanal", "Gerente Aduanero", "Verificador"];
 
-
-    // // Objeto sin formato
-    // vm.nuevoEmpleado = {};
-
-    // vm.listaEmpleados = listarEmpleados();
-
-    // listarEmpleados();
   }
 })();

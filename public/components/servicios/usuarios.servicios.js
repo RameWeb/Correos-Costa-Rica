@@ -12,7 +12,6 @@
 
     let publicAPI = {
       agregarUsuario : _agregarUsuario,
-      agregarEmpleado : _agregarEmpleado,
       obtenerUsuario : _obtenerUsuario,
       obtenerUsuarioEspecifico : _obtenerUsuarioEspecifico,
       actualizarUsuario : _actualizarUsuario,
@@ -40,27 +39,6 @@
         registroExitoso = false;
       }else{
         registroExitoso = localStorageFactories.setUsuario(pNuevoUsuario);
-      };
-
-      return registroExitoso;
-    };
-
-    //CHRISTINE
-    function _agregarEmpleado(pNuevoUsuario){
-      let listaUsuarios = _obtenerUsuario(),
-          usuarioRepetido,
-          registroExitoso;
-
-      for(let i = 0; i < listaUsuarios.length; i++){
-        if(pNuevoUsuario.getEmail() == listaUsuarios[i].getEmail() ){
-          usuarioRepetido = true;
-        };
-      };
-
-      if(usuarioRepetido == true){
-        registroExitoso = false;
-      }else{
-        registroExitoso = localStorageFactories.setEmpleado(pNuevoUsuario);
       };
 
       return registroExitoso;

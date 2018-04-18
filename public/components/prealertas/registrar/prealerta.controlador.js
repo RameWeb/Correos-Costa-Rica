@@ -27,22 +27,26 @@ function controladorPrealertas($stateParams, $state, servicioUsuarios /*,loginSe
 
     vm.nuevaPrealerta = {};
     vm.listaPrealertas = listarPrealertas();
+
     listarPrealertas();
 
     // Funcion que es llamada desde el html para registrar una prealerta
 
     vm.registrarPrealerta = (pnuevaPrealerta) => {
-      
+      console.log(pnuevaPrealerta);
+
       let objPrealertaNueva = new Prealertas(pnuevaPrealerta.tracking, pnuevaPrealerta.url, pnuevaPrealerta.tipoProducto, pnuevaPrealerta.valor, pnuevaPrealerta.peso, pnuevaPrealerta.courier);
 
+      console.log('Objeto con la prealerta');
       console.log(objPrealertaNueva);
-
       servicioUsuarios.addPrealertas(objPrealertaNueva);
 
       swal("Registro exitoso", "La prealerta se ha sido registrado correctamente", "success", {
         button: "Aceptar",
       });
 
+      // Se limpia el formulario
+      vm.nuevaPrealerta = null;
       listarPrealertas();
     };
 
@@ -50,8 +54,8 @@ function controladorPrealertas($stateParams, $state, servicioUsuarios /*,loginSe
     vm.listaPrealertas = servicioUsuarios.getPrealertas();
     }
 
-    vm.modificar = (pprealerta) =>{
-      $state.go('modificarPrealerta', {tracking: JSON.stringify(pprealerta.tracking)})
+    vm.modificar = (pPrealertas) =>{
+      $state.go('modificarPrealerta', {tracking: JSON.stringify(pPrealertas)})
     }
 
   }

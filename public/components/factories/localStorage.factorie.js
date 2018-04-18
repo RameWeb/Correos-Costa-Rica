@@ -9,7 +9,6 @@
   function localStorageFactories($log, $http) {
     const localStorageAPI = {
       setUsuario : _setUsuario,
-      setEmpleado : _setEmpleado,
       getDatosUsuarios: _getDatosUsuarios,
       setItem: _setItem,
       getItem: _getItem,
@@ -66,7 +65,7 @@
           'numeroTarjeta' : data.tarjetas[0].numeroTarjeta,
           'mesVencimiento' : data.tarjetas[0].mesVencimiento,
           'annoVencimiento': data.tarjetas[0].annoVencimiento,
-          'ccv': data.tarjetas[0],
+          'ccv': data.tarjetas[0].ccv,
           'latitud': data.latitud,
           'longitud': data.longitud,
         }
@@ -253,11 +252,7 @@
       return sessionActive;
     };
 
-        /**
-     * Funcion que obtiene los datos de las prealertas del back end y los retorna
-     * @param {Objeto PreAlerta} pobjprealerta 
-     */
-    function _getPrealertas(pobjprealerta) {
+    function _getPrealertas() {
       let listaPrealertas = [];
 
       let peticion = $.ajax({
@@ -271,9 +266,9 @@
         }
       });
 
-      peticion.done((datos) => {
-        listaPrealertas = datos;
-        console.log('Petición realizada con éxito');
+      peticion.done((prealertas) => {
+        console.log('Prealertas que vienen de la base de datos');
+        listaPrealertas = prealertas;;
       });
       peticion.fail(() => {
         listaPrealertas = [];
@@ -282,82 +277,27 @@
       return listaPrealertas;
     }
 
-    /**
-     * Esta funcion envia como peticion los datos de la prealerta para ser guardados en la base de datos
-     * @param {Objeto de tipo prealerta} pnuevoobjprealerta 
-     */
-    function _setPrealertas(pnuevoobjprealerta) {
-      let response;
-
-      let peticion = $.ajax({
-        url: 'http://localhost:4000/api/save_prealerta',
-        type: 'post',
-        contentType: 'application/x-www-form-urlencoded; charset=utf-8',
-        dataType: 'json',
-        async: false,
-        data: {
-          tracking: pnuevoobjprealerta.tracking,
-          url: pnuevoobjprealerta.url,
-          tipoProducto: pnuevoobjprealerta.tipoProducto,
-          valor: pnuevoobjprealerta.valor,
-          peso: pnuevoobjprealerta.peso,
-          courier: pnuevoobjprealerta.courier
-        }
-      });
-
-      peticion.done((datos) => {
-        response = datos.msj;
-        console.log('Petición realizada con éxito');
-      });
-      peticion.fail((error) => {
-        response = error;
-        console.log('Ocurrió un error');
-      });
-
-      return response;
-    }
-
-    //CHRISTINE
-
-    function _setEmpleado(data) {
+    function _setPrealertas(data) {
       let respuesta;
 
       let peticion = $.ajax({
-        url: 'http://localhost:4000/api/save_user',
+        url: 'http://localhost:4000/api/save_prealertas',
         type: 'post',
         contentType: 'application/x-www-form-urlencoded; charset=utf-8',
         dataType: 'json',
         async: false,
         data: {
-          'tipoIdentificacion' : data.tipoIdentificacion,
-          'identificacion' : data.identificacion,
-          'nombre1' : data.nombre1,
-          'nombre2' : data.nombre2,
-          'apellido1' : data.apellido1,
-          'apellido2' : data.apellido2,
-          'fotoPerfil' : data.fotoPerfil,
-          'sexo' : data.sexo,
-          'fechaNacimiento' : data.fechaNacimiento,
-          'email' : data.email,
-          'contrasenna' : data.contrasenna,
-          'provincia' : data.provincia,
-          'canton' : data.canton,
-          'distrito' : data.distrito,
-          'direccion' : data.direccion,
-          'estado' : data.estado,
-          'tipoUsuario' : data.tipoUsuario,
-          'sucursal' : data.sucursal,
-          'rolAduana' : data.rolAduana,
-          'telefono' : data.telefono,
-          'sucursal' : data.Sucursal,
-          'licencia' : data.licencia,
-          'fotoLicencia' : data.fotoLicencia,
-          'licenciaVencimiento' : data.licenciaVencimiento,
+          'tracking': data.tracking,
+          'url': data.url,
+          'tipoProducto': data.tipoProducto,
+          'valor': data.valor,
+          'peso': data.peso,
+          'courier': data.courier,
         }
       });
 
       peticion.done((res) => {
-        respuesta = res.success
+        response = res.success
       });
       peticion.fail(() => {
         respuesta = false;
