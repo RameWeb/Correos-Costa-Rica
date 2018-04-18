@@ -87,6 +87,8 @@
         button: "Aceptar",
       });
 
+      // Se limpia el formulario
+      vm.nuevoEmpleado = null;
       listarEmpleados();
     }
 
