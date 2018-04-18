@@ -1,11 +1,8 @@
 
 <main id="registroSucursales">
-    <div class="container-fluid">
-      <div class="row">
-    
-        <div class="col-md-9 py-4 px-4 contenido">
-          <div class="col-6">
-            <h2> Registrar un nuevo convenio</h2>
+  <div class="col-md-12 pt-5 mt-5">
+    <h2 class="text-center">Registrar un nuevo convenio</h2>
+            
             <form ng-submit=" vm.registrarConvenio(vm.nuevoConvenio)"name="formRegistrarConvenios" autocomplete="off" novalidate ></form>
               
               <div class="form-group">
@@ -44,11 +41,12 @@
                 <div ng-message="pattern">
                   <small class="form-text text-muted">Formato de teléfono incorrecto</small>
                 </div>
-              </div>>
+              </div>
             </div>
+          </div>
               <button type="submit" ng-click="vm.registrarConvenio(vm.nuevoConvenio)" class=" btn btnAccion" id="btnGuardar" ng-disabled="formRegistrarConvenios.$invalid">Guardar</button>
-              <a href="/#!/lista-convenios" class=" btn btnAccion">Lista de convenios</a>
-              <a href="#!/admin"><img src="../../../sources/img/chevron-left.svg" height="35px" width="35px" alt="">Regresar a la pagina principal</a>
+              <a href=""ui-sref="main.listaconvenios" class=" btn btnAccion">Lista de convenios</a>
+              
  
             </form>
           </div>

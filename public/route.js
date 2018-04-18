@@ -85,7 +85,8 @@
         controller: 'controladorConvenios',
         controllerAs: 'vm'
       })
-      .state('lista-convenios', {
+
+      .state('main.listaconvenios', {
         url: '/lista-convenios',
         templateUrl: './components/main/ListarBuscarConvenio/listarConvenio.vista.html',
         data: {
@@ -128,7 +129,7 @@
 
 // inicio de SUCURSALES
 
-      .state('registroSucursal', {
+      .state('main.sucursales', {
         url: '/registroSucursal',
         templateUrl: './components/main/registrarSucursales/sucursales.vista.html',
         data: {
@@ -159,15 +160,9 @@
       })
 
 
-
-      // -----------------------------------------------------------------------
-
-      
-      
-
       .state('modificarSucursal', {
         url: '/modificarSucursal',
-        templateUrl: './components/sucursales/modificar/modificarSucursal.vista.html',
+        templateUrl: './components/main/modificarSucursal/modificarSucursal.vista.html',
         data: {
           pageTitle: 'Modificar Sucursales'
         },
@@ -176,13 +171,22 @@
         },
         resolve: {
           load: ['$ocLazyLoad', ($ocLazyLoad) => {
-            return $ocLazyLoad.load('./components/sucursales/modificar/modificarSucursal.controlador.js')
+            return $ocLazyLoad.load('./components/main/modificarSucursal/modificarSucursal.controlador.js')
           }]
         },
         controller: 'controladorModificarSucursal',
         controllerAs: 'vm'
       })
 
+
+
+
+      // -----------------------------------------------------------------------
+
+      
+      
+
+      
       .state('registroPrealerta', {
         url: '/registroPrealerta',
         templateUrl: './components/prealertas/registrar/prealerta.vista.html',
