@@ -103,7 +103,7 @@
       })
 
 
-      .state('modificar-convenios', {
+      .state('main.modificarConvenios', {
         url: '/modificar-convenios',
         templateUrl: './components/main/modificarConvenio/modificarConvenio.vista.html',
         data: {
@@ -144,7 +144,7 @@
         controllerAs: 'vm'
       })
 
-      .state('listarSucursal', {
+      .state('main.listaSucursal', {
         url: '/listarSucursal',
         templateUrl: './components/main/listarBuscarSucursales/listaSucursales.vista.html',
         data: {
