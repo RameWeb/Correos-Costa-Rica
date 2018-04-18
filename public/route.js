@@ -137,7 +137,7 @@
         controllerAs: 'vm'
       })
 
-      .state('lista-convenios', {
+      .state('main.listaconvenios', {
         url: '/lista-convenios',
         templateUrl: './components/main/ListarBuscarConvenio/listarConvenio.vista.html',
         data: {
@@ -167,7 +167,7 @@
         controllerAs: 'vm'
       })
 
-      .state('modificar-convenios', {
+      .state('main.modificarConvenios', {
         url: '/modificar-convenios',
         templateUrl: './components/main/modificarConvenio/modificarConvenio.vista.html',
         data: {
@@ -184,9 +184,11 @@
         controller: 'controladorModificarConvenios',
         controllerAs: 'vm'
       })
-
       //final de CONVENIOS
-      .state('registroSucursal', {
+
+      
+      // inicio de SUCURSALES
+      .state('main.sucursales', {
         url: '/registroSucursal',
         templateUrl: './components/main/registrarSucursales/sucursales.vista.html',
         data: {
@@ -201,27 +203,25 @@
         controllerAs: 'vm'
       })
 
-      // -----------------------------------------------------------------------
-
-      
-      .state('listarSucursal', {
+      .state('main.listaSucursal', {
         url: '/listarSucursal',
-        templateUrl: './components/sucursales/listarBuscar/listaSucursales.vista.html',
+        templateUrl: './components/main/listarBuscarSucursales/listaSucursales.vista.html',
         data: {
           pageTitle: 'Listar Sucursales'
         },
         resolve: {
           load: ['$ocLazyLoad', ($ocLazyLoad) => {
-            return $ocLazyLoad.load('./components/sucursales/registrar/sucursales.controlador.js')
+            return $ocLazyLoad.load('./components/main/listarBuscarSucursales/listaSucursales.vista.html')
           }]
         },
         controller: 'controladorSucursales',
         controllerAs: 'vm'
       })
 
-      .state('modificarSucursal', {
+
+      .state('main.modificarSucursales', {
         url: '/modificarSucursal',
-        templateUrl: './components/sucursales/modificar/modificarSucursal.vista.html',
+        templateUrl: './components/main/modificarSucursal/modificarSucursal.vista.html',
         data: {
           pageTitle: 'Modificar Sucursales'
         },
@@ -230,13 +230,34 @@
         },
         resolve: {
           load: ['$ocLazyLoad', ($ocLazyLoad) => {
-            return $ocLazyLoad.load('./components/sucursales/modificar/modificarSucursal.controlador.js')
+            return $ocLazyLoad.load('./components/main/modificarSucursal/modificarSucursal.controlador.js')
           }]
         },
         controller: 'controladorModificarSucursal',
         controllerAs: 'vm'
       })
 
+// inicio de BITACORA
+
+.state('main.bitacora', {
+  url: '/consultarBitacora',
+  templateUrl: './components/main/consultarBitacora/consultarBitacora.vista.html',
+  resolve: {
+    load: ['$ocLazyLoad', ($ocLazyLoad) => {
+      return $ocLazyLoad.load('./components/main/consultarBitacora/consultarBitacora.controlador.js')
+    }]
+  },
+  controller: 'controladorBitacora',
+  controllerAs: 'vm'
+})
+
+
+      // -----------------------------------------------------------------------
+
+      
+      
+
+      
       .state('registroPrealerta', {
         url: '/registroPrealerta',
         templateUrl: './components/prealertas/registrar/prealerta.vista.html',

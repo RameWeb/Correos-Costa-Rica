@@ -59,10 +59,14 @@ app.use( (req, res, next) => {
  * Exportamos las funcionalidades
  */
 const index = require('./index'),
+
       usuarios = require('./components/usuarios/usuarios.route'),
       mail = require('./components/mail/mail.route'),
-      convenios = require('./components/convenios/convenios.route'),
+      conveniosCliente = require('./components/conveniosCliente/conveniosCliente.route'),
       couriers = require('./components/couriers/couriers.route');
+      sucursales = require('./components/sucursales/sucursales.route'),
+      convenios = require('./components/convenios/convenios.route');
+      
       
 
 /**
@@ -70,6 +74,7 @@ const index = require('./index'),
  */
 app.use('/api', usuarios);
 app.use('/api', mail);
+app.use('/api', sucursales);
 app.use('/api', convenios);
 app.use('/api', couriers);
 app.use('/', index);

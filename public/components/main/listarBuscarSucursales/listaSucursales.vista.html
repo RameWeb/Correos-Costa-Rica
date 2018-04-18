@@ -1,15 +1,9 @@
-<main id="registroSucursales">
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-md-3 py-5 px-5 panelIzquierdo">
-          <a href="#!/admin"><img src="../../../sources/img/chevron-left.svg" height="30px" width="30px" alt="">Regresar al dashboard</a>
-          <img src="../../../sources/img/logo_slateblue.svg" class="mt-5" alt="">
+<aside id="dashboard">
+  <main id="registroSucursales">
+    <div class="col-md-12 pt-5 mt-5">
+      <h2 class="text-center">Lista de sucursales</h2>
 
-      </div>
-      <div class="col-md-9 py-5 px-5 contenido">
-        <h2>Lista Sucursales</h2>
-
-        <div class="col-12 form-group">
+        
           <label for="txtBuscar">Buscar</label>
           <input type="text" id="txtBuscar" class="form-control" ng-model="buscarSucursal">
         </div>
@@ -19,7 +13,8 @@
               <tr>
                 <th>Id</th>
                 <th>Nombre</th>
-                <th>Ubicación</th>
+                <th>Latitud</th>
+                <th>Longitud</th>
                 <th>Dirección exacta</th>
                 <th>Teléfono</th>
                 <th>Acciones</th>
@@ -29,14 +24,15 @@
             <tr ng-repeat="sucursal in vm.listaSucursales | filter:buscarSucursal">
               <td>{{sucursal.idSucursal}}</td>
               <td>{{sucursal.nombreSucursal}}</td>
-              <td>{{sucursal.ubicacion}}</td>
+              <td>{{sucursal.latitude}}</td>
+              <td>{{sucursal.longitude}}</td>
               <td>{{sucursal.direccion}}</td>
               <td>{{sucursal.telefono}}</td>
               <td>
                 <li class="nav-item dropdown btnAccion" style="list-style:none">
                   <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Acciones</a>
                   <div class="dropdown-menu">
-                    <a class="dropdown-item" href="" ng-click="vm.modificar(sucursal)">Modificar sucursal</a>
+                    <a class="dropdown-item" href=""ui-sref="main.modificarConvenios" ng-click="vm.modificar(sucursal)">Modificar sucursal</a>
                     <a class="dropdown-item" href="">Desactivar sucursal</a>
                   </div>
                 </li>

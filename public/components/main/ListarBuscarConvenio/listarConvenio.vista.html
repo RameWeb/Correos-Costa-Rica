@@ -1,12 +1,9 @@
+<aside id="dashboard">
 <main id="registroSucursales">
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-md-4 py-5 px-5 panelIzquierdo">
-        <a href="#!/admin"><img src="../../../sources/img/chevron-left.svg" height="30px" width="30px" alt="">Regresar al menú principal</a>
-        <img src="../../../sources/img/logo_slateblue.svg" class="mt-5" alt="">
-      </div>
-      <div class="col-md-8 py-5 px-5 contenido">
-        <h2>Convenios</h2>
+  <div class="col-md-12 pt-5 mt-5">
+    <h2 class="text-center">Lista de convenios</h2>
+      
+      
 
         <div class="form-group">
           <label for="txtBuscar">Buscar</label>
@@ -18,7 +15,7 @@
               <tr>
                 <th>id del convenio</th>
                 <th>Tipo de convenio</th>
-                <th>Institución</th>
+                <th>Nombre de la institución</th>
                 <th>Tiempo convenio</th>
                 <th>Costo transporte</th>
               </tr>
@@ -34,7 +31,7 @@
                 <li class="nav-item dropdown btnAccion" style="list-style:none">
                   <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Acciones</a>
                   <div class="dropdown-menu">
-                    <a class="dropdown-item" href="" ng-click="vm.modificar(convenio.idConvenios)">Modificar convenio</a>
+                    <a class="dropdown-item" href=""ui-sref="main.modificarConvenios"ng-click="vm.modificar(convenio.idConvenios)">Modificar convenio</a>
                     <a class="dropdown-item" href="">Desactivar convenio</a>
                   </div>
                 </li>
@@ -46,3 +43,4 @@
     </div>
   </div>
 </main>
+</aside>
