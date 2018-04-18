@@ -178,7 +178,19 @@
         controllerAs: 'vm'
       })
 
+// inicio de BITACORA
 
+.state('main.bitacora', {
+  url: '/consultarBitacora',
+  templateUrl: './components/main/consultarBitacora/consultarBitacora.vista.html',
+  resolve: {
+    load: ['$ocLazyLoad', ($ocLazyLoad) => {
+      return $ocLazyLoad.load('./components/main/consultarBitacora/consultarBitacora.controlador.js')
+    }]
+  },
+  controller: 'controladorBitacora',
+  controllerAs: 'vm'
+})
 
 
       // -----------------------------------------------------------------------
