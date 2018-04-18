@@ -160,7 +160,7 @@
       })
 
 
-      .state('modificarSucursal', {
+      .state('main.modificarSucursales', {
         url: '/modificarSucursal',
         templateUrl: './components/main/modificarSucursal/modificarSucursal.vista.html',
         data: {
