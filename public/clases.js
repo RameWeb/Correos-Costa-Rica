@@ -98,12 +98,12 @@ class Usuario{
   }
 
   getNombreCompleto(){
-    return `${this.nombre} ${this.apellido1}`;
+    return `${this.nombre1} ${this.apellido1}`;
   }
 }
 
 class EmpleadoSucursal extends Usuario{
-  constructor(pTipoIdentificacion, pIdentificacion, pNombre1, pNombre2, pApellido1, pApellido2, pfoto, pSexo, pFechaNacimiento, pEmail, pContrasenna, pProvincia, pCanton, pDistrito, pDireccion, pestado, pTipoUsuario, pObjSucursal, pLicencia, pFotoLicencia, pVencimientoLicencia){
+  constructor(pTipoIdentificacion, pIdentificacion, pNombre1, pNombre2, pApellido1, pApellido2, pfoto, pSexo, pFechaNacimiento, pEmail, pContrasenna, pProvincia, pCanton, pDistrito, pDireccion, pestado, pTipoUsuario, pObjSucursal){
     super(pTipoIdentificacion, pIdentificacion, pNombre1, pNombre2, pApellido1, pApellido2, pfoto, pSexo, pFechaNacimiento, pEmail, pContrasenna, pProvincia, pCanton, pDistrito, pDireccion, pestado, pTipoUsuario);
     this.sucursal = pObjSucursal;
   }
@@ -133,8 +133,9 @@ class Cliente extends Usuario{
     this.telefono = pTelefono;
     this.sucursalPreferencia = pSucursalPreferencia;
     this.tarjetas = [];
+    this.paquetes = [];
     this.latitud = pLat;
-    this.longitud = pLong;
+    this.longitud = pLong; 
   }
 
   agregarTarjeta(pObjTarjeta){

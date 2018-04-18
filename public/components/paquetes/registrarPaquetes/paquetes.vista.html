@@ -1,15 +1,15 @@
+<navegacionPrincipal></navegacionPrincipal>
+
 <main id="registrarPaquetes">
 <div class="container-fluid">
   <div class="row">
-
-        <div class="col-md-4 py-5 px-5 panelIzquierdo">
-                <h2>Correos de Costa Rica</h2>
-             </div>
-      <div class="col-md-8 py-5 px-5 contenido">
+      <div class="col-md-3 py-5 px-5 panelIzquierdo">
+        <a href="#!/admin"><img src="../../../sources/img/chevron-left.svg" height="30px" width="30px" alt="">Regresar al Menu Principal</a>
+        <img type="image/svg+xml" src="/../sources/img/logo_white.svg" class="my-5">
+      </div>
+      <div class="col-md-9 py-5 px-5 contenido">
         <h2>Registro de Paquetes</h2>
-     
-
-      <div class="col-md-6">
+        <div class="col-md-6">
           <form name="formRegistrarSucursales" autocomplete="off" ng-submit="vm.registrarPaquetes(vm.nuevoPaquetes)" novalidate>
 
             <div class="form-group">
@@ -19,7 +19,7 @@
             
             <div class="form-group">
               <label for="sltCliente">Dueño del paquete:</label>
-              <select id="sltCliente" class="form-control" ng-options="cliente as cliente.getNombreCompleto() for cliente in vm.listaClientes track by cliente.nombre" ng-model="vm.nuevoConvenio.cliente" required>
+              <select id="sltCliente" class="form-control" ng-options="cliente as cliente.getNombreCompleto() for cliente in vm.listaClientes track by cliente.nombre" ng-model="vm.nuevoPaquetes.cliente" required>
                 <option></option>
               </select>
             </div>

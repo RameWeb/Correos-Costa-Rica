@@ -1,9 +1,9 @@
 <aside id="dashboard">
   <div class="container-fluid">
     <div class="row">
-      <div class="col-md-12 panelIzquierdo py-5 px-5">
+      <div class="col-md-12 panelIzquierdo px-5">
         <img type="image/svg+xml" src="/../sources/img/logo_white.svg" class="my-5">
-        <ul class="list-group" class="my-5">
+        <ul class="list-group" class="my-4">
           <li class="list-group-item" ng-hide="vm.rolUsuario == 'Cliente'">
             <a href="#!/regEmpleados">Empleados</a>
           </li>
@@ -19,10 +19,10 @@
           <li class="list-group-item" ng-hide="vm.rolUsuario == 'Cliente'">
             <a href="#!/registrarTipoProducto">Productos</a>
           </li>
-          <li class="list-group-item">
+          <li class="list-group-item" ng-hide="vm.rolUsuario == 'Cliente'">
             <a href="" ui-sref="main.convenios" ui-sref-active="active">Convenios</a>
           </li>
-          <li class="list-group-item">
+          <li class="list-group-item" ng-hide="vm.rolUsuario == 'Cliente'">
             <a href="#!/listarPaquetes">Paquetes</a>
           </li>
           <li class="list-group-item" ng-hide="vm.rolUsuario == 'Cliente'">
@@ -34,7 +34,7 @@
           <li class="list-group-item">
             <a href="#!/registrarConvCliente">Solicitar Convenio</a>
           </li>
-          <li class="list-group-item" ng-hide="vm.rolUsuario == 'Administrador' || vm.rolUsuario == 'Encargado de Aduana'">
+          <li class="list-group-item" ng-hide="vm.rolUsuario == 'Administrador' || vm.rolUsuario == 'Encargado de Aduana' || vm.rolUsuario == 'Encargado de Sucursal' || vm.rolUsuario == 'Repartidor'">
             <a href="#!/listarPaquetesCliente">Mis Paquetes</a>
           </li>
         </ul>

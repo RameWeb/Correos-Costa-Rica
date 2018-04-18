@@ -1,22 +1,22 @@
 <main id="registrarPaquetes">
-<div class="container-fluid">
-    <div class="row">
+    <div class="container-fluid">
+        <div class="row">
 
             <div class="col-md-4 py-5 px-5 panelIzquierdo">
-                    <h2>Correos de Costa Rica</h2>
-                 
-        
+                <h2>Correos de Costa Rica</h2>
+
+
                 <a href="/#!/paquetes" class="btn btn-light">Regresar</a>
 
             </div>
 
             <div class="col-md-8 py-5 px-5 contenido">
-                    <h2>Lista de Paquetes</h2>
-                  <input ng-model="searchText" class="form-control" placeholder="Buscar paquete" >
-                 
-           
-            <table class="table">
-                <thead>
+                <h2>Lista de Paquetes</h2>
+                <input ng-model="searchText" class="form-control" placeholder="Buscar paquete">
+
+
+                <table class="table">
+                    <thead>
                         <tr>
                             <th>N. Tracking</th>
                             <th>Dueño paquete</th>
@@ -27,43 +27,43 @@
                             <th>Modificar de paquete</th>
                             <th>Acciones</th>
                         </tr>
-                        
+
                     </thead>
-                    
+
                     <tbody>
-                      <tr ng-repeat="paquetes in vm.listaPaquetes | filter:searchText">
-                        <td>{{paquetes.tracking}}</td>
-                        <td>{{paquetes.nombre}}</td>
-                        <td>{{paquetes.peso}}</td>
-                        <td>{{paquetes.valor}}</td>
-                        <td>{{paquetes.repartidor}}</td>
-                        <td>{{paquetes.estado}}</td>
-                        <td>
+                        <tr ng-repeat="paquetes in vm.listaPaquetes | filter:searchText">
+                            <td>{{paquetes.tracking}}</td>
+                            <td>{{paquetes.nombre}}</td>
+                            <td>{{paquetes.peso}}</td>
+                            <td>{{paquetes.valor}}</td>
+                            <td>{{paquetes.repartidor}}</td>
+                            <td>{{paquetes.estado}}</td>
+                            <td>
                                 <li class="nav-item dropdown" style="list-style:none">
                                     <a class="nav-link dropdown-toggle btn btnAccion" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Estado</a>
                                     <div class="dropdown-menu">
-                                      <a class="dropdown-item" href="/#!/cambiarEstadoPaquetes" ng-click="vm.modificarEstado(paquetes)">Cambiar Estado</a>
-                            
-    
-                            </td>
-                        <td>
-                            <li class="nav-item dropdown" style="list-style:none">
-                                <a class="nav-link dropdown-toggle btn btnAccion" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Acciones</a>
-                                <div class="dropdown-menu">
-                                  <a class="dropdown-item" href="/#!/modificarPaquetes" ng-click="vm.modificar(paquetes)"  >Modificar paquete</a>
-                                  <a class="dropdown-item" href="">Eliminar paquete</a>
+                                        <a class="dropdown-item" href="/#!/cambiarEstadoPaquetes" ng-click="vm.modificarEstado(paquetes)">Cambiar Estado</a>
 
-                        </td>
-                        
-                        <td>
-                            <!--aqui va boton de asignar repartidor -->
-                          </td>
-                        
-                      </tr>
+
+                            </td>
+                            <td>
+                                <li class="nav-item dropdown" style="list-style:none">
+                                    <a class="nav-link dropdown-toggle btn btnAccion" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Acciones</a>
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item" href="/#!/modificarPaquetes" ng-click="vm.modificar(paquetes)">Modificar paquete</a>
+                                        <a class="dropdown-item" href="">Eliminar paquete</a>
+
+                            </td>
+
+                            <td>
+                                <!--aqui va boton de asignar repartidor -->
+                            </td>
+
+                        </tr>
                     </tbody>
-        </table>
+                </table>
+                </div>
+                </div>
+            </div>
         </div>
-    </div>
-    </div>
-    </div>
 </main>

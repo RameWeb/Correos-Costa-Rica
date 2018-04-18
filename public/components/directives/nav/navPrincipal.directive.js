@@ -1,29 +1,29 @@
 (() => {
   'use strict';
   angular
-  .module('correos-cr')
-  .directive('navegacionPrincipal', navegacionPrincipal);
+    .module('correos-cr')
+    .directive('navegacionPrincipal', navegacionPrincipal);
 
-  navegacionPrincipal.$inject = ['$state' ,'inicioSesionService'];
+  navegacionPrincipal.$inject = ['$state', 'inicioSesionService'];
 
-  function navegacionPrincipal($state, inicioSesionService){
+  function navegacionPrincipal($state, inicioSesionService) {
 
-    let navegacionPrincipalControlador = function(){
+    let navegacionPrincipalControlador = function () {
       let vm = this;
-      vm.closeSesion = () => {
+      angular.element('#btnCerrarSesion').on('click', function () {
         swal("Desea cerrar la sesión?", {
-            buttons: {
-              cancel: "Cancelar",
-              cerrarSesion: {
-                text: "Cerrar sesión",
-                value: "cerrarSesion",
-              },
+          buttons: {
+            cancel: "Cancelar",
+            cerrarSesion: {
+              text: "Cerrar sesión",
+              value: "cerrarSesion",
             },
-          })
+          },
+        })
           .then((value) => {
             switch (value) {
               case "cerrarSesion":
-              inicioSesionService.logOut();
+                inicioSesionService.logOut();
                 $state.go('iniciarSesion');
                 swal({
                   title: "Sesión cerrada correctamente",
@@ -31,13 +31,14 @@
                   icon: "success",
                   button: "Aceptar",
                 });
-              break;
+                break;
 
               default:
                 break;
             }
-          });
-      };
+          })
+      }
+      )
     };
 
     let navegacion = {

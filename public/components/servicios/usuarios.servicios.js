@@ -12,6 +12,7 @@
 
     let publicAPI = {
       agregarUsuario : _agregarUsuario,
+      agregarEmpleado : _agregarEmpleado,
       obtenerUsuario : _obtenerUsuario,
       obtenerUsuarioEspecifico : _obtenerUsuarioEspecifico,
       actualizarUsuario : _actualizarUsuario,
@@ -35,6 +36,27 @@
         registroExitoso = false;
       }else{
         registroExitoso = localStorageFactories.setUsuario(pNuevoUsuario);
+      };
+
+      return registroExitoso;
+    };
+
+    //CHRISTINE
+    function _agregarEmpleado(pNuevoEmpleado){
+      let listaUsuarios = _obtenerUsuario(),
+          usuarioRepetido,
+          registroExitoso;
+
+      for(let i = 0; i < listaUsuarios.length; i++){
+        if(pNuevoEmpleado.getEmail() == listaUsuarios[i].getEmail() ){
+          usuarioRepetido = true;
+        };
+      };
+
+      if(usuarioRepetido == true){
+        registroExitoso = false;
+      }else{
+        registroExitoso = localStorageFactories.setEmpleado(pNuevoEmpleado);
       };
 
       return registroExitoso;
