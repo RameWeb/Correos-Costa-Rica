@@ -100,6 +100,10 @@ class Usuario{
   getNombreCompleto(){
     return `${this.nombre1} ${this.apellido1}`;
   }
+
+  getNombre(){
+    return this.nombre1;
+  }
 }
 
 class EmpleadoSucursal extends Usuario{

@@ -10,6 +10,8 @@
 
     let navegacionPrincipalControlador = function () {
       let vm = this;
+      vm.putito = (inicioSesionService.getAuthUser()).getNombre();
+      console.log(vm.putito);
       angular.element('#btnCerrarSesion').on('click', function () {
         swal("Desea cerrar la sesión?", {
           buttons: {
