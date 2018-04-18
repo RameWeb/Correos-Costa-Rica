@@ -9,10 +9,13 @@
   function localStorageFactories($log, $http) {
     const localStorageAPI = {
       setUsuario : _setUsuario,
-      setEmpleado : _setEmpleado,
       getDatosUsuarios: _getDatosUsuarios,
       agregarSucursal : _agregarSucursal,
       obtenerSucursal : _obtenerSucursal,
+      setItem: _setItem,
+      getItem: _getItem,
+      getPrealertas: _getPrealertas,
+      setPrealertas: _setPrealertas,
       setSession: _setSession,
       closeSession: _closeSession,
       getSession: _getSession,
@@ -59,13 +62,14 @@
           'fotoLicencia' : data.fotoLicencia,
           'licenciaVencimiento' : data.licenciaVencimiento,
           'sucursalPreferencia' : data.sucursalPreferencia,
+          'prealertas': data.prealertas,
           'titularTarjeta' : data.tarjetas[0].titularTarjeta,
           'numeroTarjeta' : data.tarjetas[0].numeroTarjeta,
           'mesVencimiento' : data.tarjetas[0].mesVencimiento,
           'annoVencimiento': data.tarjetas[0].annoVencimiento,
           'ccv': data.tarjetas[0].ccv,
           'latitud': data.latitud,
-          'longitud': data.longitud
+          'longitud': data.longitud,
         }
       });
 
@@ -270,48 +274,52 @@
       return sessionActive;
     };
 
-    //CHRISTINE
+    function _getPrealertas() {
+      let listaPrealertas = [];
 
-    function _setEmpleado(data) {
+      let peticion = $.ajax({
+        url: 'http://localhost:4000/api/get_all_prealertas',
+        type: 'get',
+        contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+        dataType: 'json',
+        async: false,
+        data: {
+
+        }
+      });
+
+      peticion.done((prealertas) => {
+        console.log('Prealertas que vienen de la base de datos');
+        listaPrealertas = prealertas;;
+      });
+      peticion.fail(() => {
+        listaPrealertas = [];
+      });
+
+      return listaPrealertas;
+    }
+
+    function _setPrealertas(data) {
       let respuesta;
 
       let peticion = $.ajax({
-        url: 'http://localhost:4000/api/save_user',
+        url: 'http://localhost:4000/api/save_prealertas',
         type: 'post',
         contentType: 'application/x-www-form-urlencoded; charset=utf-8',
         dataType: 'json',
         async: false,
         data: {
-          'tipoIdentificacion' : data.tipoIdentificacion,
-          'identificacion' : data.identificacion,
-          'nombre1' : data.nombre1,
-          'nombre2' : data.nombre2,
-          'apellido1' : data.apellido1,
-          'apellido2' : data.apellido2,
-          'fotoPerfil' : data.fotoPerfil,
-          'sexo' : data.sexo,
-          'fechaNacimiento' : data.fechaNacimiento,
-          'email' : data.email,
-          'contrasenna' : data.contrasenna,
-          'provincia' : data.provincia,
-          'canton' : data.canton,
-          'distrito' : data.distrito,
-          'direccion' : data.direccion,
-          'estado' : data.estado,
-          'tipoUsuario' : data.tipoUsuario,
-          'sucursal' : data.sucursal,
-          'rolAduana' : data.rolAduana,
-          'telefono' : data.telefono,
-          'sucursal' : data.Sucursal,
-          'licencia' : data.licencia,
-          'fotoLicencia' : data.fotoLicencia,
-          'licenciaVencimiento' : data.licenciaVencimiento,
-          'sucursalPreferencia' : data.sucursalPreferencia
+          'tracking': data.tracking,
+          'url': data.url,
+          'tipoProducto': data.tipoProducto,
+          'valor': data.valor,
+          'peso': data.peso,
+          'courier': data.courier,
         }
       });
 
       peticion.done((res) => {
-        respuesta = res.success
+        response = res.success
       });
       peticion.fail(() => {
         respuesta = false;

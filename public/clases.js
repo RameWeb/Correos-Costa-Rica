@@ -36,14 +36,29 @@ class Sucursales{
 }
 
 class Prealertas{
-  constructor(pTracking, pUrl, pTipoProducto, pValor, pPeso, pCourier, pEstado){
+  constructor(pTracking, pUrl, pTipoProducto, pValor, pPeso, pCourier){
     this.tracking = pTracking;
     this.url = pUrl;
     this.tipoProducto = pTipoProducto;
     this.valor = pValor;
     this.peso = pPeso;
     this.courier = pCourier;
-    this.estado = pEstado; 
+  }
+
+  getTipoProducto(){
+    return this.tipoProducto;
+  }
+
+  gettracking(){
+    return this.tracking;
+  }
+
+  getInfoPrealerta(){
+    return `${this.tracking} ${this.tipoProducto}`;
+  }
+
+  getCedulaDuenno(){
+    return this.idCliente;
   }
 }
 
@@ -133,6 +148,7 @@ class Cliente extends Usuario{
     this.telefono = pTelefono;
     this.sucursalPreferencia = pSucursalPreferencia;
     this.tarjetas = [];
+    this.prealertas = [];
     this.paquetes = [];
     this.latitud = pLat;
     this.longitud = pLong; 
@@ -146,6 +162,26 @@ class Cliente extends Usuario{
     return this.tarjetas;
   }
 
+  agregarPrealerta(pnuevaPrealerta) {
+    this.prealertas.push(pnuevaPrealerta);
+  }
+
+  getCantidadPrealertas(){
+    return this.prealertas.length;
+  }
+
+  getPrealertas(){
+    return this.prealertas;
+  }
+
+  getCedula(){
+    return this.identificacion;
+  }
+
+  setPrealertas(aPrealertas){
+    this.prealertas = aPrealertas;
+  }
+
   obtenerLatitud(){
     return this.latitud;
   }
@@ -154,6 +190,7 @@ class Cliente extends Usuario{
     return this.longitud;
   }
 }
+
 
 /**
  * Clase de la tarjeta
@@ -186,14 +223,6 @@ class Tarjeta{
 }
 
 // TODO Dentro de este archivo se crean los objetos con sus respectivos mÃƒÂ©todos
-class Direccion{
-  constructor(pProvincia,pCanton,pDistrito){
-    this.provincia = pProvincia;
-    this.canton = pCanton;
-    this.distrito = pDistrito;
-  }
-}
-
 class Licencia{
     constructor(pTipo,pCategoria,pDescripcion){
       this.tipo = pTipo;

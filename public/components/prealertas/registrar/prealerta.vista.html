@@ -1,6 +1,6 @@
 <!-- <navegacion-Principal></navegacion-Principal> -->
 
-<main id="registroPrealertas">
+<main id="registrarEmpleados">
   <div class="container-fluid">
     <div class="row">
       <div class="col-md-3 py-5 px-5 panelIzquierdo">
@@ -16,7 +16,7 @@
 
             <div class="form-group">
               <label for="txtTracking">Tracking:</label>
-              <input type="text" class="form-control" name="tracking" id="txtTracking" ng-model="vm.nuevaPrealerta.tracking" maxlength="25" minlength="7" pattern="[A-Za-z0-9]+" required>
+              <input type="text" class="form-control" name="tracking" id="txtTracking" ng-model="vm.nuevaPrealerta.tracking" maxlength="7" minlength="7" pattern="[A-Za-z0-9]+" required>
               <div ng-messages="formRegistrarPrealerta.tracking.$error" role="alert">
                 <div ng-message="required">
                   <small class="form-text text-muted">Este campo es requerido</small>

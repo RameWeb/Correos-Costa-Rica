@@ -636,7 +636,6 @@
       })
       // Fin Jason
 
-
     $urlRouterProvider.otherwise('/');
   }
 })();

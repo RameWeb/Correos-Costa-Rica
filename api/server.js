@@ -63,6 +63,7 @@ const index = require('./index'),
       usuarios = require('./components/usuarios/usuarios.route'),
       sucursales = require('./components/sucursales/sucursales.route'),
       convenios = require('./components/convenios/convenios.route');
+      prealertas = require('./components/prealertas/prealertas.route');
       
       
 
@@ -72,7 +73,7 @@ const index = require('./index'),
 app.use('/api', usuarios);
 app.use('/api', sucursales);
 app.use('/api', convenios);
-
+app.use('/api', prealertas);
 app.use('/', index);
 
 /// Se guarda todo lo que se ha realizado

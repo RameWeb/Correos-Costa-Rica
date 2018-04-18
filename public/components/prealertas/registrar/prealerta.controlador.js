@@ -4,10 +4,20 @@
   .module('correos-cr')
   .controller('controladorPrealertas', controladorPrealertas);
 
-  controladorPrealertas.$inject = ['$http', '$stateParams', '$state', 'servicioPrealertas'];
+  controladorPrealertas.$inject = ['$stateParams', '$state','servicioUsuarios' /*',loginService'*/];
 
-  function controladorPrealertas($http, $stateParams, $state, servicioPrealertas){
+function controladorPrealertas($stateParams, $state, servicioUsuarios /*,loginService*/){
     let vm = this;
+
+    // const userAuth = loginService.getAuthUser();
+
+    // console.log(userAuth);
+
+    // if(userAuth == undefined){
+    //   $state.go('inicioSesion');
+    // }else{
+    //   vm.usuarioActivo = userAuth.getNombre();
+    // }
 
     vm.courier = ["DHL", "UPS", "Amazon", "FedEx", "TNT Express", "USPS", "CRBOx", "Aerocasillas", "JetBox"]; 
 
@@ -16,42 +26,37 @@
     //Objeto sin formato
 
     vm.nuevaPrealerta = {};
+    vm.listaPrealertas = listarPrealertas();
 
     listarPrealertas();
-    
-    // Funcion que es llamada desde el html para regustra un nuevo usuario
+
+    // Funcion que es llamada desde el html para registrar una prealerta
+
     vm.registrarPrealerta = (pnuevaPrealerta) => {
+      console.log(pnuevaPrealerta);
 
-      // if (pnuevaPrealerta.estado == null) {
-      //   pnuevaPrealerta.estado = 0;
-      // }
-      
-      // Tomamos el objeto sin formato y lo comvertimos en un objeto de tipo cliente
-      let objNuevaPrealerta = new Prealertas(pnuevaPrealerta.tracking, pnuevaPrealerta.url, pnuevaPrealerta.tipoProducto, pnuevaPrealerta.valor, pnuevaPrealerta.peso, pnuevaPrealerta.courier, pnuevaPrealerta.estado);
-        
-      console.log(objNuevaPrealerta);
+      let objPrealertaNueva = new Prealertas(pnuevaPrealerta.tracking, pnuevaPrealerta.url, pnuevaPrealerta.tipoProducto, pnuevaPrealerta.valor, pnuevaPrealerta.peso, pnuevaPrealerta.courier);
 
-      servicioPrealertas.agregarPrealerta(objNuevaPrealerta);
+      console.log('Objeto con la prealerta');
+      console.log(objPrealertaNueva);
+      servicioUsuarios.addPrealertas(objPrealertaNueva);
 
-      // Retroalimentacion Visual para los usuarios: SweetAlert
-      swal("Registro exitoso", "El nuevo paquete se ha sido prealertado correctamente", "success", {
+      swal("Registro exitoso", "La prealerta se ha sido registrado correctamente", "success", {
         button: "Aceptar",
       });
 
-      // Pasamos al servicio el nuevo obj de tipo cliente para ser almacenado en el localStorage
       // Se limpia el formulario
-
-      listarPrealertas();
-
       vm.nuevaPrealerta = null;
-    }
+      listarPrealertas();
+    };
 
     function listarPrealertas(){
-    vm.listaPrealertas = servicioPrealertas.obtenerPrealerta();
+    vm.listaPrealertas = servicioUsuarios.getPrealertas();
     }
 
-    vm.modificar = (pprealerta) =>{
-      $state.go('modificarPrealerta', {tracking: JSON.stringify(pprealerta.tracking)})
+    vm.modificar = (pPrealertas) =>{
+      $state.go('modificarPrealerta', {tracking: JSON.stringify(pPrealertas)})
     }
+
   }
 })();
