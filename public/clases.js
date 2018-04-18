@@ -70,16 +70,28 @@ class Usuario{
     this.estado = pnuevoEstado;
   }
 
+  getFotoPerfil(){
+    return this.fotoPerfil;
+  }
+
   getTipoUsuario(){
     return this.tipoUsuario;
   }
 
-  getEmail(){
+  getCorreo(){
     return this.email;
   }
   
   getPassword(){
     return this.contrasenna;
+  }
+
+  getIdentificacion(){
+    return this.identificacion;
+  }
+  
+  getDireccion(){
+    return this.direccion;
   }
 
   getRol(){
@@ -88,6 +100,10 @@ class Usuario{
 
   getNombreCompleto(){
     return `${this.nombre1} ${this.apellido1}`;
+  }
+
+  getFechaNacimiento(){
+    return this.fechaNacimiento;
   }
 }
 

@@ -42,16 +42,22 @@
       });
 
       peticion.done((usuarios) => {
-        console.log('datos que vienen de la base de datos');
-        console.log(usuarios);
+        // console.log('datos que vienen de la base de datos');
+        // console.log(usuarios);
         listaUsuarios = usuarios;
       });
       peticion.fail(() => {
         listaUsuarios = [];
+        console.log('Ocurrió un error');
       });
 
       return listaUsuarios;
     }
+
+      /**
+     * Toma el objejeto y o envía al backend por una petición de $ajax
+     * @param {objeto usuario} data 
+     */
 
     function _setUsuario(data) {
       let respuesta;
@@ -98,11 +104,13 @@
         }
       });
 
-      peticion.done((res) => {
-        respuesta = res.success
+      peticion.done((datos) => {
+        respuesta = datos.success;
+        console.log('Petición realizada con éxito');
       });
-      peticion.fail(() => {
-        respuesta = false;
+      peticion.fail((error) => {
+        respuesta = error;
+        console.log('Ocurrió un error');
       });
 
       return respuesta;

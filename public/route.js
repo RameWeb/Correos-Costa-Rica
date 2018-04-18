@@ -91,6 +91,21 @@
         controllerAs: 'vm'
       })
 
+      .state('main.verPerfil', {
+        url: '/miPerfil',
+        templateUrl: './components/main/verPerfil/perfil.view.html',
+        data: {
+          pageTitle: 'Mi perfil | Correos de Costa Rica'
+        },
+        resolve: {
+          load: ['$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/main/verPerfil/perfil.controlador.js')
+          }]
+        },
+        controller: 'verPerfilControlador',
+        controllerAs: 'vm'
+      })
+
       .state('main.registroCourier', {
         url: '/registroCourier',
         templateUrl: './components/main/registroCourier/courier.vista.html',

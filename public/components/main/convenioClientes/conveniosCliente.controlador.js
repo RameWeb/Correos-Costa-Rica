@@ -4,9 +4,9 @@
   .module('correos-cr')
   .controller('controladorConvenioClientes', controladorConvenioClientes);
 
-  controladorConvenioClientes.$inject = ['$stateParams', '$state', 'servicioConvenios', 'servicioConvenioClientes', 'servicioUsuarios'];
+  controladorConvenioClientes.$inject = ['$stateParams', '$state', 'servicioConvenios', 'servicioConvenioClientes', 'servicioUsuarios', 'inicioSesionService'];
 
-  function controladorConvenioClientes($stateParams, $state, servicioConvenios, servicioConvenioClientes, servicioUsuarios){
+  function controladorConvenioClientes($stateParams, $state, servicioConvenios, servicioConvenioClientes, servicioUsuarios, inicioSesionService){
     let vm = this;
 
     vm.nuevoConvenio = {};
@@ -20,6 +20,16 @@
       
       let idRandom = (Math.random()*Math.random())*1000
       console.log(idRandom);
+
+      const userAuth = inicioSesionService.getAuthUser();
+
+      if(userAuth == undefined){
+        $state.go('inicioSesion');
+      }else{
+        vm.usuarioActivo = userAuth.getNombreCompleto();
+      }
+  
+      vm.userInfo = userAuth;
 
       // Tomamos el objeto sin formato y lo comvertimos en un objeto de tipo cliente
       let objNuevoConvenio = new ConveniosClientes(pnuevoConvenio.servicio, pnuevoConvenio.cliente, pnuevoConvenio.direccion, idRandom)

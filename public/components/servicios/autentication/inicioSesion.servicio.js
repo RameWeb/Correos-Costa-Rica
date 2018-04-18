@@ -68,7 +68,7 @@
           datosUsuario;
 
       for(let i = 0; i < listaUsuarios.length; i++){
-        if(listaUsuarios[i].getEmail() == sessionActiva.correo){
+        if(listaUsuarios[i].getCorreo() == sessionActiva.correo){
           datosUsuario = listaUsuarios[i];
         }
       };

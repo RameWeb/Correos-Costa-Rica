@@ -1,14 +1,10 @@
-const UserModel = require('./usuarios.model'),
-      bcrypt = require('bcryptjs');
-      
+const UserModel = require('./usuarios.model');      
 
 module.exports.registrar = (req, res) => {
 
   let newUser = Object.assign(new UserModel(), req.body);
 
-  let objD = req.body;
-
-  console.log(objD);
+  // let objD = req.body;
 
   switch(newUser.tipoUsuario) {
     case "Encargado de Sucursal":
@@ -48,8 +44,6 @@ module.exports.registrar = (req, res) => {
     break;
   }
   console.log(newUser.latitud);
-  console.log('Objeto que viene del front-end');
-  console.log(newUser);
 
   // newUser.pre('save', (next) => {
   //   var user = this;

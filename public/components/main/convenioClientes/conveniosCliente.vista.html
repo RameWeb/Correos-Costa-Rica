@@ -14,10 +14,7 @@
 
       <div class="form-group">
         <label for="sltCliente">Cliente:</label>
-        <select id="sltCliente" class="form-control" ng-options="cliente as cliente.getNombreCompleto() for cliente in vm.listaClientes track by cliente.nombre"
-          ng-model="vm.nuevoConvenio.cliente" required>
-          <option></option>
-        </select>
+        <label>{{vm.userInfo.getIdentificacion()}}</label>
       </div>
 
       <div class="form-group">
