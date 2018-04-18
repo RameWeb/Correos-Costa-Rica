@@ -38,7 +38,7 @@ module.exports.listarTodos = function(req, res) {
 };
 
 module.exports.actualizar = function(req, res) {
-  UserModel.findByIdAndUpdate(req.body.idConvenios, { $set: req.body }, function(err, user) {
+  conveniosModel.findByIdAndUpdate(req.body.idConvenios, { $set: req.body }, function(err, user) {
     if (err) {
       res.json({ success: false, msg: 'No se ha actualizado.' + handleError(err) });
 

@@ -10,15 +10,15 @@
     const localStorageAPI = {
       setUsuario : _setUsuario,
       getDatosUsuarios: _getDatosUsuarios,
-      setItem: _setItem,
-      getItem: _getItem,
+      agregarSucursal : _agregarSucursal,
+      obtenerSucursal : _obtenerSucursal,
       setSession: _setSession,
       closeSession: _closeSession,
       getSession: _getSession,
       setConvenios:_setConvenios,
       getConvenios : _getConvenios,
-      setSucursales:_setSucursales,
-      getSucursales: _getSucursales
+      actualizarConvenio : _actualizarConvenio
+     
       
     };
     return localStorageAPI;
@@ -78,6 +78,8 @@
       return respuesta;
     }
 
+    
+    
     function _setConvenios(data) {
       let respuesta;
 
@@ -106,7 +108,8 @@
       return respuesta;
     }
 
-    function _setSucursales(data) {
+
+    function _agregarSucursal(data) {
       let respuesta;
 
       let peticion = $.ajax({
@@ -118,9 +121,10 @@
         data: {
           'idSucursal' : data.idSucursal,
           'nombreSucursal' : data.nombreSucursal,
-          'ubicacion' : data.nombreInstitucion,
+          'latitude' : data.latitude,
+          'longitude' : data.longitude,
           'direccion' : data.direccion,
-          'telefono' : data.telefono,
+          'telefono' : data.telefono
         }
       });
 
@@ -133,7 +137,7 @@
 
       return respuesta;
     }
-
+   
     /**
      * Funcion que obtiene los datos del back-end
      */
@@ -185,8 +189,9 @@
       return listaConvenios;
     }
 
-    function _getSucursales() {
-      let listarSucursales = [];
+
+    function _obtenerSucursal() {
+      let listaSucursales = [];
 
       let peticion = $.ajax({
         url: 'http://localhost:4000/api/get_all_sucursales',
@@ -200,31 +205,46 @@
       peticion.done((sucursales) => {
         console.log('datos que vienen de la base de datos');
         console.log(sucursales);
-        listarSucursales = sucursales;
+        listaSucursales = sucursales;
       });
       peticion.fail(() => {
-        listarSucursales = [];
+        listaSucursales = [];
       });
 
-      return listarSucursales;
+      return listaSucursales;
     }
-    function _setItem(key, value) {
-      let response = true;
+    
 
-      localStorage.setItem(key, JSON.stringify(value));
+      /**
+     * Funcion que modifica los datos del back-end
+     */
+     function _actualizarConvenio(data) {
+      let respuesta;
+      let peticion = $.ajax({
+        url: 'http://localhost:4000/api/update_convenios',
+        type: 'put',
+        contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+        dataType: 'json',
+        async: false,
+        data: {
+          'idConvenios' : data.idConvenios,
+          'tipo' : data.tipo,
+          'nombreInstitucion' : data.nombreInstitucion,
+          'tiempo' : data.tiempo,
+          'costo' : data.costo,
+        }
+      });
 
-      return response;
-    };
+      peticion.done((res) => {
+        respuesta = res.success
+      });
+      peticion.fail(() => {
+        respuesta = false;
+      });
 
-    function _getItem(value) {
-      let arrayData = JSON.parse(localStorage.getItem(value));
+      return respuesta;
+    }
 
-      if (!arrayData) {
-        arrayData = [];
-      }
-
-      return arrayData;
-    };
 
     function _setSession(value) {
       let response = true;

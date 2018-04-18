@@ -18,7 +18,7 @@
     // Funcion que almacena en el localStorageFactorie todos los convenios
     function _addConvenio(pnuevoConvenio){
       let listaConvenios = _getConvenios();
-      let registro = localStorageFactories.setConvenios(pnuevoConvenio);
+      let registro = localStorageFactories.obtenerSucursal(pnuevoConvenio);
 
       return registro;
       
@@ -63,7 +63,7 @@
           listaConvenios[i] = pconvenioModificado;
           // console.log(listaSucursales[i]);
 
-          localStorage.setItem('ConvenioLS', JSON.stringify(listaConvenios)); 
+          localStorageFactories.setConvenios(listaConvenios); 
         }
       }
     }
