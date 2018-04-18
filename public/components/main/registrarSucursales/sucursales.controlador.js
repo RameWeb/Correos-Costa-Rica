@@ -13,20 +13,20 @@
       vm.map = map;
     });
 
-    vm.callbackFunc = function (param) {
-      vm.latitude = vm.map.getCenter().lat();
-      vm.longitude = vm.map.getCenter().lng();
+   vm.callbackFunc = function (param) {
+      vm.latitude = vm.marker.getCenter().lat();
+      vm.longitude = vm.marker.getCenter().lng();
     };
     
     vm.nuevaSucursal = {};
     listarSucursales();
     
     // Funcion que es llamada desde el html para regustra un nuevo usuario
-    vm.registrarSucursal = (pnuevaSucursal) => {
+      vm.registrarSucursal = (pnuevaSucursal) => {
       pnuevaSucursal.latitud = vm.latitude;
-      pnuevaSucursal.longitud = vm.longitude
+      pnuevaSucursal.longitud = vm.longitude;
       // Tomamos el objeto sin formato y lo comvertimos en un objeto de tipo cliente
-      let objNuevaSucursal = new Sucursales(pnuevaSucursal.idSucursal, pnuevaSucursal.nombreSucursal, pnuevaSucursal.ubicacion,  pnuevaSucursal.direccion, pnuevaSucursal.telefono, );
+      let objNuevaSucursal = new Sucursales(pnuevaSucursal.idSucursal, pnuevaSucursal.nombreSucursal, pnuevaSucursal.latitude, pnuevaSucursal.longitude, pnuevaSucursal.direccion, pnuevaSucursal.telefono, );
         
       console.log(objNuevaSucursal);
 

@@ -1,4 +1,4 @@
-const conveniosModel = require('./convenios.model');
+const sucursalesModel = require('./sucursales.model');
 /**
  * Se exporta la funcion de registrar para que sea entendible para el usuario.route.js
  * @param {peticion} req 
@@ -8,18 +8,19 @@ module.exports.registrar = function(req, res) {
   /**
    * Creamos un nuevo dato con el formato del UserModel
    */
-  let newconvenios = new conveniosModel({
-    idConvenios: req.body.idConvenios,
-    tipo: req.body.tipo,
-    nombreInstitucion: req.body.nombreInstitucion,
-    tiempo: req.body.tiempo,
-    costo: req.body.costo 
+  let newsucursales = new sucursalesModel({
+    idSucursal: req.body.idSucursal,
+    nombreSucursal: req.body.nombreSucursal,
+    latitude: req.body.latitude,
+    longitude: req.body.longitude,
+    direccion: req.body.direccion, 
+    telefono: req.body.telefono
   });
-  newconvenios.save(function(error) {
+  newsucursales.save(function(error) {
     if (error) {
-      res.json({ success: false, msg: 'Ha ocurrido un error en el registro del convenio' + error });
+      res.json({ success: false, msg: 'Ha ocurrido un error en el registro de la sucursal' + error });
     } else {
-      res.json({ success: true, msg: 'Se registró el convenio correctamente' });
+      res.json({ success: true, msg: 'Se registró la sucursal correctamente' });
     }
   })
 };
@@ -32,13 +33,13 @@ module.exports.listarTodos = function(req, res) {
   /**
    * Esta funcion busca todos los datos que tengan la misma estructura del userModel y los retorna
    */
-  conveniosModel.find().then(function(convenios) {
-    res.send(convenios);
+  sucursalesModel.find().then(function(sucursales) {
+    res.send(sucursales);
   });
 };
 
 module.exports.actualizar = function(req, res) {
-  conveniosModel.findByIdAndUpdate(req.body.idConvenios, { $set: req.body }, function(err, user) {
+  sucursalesModel.findByIdAndUpdate(req.body.idSucursal, { $set: req.body }, function(err, user) {
     if (err) {
       res.json({ success: false, msg: 'No se ha actualizado.' + handleError(err) });
 
@@ -47,11 +48,3 @@ module.exports.actualizar = function(req, res) {
     }
   });
 };
-
-
-
-
-
-
-    
-
