@@ -35,11 +35,15 @@ class Prealertas{
     this.courier = pCourier;
   }
 
+  getIdentificacion(){
+    return this.identificacion;
+  }
+
   getTipoProducto(){
     return this.tipoProducto;
   }
 
-  gettracking(){
+  getTracking(){
     return this.tracking;
   }
 
@@ -202,6 +206,11 @@ class Cliente extends Usuario{
   obtenerLongitud(){
     return this.longitud;
   }
+
+  agregarPrealertas(pnuevaPrealerta) {
+    this.prealertas.push(pnuevaPrealerta);
+  }
+
 }
 
 
