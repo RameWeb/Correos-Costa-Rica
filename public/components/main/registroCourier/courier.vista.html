@@ -1,0 +1,23 @@
+<div class="col-md-12 pt-5 mt-5">
+  <div class="col-6">
+    <h2> Registro courier</h2>
+    <form ng-submit="vm.registrarCourier(vm.nuevoCourier)" name="registroCourier" autocomplete="off" novalidate>
+      <div class="form-group">
+        <label for="txtCourier">ID del courier</label>
+        <input type="text" id="txtIDCourier" class="form-control col-md-12" ng-model="vm.nuevoCourier.idCourier" required>
+      </div>
+
+      <div class="form-group">
+        <label for="txtCourier">Nombre del courier</label>
+        <input type="text" id="txtCourierNombre" class="form-control col-md-12" ng-model="vm.nuevoCourier.nombreCourier" required>
+      </div>
+
+      <div class="form-group">
+        <label for="txtCourier">Empresa encargada</label>
+        <input type="text" id="txtCourierEmpresa" class="form-control col-md-12" ng-model="vm.nuevoCourier.empresaCourier" required>
+      </div>
+
+      <button type="submit" class="btn btnAccion" id="btnGuardar" >Registrar</button>
+    </form>
+  </div>
+</div>

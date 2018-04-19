@@ -2,11 +2,11 @@
   'use strict';
   angular
     .module('correos-cr')
-    .controller('controladorClientes', controladorClientes);
+    .controller('controladorClientesAdmin', controladorClientesAdmin);
 
-    controladorClientes.$inject = ['$http', '$stateParams', '$state', 'servicioUsuarios', 'imageUpload', 'Upload', 'NgMap'];
+    controladorClientesAdmin.$inject = ['$http', 'servicioUsuarios', 'imageUpload', 'Upload', 'NgMap'];
 
-  function controladorClientes($http, $stateParams, $state, servicioUsuarios, imageUpload, Upload, NgMap){
+  function controladorClientesAdmin($http, servicioUsuarios, imageUpload, Upload, NgMap){
     let vm = this;
 
     vm.sucursales = ["Alajuelita", "Bagaces", "Cañas", "Desamparados", "Cartago Centro", "Moravia", "Pavas", "Venecia"];
@@ -66,7 +66,6 @@
       });
     }
 
-
     // Objeto sin formato
     vm.nuevoCliente = {};
 
@@ -103,11 +102,6 @@
 
       let nuevoCliente = new Cliente(pNuevoCliente.tipoIdentificacion, pNuevoCliente.identificacion, pNuevoCliente.primerNombre, pNuevoCliente.segundoNombre, pNuevoCliente.primerApellido, pNuevoCliente.segundoApellido, urlImagen, pNuevoCliente.sexo, pNuevoCliente.fechaNacimiento, pNuevoCliente.email, contrasenna, pNuevoCliente.provincia, pNuevoCliente.canton, pNuevoCliente.distrito, pNuevoCliente.direccion, 1, 'Cliente', pNuevoCliente.telefono, pNuevoCliente.sucursalPreferencia, pNuevoCliente.latitud, pNuevoCliente.longitud);
 
-      let nuevaTarjeta = new Tarjeta(pNuevoCliente.titularTarjeta, pNuevoCliente.numeroTarjeta, pNuevoCliente.mesVencimiento, pNuevoCliente.annoVencimiento, pNuevoCliente.ccv, nuevoCliente.getEmail());
-
-      nuevoCliente.agregarTarjeta(nuevaTarjeta);
-
-      console.log(nuevoCliente);
 
       // Pasamos al servicio el nuevo obj de tipo cliente para ser almacenado en el localStorage
       servicioUsuarios.agregarUsuario(nuevoCliente);

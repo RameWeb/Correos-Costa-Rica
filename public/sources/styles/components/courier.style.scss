@@ -1,34 +1,34 @@
-@import "../setting";
+// @import "../setting";
 
-#registroSucursales{
-  .contenido{
-    background-color: $white;
-    max-height: 100vh;
-    overflow: scroll;
-  }
+// #registroSucursales{
+//   .contenido{
+//     background-color: $white;
+//     max-height: 100vh;
+//     overflow: scroll;
+//   }
   
-  .panelIzquierdo{
-    background-image: $background;
-    color: $white;
-    min-height: 100vh;
-  }
+//   .panelIzquierdo{
+//     background-image: $background;
+//     color: $white;
+//     min-height: 100vh;
+//   }
   
-  .btnAccion{
-    background-color: $slateblue;
-    color: $white;
-  }
+//   .btnAccion{
+//     background-color: $slateblue;
+//     color: $white;
+//   }
 
-  .btnAccion{
-    background-color: $slateblue;
-    color: $white;
-    font-family: $fuenteContenido;
-  }
+//   .btnAccion{
+//     background-color: $slateblue;
+//     color: $white;
+//     font-family: $fuenteContenido;
+//   }
 
-  h1,h2{
-    font-family: $fuenteTitulos;
-    }
+//   h1,h2{
+//     font-family: $fuenteTitulos;
+//     }
 
-  h3,p,label{
-    font-family: $fuenteContenido;
-  }
-}
+//   h3,p,label{
+//     font-family: $fuenteContenido;
+//   }
+// }

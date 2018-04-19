@@ -25,8 +25,8 @@
         credencialesCorrectas = {};
 
       for (let i = 0; i < listaUsuarios.length; i++) {
-        if (listaUsuarios[i].getEmail() == pCredenctiales.email && listaUsuarios[i].getPassword() == pCredenctiales.contrasenna) {
-          credencialesCorrectas.correo = listaUsuarios[i].getEmail();
+        if (listaUsuarios[i].getCorreo() == pCredenctiales.email && listaUsuarios[i].getPassword() == pCredenctiales.contrasenna) {
+          credencialesCorrectas.correo = listaUsuarios[i].getCorreo();
           credencialesCorrectas.rol = listaUsuarios[i].getRol();
           inicioSesionExitoso = localStorageFactories.setSession(credencialesCorrectas);
           return inicioSesionExitoso;
@@ -68,7 +68,7 @@
           datosUsuario;
 
       for(let i = 0; i < listaUsuarios.length; i++){
-        if(listaUsuarios[i].getEmail() == sessionActiva.correo){
+        if(listaUsuarios[i].getCorreo() == sessionActiva.correo){
           datosUsuario = listaUsuarios[i];
         }
       };

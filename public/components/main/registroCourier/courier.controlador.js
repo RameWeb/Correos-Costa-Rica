@@ -1,12 +1,12 @@
 (() => {
   'use strict';
   angular
-  .module('correos-cr')
-  .controller('controladorCourier', controladorCourier);
+    .module('correos-cr')
+    .controller('controladorCourier', controladorCourier);
 
   controladorCourier.$inject = ['$stateParams', '$state', 'servicioCourier'];
 
-  function controladorCourier($stateParams, $state, servicioCourier){
+  function controladorCourier($stateParams, $state, servicioCourier) {
     let vm = this;
     vm.nuevoCourier = {};
     vm.listaCouriers = listarCourier();
@@ -15,7 +15,7 @@
     //  registrar un nuevo tipo de producto desde el html
     vm.registrarCourier = (pnuevoCourier) => {
       console.log(pnuevoCourier);
-      let objNuevoCourier = new courier(pnuevoCourier.nombreCourier );
+      let objNuevoCourier = new Courier(pnuevoCourier.idCourier, pnuevoCourier.nombreCourier, pnuevoCourier.empresaCourier);
 
       console.log('Objeto con el courier');
       console.log(objNuevoCourier);
@@ -31,10 +31,9 @@
       vm.nuevoCourier = null;
       listarCourier();
     }
-    function listarCourier(){
-      vm.listaCouriers= servicioCourier.getCouriers();
-    }
 
+    function listarCourier() {
+      vm.listaCouriers = servicioCourier.getCouriers();
+    }
   }
 })();
- 
