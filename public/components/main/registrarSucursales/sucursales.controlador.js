@@ -20,6 +20,7 @@
     };
     
     vm.nuevaSucursal = {};
+    vm.listaSucursales =listarSucursales();
     listarSucursales();
     
     // Funcion que es llamada desde el html para regustra un nuevo usuario
