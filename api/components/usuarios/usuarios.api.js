@@ -11,15 +11,13 @@ module.exports.registrar = (req, res) => {
   console.log(objD);
 
   switch(newUser.tipoUsuario) {
-    case "Encargado de Sucursal":
+    case "Empleado":
+      newUser.telefono = req.body.telefono;
+      newUser.sucursalPreferencia = req.body.sucursalPreferencia;
+      newUser.latitud = req.body.latitud;
+      newUser.longitud = req.body.longitud;
       newUser.sucursal = req.body.sucursal;
-    break;
-
-    case "Encargado de Aduana":
       newUser.rolAduana = req.body.rolAduana;
-    break;
-
-    case "Repartidor":
       newUser.telefono = req.body.telefono;
       newUser.sucursal = req.body.sucursal;
       newUser.licencia = req.body.licencia;
