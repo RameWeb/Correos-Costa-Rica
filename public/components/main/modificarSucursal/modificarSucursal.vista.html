@@ -1,16 +1,9 @@
 <navegacion-Principal></navegacion-Principal>
 
-<main id="registroSucursales">
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-md-3 py-5 px-5 panelIzquierdo">
-          <img src="../../../sources/img/logo_slateblue.svg" class="mt-5" alt="">
-        </div>
-  
-        <div class="col-md-9 py-5 px-5 contenido">
-          <div class="col-6">
-            <h2> Sucursales</h2>
-  
+<aside id="dashboard">
+  <main id="registroSucursales">
+    <div class="col-md-12 pt-5 mt-5">
+      <h2 class="text-center">Modificar sucursal</h2>
             <form name="formRegistrarSucursales" autocomplete="off" ng-submit="vm.modificarSucursal(vm.nuevaSucursal)" novalidate>
               
               <div class="form-group">
@@ -50,9 +43,9 @@
                 <input type="tel" name="telefono" class="form-control" id="txtTelefono" ng-model="vm.nuevaSucursal.telefono" pattern="[0-9]+" maxlength="8" minlength="8" required>
               </div>
   
-              <button type="submit" class="btn btnAccion">Guardar cambios</button>
+              <button type="submit" class="btn btnAccion">Guardar modificación</button>
   
-              <a href="/#!/listarSucursal" class="btn btn-light">Cancelar</a>
+             
             </form>
           </div>
   

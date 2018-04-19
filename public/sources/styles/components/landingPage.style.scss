@@ -93,7 +93,7 @@ a.myNavLinks{
 footer{
   background-color: #333945;
   font-family: $fuenteContenido;
-  height: 200px;
+  padding: 50px;
 }
 
 .navFooter ul{
@@ -134,7 +134,6 @@ h3.titularContacto{
 
 .navbar {
   position: fixed; /* Set the navbar to fixed position */
-  top: 0; /* Position the navbar at the top of the page */
   width: 100%;
   z-index: 1;
 }

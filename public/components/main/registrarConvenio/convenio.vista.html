@@ -1,12 +1,9 @@
 
 <main id="registroSucursales">
-    <div class="container-fluid">
-      <div class="row">
-    
-        <div class="col-md-9 py-4 px-4 contenido">
-          <div class="col-6">
-            <h2> Registrar un nuevo convenio</h2>
-            <form ng-submit=" vm.registrarConvenio(vm.nuevoConvenio)"></form>
+  <div class="col-md-12 pt-5 mt-5">
+    <h2 class="text-center">Registrar un nuevo convenio</h2>
+            
+            <form ng-submit=" vm.registrarConvenio(vm.nuevoConvenio)"name="formRegistrarConvenios" autocomplete="off" novalidate ></form>
               
               <div class="form-group">
                   <label for="">Id del convenio</label>
@@ -16,6 +13,11 @@
               <div class="form-group">
                   <label for="">Tipo de convenio</label>
                   <input type="text" min="0" id="txtTipoConvenio" class="form-control col-md-8" ng-model="vm.nuevoConvenio.tipo" pattern="[ñáéíóúA-Za-z ]+" required>
+                  <div ng-messages="formRegistrarConvenios.tipo.$error" role="alert">
+                      <div ng-message="required">
+                        <small class="form-text text-muted">Este campo es requerido</small>
+                      </div>
+                    </div>
               </div>
 
               <div class="form-group">
@@ -30,7 +32,7 @@
 
             <div class="form-group">
                 <label for="">Costo de transporte</label>
-                <input type="number" min="0" id="txtCosto" class="form-control col-md-8" ng-model="vm.nuevoConvenio.costo" requiredminlength="8"
+                <input type="number" min="0" id="txtCosto" class="form-control col-md-8" ng-model="vm.nuevoConvenio.costo" required minlength="8"
                 maxlength="8" pattern="^[2|6|7|8]\d{7}$" required>
               <div ng-messages="formRegistrarCliente.txtTelefono.$error" role="alert">
                 <div ng-message="required">
@@ -39,11 +41,12 @@
                 <div ng-message="pattern">
                   <small class="form-text text-muted">Formato de teléfono incorrecto</small>
                 </div>
-              </div>>
+              </div>
             </div>
-              <button type="submit" ng-click="vm.registrarConvenio(vm.nuevoConvenio)" class=" btn btnAccion" id="btnGuardar">Guardar</button>
-              <a href="/#!/lista-convenios" class=" btn btnAccion">Lista de convenios</a>
-              <a href="#!/admin"><img src="../../../sources/img/chevron-left.svg" height="35px" width="35px" alt="">Regresar a la pagina principal</a>
+          </div>
+              <button type="submit" ng-click="vm.registrarConvenio(vm.nuevoConvenio)" class=" btn btnAccion" id="btnGuardar" ng-disabled="formRegistrarConvenios.$invalid">Guardar</button>
+              <a href=""ui-sref="main.listaconvenios" class=" btn btnAccion">Lista de convenios</a>
+              
  
             </form>
           </div>

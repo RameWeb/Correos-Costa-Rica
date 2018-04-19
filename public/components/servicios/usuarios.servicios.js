@@ -30,7 +30,7 @@
           registroExitoso;
 
       for(let i = 0; i < listaUsuarios.length; i++){
-        if(pNuevoUsuario.getEmail() == listaUsuarios[i].getEmail() ){
+        if(pNuevoUsuario.getCorreo() == listaUsuarios[i].getCorreo() ){
           usuarioRepetido = true;
         };
       };
@@ -38,6 +38,7 @@
       if(usuarioRepetido == true){
         registroExitoso = false;
       }else{
+        console.log(pNuevoUsuario);
         registroExitoso = localStorageFactories.setUsuario(pNuevoUsuario);
       };
 
@@ -75,10 +76,10 @@
             case "Cliente":
               let objTempCliente = new Cliente(obj.tipoIdentificacion, obj.identificacion, obj.nombre1, obj.nombre2, obj.apellido1, obj.apellido2, obj.fotoPerfil, obj.sexo, obj.fechaNacimiento, obj.email, obj.contrasenna, obj.provincia, obj.canton, obj.distrito, obj.direccion, obj.estado, obj.tipoUsuario, obj.telefono, obj.sucursalPreferencia);
 
-             /* obj.tarjetas.forEach(objTarj => {
+              obj.tarjetas.forEach(objTarj => {
                 let objTempTarjeta = new Tarjeta(objTarj.titularTarjeta, objTarj.numeroTarjeta, objTarj.fechaVencimiento, objTarj.ccv);
                 objTempCliente.agregarTarjeta(objTempTarjeta);
-              })*/
+              })
               listaUsuarios.push(objTempCliente);
             break;
 
@@ -115,7 +116,7 @@
           modificacionExitosa;
 
       for(let i = 0; i < listaUsuarios.length; i++){
-        if(pUsuarioActualizado.getEmail() === listaUsuarios[i].getEmail()){
+        if(pUsuarioActualizado.getCorreo() === listaUsuarios[i].getCorreo()){
           listaUsuarios[i] = pUsuarioActualizado;
         };
       };
@@ -183,7 +184,7 @@
 
       if (prealertaRepetida == false) {
         for(let i = 0; i < listaPrealertas.length; i++){
-          if(listaPrealertas[i].getcedula() == pprealerta.getCedulaDuenno()){
+          if(listaPrealertas[i].getIdentificacion() == pprealerta.getCedulaDuenno()){
             listaPrealertas[i].agregarPrealertas(pprealerta.gettracking());
           }
         }

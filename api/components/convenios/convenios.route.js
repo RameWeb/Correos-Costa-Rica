@@ -11,7 +11,7 @@ router.param('id', (req, res, next, id) => {
 });
 
 /**
- * Función que se encarga de registrar los usuarios dentro del local storage
+ * Función que se encarga de registrar los convenios dentro del local storage
  */
 router.route('/save_convenios')
   .post((req, res) => {
@@ -19,7 +19,7 @@ router.route('/save_convenios')
 });
 
 /**
- * Función que obtiene todos los usuarios
+ * Función que obtiene todos los convenios
  */
 router.route('/get_all_convenios')
   .get((req, res) => {
@@ -27,7 +27,7 @@ router.route('/get_all_convenios')
 });
 
 /**
- * Función que actualiza los usuarios
+ * Función que actualiza los convenios
  */
 router.route('/update_convenios')
   .put((req, res) => {

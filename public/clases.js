@@ -5,31 +5,23 @@ class tipoProducto{
   }
 }
 
-class courier{
-  constructor(pnombreCourier){
-      this.nombreCourier = pnombreCourier;
-  }
-}
-
-class provincia{
-  constructor(pnombreProvincia){
-      this.nombreProvincia = pnombreProvincia; 
-  }
-}
-
-class canton{
-  constructor(pnombreCanton){
-    this.nombreCanton = pnombreCanton;
+class Courier{
+  constructor(pidCourier, pnombreCourier, pempresaCourier){
+    this.idCourier = pidCourier,
+    this.nombreCourier = pnombreCourier;
+    this.empresaCourier = pempresaCourier;
   }
 }
      
 class Sucursales{
-  constructor(pidSucursal, pnombreSucursal, pubicacion, pDireccion, pTelefono){
+  constructor(pidSucursal, pnombreSucursal, platitude, plongitude, pDireccion, pTelefono){
     this.idSucursal = pidSucursal;
     this.nombreSucursal = pnombreSucursal;
-    this.ubicacion = pubicacion;
+    this.latitude = platitude;
+    this.longitude=plongitude;
     this.direccion = pDireccion;
     this.telefono = pTelefono;
+    
   }
 }
 
@@ -67,6 +59,7 @@ class ConveniosClientes{
     this.direccion = pDireccion;
     this.idConvenio = pidConvenio;
   }
+
 }
 
 class Usuario{
@@ -94,16 +87,28 @@ class Usuario{
     this.estado = pnuevoEstado;
   }
 
+  getFotoPerfil(){
+    return this.fotoPerfil;
+  }
+
   getTipoUsuario(){
     return this.tipoUsuario;
   }
 
-  getEmail(){
+  getCorreo(){
     return this.email;
   }
   
   getPassword(){
     return this.contrasenna;
+  }
+
+  getIdentificacion(){
+    return this.identificacion;
+  }
+  
+  getDireccion(){
+    return this.direccion;
   }
 
   getRol(){
@@ -114,10 +119,13 @@ class Usuario{
     return `${this.nombre1} ${this.apellido1}`;
   }
 
-  getcedula(){
-    return this.identificacion;
+  getNombre(){
+    return this.nombre1;
   }
-
+  
+  getFechaNacimiento(){
+    return this.fechaNacimiento;
+  }
 }
 
 class EmpleadoSucursal extends Usuario{
@@ -228,19 +236,6 @@ class Tarjeta{
 }
 
 // TODO Dentro de este archivo se crean los objetos con sus respectivos mÃƒÂ©todos
-class Licencia{
-    constructor(pTipo,pCategoria,pDescripcion){
-      this.tipo = pTipo;
-      this.categoria = pCategoria;
-      this.descripcion = pDescripcion;
-  }
-}
-
-class EstadoPaquete{
-  constructor(pEstadoPaquete){
-    this.estadoPaquete = pEstadoPaquete;
-}
-}
 
 class Convenios{
   constructor(pidConvenios, pTipo, pNombreInstitucion, pTiempo, pCosto ){
@@ -248,8 +243,11 @@ class Convenios{
     this.tipo = pTipo;
     this.nombreInstitucion = pNombreInstitucion;
     this.tiempo = pTiempo;
-    this.costo = pCosto;
-    
+    this.costo = pCosto;  
+  }
+
+  getServicios(){
+    return this.tipo;
   }
 }
 
@@ -262,13 +260,6 @@ class Paquetes{
     this.repartidor = pRepartidor;
     this.estado = pEstado;
     this.idPaquetes = pidPaquetes;
-    
-  }
-}
-
-class Casillero{
-  constructor(pidRandom){
-    this.idRandom = pidRandom;
     
   }
 }

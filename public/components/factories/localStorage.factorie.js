@@ -10,20 +10,56 @@
     const localStorageAPI = {
       setUsuario : _setUsuario,
       getDatosUsuarios: _getDatosUsuarios,
-      setItem: _setItem,
-      getItem: _getItem,
       getPrealertas: _getPrealertas,
       setPrealertas: _setPrealertas,
+      setItem: _setItem,
+      getItem: _getItem,
       setSession: _setSession,
       closeSession: _closeSession,
       getSession: _getSession,
-      setConvenios:_setConvenios,
-      getConvenios : _getConvenios,
-      setSucursales:_setSucursales,
-      getSucursales: _getSucursales
-      
+      sendMail: _sendMail,
+      setConvenios: _setConvenios,
+      getConvenios: _getConvenios,
+      getCouriers: _getCouriers,
+      setCouriers: _setCouriers,
+      agregarSucursal : _agregarSucursal,
+      obtenerSucursal : _obtenerSucursal,
+      actualizarConvenio : _actualizarConvenio
     };
     return localStorageAPI;
+
+    /**
+ * Funcion que obtiene los datos del back-end
+ */
+    function _getDatosUsuarios() {
+      let listaUsuarios = [];
+
+      let peticion = $.ajax({
+        url: 'http://localhost:4000/api/get_all_users',
+        type: 'get',
+        contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+        dataType: 'json',
+        async: false,
+        data: {}
+      });
+
+      peticion.done((usuarios) => {
+        // console.log('datos que vienen de la base de datos');
+        // console.log(usuarios);
+        listaUsuarios = usuarios;
+      });
+      peticion.fail(() => {
+        listaUsuarios = [];
+        console.log('Ocurrió un error');
+      });
+
+      return listaUsuarios;
+    }
+
+      /**
+     * Toma el objejeto y o envía al backend por una petición de $ajax
+     * @param {objeto usuario} data 
+     */
 
     function _setUsuario(data) {
       let respuesta;
@@ -83,6 +119,7 @@
       return respuesta;
     }
 
+    
     function _setConvenios(data) {
       let respuesta;
 
@@ -93,11 +130,11 @@
         dataType: 'json',
         async: false,
         data: {
-          'idConvenios' : data.idConvenios,
-          'tipo' : data.tipo,
-          'nombreInstitucion' : data.nombreInstitucion,
-          'tiempo' : data.tiempo,
-          'costo' : data.costo,
+          'idConvenios': data.idConvenios,
+          'tipo': data.tipo,
+          'nombreInstitucion': data.nombreInstitucion,
+          'tiempo': data.tiempo,
+          'costo': data.costo,
         }
       });
 
@@ -111,7 +148,8 @@
       return respuesta;
     }
 
-    function _setSucursales(data) {
+
+    function _agregarSucursal(data) {
       let respuesta;
 
       let peticion = $.ajax({
@@ -123,9 +161,10 @@
         data: {
           'idSucursal' : data.idSucursal,
           'nombreSucursal' : data.nombreSucursal,
-          'ubicacion' : data.nombreInstitucion,
+          'latitude' : data.latitude,
+          'longitude' : data.longitude,
           'direccion' : data.direccion,
-          'telefono' : data.telefono,
+          'telefono' : data.telefono
         }
       });
 
@@ -138,7 +177,7 @@
 
       return respuesta;
     }
-
+   
     /**
      * Funcion que obtiene los datos del back-end
      */
@@ -190,8 +229,9 @@
       return listaConvenios;
     }
 
-    function _getSucursales() {
-      let listarSucursales = [];
+
+    function _obtenerSucursal() {
+      let listaSucursales = [];
 
       let peticion = $.ajax({
         url: 'http://localhost:4000/api/get_all_sucursales',
@@ -205,21 +245,20 @@
       peticion.done((sucursales) => {
         console.log('datos que vienen de la base de datos');
         console.log(sucursales);
-        listarSucursales = sucursales;
+        listaSucursales = sucursales;
       });
       peticion.fail(() => {
-        listarSucursales = [];
+        listaSucursales = [];
       });
 
-      return listarSucursales;
+      return listaSucursales;
     }
+
     function _setItem(key, value) {
       let response = true;
 
       localStorage.setItem(key, JSON.stringify(value));
-
-      return response;
-    };
+    }
 
     function _getItem(value) {
       let arrayData = JSON.parse(localStorage.getItem(value));
@@ -231,28 +270,132 @@
       return arrayData;
     };
 
+      /**
+     * Funcion que modifica los datos del back-end
+     */
+     function _actualizarConvenio(data) {
+      let respuesta;
+      let peticion = $.ajax({
+        url: 'http://localhost:4000/api/update_convenios',
+        type: 'put',
+        contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+        dataType: 'json',
+        async: false,
+        data: {
+          'idConvenios' : data.idConvenios,
+          'tipo' : data.tipo,
+          'nombreInstitucion' : data.nombreInstitucion,
+          'tiempo' : data.tiempo,
+          'costo' : data.costo,
+        }
+      });
+
+      peticion.done((res) => {
+        respuesta = res.success
+      });
+      peticion.fail(() => {
+        respuesta = false;
+      });
+
+      return respuesta;
+    }
+
+
     function _setSession(value) {
       let response = true;
-
       sessionStorage.setItem('session', JSON.stringify(value));
-
       return response;
     };
 
     function _closeSession() {
-      
+
       let response = true;
-
       sessionStorage.removeItem('session');
-
       return response;
     };
 
     function _getSession() {
-      let sessionActive = JSON.parse(sessionStorage.getItem('session'));
-
+      let sessionActive = JSON.parse(sessionStorage.getItem('session'))
       return sessionActive;
     };
+
+    function _sendMail(data) {
+      let response;
+
+      let peticion = $.ajax({
+        url: 'http://localhost:4000/api/mail',
+        type: 'post',
+        contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+        dataType: 'json',
+        async: false,
+        data: {
+          'to': data.to,
+          'subject': data.subject,
+          'text': data.text
+        }
+      });
+
+      peticion.done((datos) => {
+        console.log(datos);
+      });
+      peticion.fail((error) => {
+        response = error;
+        console.log(error);
+      });
+    }
+
+    function _getCouriers() {
+      let listaCouriers = [];
+
+      let peticion = $.ajax({
+        url: 'http://localhost:4000/api/get_all_couriers',
+        type: 'get',
+        contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+        dataType: 'json',
+        async: false,
+        data: {},
+      });
+
+      peticion.done(couriers => {
+        console.log('Datos que vienen desde la base de datos');
+        console.log(couriers);
+        listaCouriers = couriers;
+      });
+      peticion.fail(() => {
+        listaCouriers = [];
+        console.log('Ocurrió un error');
+      });
+
+      return listaCouriers;
+    }
+
+    function _setCouriers(data) {
+      let respuesta;
+
+      let peticion = $.ajax({
+        url: 'http://localhost:4000/api/save_courier',
+        type: 'post',
+        contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+        dataType: 'json',
+        async: false,
+        data: {
+          idCourier: data.idCourier,
+          nombreCourier: data.nombreCourier,
+          empresaCourier: data.empresaCourier
+        },
+      });
+
+      peticion.done((res) => {
+        respuesta = res.success
+      });
+      peticion.fail(() => {
+        respuesta = false;
+      });
+
+      return respuesta;
+    }
+
+    //CHRISTINE
 
     function _getPrealertas() {
       let listaPrealertas = [];
