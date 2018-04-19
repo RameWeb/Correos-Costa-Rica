@@ -111,7 +111,7 @@ class Usuario{
   }
 
   getNombreCompleto(){
-    return `${this.nombre} ${this.apellido1}`;
+    return `${this.nombre1} ${this.apellido1}`;
   }
 }
 
