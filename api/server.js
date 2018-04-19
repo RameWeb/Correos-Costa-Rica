@@ -64,7 +64,8 @@ const index = require('./index'),
       mail = require('./components/mail/mail.route'),
       convenios = require('./components/convenios/convenios.route'),
       prealertas = require('./components/prealertas/prealertas.route'),
-      couriers = require('./components/couriers/couriers.route');
+      couriers = require('./components/couriers/couriers.route'),
+      productos = require('./components/productos/productos.route');
       // conveniosCliente = require('./components/conveniosCliente/conveniosCliente.route');
 
 /**
@@ -76,6 +77,7 @@ app.use('/api', mail);
 app.use('/api', convenios);
 app.use('/api', prealertas);
 app.use('/api', couriers);
+app.use('/api', productos);
 app.use('/', index);
 
 /// Se guarda todo lo que se ha realizado

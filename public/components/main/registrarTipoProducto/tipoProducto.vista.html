@@ -1,0 +1,36 @@
+
+<main id="registroSucursales">
+  <div class="col-md-12 pt-5 mt-5">
+    <h2 class="text-center">Registrar un nuevo tipo de producto</h2>
+            
+            <form ng-submit=" vm.registrarTipoProducto(vm.nuevoTipoProducto)"name="formRegistrarProducto" autocomplete="off" class="col-md-8" novalidate>
+              
+              <div class="form-group">
+                  <label for="">Nombre del tipo de producto</label>
+                  <input type="text"id="txtTipoProductoNombre"name="NombreProducto"class="form-control col-md-8"  ng-model="vm.nuevoTipoProducto.nombreTipoProducto" pattern="[ñáéíóúA-Za-z ]+" required>
+                  <div ng-messages="formRegistrarProducto.nombreTipoProducto.$error" role="alert">
+                    <div ng-message="required">
+                      <small class="form-text text-muted">Este campo es requerido</small>
+                    </div>
+                    <div ng-message="pattern">
+                      <small class="form-text text-muted">Formato incorrecto, ingrese únicamente letras</small>
+                    </div>
+                  </div>
+              </div> 
+             
+  
+              <div class="form-group">
+                  <label for="">Porcentaje de impuesto del tipo de producto</label>
+                  <input type="number" min="0" name="Impuesto"id="txtImpuesto" class="form-control col-md-8" ng-model="vm.nuevoTipoProducto.impuesto" maxlength="3" required>
+                  <div ng-messages="formRegistrarProducto.nombreTipoProducto.$error" role="alert">
+                    <div ng-message="required">
+                      <small class="form-text text-muted">Este campo es requerido</small>
+                    </div>
+                  </div>
+              </div>
+
+              <button type="submit" ng-click="vm.registrarTipoProducto(vm.nuevoTipoProducto)" class=" btn btnAccion" id="btnGuardar"ng-disabled="formRegistrarProducto.$invalid">Guardar</button>
+              <a href=""ui-sref="main.ListaProducto" class=" btn btnAccion">Lista de productos</a>
+            </form>
+          </div>
+  </main>

@@ -211,7 +211,7 @@
         },
         resolve: {
           load: ['$ocLazyLoad', ($ocLazyLoad) => {
-            return $ocLazyLoad.load('./components/main/listarBuscarSucursales/listaSucursales.vista.html')
+            return $ocLazyLoad.load('./components/main/registrarSucursales/sucursales.controlador.js')
           }]
         },
         controller: 'controladorSucursales',
@@ -236,6 +236,7 @@
         controller: 'controladorModificarSucursal',
         controllerAs: 'vm'
       })
+      //final de SUCURSALES
 
 // inicio de BITACORA
 
@@ -250,11 +251,67 @@
   controller: 'controladorBitacora',
   controllerAs: 'vm'
 })
+//final de BITACORA
+// inicio de PRODUCTOS
+.state('main.registroProducto', {
+  url: '/registrarTipoProducto',
+  templateUrl: './components/main/registrarTipoProducto/tipoProducto.vista.html',
+  resolve: {
+    load: ['$ocLazyLoad', ($ocLazyLoad) => {
+      return $ocLazyLoad.load('./components/main/registrarTipoProducto/tipoProducto.controlador.js')
+    }]
+  },
+  controller: 'controladorProductos',
+  controllerAs: 'vm'
+})
 
+.state('main.ListaProducto', {
+  url: '/ListaTipoProducto',
+  templateUrl: './components/main/ListarBuscarTipoProducto/listaTipoProductos.vista.html',
+  resolve: {
+    load: ['$ocLazyLoad', ($ocLazyLoad) => {
+      return $ocLazyLoad.load('./components/main/registrarTipoProducto/tipoProducto.controlador.js')
+    }]
+  },
+  controller: 'controladorProductos',
+  controllerAs: 'vm'
+})
+
+.state('main.modificarProducto', {
+  url: '/modificarTipoProducto',
+  templateUrl: './components/main/modificarTipoProducto/modificarTipoProducto.vista.html',
+  params: {
+    nombreTipoProducto: ''
+  },
+  resolve: {
+    load: ['$ocLazyLoad', ($ocLazyLoad) => {
+      return $ocLazyLoad.load('./components/main/modificarTipoProducto/modificarTipoProducto.controlador.js')
+    }]
+  },
+  controller: 'controladorModProducto',
+  controllerAs: 'vm'
+})
+//final de BITACORA
 
       // -----------------------------------------------------------------------
 
       
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
       
 
       
@@ -427,69 +484,6 @@
           }]
         },
         controller: 'controladorPaquetes',
-        controllerAs: 'vm'
-      })
-
-      .state('consultarBitacora', {
-        url: '/consultarBitacora',
-        templateUrl: './components/consultarBitacora/consultarBitacora.vista.html',
-        resolve: {
-          load: ['$ocLazyLoad', ($ocLazyLoad) => {
-            return $ocLazyLoad.load('./components/consultarBitacora/consultarBitacora.controlador.js')
-          }]
-        },
-        controller: 'controladorBitacora',
-        controllerAs: 'vm'
-      })
-
-      .state('rankingTipoDeProductosProductos', {
-        url: '/rankingTipoDeProductosProductos',
-        templateUrl: './components/rankingProductos/ranking.vista.html',
-        resolve: {
-          load: ['$ocLazyLoad', ($ocLazyLoad) => {
-            return $ocLazyLoad.load('./components/rankingProductos/ranking.controlador.js')
-          }]
-        },
-        controller: 'controladorRanking',
-        controllerAs: 'vm'
-      })
-
-      .state('modificarTipoProducto', {
-        url: '/modificarTipoProducto',
-        templateUrl: './components/tipoDeProducto/modificarTipoProducto.vista.html',
-        params: {
-          nombreTipoProducto: ''
-        },
-        resolve: {
-          load: ['$ocLazyLoad', ($ocLazyLoad) => {
-            return $ocLazyLoad.load('./components/tipoDeProducto/modificarTipoProducto.controlador.js')
-          }]
-        },
-        controller: 'controladorModProducto',
-        controllerAs: 'vm'
-      })
-
-      .state('registroTipoProducto', {
-        url: '/registrarTipoProducto',
-        templateUrl: './components/tipoDeProducto/tipoProducto.vista.html',
-        resolve: {
-          load: ['$ocLazyLoad', ($ocLazyLoad) => {
-            return $ocLazyLoad.load('./components/tipoDeProducto/tipoProducto.controlador.js')
-          }]
-        },
-        controller: 'controladorProductos',
-        controllerAs: 'vm'
-      })
-
-      .state('ListaTipoProducto', {
-        url: '/ListaTipoProducto',
-        templateUrl: './components/tipoDeProducto/listaTipoProductos.vista.html',
-        resolve: {
-          load: ['$ocLazyLoad', ($ocLazyLoad) => {
-            return $ocLazyLoad.load('./components/tipoDeProducto/tipoProducto.controlador.js')
-          }]
-        },
-        controller: 'controladorProductos',
         controllerAs: 'vm'
       })
 
