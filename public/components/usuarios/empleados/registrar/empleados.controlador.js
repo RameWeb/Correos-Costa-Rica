@@ -31,6 +31,7 @@
 
     vm.preRegistrarUsuario = (pnuevoUsuario) => {
       vm.cloudObj.data.file = pnuevoUsuario.fotoPerfil[0];
+      vm.cloudObj.data.file = pnuevoUsuario.fotoLicencia[0];
       Upload.upload(vm.cloudObj).success((data) => {
         vm.registrarEmpleado(pnuevoUsuario, data.url);
       });
@@ -65,7 +66,7 @@
         // Repartidor
         case "Repartidor":
 
-          let nuevoRepartidor= new Repartidor(pNuevoEmpleado.tipoIdentificacion,pNuevoEmpleado.identificacion,pNuevoEmpleado.primerNombre, pNuevoEmpleado.segundoNombre, pNuevoEmpleado.primerApellido, pNuevoEmpleado.segundoApellido,urlImagen,pNuevoEmpleado.sexo, pNuevoEmpleado.fechaNacimiento,pNuevoEmpleado.email, pNuevoEmpleado.contrasenna, pNuevoEmpleado.provincia, pNuevoEmpleado.canton, pNuevoEmpleado.distrito,pNuevoEmpleado.direccion, 1,'Empleado',pNuevoEmpleado.telefono, pNuevoEmpleado.sucursal, pNuevoEmpleado.licencia, pNuevoEmpleado.fotoLicencia, pNuevoEmpleado.vencimientoLicencia, pNuevoEmpleado.rol);
+          let nuevoRepartidor= new Repartidor(pNuevoEmpleado.tipoIdentificacion,pNuevoEmpleado.identificacion,pNuevoEmpleado.primerNombre, pNuevoEmpleado.segundoNombre, pNuevoEmpleado.primerApellido, pNuevoEmpleado.segundoApellido,urlImagen,pNuevoEmpleado.sexo, pNuevoEmpleado.fechaNacimiento,pNuevoEmpleado.email, pNuevoEmpleado.contrasenna, pNuevoEmpleado.provincia, pNuevoEmpleado.canton, pNuevoEmpleado.distrito,pNuevoEmpleado.direccion, 1,'Empleado',pNuevoEmpleado.sucursal, pNuevoEmpleado.licencia, urlImagen, pNuevoEmpleado.vencimientoLicencia, pNuevoEmpleado.rol);
 
           console.log(nuevoRepartidor);
 

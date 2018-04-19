@@ -34,11 +34,15 @@ class Prealertas{
     this.courier = pCourier;
   }
 
+  getIdentificacion(){
+    return this.identificacion;
+  }
+
   getTipoProducto(){
     return this.tipoProducto;
   }
 
-  gettracking(){
+  getTracking(){
     return this.tracking;
   }
 
@@ -47,7 +51,7 @@ class Prealertas{
   }
 
   getCedulaDuenno(){
-    return this.idCliente;
+    return this.identificacion;
   }
 }
 
@@ -125,6 +129,10 @@ class Usuario{
   getFechaNacimiento(){
     return this.fechaNacimiento;
   }
+
+  agregarPrealertas(pnuevaPrealerta) {
+    this.prealertas.push(pnuevaPrealerta);
+  }
 }
 
 class EmpleadoSucursal extends Usuario{
@@ -144,9 +152,8 @@ class EmpleadoAduana extends Usuario{
 }
 
 class Repartidor extends Usuario{
-  constructor(ppTipoIdentificacion, pIdentificacion, pNombre1, pNombre2, pApellido1, pApellido2, pfoto, pSexo, pFechaNacimiento, pEmail, pContrasenna, pProvincia, pCanton, pDistrito, pDireccion, pestado, pTipoUsuario, pTelefono,pSucursal,pLicencia,pFotoLicencia,pLicenciaVencimiento, pRpObjRolol){
+  constructor(pTipoIdentificacion, pIdentificacion, pNombre1, pNombre2, pApellido1, pApellido2, pfoto, pSexo, pFechaNacimiento, pEmail, pContrasenna, pProvincia, pCanton, pDistrito, pDireccion, pestado, pTipoUsuario,pSucursal,pLicencia,pFotoLicencia,pLicenciaVencimiento, pObjRol){
     super(pTipoIdentificacion, pIdentificacion, pNombre1, pNombre2, pApellido1, pApellido2, pfoto, pSexo, pFechaNacimiento, pEmail, pContrasenna, pProvincia, pCanton, pDistrito, pDireccion, pestado, pTipoUsuario);
-    this.telefono = pTelefono;
     this.sucursal = pSucursal;
     this.licencia = pLicencia;
     this.fotoLicencia = pFotoLicencia;
@@ -202,6 +209,7 @@ class Cliente extends Usuario{
   obtenerLongitud(){
     return this.longitud;
   }
+
 }
 
 

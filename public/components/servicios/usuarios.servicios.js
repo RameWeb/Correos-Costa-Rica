@@ -172,20 +172,20 @@
      */
     function _addPrealertas(pprealerta) {
       let listaPrealertas = _getPrealertas(),
-          listaUsuariosLocal = localStorageFactories.getDatosUsuarios(),
+          listaUsuarios = _obtenerUsuario(),
           prealertaRepetida = false,
           registroValido;
 
       for(let i = 0; i < listaPrealertas.length; i++){
-        if(listaPrealertas[i].gettracking() == pprealerta.gettracking()){
+        if(listaPrealertas[i].getTracking() == pprealerta.getTracking()){
           prealertaRepetida = true;
         }
       }
 
       if (prealertaRepetida == false) {
         for(let i = 0; i < listaPrealertas.length; i++){
-          if(listaPrealertas[i].getcedula() == pprealerta.getCedulaDuenno()){
-            listaPrealertas[i].agregarPrealertas(pprealerta.gettracking());
+          if(listaUsuarios[i].getIdentificacion() == pprealerta.getCedulaDuenno()){
+            listaUsuarios[i].agregarPrealertas(pprealerta.getTracking());
           }
         }
         registroValido = localStorageFactories.setPrealertas(pprealerta);

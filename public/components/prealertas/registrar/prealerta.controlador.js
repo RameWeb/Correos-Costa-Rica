@@ -4,20 +4,12 @@
   .module('correos-cr')
   .controller('controladorPrealertas', controladorPrealertas);
 
-  controladorPrealertas.$inject = ['$stateParams', '$state','servicioUsuarios' /*',loginService'*/];
+  controladorPrealertas.$inject = ['$stateParams', '$state','servicioUsuarios', 'inicioSesionService','servicioCourier'];
 
-function controladorPrealertas($stateParams, $state, servicioUsuarios /*,loginService*/){
+function controladorPrealertas($stateParams, $state, servicioUsuarios, inicioSesionService,servicioCourier){
     let vm = this;
 
-    // const userAuth = loginService.getAuthUser();
-
-    // console.log(userAuth);
-
-    // if(userAuth == undefined){
-    //   $state.go('inicioSesion');
-    // }else{
-    //   vm.usuarioActivo = userAuth.getNombre();
-    // }
+    // vm.listaCouriers = servicioCourier.getCouriers();
 
     vm.courier = ["DHL", "UPS", "Amazon", "FedEx", "TNT Express", "USPS", "CRBOx", "Aerocasillas", "JetBox"]; 
 
@@ -26,6 +18,9 @@ function controladorPrealertas($stateParams, $state, servicioUsuarios /*,loginSe
     //Objeto sin formato
 
     vm.nuevaPrealerta = {};
+
+    vm.listaClientes = servicioUsuarios.obtenerUsuarioPorRol("Cliente");
+
     vm.listaPrealertas = listarPrealertas();
 
     listarPrealertas();
@@ -35,7 +30,17 @@ function controladorPrealertas($stateParams, $state, servicioUsuarios /*,loginSe
     vm.registrarPrealerta = (pnuevaPrealerta) => {
       console.log(pnuevaPrealerta);
 
-      let objPrealertaNueva = new Prealertas(pnuevaPrealerta.tracking, pnuevaPrealerta.url, pnuevaPrealerta.tipoProducto, pnuevaPrealerta.valor, pnuevaPrealerta.peso, pnuevaPrealerta.courier);
+      const userAuth = inicioSesionService.getAuthUser();
+
+      if(userAuth == undefined){
+        $state.go('inicioSesion');
+      }else{
+        vm.usuarioActivo = userAuth.getNombreCompleto();
+      }
+  
+      vm.userInfo = userAuth;
+
+      let objPrealertaNueva = new Prealertas(pnuevaPrealerta.tracking,pnuevaPrealerta.url,pnuevaPrealerta.tipoProducto,pnuevaPrealerta.valor,pnuevaPrealerta.peso,pnuevaPrealerta.courier);
 
       console.log('Objeto con la prealerta');
       console.log(objPrealertaNueva);
@@ -55,7 +60,7 @@ function controladorPrealertas($stateParams, $state, servicioUsuarios /*,loginSe
     }
 
     vm.modificar = (pPrealertas) =>{
-      $state.go('modificarPrealerta', {tracking: JSON.stringify(pPrealertas)})
+      $state.go('modificarPrealerta', {tracking: JSON.stringify(pPrealertas.tracking)})
     }
 
   }

@@ -77,9 +77,24 @@
 
             <div class="form-group">
               <label for="txtCourier">Courier:</label>
-              <select class="form-control" id="txtCourier" ng-model="vm.nuevaPrealerta.courier" list="listaCourier">
+              <select class="form-control" id="txtCourier" ng-model="vm.nuevaPrealerta.courier" list="listaCouriers">
                 <option ng-repeat="courier in vm.courier">{{courier}}</option>
               </select>
+              <div ng-messages="formRegistrarPrealerta.tipoProducto.$error" role="alert">
+                <div ng-message="required">
+                  <small class="form-text text-muted">Este campo es requerido</small>
+                </div>
+              </div>
+            </div>
+
+            <!-- <div class="form-group">
+              <label for="txtCourier">Courier:</label>
+              <select id="txtCourier" class="form-control" ng-options="courier as courier.getCouriers() for courier in vm.listaCouriers track by courier.id"
+                ng-model="vm.nuevaPrealerta.courier" required>
+                <option></option>
+              </select>
+            </div> -->
+
               <div ng-messages="formRegistrarPrealerta.courier.$error" role="alert">
                 <div ng-message="required">
                   <small class="form-text text-muted">Este campo es requerido</small>
@@ -87,8 +102,7 @@
               </div>
             </div>
       
-            <button type="submit" class="btn btnAccion" ng-disabled="formRegistrarPrealerta.$invalid" ng-click="vm.registrarPrealerta()">Prealertar</button>
-
+            <button type="submit" class="btn btnAccion" ng-disabled="formRegistrarPrealerta.$invalid" ng-click="vm.registrarPrealerta(vm.nuevaPrealerta)">Prealertar</button>
           </form>
         </div>
 
