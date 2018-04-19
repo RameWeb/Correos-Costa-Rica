@@ -9,7 +9,7 @@
   function controladorClientesAdmin($http, servicioUsuarios, imageUpload, Upload, NgMap){
     let vm = this;
 
-    vm.sucursales = ["Alajuelita", "Bagaces", "Cañas", "Desamparados", "Cartago Centro", "Moravia", "Pavas", "Venecia"];
+    vm.sucursales = ["Alajuelita", "Bagaces", "Cañas", "Desamparados", "El Llano de Alajuela", "Cahuita", "Goicoechea", "Tibás", "Santa Cruz", "Monteverde", "Aguas Zarcas", "Cartago Centro", "Moravia", "Pavas", "Venecia"];
 
     vm.sexo = ["Femenino", "Masculino", "Sin especificar"];
 

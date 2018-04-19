@@ -1,5 +1,5 @@
 <div class="col-md-12 pt-5 mt-5">
-  <h2 class="">Registro Clientes</h2>
+  <h2 class="">Registro clientes</h2>
   <form name="formRegistrarCliente" ng-submit="vm.preRegistrarUsuario(vm.nuevoCliente)" class="col-md-8">
     <!-- Información Personal -->
     <div class="my-3">
@@ -7,7 +7,7 @@
       <!-- Agregar un campo para tipo de cedula, Datalist -->
       <!-- Agregar un campo para el sexo -->
       <div class="form-group">
-        <label for="inputTipoIdentificacion">Tipo de Identificación:</label>
+        <label for="inputTipoIdentificacion">Tipo de Identificación</label>
         <input type="text" class="form-control" id="inputTipoIdentificacion" ng-model="vm.nuevoCliente.tipoIdentificacion" list="listaTipoId"
           name="txtClienteTipoId" required>
         <datalist id="listaTipoId">
@@ -21,9 +21,9 @@
       </div>
 
       <div class="form-group" ng-if="vm.nuevoCliente.tipoIdentificacion == 'Cédula nacional'">
-        <label for="inputIdentificacion">Nº de Identificación:</label>
+        <label for="inputIdentificacion">Nº de Identificación</label>
         <input type="text" class="form-control" id="inputIdentificacion" ng-model="vm.nuevoCliente.identificacion" name="txtClienteId"
-          pattern="[0-9]+{9}" maxlength="9" autocomplete="off" required>
+          pattern="[0-9]{9}" maxlength="9" autocomplete="off" required>
         <div ng-messages="formRegistrarCliente.txtClienteId.$error" role="alert">
           <div ng-message="required">
             <small class="form-text text-muted">Este campo es requerido</small>
@@ -41,7 +41,7 @@
       </div>
 
       <div class="form-group" ng-if="vm.nuevoCliente.tipoIdentificacion == 'Residente'">
-        <label for="inputIdentificacion">Nº de Identificación:</label>
+        <label for="inputIdentificacion">Nº de Identificación</label>
         <input type="text" class="form-control" id="inputIdentificacion" ng-model="vm.nuevoCliente.identificacion" name="txtClienteId"
           pattern="^(RE)+[0-9]{11}" minlength="13" maxlength="13" autocomplete="off" required>
         <div ng-messages="formRegistrarCliente.txtClienteId.$error" role="alert">
@@ -55,7 +55,7 @@
       </div>
 
       <div class="form-group" ng-if="vm.nuevoCliente.tipoIdentificacion == 'Pasaporte'">
-        <label for="inputIdentificacion">Nº de Identificación:</label>
+        <label for="inputIdentificacion">Nº de Identificación</label>
         <input type="text" class="form-control" id="inputIdentificacion" ng-model="vm.nuevoCliente.identificacion" name="txtClienteId"
           pattern="[A-Z0-9]+" minlength="9" maxlength="13" autocomplete="off" required>
         <div ng-messages="formRegistrarCliente.txtClienteId.$error" role="alert">
@@ -69,7 +69,7 @@
       </div>
 
       <div class="form-group" ng-if="vm.nuevoCliente.tipoIdentificacion == 'DIMEX'">
-        <label for="inputIdentificacion">Nº de Identificación:</label>
+        <label for="inputIdentificacion">Nº de Identificación</label>
         <input type="text" class="form-control" id="inputIdentificacion" ng-model="vm.nuevoCliente.identificacion" name="txtClienteId"
           pattern="[A-Z0-9]+" minlength="9" maxlength="13" autocomplete="off" required>
         <div ng-messages="formRegistrarCliente.txtClienteId.$error" role="alert">
@@ -148,7 +148,7 @@
 
       <div class="form-row">
         <div class="form-group col-md-12">
-          <label for="inputEmail">Correo Electrónico:</label>
+          <label for="inputEmail">Correo Electrónico</label>
           <input type="email" class="form-control" id="inputEmail" ng-model="vm.nuevoCliente.email" name="txtEmailCliente" autocomplete="off" required>
           <div ng-messages="formRegistrarCliente.txtEmailCliente.$error" role="alert">
             <div ng-message="required">
@@ -246,7 +246,7 @@
         </div>
       </div>
       <div class="form-group">
-        <label for="inputDireccion">Dirección exacta:</label>
+        <label for="inputDireccion">Dirección exacta</label>
         <textarea class="form-control" id="inputDireccion" rows="3" ng-model="vm.nuevoCliente.direccion" name="txtDireccion" autocomplete="off" required></textarea>
         <div ng-messages="formRegistrarCliente.txtDireccion.$error" role="alert">
           <div ng-message="required">
@@ -255,7 +255,7 @@
         </div>
       </div>
       <div class="form-group">
-        <label for="inputSucursalPreferencia">Sucursal de preferencia:</label>
+        <label for="inputSucursalPreferencia">Sucursal de preferencia</label>
         <input type="text" class="form-control" id="inputSucursalPreferencia" name="txtSucursalPreferencia" ng-model="vm.nuevoCliente.sucursalPreferencia"
           list="listaSucursales" name="txtSucursalPreferencia" autocomplete="off" required>
         <datalist id="listaSucursales">
