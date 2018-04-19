@@ -299,7 +299,7 @@
       });
 
       peticion.done((res) => {
-        respuesta = res.success
+        response = res.success
       });
       peticion.fail(() => {
         respuesta = false;
