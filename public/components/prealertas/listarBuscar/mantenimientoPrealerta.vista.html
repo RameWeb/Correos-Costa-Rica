@@ -21,7 +21,6 @@
           <thead>
               <tr>
                 <th>Tracking</th>
-                <th>URL</th>
                 <th>Tipo producto</th>
                 <th>Valor</th>
                 <th>Peso</th>
@@ -32,7 +31,6 @@
           <tbody>
             <tr ng-repeat="prealerta in vm.listaPrealertas | filter:buscarPrealerta">
               <td>{{prealerta.tracking}}</td>
-              <td>{{prealerta.url}}</td>
               <td>{{prealerta.tipoProducto}}</td>
               <td>{{prealerta.valor}}</td>
               <td>{{prealerta.peso}}</td>

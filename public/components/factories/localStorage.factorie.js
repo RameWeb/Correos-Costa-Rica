@@ -413,6 +413,7 @@
 
       peticion.done((prealertas) => {
         console.log('Prealertas que vienen de la base de datos');
+        console.log(prealertas);
         listaPrealertas = prealertas;;
       });
       peticion.fail(() => {

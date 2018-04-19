@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 var PreAlertaSchema = new mongoose.Schema({
   tracking : {type: String, required: true},
   url : {type: String, required: true},
-  tipoProducto : {type: String, required: true},
+  tipoproducto : {type: String, required: true},
   valor : {type: String, required: true},
   peso: {type: String, required: true},
   courier : {type: String, required: true},
