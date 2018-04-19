@@ -292,7 +292,19 @@
   controllerAs: 'vm'
 })
 //final de BITACORA
-
+//inicio de RANKING
+.state('main.ranking', {
+  url: '/rankingProductos',
+  templateUrl: './components/main/rankingProductos/ranking.vista.html',
+  resolve: {
+    load: ['$ocLazyLoad', ($ocLazyLoad) => {
+      return $ocLazyLoad.load('./components/main/rankingProductos/ranking.controlador.js')
+    }]
+  },
+  controller: 'controladorRanking',
+  controllerAs: 'vm'
+})
+//final de RANKING
       // -----------------------------------------------------------------------
 
       
