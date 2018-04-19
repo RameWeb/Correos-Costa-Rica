@@ -1,0 +1,44 @@
+
+	<main id="courier">
+		<div class="container-fluid">
+		  <div class="row">
+			<div class="col-md-3 py-5 px-5 panelIzquierdo">
+					<a href="#!/main"><img src="../../../sources/img/chevron-left.svg" height="35px" width="35px" alt="">Regresar al menu principal</a>
+			  <h2>Correos de Costa Rica</h2>
+			  <a href="/#!/registrarTipoProducto" class="btn btnAccion">Regresar</a>
+	  
+			</div>
+			<div class="col-md-9 py-4 px-4 contenido">
+			  <h2>Ranking tipos de productos</h2>
+	  
+			  <div class="form-group col-md-8">
+				<label for="txtBuscar">Filtrar ranking por fecha</label>
+				<input type="text" id="txtBuscar" class="form-control col-md-8" ng-model="buscartipoProducto.fecha">
+			  </div><div class="col-12">
+	  <table class="table">
+	  <thead>
+		  <tr>
+			<th>Tipo de producto</th>
+			<th>Impuesto asignado</th>
+			<th>Cantidad de compras</th>
+			<th>Fecha</th>
+		 
+			
+		  </tr>
+	  </thead>
+	  <tbody>
+		<tr ng-repeat="tipoProducto in vm.ranking.tiposProductos | filter:buscartipoProducto.fecha">
+		  <td>{{tipoProducto.tipoDeProducto}}</td>
+		  <td>{{tipoProducto.impuesto}}</td>
+		  <td>{{tipoProducto.cantidad}}</td>
+		  <td>{{tipoProducto.fecha}}</td>
+	  </tr>
+	  </tbody>
+	  </table>
+	  </div>
+	  </div>
+	  </div>
+	  </main>
+	  
+	
+		
