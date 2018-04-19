@@ -54,7 +54,7 @@
         // Encargado de Sucursal
         case "Encargado de Sucursal":
 
-          let nuevoEncargadoSucursal = new EmpleadoSucursal(pNuevoEmpleado.tipoIdentificacion,pNuevoEmpleado.identificacion,pNuevoEmpleado.primerNombre, pNuevoEmpleado.segundoNombre, pNuevoEmpleado.primerApellido, pNuevoEmpleado.segundoApellido,urlImagen, pNuevoEmpleado.sexo, pNuevoEmpleado.fechaNacimiento,pNuevoEmpleado.email, pNuevoEmpleado.contrasenna, pNuevoEmpleado.provincia, pNuevoEmpleado.canton, pNuevoEmpleado.distrito,pNuevoEmpleado.direccion, 1,'Empleado',pNuevoEmpleado.rol, pNuevoEmpleado.sucursal, pNuevoEmpleado.rol);
+          let nuevoEncargadoSucursal = new EmpleadoSucursal(pNuevoEmpleado.tipoIdentificacion,pNuevoEmpleado.identificacion,pNuevoEmpleado.primerNombre, pNuevoEmpleado.segundoNombre, pNuevoEmpleado.primerApellido, pNuevoEmpleado.segundoApellido,urlImagen, pNuevoEmpleado.sexo, pNuevoEmpleado.fechaNacimiento,pNuevoEmpleado.email, pNuevoEmpleado.contrasenna, pNuevoEmpleado.provincia, pNuevoEmpleado.canton, pNuevoEmpleado.distrito,pNuevoEmpleado.direccion, 1,'Empleado', pNuevoEmpleado.sucursal, pNuevoEmpleado.rol);
 
           console.log(nuevoEncargadoSucursal);
 

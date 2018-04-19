@@ -283,7 +283,7 @@
       let respuesta;
 
       let peticion = $.ajax({
-        url: 'http://localhost:4000/api/save_prealertas',
+        url: 'http://localhost:4000/api/save_prealerta',
         type: 'post',
         contentType: 'application/x-www-form-urlencoded; charset=utf-8',
         dataType: 'json',
@@ -299,7 +299,7 @@
       });
 
       peticion.done((res) => {
-        response = res.success
+        respuesta = res.success
       });
       peticion.fail(() => {
         respuesta = false;

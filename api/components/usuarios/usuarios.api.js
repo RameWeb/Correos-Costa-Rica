@@ -23,6 +23,7 @@ module.exports.registrar = (req, res) => {
       newUser.licencia = req.body.licencia;
       newUser.fotoLicencia = req.body.fotoLicencia;
       newUser.licenciaVencimiento = req.body.licenciaVencimiento;
+      newUser.rol = req.body.rol;
     break;
     
     case "Cliente":

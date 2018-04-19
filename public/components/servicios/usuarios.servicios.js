@@ -55,19 +55,19 @@
 
           switch (obj.tipoUsuario) {
             case "Encargado de Sucursal":
-              let objTempEncargadoSucursal = new EmpleadoSucursal(obj.tipoIdentificacion,obj.identificacion, obj.nombre, obj.apellido1, obj.fechaNacimiento, obj.email, obj.contrasenna, obj.provincia, obj.canton, obj.distrito, obj.direccion, obj.estado, obj.tipoUsuario, obj.sucursal, obj.licencia, obj.fotoLicencia, obj.vencimientoLicencia);
+              let objTempEncargadoSucursal = new EmpleadoSucursal(obj.tipoIdentificacion,obj.identificacion, obj.nombre, obj.apellido1, obj.fechaNacimiento, obj.email, obj.contrasenna, obj.provincia, obj.canton, obj.distrito, obj.direccion, obj.estado, obj.tipoUsuario, obj.sucursal, obj.licencia, obj.fotoLicencia, obj.vencimientoLicencia, obj.rol);
 
               listaUsuarios.push(objTempEncargadoSucursal);
             break;
           
             case "Encargado de Aduana":
-              let objTempEncargadoAduana = new EmpleadoAduana(obj.tipoIdentificacion,obj.identificacion, obj.nombre, obj.apellido1, obj.fechaNacimiento, obj.email, obj.contrasenna, obj.provincia, obj.canton, obj.distrito, obj.direccion, obj.estado, obj.tipoUsuario, obj.rolAduana);
+              let objTempEncargadoAduana = new EmpleadoAduana(obj.tipoIdentificacion,obj.identificacion, obj.nombre, obj.apellido1, obj.fechaNacimiento, obj.email, obj.contrasenna, obj.provincia, obj.canton, obj.distrito, obj.direccion, obj.estado, obj.tipoUsuario, obj.rolAduana, obj.rol);
 
               listaUsuarios.push(objTempEncargadoAduana);
             break;
 
             case "Repartidor":
-              let objTempRepartidor = new Repartidor(obj.tipoIdentificacion, obj.identificacion, obj.nombre, obj.apellido1, obj.fechaNacimiento, obj.email, obj.contrasenna, obj.provincia, obj.canton, obj.distrito, obj.direccion, obj.estado, obj.tipoUsuario, obj.telefono, obj.sucursal, obj.licencia,obj.fotoLicencia, obj.licenciaVencimiento);
+              let objTempRepartidor = new Repartidor(obj.tipoIdentificacion, obj.identificacion, obj.nombre, obj.apellido1, obj.fechaNacimiento, obj.email, obj.contrasenna, obj.provincia, obj.canton, obj.distrito, obj.direccion, obj.estado, obj.tipoUsuario, obj.telefono, obj.sucursal, obj.licencia,obj.fotoLicencia, obj.licenciaVencimiento, obj.rol);
 
               listaUsuarios.push(objTempRepartidor);
             break;
