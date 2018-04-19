@@ -37,8 +37,8 @@
 
               <input type="text" name="Ubicacion" class="form-control" id="txtUbicacion" ng-model="vm.ubicacion" pattern="[ñáéíóúA-Za-z ]+" places-auto-complete size=80 component-restrictions="{country: 'Costa Rica'}" required>
 
-              <ng-map id="map" center="{{vm.ubicacion}}" zoom="14" geo-callback="vm.callbackFunc('you')" styles="width: 50%, height: 20em">
-                  <marker position="{{vm.ubicacion}}" draggable="true" on-dragend="vm.getCurrentLocation()S" coords="marker.coords" options="marker.options" ></marker>
+              <ng-map id="map" center="{{vm.ubicacion}}" zoom="14"styles="width: 50%, height: 20em">
+                  <marker position="{{vm.ubicacion}}" draggable="true" on-dragend="vm.onDragEnd($event)" ng-model="vm.coords" ></marker>
               </ng-map>
 
               <div ng-messages="formRegistrarSucursales.ubicacion.$error" role="alert">

@@ -15,6 +15,7 @@
 
    vm.onDragEnd = ($event) =>{
       let position =[$event.latLng.lat(), $event.latLng.lng()];
+     
       vm.coords=position;
     };
     
