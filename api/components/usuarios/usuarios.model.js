@@ -22,10 +22,11 @@ let UserSchema = new mongoose.Schema({
   direccion : {type: String, required: true},
   estado : {type: String, required: true},
   tipoUsuario : {type: String, required: true},
+  rol : {type: String, require: false},
   tarjetas : {type: Array, required: false},
   paquetes: {type: Array, required: false},
   latitud : {type: String, required: false},
-  longitud : {type: String, required: false}
+  longitud : {type: String, required: false},
 });
 
 

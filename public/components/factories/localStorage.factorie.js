@@ -63,7 +63,6 @@
 
     function _setUsuario(data) {
       let respuesta;
-
       let peticion = $.ajax({
         url: 'http://localhost:4000/api/save_user',
         type: 'post',
@@ -82,13 +81,14 @@
           'fechaNacimiento' : data.fechaNacimiento,
           'email' : data.email,
           'contrasenna' : data.contrasenna,
-          'provincia' : data.provincia,
-          'canton' : data.canton,
-          'distrito' : data.distrito,
+          'provincia' : data.provincia.name,
+          'canton' : data.canton.name,
+          'distrito' : data.distrito.name,
           'direccion' : data.direccion,
           'estado' : data.estado,
           'tipoUsuario' : data.tipoUsuario,
           'sucursal' : data.sucursal,
+          'rol' : data.rol,
           'rolAduana' : data.rolAduana,
           'telefono' : data.telefono,
           'sucursal' : data.Sucursal,
@@ -97,23 +97,23 @@
           'licenciaVencimiento' : data.licenciaVencimiento,
           'sucursalPreferencia' : data.sucursalPreferencia,
           'prealertas': data.prealertas,
-          'titularTarjeta' : data.tarjetas[0].titularTarjeta,
-          'numeroTarjeta' : data.tarjetas[0].numeroTarjeta,
-          'mesVencimiento' : data.tarjetas[0].mesVencimiento,
-          'annoVencimiento': data.tarjetas[0].annoVencimiento,
-          'ccv': data.tarjetas[0].ccv,
+          // 'titularTarjeta' : data.tarjetas.titularTarjeta,
+          // 'numeroTarjeta' : data.tarjetas.numeroTarjeta,
+          // 'mesVencimiento' : data.tarjetas.mesVencimiento,
+          // 'annoVencimiento': data.tarjetas.annoVencimiento,
+          // 'ccv': data.tarjetas.ccv,
           'latitud': data.latitud,
           'longitud': data.longitud,
         }
       });
 
-      peticion.done((datos) => {
-        respuesta = datos.success;
-        console.log('Petición realizada con éxito');
+      peticion.done((res) => {
+        respuesta = res.success
+        console.log('objeto registrado'+data);
       });
-      peticion.fail((error) => {
-        respuesta = error;
-        console.log('Ocurrió un error');
+      peticion.fail(() => {
+        console.log('Prueba FAIL'+data);
+        respuesta = false;
       });
 
       return respuesta;
@@ -426,7 +426,7 @@
       let respuesta;
 
       let peticion = $.ajax({
-        url: 'http://localhost:4000/api/save_prealertas',
+        url: 'http://localhost:4000/api/save_prealerta',
         type: 'post',
         contentType: 'application/x-www-form-urlencoded; charset=utf-8',
         dataType: 'json',
@@ -442,7 +442,7 @@
       });
 
       peticion.done((res) => {
-        response = res.success
+        respuesta = res.success
       });
       peticion.fail(() => {
         respuesta = false;
