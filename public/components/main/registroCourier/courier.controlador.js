@@ -8,6 +8,7 @@
 
   function controladorCourier($stateParams, $state, servicioCourier) {
     let vm = this;
+    
     vm.nuevoCourier = {};
     vm.listaCouriers = listarCourier();
     listarCourier();
@@ -15,6 +16,7 @@
     //  registrar un nuevo tipo de producto desde el html
     vm.registrarCourier = (pnuevoCourier) => {
       console.log(pnuevoCourier);
+
       let objNuevoCourier = new Courier(pnuevoCourier.idCourier, pnuevoCourier.nombreCourier, pnuevoCourier.empresaCourier);
 
       console.log('Objeto con el courier');

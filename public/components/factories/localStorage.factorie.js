@@ -99,23 +99,24 @@
           'licenciaVencimiento' : data.licenciaVencimiento,
           'sucursalPreferencia' : data.sucursalPreferencia,
           'prealertas': data.prealertas,
-          // 'titularTarjeta' : data.tarjetas.titularTarjeta,
-          // 'numeroTarjeta' : data.tarjetas.numeroTarjeta,
-          // 'mesVencimiento' : data.tarjetas.mesVencimiento,
-          // 'annoVencimiento': data.tarjetas.annoVencimiento,
-          // 'ccv': data.tarjetas.ccv,
+          'paquetes': data.paquetes,
+          // 'titularTarjeta' : data.tarjetas[0].titularTarjeta,
+          // 'numeroTarjeta' : data.tarjetas[0].numeroTarjeta,
+          // 'mesVencimiento' : data.tarjetas[0].mesVencimiento,
+          // 'annoVencimiento': data.tarjetas[0].annoVencimiento,
+          // 'ccv': data.tarjetas[0].ccv,
           'latitud': data.latitud,
           'longitud': data.longitud,
         }
       });
 
       peticion.done((res) => {
-        respuesta = res.success
-        console.log('objeto registrado'+data);
+        respuesta = res.success;
+        console.log('Petición realizada con éxito');
       });
       peticion.fail(() => {
-        console.log('Prueba FAIL'+data);
         respuesta = false;
+        console.log('Ocurrió un error');
       });
 
       return respuesta;
@@ -407,7 +408,7 @@
         data: {},
       });
 
-      peticion.done(couriers => {
+      peticion.done((couriers) => {
         console.log('Datos que vienen desde la base de datos');
         console.log(couriers);
         listaCouriers = couriers;
@@ -432,15 +433,17 @@
         data: {
           idCourier: data.idCourier,
           nombreCourier: data.nombreCourier,
-          empresaCourier: data.empresaCourier
+          empresaCourier: data.empresaCourier,
         },
       });
 
-      peticion.done((res) => {
-        respuesta = res.success
+      peticion.done((datos) => {
+        respuesta = datos.msj;
+        console.log('Petición realizada con éxito');
       });
-      peticion.fail(() => {
-        respuesta = false;
+      peticion.fail((error) => {
+        respuesta = error;
+        console.log('Ocurrió un error');
       });
 
       return respuesta;

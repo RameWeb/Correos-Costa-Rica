@@ -69,10 +69,10 @@
         },
         resolve: {
           load: ['$ocLazyLoad', ($ocLazyLoad) => {
-            return $ocLazyLoad.load('./components/main/registroClientes/registroClientes.controlador.js')
+            return $ocLazyLoad.load('./components/usuarios/clientes/registrar/clientes.controlador.js')
           }]
         },
-        controller: 'controladorClientesAdmin',
+        controller: 'controladorClientes',
         controllerAs: 'vm'
       })
 
@@ -84,7 +84,7 @@
         },
         resolve: {
           load: ['$ocLazyLoad', ($ocLazyLoad) => {
-            return $ocLazyLoad.load('./components/main/registroClientes/registroClientes.controlador.js')
+            return $ocLazyLoad.load('./components/usuarios/clientes/registrar/clientes.controlador.js')
           }]
         },
         controller: 'controladorClientes',
@@ -110,14 +110,29 @@
         url: '/registroCourier',
         templateUrl: './components/main/registroCourier/courier.vista.html',
         data: {
-          pageTitle: 'Clientes | Correos de Costa Rica'
+          pageTitle: 'Courier | Correos de Costa Rica'
         },
         resolve: {
           load: ['$ocLazyLoad', ($ocLazyLoad) => {
             return $ocLazyLoad.load('./components/main/registroCourier/courier.controlador.js')
           }]
         },
-        controller: 'controladorClientes',
+        controller: 'controladorCourier',
+        controllerAs: 'vm'
+      })
+
+      .state('main.listarCourier', {
+        url: '/listarCourier',
+        templateUrl: './components/main//listarCourier/listaCourier.vista.html',
+        data: {
+          pageTitle: 'Courier | Correos de Costa Rica'
+        },
+        resolve: {
+          load: ['$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/main/registroCourier/courier.controlador.js')
+          }]
+        },
+        controller: 'controladorCourier',
         controllerAs: 'vm'
       })
 
@@ -186,7 +201,7 @@
       })
       //final de CONVENIOS
 
-      
+
       // inicio de SUCURSALES
       .state('main.sucursales', {
         url: '/registroSucursal',
@@ -238,77 +253,75 @@
       })
       //final de SUCURSALES
 
-// inicio de BITACORA
+      // inicio de BITACORA
 
-.state('main.bitacora', {
-  url: '/consultarBitacora',
-  templateUrl: './components/main/consultarBitacora/consultarBitacora.vista.html',
-  resolve: {
-    load: ['$ocLazyLoad', ($ocLazyLoad) => {
-      return $ocLazyLoad.load('./components/main/consultarBitacora/consultarBitacora.controlador.js')
-    }]
-  },
-  controller: 'controladorBitacora',
-  controllerAs: 'vm'
-})
-//final de BITACORA
-// inicio de PRODUCTOS
-.state('main.registroProducto', {
-  url: '/registrarTipoProducto',
-  templateUrl: './components/main/registrarTipoProducto/tipoProducto.vista.html',
-  resolve: {
-    load: ['$ocLazyLoad', ($ocLazyLoad) => {
-      return $ocLazyLoad.load('./components/main/registrarTipoProducto/tipoProducto.controlador.js')
-    }]
-  },
-  controller: 'controladorProductos',
-  controllerAs: 'vm'
-})
+      .state('main.bitacora', {
+        url: '/consultarBitacora',
+        templateUrl: './components/main/consultarBitacora/consultarBitacora.vista.html',
+        resolve: {
+          load: ['$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/main/consultarBitacora/consultarBitacora.controlador.js')
+          }]
+        },
+        controller: 'controladorBitacora',
+        controllerAs: 'vm'
+      })
+      //final de BITACORA
+      // inicio de PRODUCTOS
+      .state('main.registroProducto', {
+        url: '/registrarTipoProducto',
+        templateUrl: './components/main/registrarTipoProducto/tipoProducto.vista.html',
+        resolve: {
+          load: ['$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/main/registrarTipoProducto/tipoProducto.controlador.js')
+          }]
+        },
+        controller: 'controladorProductos',
+        controllerAs: 'vm'
+      })
 
-.state('main.ListaProducto', {
-  url: '/ListaTipoProducto',
-  templateUrl: './components/main/ListarBuscarTipoProducto/listaTipoProductos.vista.html',
-  resolve: {
-    load: ['$ocLazyLoad', ($ocLazyLoad) => {
-      return $ocLazyLoad.load('./components/main/registrarTipoProducto/tipoProducto.controlador.js')
-    }]
-  },
-  controller: 'controladorProductos',
-  controllerAs: 'vm'
-})
+      .state('main.ListaProducto', {
+        url: '/ListaTipoProducto',
+        templateUrl: './components/main/ListarBuscarTipoProducto/listaTipoProductos.vista.html',
+        resolve: {
+          load: ['$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/main/registrarTipoProducto/tipoProducto.controlador.js')
+          }]
+        },
+        controller: 'controladorProductos',
+        controllerAs: 'vm'
+      })
 
-.state('main.modificarProducto', {
-  url: '/modificarTipoProducto',
-  templateUrl: './components/main/modificarTipoProducto/modificarTipoProducto.vista.html',
-  params: {
-    nombreTipoProducto: ''
-  },
-  resolve: {
-    load: ['$ocLazyLoad', ($ocLazyLoad) => {
-      return $ocLazyLoad.load('./components/main/modificarTipoProducto/modificarTipoProducto.controlador.js')
-    }]
-  },
-  controller: 'controladorModProducto',
-  controllerAs: 'vm'
-})
-//final de BITACORA
-//inicio de RANKING
-.state('main.ranking', {
-  url: '/rankingProductos',
-  templateUrl: './components/main/rankingProductos/ranking.vista.html',
-  resolve: {
-    load: ['$ocLazyLoad', ($ocLazyLoad) => {
-      return $ocLazyLoad.load('./components/main/rankingProductos/ranking.controlador.js')
-    }]
-  },
-  controller: 'controladorRanking',
-  controllerAs: 'vm'
-})
-//final de RANKING
+      .state('main.modificarProducto', {
+        url: '/modificarTipoProducto',
+        templateUrl: './components/main/modificarTipoProducto/modificarTipoProducto.vista.html',
+        params: {
+          nombreTipoProducto: ''
+        },
+        resolve: {
+          load: ['$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/main/modificarTipoProducto/modificarTipoProducto.controlador.js')
+          }]
+        },
+        controller: 'controladorModProducto',
+        controllerAs: 'vm'
+      })
+      //final de BITACORA
+      //inicio de RANKING
+      .state('main.ranking', {
+        url: '/rankingProductos',
+        templateUrl: './components/main/rankingProductos/ranking.vista.html',
+        resolve: {
+          load: ['$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/main/rankingProductos/ranking.controlador.js')
+          }]
+        },
+        controller: 'controladorRanking',
+        controllerAs: 'vm'
+      })
+      //final de RANKING
       // -----------------------------------------------------------------------
 
-      
-      
 
 
 
@@ -324,9 +337,11 @@
 
 
 
-      
 
-      
+
+
+
+
       .state('registroPrealerta', {
         url: '/registroPrealerta',
         templateUrl: './components/prealertas/registrar/prealerta.vista.html',
@@ -376,38 +391,38 @@
       })
 
 
-      .state('modificarConvCliente', {
-        url: '/modificarConvCliente',
-        templateUrl: './components/convenioCliente/modificar/modificarConvenios.vista.html',
-        data: {
-          pageTitle: 'Modificar Convenios'
-        },
-        params: {
-          idConvenio: ''
-        },
-        resolve: {
-          load: ['$ocLazyLoad', ($ocLazyLoad) => {
-            return $ocLazyLoad.load('./components/convenioCliente/modificar/modificarConvenios.controlador.js')
-          }]
-        },
-        controller: 'controladorModConveniosCliente',
-        controllerAs: 'vm'
-      })
+      // .state('modificarConvCliente', {
+      //   url: '/modificarConvCliente',
+      //   templateUrl: './components/convenioCliente/modificar/modificarConvenios.vista.html',
+      //   data: {
+      //     pageTitle: 'Modificar Convenios'
+      //   },
+      //   params: {
+      //     idConvenio: ''
+      //   },
+      //   resolve: {
+      //     load: ['$ocLazyLoad', ($ocLazyLoad) => {
+      //       return $ocLazyLoad.load('./components/convenioCliente/modificar/modificarConvenios.controlador.js')
+      //     }]
+      //   },
+      //   controller: 'controladorModConveniosCliente',
+      //   controllerAs: 'vm'
+      // })
 
-      .state('listarConvCliente', {
-        url: '/listarConvCliente',
-        templateUrl: './components/convenioCliente/listarBuscar/mantenimientoConvenios.vista.html',
-        data: {
-          pageTitle: 'Listar Convenios'
-        },
-        resolve: {
-          load: ['$ocLazyLoad', ($ocLazyLoad) => {
-            return $ocLazyLoad.load('./components/convenioCliente/registrar/convenios.controlador.js')
-          }]
-        },
-        controller: 'controladorConveniosCliente',
-        controllerAs: 'vm'
-      })
+      // .state('listarConvCliente', {
+      //   url: '/listarConvCliente',
+      //   templateUrl: './components/convenioCliente/listarBuscar/mantenimientoConvenios.vista.html',
+      //   data: {
+      //     pageTitle: 'Listar Convenios'
+      //   },
+      //   resolve: {
+      //     load: ['$ocLazyLoad', ($ocLazyLoad) => {
+      //       return $ocLazyLoad.load('./components/convenioCliente/registrar/convenios.controlador.js')
+      //     }]
+      //   },
+      //   controller: 'controladorConveniosCliente',
+      //   controllerAs: 'vm'
+      // })
 
       .state('paquetes', {
         url: '/paquetes',

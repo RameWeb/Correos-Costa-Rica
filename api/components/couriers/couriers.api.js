@@ -1,17 +1,11 @@
 const courierModel = require('./couriers.model');
 
-/**
- * Se exporta la funcion de registrar para que sea entendible para el usuario.route.js
- * @param {peticion} req 
- * @param {respuesta} res 
- */
-module.exports.registrar = (req, res) => {
-
-  let newCourier = Object.assign(new courierModel(), req.body);
-
-  console.log('Objeto que viene del front-end');
-  console.log(newCourier);
-
+  module.exports.registrar = (req, res) => {
+    var newCourier = new courierModel({
+      idCourier         :  req.body.idCourier,
+      nombreCourier     :  req.body.nombreCourier,
+      empresaCourier    :  req.body.empresaCourier,
+    });
 
   newCourier.save((err) => {
     if(err){
@@ -29,12 +23,12 @@ module.exports.listarTodos = (req,res) => {
 };
 
 module.exports.actualizar = (req,res) => {
-  courierModel.update({id: req.body.id}, req.body, (err, couriers) => {
+  courierModel.update({idCourier: req.body.idCourier}, req.body, (err, couriers) => {
     if (err){
       res.json({success:false,msg:'No se ha actualizado.' + handleError(err)});
 
     } else{
       res.json({success:true,msg:'Se ha actualizado correctamente.' + res});
     }
-  });
+  })
 };
