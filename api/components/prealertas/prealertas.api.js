@@ -11,6 +11,9 @@ module.exports.registrar = (req, res) => {
     courier : req.body.courier
   });
 
+  console.log('Objeto que viene del front-end');
+  console.log(newPrealerta);
+
   newPrealerta.save((err) => {
     if(err){
       res.json({success:false, msg: 'Ha ocurrido un error en el registro de la prealerta' + err});

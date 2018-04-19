@@ -9,7 +9,9 @@
 function controladorPrealertas($stateParams, $state, servicioUsuarios, inicioSesionService,servicioCourier){
     let vm = this;
 
-    vm.listaCouriers = servicioCourier.getCouriers();
+    // vm.listaCouriers = servicioCourier.getCouriers();
+
+    vm.courier = ["DHL", "UPS", "Amazon", "FedEx", "TNT Express", "USPS", "CRBOx", "Aerocasillas", "JetBox"]; 
 
     vm.tipoProducto = ["Accesorios para Vehículos", "Animales y Mascotas", "Arte y Antigüedades", "Bebés", "Cámaras y Fotografía", "Celulares y Teléfonos", "Coleccionables y Hobbies", "Computación", "Consolas y Videojuegos", "Deportes y Fitness", "Electrodomésticos", "Electrónica, Audio y Video", "Herramientas y Construcción", "Hogar, Muebles y Jardín", "Industrias y Oficinas", "Instrumentos Musicales", "Joyas y Relojes", "Juegos y Juguetes", "Libros, Revistas y Comics", "Música y Película", "Ropa y Accesorios", "Salud y Belleza", "Otras categorías"];
 
@@ -25,8 +27,8 @@ function controladorPrealertas($stateParams, $state, servicioUsuarios, inicioSes
 
     // Funcion que es llamada desde el html para registrar una prealerta
 
-    vm.registrarPrealerta = (pNuevaPrealerta) => {
-      console.log(pNuevaPrealerta);
+    vm.registrarPrealerta = (pnuevaPrealerta) => {
+      console.log(pnuevaPrealerta);
 
       const userAuth = inicioSesionService.getAuthUser();
 
@@ -38,7 +40,7 @@ function controladorPrealertas($stateParams, $state, servicioUsuarios, inicioSes
   
       vm.userInfo = userAuth;
 
-      let objPrealertaNueva = new Prealertas(pNuevaPrealerta.tracking,pNuevaPrealerta.url,pNuevaPrealerta.tipoProducto,pNuevaPrealerta.valor,pNuevaPrealerta.peso,pNuevaPrealerta.courier);
+      let objPrealertaNueva = new Prealertas(pnuevaPrealerta.tracking,pnuevaPrealerta.url,pnuevaPrealerta.tipoProducto,pnuevaPrealerta.valor,pnuevaPrealerta.peso,pnuevaPrealerta.courier);
 
       console.log('Objeto con la prealerta');
       console.log(objPrealertaNueva);
