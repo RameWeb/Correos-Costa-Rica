@@ -110,14 +110,14 @@
         url: '/registroCourier',
         templateUrl: './components/main/registroCourier/courier.vista.html',
         data: {
-          pageTitle: 'Clientes | Correos de Costa Rica'
+          pageTitle: 'Courier | Correos de Costa Rica'
         },
         resolve: {
           load: ['$ocLazyLoad', ($ocLazyLoad) => {
             return $ocLazyLoad.load('./components/main/registroCourier/courier.controlador.js')
           }]
         },
-        controller: 'controladorClientes',
+        controller: 'controladorCourier',
         controllerAs: 'vm'
       })
 

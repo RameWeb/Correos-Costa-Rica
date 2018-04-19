@@ -5,9 +5,9 @@ const mongoose = require('mongoose');
 
 //Esquema de usuarios
 var CourierSchema = new mongoose.Schema({
-  idCourier: {type: String, required: true},
-  nombreCourier: {type: String, required: true},
-  empresaCourier: {type: String, required: true}
+  idCourier: {type: String},
+  nombreCourier: {type: String},
+  empresaCourier: {type: String}
 });
 
 //nombre del modelo dentro del back end y el userSchema es el nombre dentro de mongoose

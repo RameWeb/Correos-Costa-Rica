@@ -202,32 +202,32 @@ class Cliente extends Usuario{
 /**
  * Clase de la tarjeta
  */
-class Tarjeta{
-  constructor(ptitulartarjeta, pnumerotarjeta, pmesvencimiento, pannovencimiento, pccv, pidcliente){
-    this.titularTarjeta = ptitulartarjeta;
-    this.numeroTarjeta = pnumerotarjeta;
-    this.mesVencimiento = pmesvencimiento;
-    this.annoVencimiento = pannovencimiento;
-    this.ccv = pccv;
-    this.idCliente = pidcliente;
-  }
+// class Tarjeta{
+//   constructor(ptitulartarjeta, pnumerotarjeta, pmesvencimiento, pannovencimiento, pccv, pidcliente){
+//     this.titularTarjeta = ptitulartarjeta;
+//     this.numeroTarjeta = pnumerotarjeta;
+//     this.mesVencimiento = pmesvencimiento;
+//     this.annoVencimiento = pannovencimiento;
+//     this.ccv = pccv;
+//     this.idCliente = pidcliente;
+//   }
 
-  getIdCliente(){
-    return this.idCliente;
-  }
+//   getIdCliente(){
+//     return this.idCliente;
+//   }
 
-  getNumeroTatjeta(){
-    return this.numeroTarjeta;
-  }
+//   getNumeroTatjeta(){
+//     return this.numeroTarjeta;
+//   }
 
-  getFechaVencimiento(){
-    return `${this.mesVencimiento} / ${this.annoVencimiento}`;
-  }
+//   getFechaVencimiento(){
+//     return `${this.mesVencimiento} / ${this.annoVencimiento}`;
+//   }
 
-  getCcv(){
-    return this.ccv;
-  }
-}
+//   getCcv(){
+//     return this.ccv;
+//   }
+// }
 
 // TODO Dentro de este archivo se crean los objetos con sus respectivos mÃƒÂ©todos
 
