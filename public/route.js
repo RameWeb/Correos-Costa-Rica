@@ -69,10 +69,10 @@
         },
         resolve: {
           load: ['$ocLazyLoad', ($ocLazyLoad) => {
-            return $ocLazyLoad.load('./components/main/registroClientes/registroClientes.controlador.js')
+            return $ocLazyLoad.load('./components/usuarios/clientes/registrar/clientes.controlador.js')
           }]
         },
-        controller: 'controladorClientesAdmin',
+        controller: 'controladorClientes',
         controllerAs: 'vm'
       })
 
@@ -84,7 +84,7 @@
         },
         resolve: {
           load: ['$ocLazyLoad', ($ocLazyLoad) => {
-            return $ocLazyLoad.load('./components/main/registroClientes/registroClientes.controlador.js')
+            return $ocLazyLoad.load('./components/usuarios/clientes/registrar/clientes.controlador.js')
           }]
         },
         controller: 'controladorClientes',
@@ -109,6 +109,21 @@
       .state('main.registroCourier', {
         url: '/registroCourier',
         templateUrl: './components/main/registroCourier/courier.vista.html',
+        data: {
+          pageTitle: 'Courier | Correos de Costa Rica'
+        },
+        resolve: {
+          load: ['$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/main/registroCourier/courier.controlador.js')
+          }]
+        },
+        controller: 'controladorCourier',
+        controllerAs: 'vm'
+      })
+
+      .state('main.listarCourier', {
+        url: '/listarCourier',
+        templateUrl: './components/main//listarCourier/listaCourier.vista.html',
         data: {
           pageTitle: 'Courier | Correos de Costa Rica'
         },
