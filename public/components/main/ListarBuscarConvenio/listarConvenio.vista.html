@@ -1,0 +1,46 @@
+<aside id="dashboard">
+<main id="registroSucursales">
+  <div class="col-md-12 pt-5 mt-5">
+    <h2 class="text-center">Lista de convenios</h2>
+      
+      
+
+        <div class="form-group">
+          <label for="txtBuscar">Buscar</label>
+          <input type="text" id="txtBuscar" class="form-control" ng-model="buscarConvenio">
+        </div>
+
+        <table class="table">
+          <thead>
+              <tr>
+                <th>id del convenio</th>
+                <th>Tipo de convenio</th>
+                <th>Nombre de la institución</th>
+                <th>Tiempo convenio</th>
+                <th>Costo transporte</th>
+              </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="convenio in vm.listaConvenios | filter:buscarConvenio">
+              <td>{{convenio.idConvenios}}</td>
+              <td>{{convenio.tipo}}</td>
+              <td>{{convenio.nombreInstitucion}}</td>
+              <td>{{convenio.tiempo}}</td>
+              <td>{{convenio.costo}}</td>
+              <td>
+                <li class="nav-item dropdown btnAccion" style="list-style:none">
+                  <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Acciones</a>
+                  <div class="dropdown-menu">
+                    <a class="dropdown-item" href=""ui-sref="main.modificarConvenios"ng-click="vm.modificar(convenio.idConvenios)">Modificar convenio</a>
+                    <a class="dropdown-item" href="">Desactivar convenio</a>
+                  </div>
+                </li>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</main>
+</aside>

@@ -14,27 +14,44 @@
     return publicAPI;
 
     // Funcion que almacena en el localStorage todas las fiestas programadas
-    function _addCourier(pnuevoCourier){
-      let listaCourier = _getCouriers();
-      listaCourier.push(pnuevoCourier);
-      localStorage.setItem('courierLS', JSON.stringify(listaCourier));
+    function _addCourier(pnuevoCourier) {
+      let listaCouriers = _getCouriers(),
+        registroExitoso,
+        courierRepetido = false;
+
+      for (let i = 0; i < listaCouriers.length; i++) {
+        if (pnuevoCourier.id == listaCouriers[i].id) {
+
+          courierRepetido = true;
+        }
+      }
+      if (courierRepetido === false) {
+        registroExitoso = localStorageFactories.setCouriers(pnuevoCourier);
+
+      } else {
+        registroExitoso = false;
+      }
+      return registroExitoso;
     }
 
     // Funcion que trae todas las fiestas programadas del localStorage y a partir de esos datos vuelve a crear un arreglo con todos los objetos de tipo fiesta
     function _getCouriers(){
-      let listaCourier = [];
-      let listaCourierLocal = JSON.parse(localStorage.getItem("courierLS"));
+      let listaCouriers = [];
+      let listaCouriersBD = localStorageFactories.getCouriers();
 
-      if(!listaCourierLocal){
-        listaCourier = [];
+      if(listaCouriersBD == null){
+        listaCouriers = [];
       }else{
-        listaCourierLocal.forEach(obj => {
-          let objCourier = new courier(obj.nombreCourier);
+        listaCouriersBD.forEach(obj => {
+          let objCourier = new Courier(
+            obj.idCourier, 
+            obj.nombreCourier, 
+            obj.empresaCourier);
 
-          listaCourier.push(objCourier);
-        })
+          listaCouriers.push(objCourier);
+        });
       }
-      return listaCourier;
+      return listaCouriers;
     }
   };
 })();

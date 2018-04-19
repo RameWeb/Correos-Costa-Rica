@@ -1,0 +1,112 @@
+<!-- <navegacion-Principal></navegacion-Principal> -->
+
+<main id="registroSucursales">
+  <div class="col-md-12 pt-5 mt-5">
+    <h2 class="text-center">Registrar una sucursal</h2>
+            
+     
+      
+          
+          <form ng-submit="vm.registrarSucursal(vm.nuevaSucursal)" name="formRegistrarSucursales" autocomplete="off" class="col-md-8" novalidate>
+            
+            <div class="form-group">
+              <label for="txtiIdSucursal">Id de la sucursal:</label>
+              <input type="text" name="IdSucursal" class="form-control" id="txtIdSucursal" ng-model="vm.nuevaSucursal.idSucursal" required>
+              <div ng-messages="formRegistrarSucursales.idSucursal.$error" role="alert">
+                <div ng-message="required">
+                  <small class="form-text text-muted">Este campo es requerido</small>
+                </div>
+              </div>
+            </div> 
+
+            <div class="form-group">
+              <label for="txtNombreSucursal">Nombre de la sucursal:</label>
+              <input type="text" name="NombreSucursal" class="form-control" id="txtNombreSucursal" ng-model="vm.nuevaSucursal.nombreSucursal" pattern="[ñáéíóúA-Za-z ]+" required>
+              <div ng-messages="formRegistrarSucursales.nombreSucursal.$error" role="alert">
+                <div ng-message="required">
+                  <small class="form-text text-muted">Este campo es requerido</small>
+                </div>
+                <div ng-message="pattern">
+                  <small class="form-text text-muted">Formato incorrecto, ingrese únicamente letras</small>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="txtUbicacion">Ubicación con geoposicionamiento</label>
+              
+
+              <input type="text" name="Ubicacion" class="form-control" id="txtUbicacion" ng-model="vm.ubicacion" pattern="[ñáéíóúA-Za-z ]+" places-auto-complete size=80 component-restrictions="{country: 'Costa Rica'}" required>
+
+              <ng-map id="map" center="{{vm.ubicacion}}" zoom="14" geo-callback="vm.callbackFunc('you')" styles="width: 50%, height: 20em">
+                  <marker position="{{vm.ubicacion}}" draggable="true" on-dragend="vm.getCurrentLocation()" coords="marker.coords" options="marker.options" ></marker>
+              </ng-map>
+
+              <div ng-messages="formRegistrarSucursales.ubicacion.$error" role="alert">
+                <div ng-message="required">
+                  <small class="form-text text-muted">Este campo es requerido</small>
+                </div>
+                <div ng-message="pattern">
+                  <small class="form-text text-muted">Formato incorrecto, ingrese únicamente letras</small>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for=txtDireccion"">Dirección exacta:</label>
+              <textarea type="text" name="direccion" class="form-control" id="txtDireccion" ng-model="vm.nuevaSucursal.direccion" rows="3" required></textarea>
+              <div ng-messages="formRegistrarSucursales.direccion.$error" role="alert">
+                <div ng-message="required">
+                  <small class="form-text text-muted">Este campo es requerido</small>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for=txtTelefono>Teléfono</label>
+              <input type="tel" name="telefono" class="form-control" id="txtTelefono" ng-model="vm.nuevaSucursal.telefono" pattern="^[2|8]\d{7}$" maxlength="8" minlength="8" required>
+
+              <div ng-messages="formRegistrarSucursales.telefono.$error" role="alert">
+                <div ng-message="required">
+                  <small class="form-text text-muted">Este campo es requerido</small>
+                </div>
+                <div ng-message="maxlength">
+                  <small class="form-text text-muted">Formato incorrecto</small>
+                </div>
+                <div ng-message="minlength">
+                  <small class="form-text text-muted">Formato incorrecto</small>
+                </div>
+                <div ng-message="pattern">
+                  <small class="form-text text-muted">Formato incorrecto, número debe de empezar con 2 u 8</small>
+                </div>
+              </div>
+            </div>
+
+            <button type="submit" class="btn btnAccion" ng-disabled="formRegistrarSucursales.$invalid">Registrar</button>
+            <a href=""ui-sref="main.listaSucursal"  class=" btn btnAccion">Lista de sucursales</a>
+
+           <!-- Modal -->
+           <!-- <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Ubicación</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <input type="text">
+                  
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                  <button type="button" class="btn btn-primary">Guardar localización</button>
+                </div>
+              </div>
+            </div>
+          </div> -->
+        </form>
+      </div>
+  </section>
+</main>

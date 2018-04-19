@@ -9,6 +9,12 @@
     z-index: 10000;
   }
 
+  .contenido{
+    background-color: $white;
+    max-height: 100vh;
+    overflow: scroll;
+  }
+
   .list-group-item{
     background-color: transparent !important;
     border: none;
@@ -24,6 +30,12 @@
   .btnAccion{
     background-color: $slateblue;
     color: $white;
+  }
+
+  .btnSecundario{
+    background-color: $midnight;
+    color: $white;
+    font-family: $fuenteContenido;
   }
 
   button{

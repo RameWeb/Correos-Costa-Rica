@@ -1,0 +1,36 @@
+<div class="col-md-12 pt-5 mt-5">
+  <h2>Lista de Clientes</h2>
+  <div class="form-group">
+    <label for="inputBuscar">Buscar cliente</label>
+    <input type="text" class="form-control" id="inputBuscar" ng-model="buscarTarjeta">
+  </div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Nº identificación</th>
+        <th>Primer nombre</th>
+        <th>Primer apellido</th>
+        <th>Correo electrónico</th>
+        <th>Teléfono</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="cliente in vm.listaClientes | filter:buscarTarjeta">
+        <td>{{cliente.identificacion}}</td>
+        <td>{{cliente.nombre1}}</td>
+        <td>{{cliente.apellido1}}</td>
+        <td>{{cliente.email}}</td>
+        <td>{{cliente.telefono}}</td>
+        <td>
+          <li class="nav-item dropdown btnAccion" style="list-style:none">
+            <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Acciones</a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" ng-click="vm.modificar(cliente)">Modificar Cliente</a>
+              <a class="dropdown-item" ng-click="vm.desactivar(cliente)">Desactivar Cliente</a>
+            </div>
+          </li>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

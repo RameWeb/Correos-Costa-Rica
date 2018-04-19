@@ -1,0 +1,46 @@
+<aside id="dashboard">
+  <main id="registroSucursales">
+    <div class="col-md-12 pt-5 mt-5">
+      <h2 class="text-center">Lista de sucursales</h2>
+
+        
+          <label for="txtBuscar">Buscar</label>
+          <input type="text" id="txtBuscar" class="form-control" ng-model="buscarSucursal">
+        </div>
+
+        <table class="table">
+          <thead>
+              <tr>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Latitud</th>
+                <th>Longitud</th>
+                <th>Dirección exacta</th>
+                <th>Teléfono</th>
+                <th>Acciones</th>
+              </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="sucursal in vm.listaSucursales | filter:buscarSucursal">
+              <td>{{sucursal.idSucursal}}</td>
+              <td>{{sucursal.nombreSucursal}}</td>
+              <td>{{sucursal.latitude}}</td>
+              <td>{{sucursal.longitude}}</td>
+              <td>{{sucursal.direccion}}</td>
+              <td>{{sucursal.telefono}}</td>
+              <td>
+                <li class="nav-item dropdown btnAccion" style="list-style:none">
+                  <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Acciones</a>
+                  <div class="dropdown-menu">
+                    <a class="dropdown-item" href=""ui-sref="main.modificarConvenios" ng-click="vm.modificar(sucursal)">Modificar sucursal</a>
+                    <a class="dropdown-item" href="">Desactivar sucursal</a>
+                  </div>
+                </li>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</main>

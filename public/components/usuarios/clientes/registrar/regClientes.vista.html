@@ -13,8 +13,6 @@
           <!-- Información Personal -->
           <div class="my-3">
             <h3>Información Personal</h3>
-            <!-- Agregar un campo para tipo de cedula, Datalist -->
-            <!-- Agregar un campo para el sexo -->
             <div class="form-group">
               <label for="inputTipoIdentificacion">Tipo de Identificación:</label>
               <input type="text" class="form-control" id="inputTipoIdentificacion" ng-model="vm.nuevoCliente.tipoIdentificacion" list="listaTipoId"
@@ -31,41 +29,41 @@
 
             <div class="form-group" ng-if="vm.nuevoCliente.tipoIdentificacion == 'Cédula nacional'">
               <label for="inputIdentificacion">Nº de Identificación:</label>
-              <input type="number" class="form-control" id="inputIdentificacion" ng-model="vm.nuevoCliente.identificacion" name="txtClienteId"
-                pattern="^[0-7]\d{8}$" minlength="9" maxlength="9" autocomplete="off" required>
+              <input type="text" class="form-control" id="inputIdentificacion" ng-model="vm.nuevoCliente.identificacion" name="txtClienteId"
+              pattern="^[0-9]\d{8}$" minlength="9" maxlength="9" autocomplete="off" required>
               <div ng-messages="formRegistrarCliente.txtClienteId.$error" role="alert">
                 <div ng-message="required">
                   <small class="form-text text-muted">Este campo es requerido</small>
                 </div>
                 <div ng-message="pattern">
-                  <small class="form-text text-muted">Formato incorrecto, solo se permite ingresar números</small>
+                  <small class="form-text text-muted"></small>
                 </div>
-                <div ng-message="maxlength">
+                <!-- <div ng-message="maxlength">
                   <small class="form-text text-muted">Formato incorrecto</small>
-                </div>
+                </div> -->
                 <div ng-message="minlength">
-                  <small class="form-text text-muted">Formato incorrecto</small>
+                  <small class="form-text text-muted">Mínimo 9 caracteres</small>
                 </div>
               </div>
             </div>
 
             <div class="form-group" ng-if="vm.nuevoCliente.tipoIdentificacion == 'Residente'">
               <label for="inputIdentificacion">Nº de Identificación:</label>
-              <input type="number" class="form-control" id="inputIdentificacion" ng-model="vm.nuevoCliente.identificacion" name="txtClienteId"
-                pattern="" minlength="9" maxlength="9" autocomplete="off" required>
+              <input type="text" class="form-control" id="inputIdentificacion" ng-model="vm.nuevoCliente.identificacion" name="txtClienteId"
+                pattern="^(RE)+[0-9]{11}" minlength="13" maxlength="13" autocomplete="off" required>
               <div ng-messages="formRegistrarCliente.txtClienteId.$error" role="alert">
                 <div ng-message="required">
                   <small class="form-text text-muted">Este campo es requerido</small>
                 </div>
                 <div ng-message="pattern">
-                  <small class="form-text text-muted">Formato incorrecto, solo se permite ingresar letras en mayúscula y números</small>
+                  <small class="form-text text-muted">Formato RE00000000000</small>
                 </div>
               </div>
             </div>
 
             <div class="form-group" ng-if="vm.nuevoCliente.tipoIdentificacion == 'Pasaporte'">
               <label for="inputIdentificacion">Nº de Identificación:</label>
-              <input type="number" class="form-control" id="inputIdentificacion" ng-model="vm.nuevoCliente.identificacion" name="txtClienteId"
+              <input type="text" class="form-control" id="inputIdentificacion" ng-model="vm.nuevoCliente.identificacion" name="txtClienteId"
                 pattern="" minlength="9" maxlength="13" autocomplete="off" required>
               <div ng-messages="formRegistrarCliente.txtClienteId.$error" role="alert">
                 <div ng-message="required">
@@ -79,14 +77,14 @@
 
             <div class="form-group" ng-if="vm.nuevoCliente.tipoIdentificacion == 'DIMEX'">
               <label for="inputIdentificacion">Nº de Identificación:</label>
-              <input type="number" class="form-control" id="inputIdentificacion" ng-model="vm.nuevoCliente.identificacion" name="txtClienteId"
-                pattern="" minlength="9" maxlength="13" autocomplete="off" required>
+              <input type="text" class="form-control" id="inputIdentificacion" ng-model="vm.nuevoCliente.identificacion" name="txtClienteId"
+                pattern="^[1-9]+{11}" minlength="12" maxlength="12" autocomplete="off" required>
               <div ng-messages="formRegistrarCliente.txtClienteId.$error" role="alert">
                 <div ng-message="required">
                   <small class="form-text text-muted">Este campo es requerido</small>
                 </div>
                 <div ng-message="pattern">
-                  <small class="form-text text-muted">Formato incorrecto, solo se permite ingresar letras en mayúscula y números</small>
+                  <small class="form-text text-muted">Formato incorrecto, solo se permite ingresar números</small>
                 </div>
               </div>
             </div>
@@ -167,17 +165,7 @@
                     <small class="form-text text-muted">Este campo es requerido</small>
                   </div>
                 </div>
-                <!-- pattern="[\w.%+-]+@domain\.com" -->
               </div>
-              <div class="form-group col-md-6">
-              <label for="inputContrasenna">Contraseña:</label>
-              <input type="password" class="form-control" id="inputContrasenna" ng-model="vm.nuevoCliente.contrasenna" name="txtContrasenna" autocomplete="off" required>
-              <div ng-messages="formRegistrarCliente.txtContrasenna.$error" role="alert">
-                <div ng-message="required">
-                  <small class="form-text text-muted">Este campo es requerido</small>
-                </div>
-              </div>
-            </div>
             </div>
 
             <div class="form-row">
@@ -194,14 +182,16 @@
 
               <div class="form-group col-md-6">
                 <label for="inputTelefono">Teléfono</label>
-                <input type="number" class="form-control" id="inputTelefono" ng-model="vm.nuevoCliente.telefono" name="txtTelefono" minlength="8"
-                  maxlength="8" pattern="^[2|6|7|8]\d{7}$" autocomplete="off" required>
+                <input type="text" class="form-control" id="inputTelefono" ng-model="vm.nuevoCliente.telefono" name="txtTelefono" pattern="^[6-8]*\d{7}"  minlength="8" maxlength="8" required>
                 <div ng-messages="formRegistrarCliente.txtTelefono.$error" role="alert">
                   <div ng-message="required">
                     <small class="form-text text-muted">Este campo es requerido</small>
                   </div>
-                  <div ng-message="pattern">
-                    <small class="form-text text-muted">Formato de teléfono incorrecto</small>
+                  <!-- <div ng-message="pattern">
+                                  <small class="form-text text-muted">Formato de teléfono incorrecto</small>
+                                </div> -->
+                  <div ng-message="minlength">
+                    <small class="form-text text-muted">Mínimo 8 caracteres</small>
                   </div>
                 </div>
               </div>
@@ -217,33 +207,42 @@
           <div class="my-3">
             <h3>Dirección</h3>
             <a class="btn btnSecundario" ng-click="vm.googlemap()" data-toggle="modal" data-target="#exampleModal" class="">
-              <img src="../../../../sources/img/google.svg" width="15px" height="15px" class="" alt="">  Mi ubicación
-            </a>
+                <img src="../../../../sources/img/google.svg" width="15px" height="15px" class="" alt=""> Mi ubicación
+              </a>
             <div class="form-row">
               <div class="form-group col-md-4">
                 <label for="inputProvincia">Provincia</label>
-                <input type="text" class="form-control" id="inputProvincia" ng-model="vm.nuevoCliente.provincia" name="txtProvincia" autocomplete="off"
-                  required>
+                <select id="sltProvincia" class="custom-select" name="txtProvincias" ng-model="vm.nuevoCliente.provincia" ng-change="vm.rellenarCantones(vm.nuevoCliente.provincia._id)"
+                  ng-options="provincia as provincia.name for provincia in vm.provincias track by provincia._id" required>
+                  <option value="">--Seleccione una provincia--</option>
+                </select>
                 <div ng-messages="formRegistrarCliente.txtProvincia.$error" role="alert">
                   <div ng-message="required">
                     <small class="form-text text-muted">Este campo es requerido</small>
                   </div>
                 </div>
               </div>
+
               <div class="form-group col-md-4">
                 <label for="inputCanton">Cantón</label>
-                <input type="text" class="form-control" id="inputCanton" ng-model="vm.nuevoCliente.canton" name="txtCanton" autocomplete="off"
-                  required>
+                <select id="sltCanton" class="custom-select" name="txtCanton" ng-change="vm.rellenarDistrito(vm.nuevoCliente.canton._id)"
+                  ng-options="canton as canton.name for canton in vm.cantones track by canton._id" ng-model="vm.nuevoCliente.canton"
+                  ng-disabled="!vm.nuevoCliente.provincia" required>
+                  <option value="">--Seleccione un cantón--</option>
+                </select>
                 <div ng-messages="formRegistrarCliente.txtCanton.$error" role="alert">
                   <div ng-message="required">
                     <small class="form-text text-muted">Este campo es requerido</small>
                   </div>
                 </div>
               </div>
+
               <div class="form-group col-md-4">
                 <label for="inputDistrito">Distrito</label>
-                <input type="text" class="form-control" id="inputDistrito" ng-model="vm.nuevoCliente.distrito" name="txtDistrito" autocomplete="off"
-                  required>
+                <select id="sltDistrito" class="custom-select" name="campoDistritos" ng-options="distrito as distrito.name for distrito in vm.distritos track by distrito._id"
+                  ng-model="vm.nuevoCliente.distrito" ng-disabled="!vm.nuevoCliente.canton" required>
+                  <option value="">--Seleccione un distrito--</option>
+                </select>
                 <div ng-messages="formRegistrarCliente.txtDistrito.$error" role="alert">
                   <div ng-message="required">
                     <small class="form-text text-muted">Este campo es requerido</small>
@@ -251,6 +250,7 @@
                 </div>
               </div>
             </div>
+
             <div class="form-group">
               <label for="inputDireccion">Dirección exacta:</label>
               <textarea class="form-control" id="inputDireccion" rows="3" ng-model="vm.nuevoCliente.direccion" name="txtDireccion" autocomplete="off"
@@ -292,7 +292,7 @@
             <div class="form-group">
               <label for="inputNumeroTarjeta">Numero de tarjeta:</label>
               <input type="text" class="form-control" id="inputNumeroTarjeta" ng-model="vm.nuevoCliente.numeroTarjeta" name="txtNumeroTarjeta"
-                minlength="15" maxlength="16" autocomplete="off" required>
+              pattern="^[0-9]+$" minlength="15" maxlength="16" autocomplete="off" required>
               <div ng-messages="formRegistrarCliente.txtNumeroTarjeta.$error" role="alert">
                 <div ng-message="required">
                   <small class="form-text text-muted">Este campo es requerido</small>
@@ -322,7 +322,7 @@
               </div>
               <div class="form-group col-md-4">
                 <label for="inputCcv">CCV</label>
-                <input type="text" class="form-control" id="inputCcv" ng-model="vm.nuevoCliente.ccv" name="txtCcv" minlength="3" maxlength="4"
+                <input type="text" class="form-control" id="inputCcv" ng-model="vm.nuevoCliente.ccv" name="txtCcv" pattern="^[0-9]+$" minlength="3" maxlength="4"
                   required>
                 <div ng-messages="formRegistrarCliente.txtCcv.$error" role="alert">
                   <div ng-message="required">
@@ -346,7 +346,7 @@
                 </div>
                 <div class="modal-body">
                   <ng-map id="map" center="current-location" geo-callback="vm.callbackFunc('you')" styles="width: 50%, height: 20em">
-                    <marker position="current-location" draggable="true" on-dragend="vm.getCurrentLocation()" coords="marker.coords" options="marker.options" ></marker>
+                    <marker position="current-location" draggable="true" on-dragend="vm.getCurrentLocation()" coords="marker.coords" options="marker.options"></marker>
                   </ng-map>
                 </div>
                 <div class="modal-footer">
@@ -359,4 +359,4 @@
         </form>
       </div>
   </section>
-</main> -->
+</main>

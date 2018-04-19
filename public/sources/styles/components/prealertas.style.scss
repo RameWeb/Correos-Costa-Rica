@@ -1,48 +1,33 @@
 @import "../setting";
 
-#registroPrealertas{
+#registrarPrealertas{
+  textarea{
+    resize: none;
+  }
   .contenido{
     background-color: $white;
     max-height: 100vh;
     overflow: scroll;
   }
-  
   .panelIzquierdo{
-    background-image: $background;
-    background-size: cover;
+    background-image: url(img/herobackground.jpg);
     color: $white;
     min-height: 100vh;
+    overflow: scroll;
     a{
       color: $white;
       text-decoration: none;
     }
   }
-
   .btnAccion{
     background-color: $slateblue;
     color: $white;
+    font-family: $fuenteContenido;
   }
-<<<<<<< HEAD
-
-  a.linkRegresar{
-    color: $white;
-  }
-
-=======
-  
->>>>>>> Christine
   h1,h2{
     font-family: $fuenteTitulos;
-    }
-
+  }
   h3,p,label{
     font-family: $fuenteContenido;
   }
-<<<<<<< HEAD
-
-  textarea{
-    resize: none;
-  }
-=======
->>>>>>> Christine
 }

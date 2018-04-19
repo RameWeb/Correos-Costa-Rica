@@ -1,0 +1,40 @@
+<aside id="dashboard">
+    <main id="registroSucursales">
+      <div class="col-md-12 pt-5 mt-5">
+        <h2 class="text-center">Bitácora de paquetes</h2>
+              <label for="txtBuscar">Buscar por fecha</label>
+              <input type="text" id="txtBuscar" class="form-control" ng-model="buscarestadosDePaquetes.fecha">
+          </div>
+  <div class="col-12">
+      <table class="table">
+      <thead>
+          <tr>
+              <th>Estado del paquete</th>
+              <th>Fecha</th>
+              <th>Hora</th>
+              <th>Cliente </th>
+              <th>Encargado </th> 
+          </tr>
+      </thead>
+      <tbody>
+          <tr ng-repeat="estadoDelPaquete in vm.bitacora.estadosDePaquetes | filter:buscarestadosDePaquetes.fecha">
+              <td>{{estadoDelPaquete.estadoDelPaquete}}</td>
+              <td>{{estadoDelPaquete.fecha}}</td>
+              <td>{{estadoDelPaquete.Hora}}</td>
+              <td>{{estadoDelPaquete.nombreCliente}}</td>
+              <td>{{estadoDelPaquete.encargadoDePaquete}}</td>
+              
+      </tbody>
+    </table>
+  </div>
+  </div>
+  </div>
+  </main>
+          
+          
+       
+
+
+  
+
+  

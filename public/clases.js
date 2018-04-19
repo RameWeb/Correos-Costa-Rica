@@ -5,45 +5,50 @@ class tipoProducto{
   }
 }
 
-class courier{
-  constructor(pnombreCourier){
-      this.nombreCourier = pnombreCourier;
-  }
-}
-
-class provincia{
-  constructor(pnombreProvincia){
-      this.nombreProvincia = pnombreProvincia; 
-  }
-}
-
-class canton{
-  constructor(pnombreCanton){
-    this.nombreCanton = pnombreCanton;
+class Courier{
+  constructor(pidCourier, pnombreCourier, pempresaCourier){
+    this.idCourier = pidCourier,
+    this.nombreCourier = pnombreCourier;
+    this.empresaCourier = pempresaCourier;
   }
 }
      
 class Sucursales{
-  constructor(pProvincia, pCanton, pDistrito, pDireccion, pTelefono, pidSucursal, pEstado){
-    this.provincia = pProvincia;
-    this.canton = pCanton;
-    this.distrito = pDistrito;
+  constructor(pidSucursal, pnombreSucursal, platitude, plongitude, pDireccion, pTelefono){
+    this.idSucursal = pidSucursal;
+    this.nombreSucursal = pnombreSucursal;
+    this.latitude = platitude;
+    this.longitude=plongitude;
     this.direccion = pDireccion;
     this.telefono = pTelefono;
-    this.idSucursal = pidSucursal;
-    this.estadoSucursal = pEstado;
+    
   }
 }
 
 class Prealertas{
-  constructor(pTracking, pUrl, pTipoProducto, pValor, pPeso, pCourier, pEstado){
+  constructor(pTracking, pUrl, pTipoProducto, pValor, pPeso, pCourier){
     this.tracking = pTracking;
     this.url = pUrl;
     this.tipoProducto = pTipoProducto;
     this.valor = pValor;
     this.peso = pPeso;
     this.courier = pCourier;
-    this.estado = pEstado; 
+  }
+
+  getTipoProducto(){
+    return this.tipoProducto;
+  }
+
+  gettracking(){
+    return this.tracking;
+  }
+
+  getInfoPrealerta(){
+    return `${this.tracking} ${this.tipoProducto}`;
+  }
+
+  getCedulaDuenno(){
+    return this.idCliente;
   }
 }
 
@@ -54,6 +59,7 @@ class ConveniosClientes{
     this.direccion = pDireccion;
     this.idConvenio = pidConvenio;
   }
+
 }
 
 class Usuario{
@@ -81,16 +87,28 @@ class Usuario{
     this.estado = pnuevoEstado;
   }
 
+  getFotoPerfil(){
+    return this.fotoPerfil;
+  }
+
   getTipoUsuario(){
     return this.tipoUsuario;
   }
 
-  getEmail(){
+  getCorreo(){
     return this.email;
   }
   
   getPassword(){
     return this.contrasenna;
+  }
+
+  getIdentificacion(){
+    return this.identificacion;
+  }
+  
+  getDireccion(){
+    return this.direccion;
   }
 
   getRol(){
@@ -104,10 +122,14 @@ class Usuario{
   getNombre(){
     return this.nombre1;
   }
+  
+  getFechaNacimiento(){
+    return this.fechaNacimiento;
+  }
 }
 
 class EmpleadoSucursal extends Usuario{
-  constructor(pTipoIdentificacion, pIdentificacion, pNombre1, pNombre2, pApellido1, pApellido2, pfoto, pSexo, pFechaNacimiento, pEmail, pContrasenna, pProvincia, pCanton, pDistrito, pDireccion, pestado, pTipoUsuario, pObjSucursal, pLicencia, pFotoLicencia, pVencimientoLicencia){
+  constructor(pTipoIdentificacion, pIdentificacion, pNombre1, pNombre2, pApellido1, pApellido2, pfoto, pSexo, pFechaNacimiento, pEmail, pContrasenna, pProvincia, pCanton, pDistrito, pDireccion, pestado, pTipoUsuario, pObjSucursal){
     super(pTipoIdentificacion, pIdentificacion, pNombre1, pNombre2, pApellido1, pApellido2, pfoto, pSexo, pFechaNacimiento, pEmail, pContrasenna, pProvincia, pCanton, pDistrito, pDireccion, pestado, pTipoUsuario);
     this.sucursal = pObjSucursal;
   }
@@ -137,8 +159,10 @@ class Cliente extends Usuario{
     this.telefono = pTelefono;
     this.sucursalPreferencia = pSucursalPreferencia;
     this.tarjetas = [];
+    this.prealertas = [];
+    this.paquetes = [];
     this.latitud = pLat;
-    this.longitud = pLong;
+    this.longitud = pLong; 
   }
 
   agregarTarjeta(pObjTarjeta){
@@ -149,6 +173,26 @@ class Cliente extends Usuario{
     return this.tarjetas;
   }
 
+  agregarPrealerta(pnuevaPrealerta) {
+    this.prealertas.push(pnuevaPrealerta);
+  }
+
+  getCantidadPrealertas(){
+    return this.prealertas.length;
+  }
+
+  getPrealertas(){
+    return this.prealertas;
+  }
+
+  getCedula(){
+    return this.identificacion;
+  }
+
+  setPrealertas(aPrealertas){
+    this.prealertas = aPrealertas;
+  }
+
   obtenerLatitud(){
     return this.latitud;
   }
@@ -157,6 +201,7 @@ class Cliente extends Usuario{
     return this.longitud;
   }
 }
+
 
 /**
  * Clase de la tarjeta
@@ -189,35 +234,18 @@ class Tarjeta{
 }
 
 // TODO Dentro de este archivo se crean los objetos con sus respectivos mÃƒÂ©todos
-class Direccion{
-  constructor(pProvincia,pCanton,pDistrito){
-    this.provincia = pProvincia;
-    this.canton = pCanton;
-    this.distrito = pDistrito;
-  }
-}
-
-class Licencia{
-    constructor(pTipo,pCategoria,pDescripcion){
-      this.tipo = pTipo;
-      this.categoria = pCategoria;
-      this.descripcion = pDescripcion;
-  }
-}
-
-class EstadoPaquete{
-  constructor(pEstadoPaquete){
-    this.estadoPaquete = pEstadoPaquete;
-}
-}
 
 class Convenios{
-  constructor(pNombreInstitucion, pTipo, pTiempo, pCosto, pidConvenios){
-    this.nombreInstitucion = pNombreInstitucion;
-    this.tipo = pTipo;
-    this.tiempo = pTiempo;
-    this.costo = pCosto;
+  constructor(pidConvenios, pTipo, pNombreInstitucion, pTiempo, pCosto ){
     this.idConvenios = pidConvenios;
+    this.tipo = pTipo;
+    this.nombreInstitucion = pNombreInstitucion;
+    this.tiempo = pTiempo;
+    this.costo = pCosto;  
+  }
+
+  getServicios(){
+    return this.tipo;
   }
 }
 
@@ -230,13 +258,6 @@ class Paquetes{
     this.repartidor = pRepartidor;
     this.estado = pEstado;
     this.idPaquetes = pidPaquetes;
-    
-  }
-}
-
-class Casillero{
-  constructor(pidRandom){
-    this.idRandom = pidRandom;
     
   }
 }
