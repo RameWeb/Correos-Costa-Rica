@@ -59,20 +59,23 @@ app.use( (req, res, next) => {
  * Exportamos las funcionalidades
  */
 const index = require('./index'),
-
       usuarios = require('./components/usuarios/usuarios.route'),
       sucursales = require('./components/sucursales/sucursales.route'),
-      convenios = require('./components/convenios/convenios.route');
-      
-      
+      mail = require('./components/mail/mail.route'),
+      convenios = require('./components/convenios/convenios.route'),
+      prealertas = require('./components/prealertas/prealertas.route'),
+      couriers = require('./components/couriers/couriers.route');
+      // conveniosCliente = require('./components/conveniosCliente/conveniosCliente.route');
 
 /**
  * Se definien las rutas de ExpressJS
  */
 app.use('/api', usuarios);
 app.use('/api', sucursales);
+app.use('/api', mail);
 app.use('/api', convenios);
-
+app.use('/api', prealertas);
+app.use('/api', couriers);
 app.use('/', index);
 
 /// Se guarda todo lo que se ha realizado

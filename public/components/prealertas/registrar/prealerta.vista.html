@@ -1,6 +1,6 @@
 <!-- <navegacion-Principal></navegacion-Principal> -->
 
-<main id="registroPrealertas">
+<main id="registrarEmpleados">
   <div class="container-fluid">
     <div class="row">
       <div class="col-md-3 py-5 px-5 panelIzquierdo">
@@ -16,7 +16,7 @@
 
             <div class="form-group">
               <label for="txtTracking">Tracking:</label>
-              <input type="text" class="form-control" name="tracking" id="txtTracking" ng-model="vm.nuevaPrealerta.tracking" maxlength="25" minlength="7" pattern="[A-Za-z0-9]+" required>
+              <input type="text" class="form-control" name="tracking" id="txtTracking" ng-model="vm.nuevaPrealerta.tracking" maxlength="7" minlength="7" pattern="[A-Za-z0-9]+" required>
               <div ng-messages="formRegistrarPrealerta.tracking.$error" role="alert">
                 <div ng-message="required">
                   <small class="form-text text-muted">Este campo es requerido</small>
@@ -45,10 +45,9 @@
               
             <div class="form-group">
               <label for="txtTipoProdcuto">Tipo de producto:</label>
-              <input type="text" class="form-control" name="tipoProducto" id="txtTipoProdcuto" ng-model="vm.nuevaPrealerta.tipoProducto" list="listaProductos" required>
-              <datalist id="listaProductos">
-                <option data-ng-repeat="tipoProducto in vm.tipoProducto" value="{{tipoProducto}}">
-              </datalist>
+              <select class="form-control" id="txtTipoProdcuto" ng-model="vm.nuevaPrealerta.tipoProducto" list="listaProductos">
+                <option ng-repeat="tipoProducto in vm.tipoProducto">{{tipoProducto}}</option>
+              </select>
               <div ng-messages="formRegistrarPrealerta.tipoProducto.$error" role="alert">
                 <div ng-message="required">
                   <small class="form-text text-muted">Este campo es requerido</small>
@@ -78,10 +77,9 @@
 
             <div class="form-group">
               <label for="txtCourier">Courier:</label>
-              <input type="text" class="form-control" name="courier" id="txtCourier" ng-model="vm.nuevaPrealerta.courier" list="listaCourier" required>
-              <datalist id="listaCourier">
-                <option data-ng-repeat="courier in vm.courier" value="{{courier}}">
-              </datalist>
+              <select class="form-control" id="txtCourier" ng-model="vm.nuevaPrealerta.courier" list="listaCourier">
+                <option ng-repeat="courier in vm.courier">{{courier}}</option>
+              </select>
               <div ng-messages="formRegistrarPrealerta.courier.$error" role="alert">
                 <div ng-message="required">
                   <small class="form-text text-muted">Este campo es requerido</small>

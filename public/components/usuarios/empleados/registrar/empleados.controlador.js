@@ -44,32 +44,32 @@
       switch (pNuevoEmpleado.rol) {
 
         case "Encargado de Aduana":
-          let nuevoEncargadoAduana = new EmpleadoAduana(pNuevoEmpleado.tipoIdentificacion,pNuevoEmpleado.identificacion,pNuevoEmpleado.primerNombre, pNuevoEmpleado.segundoNombre, pNuevoEmpleado.primerApellido, pNuevoEmpleado.segundoApellido,urlImagen,pNuevoEmpleado.sexo, pNuevoEmpleado.fechaNacimiento,pNuevoEmpleado.email, pNuevoEmpleado.contrasenna, pNuevoEmpleado.provincia, pNuevoEmpleado.canton, pNuevoEmpleado.distrito,pNuevoEmpleado.direccion, 1,'Empleado', pNuevoEmpleado.rolAduana)
+          let nuevoEncargadoAduana = new EmpleadoAduana(pNuevoEmpleado.tipoIdentificacion,pNuevoEmpleado.identificacion,pNuevoEmpleado.primerNombre, pNuevoEmpleado.segundoNombre, pNuevoEmpleado.primerApellido, pNuevoEmpleado.segundoApellido,urlImagen,pNuevoEmpleado.sexo, pNuevoEmpleado.fechaNacimiento,pNuevoEmpleado.email, pNuevoEmpleado.contrasenna, pNuevoEmpleado.provincia, pNuevoEmpleado.canton, pNuevoEmpleado.distrito,pNuevoEmpleado.direccion, 1,'Empleado', pNuevoEmpleado.rolAduana, pNuevoEmpleado.rol)
 
           console.log(nuevoEncargadoAduana);
 
-          servicioUsuarios.agregarEmpleado(nuevoEncargadoAduana);
+          servicioUsuarios.agregarUsuario(nuevoEncargadoAduana);
         break;
 
         // Encargado de Sucursal
         case "Encargado de Sucursal":
 
-          let nuevoEncargadoSucursal = new EmpleadoSucursal(pNuevoEmpleado.tipoIdentificacion,pNuevoEmpleado.identificacion,pNuevoEmpleado.primerNombre, pNuevoEmpleado.segundoNombre, pNuevoEmpleado.primerApellido, pNuevoEmpleado.segundoApellido,urlImagen, pNuevoEmpleado.sexo, pNuevoEmpleado.fechaNacimiento,pNuevoEmpleado.email, pNuevoEmpleado.contrasenna, pNuevoEmpleado.provincia, pNuevoEmpleado.canton, pNuevoEmpleado.distrito,pNuevoEmpleado.direccion, 1,'Empleado',pNuevoEmpleado.rol, pNuevoEmpleado.sucursal);
+          let nuevoEncargadoSucursal = new EmpleadoSucursal(pNuevoEmpleado.tipoIdentificacion,pNuevoEmpleado.identificacion,pNuevoEmpleado.primerNombre, pNuevoEmpleado.segundoNombre, pNuevoEmpleado.primerApellido, pNuevoEmpleado.segundoApellido,urlImagen, pNuevoEmpleado.sexo, pNuevoEmpleado.fechaNacimiento,pNuevoEmpleado.email, pNuevoEmpleado.contrasenna, pNuevoEmpleado.provincia, pNuevoEmpleado.canton, pNuevoEmpleado.distrito,pNuevoEmpleado.direccion, 1,'Empleado', pNuevoEmpleado.sucursal, pNuevoEmpleado.rol);
 
           console.log(nuevoEncargadoSucursal);
 
-          servicioUsuarios.agregarEmpleado(nuevoEncargadoSucursal);
+          servicioUsuarios.agregarUsuario(nuevoEncargadoSucursal);
 
         break;
 
         // Repartidor
         case "Repartidor":
 
-          let nuevoRepartidor= new Repartidor(pNuevoEmpleado.tipoIdentificacion,pNuevoEmpleado.identificacion,pNuevoEmpleado.primerNombre, pNuevoEmpleado.segundoNombre, pNuevoEmpleado.primerApellido, pNuevoEmpleado.segundoApellido,urlImagen,pNuevoEmpleado.sexo, pNuevoEmpleado.fechaNacimiento,pNuevoEmpleado.email, pNuevoEmpleado.contrasenna, pNuevoEmpleado.provincia, pNuevoEmpleado.canton, pNuevoEmpleado.distrito,pNuevoEmpleado.direccion, 1,'Empleado',pNuevoEmpleado.telefono, pNuevoEmpleado.sucursal, pNuevoEmpleado.licencia, pNuevoEmpleado.fotoLicencia, pNuevoEmpleado.vencimientoLicencia);
+          let nuevoRepartidor= new Repartidor(pNuevoEmpleado.tipoIdentificacion,pNuevoEmpleado.identificacion,pNuevoEmpleado.primerNombre, pNuevoEmpleado.segundoNombre, pNuevoEmpleado.primerApellido, pNuevoEmpleado.segundoApellido,urlImagen,pNuevoEmpleado.sexo, pNuevoEmpleado.fechaNacimiento,pNuevoEmpleado.email, pNuevoEmpleado.contrasenna, pNuevoEmpleado.provincia, pNuevoEmpleado.canton, pNuevoEmpleado.distrito,pNuevoEmpleado.direccion, 1,'Empleado',pNuevoEmpleado.telefono, pNuevoEmpleado.sucursal, pNuevoEmpleado.licencia, pNuevoEmpleado.fotoLicencia, pNuevoEmpleado.vencimientoLicencia, pNuevoEmpleado.rol);
 
           console.log(nuevoRepartidor);
 
-          servicioUsuarios.agregarEmpleado(nuevoRepartidor);
+          servicioUsuarios.agregarUsuario(nuevoRepartidor);
 
         break;
       
@@ -78,7 +78,7 @@
 
           console.log(nuevoUsuario);
 
-          servicioUsuarios.agregarEmpleado(nuevoUsuario);
+          servicioUsuarios.agregarUsuario(nuevoUsuario);
         break;
       }
 
@@ -87,17 +87,19 @@
         button: "Aceptar",
       });
 
+      // Se limpia el formulario
+      vm.nuevoEmpleado = null;
       listarEmpleados();
     }
 
     // Imprimir lista de repartidores en el sistema
     function listarEmpleados(){
-      vm.listaEmpleados = servicioUsuarios.obtenerUsuarioPorRol("Empleado");
+      vm.listaEmpleados = servicioUsuarios.obtenerEmpleados('Cliente');
     }
 
     vm.modificar = (pEmpleado) =>{
       console.log(pEmpleado.identificacion);
-      $state.go('modClientes', { identificacion: JSON.stringify(pEmpleado.identificacion) })
+      $state.go('modEmpleados', { identificacion: JSON.stringify(pEmpleado.identificacion) })
     }
 
     // Direcciones
@@ -142,6 +144,28 @@
       }, (error) => {
         console.log("OcurriÃ³ un error " + error.data);
       });
+    }
+
+    vm.desactivar = (pEmpleado) => {
+      swal({
+        title: "Desea desactivar el empleado?",
+        text: "Desea desactivar el empleado",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+      })
+        .then((willDelete) => {
+          if (willDelete) {
+            pEmpleado.estado = false;
+            console.log(pEmpleado.estado);
+            servicioUsuarios.actualizarUsuario(pEmpleado);
+            swal("El usuario ha sido desactivado", {
+              icon: "success",
+            });
+          } else {
+            swal("Cancelando acción");
+          }
+        });
     }
   }
 })();

@@ -8,7 +8,6 @@
   function routing($stateProvider, $urlRouterProvider, $oclazyLoad) {
 
     $stateProvider
-
       .state('landing-page', {
         url: '/',
         templateUrl: './components/landingPage/landing.vista.html',
@@ -73,7 +72,7 @@
             return $ocLazyLoad.load('./components/main/registroClientes/registroClientes.controlador.js')
           }]
         },
-        controller: 'controladorClientes',
+        controller: 'controladorClientesAdmin',
         controllerAs: 'vm'
       })
 
@@ -91,6 +90,37 @@
         controller: 'controladorClientes',
         controllerAs: 'vm'
       })
+
+      .state('main.verPerfil', {
+        url: '/miPerfil',
+        templateUrl: './components/main/verPerfil/perfil.view.html',
+        data: {
+          pageTitle: 'Mi perfil | Correos de Costa Rica'
+        },
+        resolve: {
+          load: ['$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/main/verPerfil/perfil.controlador.js')
+          }]
+        },
+        controller: 'verPerfilControlador',
+        controllerAs: 'vm'
+      })
+
+      .state('main.registroCourier', {
+        url: '/registroCourier',
+        templateUrl: './components/main/registroCourier/courier.vista.html',
+        data: {
+          pageTitle: 'Clientes | Correos de Costa Rica'
+        },
+        resolve: {
+          load: ['$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/main/registroCourier/courier.controlador.js')
+          }]
+        },
+        controller: 'controladorClientes',
+        controllerAs: 'vm'
+      })
+
       //Inicio de CONVENIOS
       .state('main.convenios', {
         url: '/convenios',
@@ -119,10 +149,23 @@
           }]
         },
         controller: 'controladorConvenios',
-
         controllerAs: 'vm'
       })
 
+      .state('main.registroConvenioCliente', {
+        url: '/registroConvenioCliente',
+        templateUrl: './components/main/convenioClientes/conveniosCliente.vista.html',
+        data: {
+          pageTitle: 'Solicitar convenio | Correos de Costa Rica'
+        },
+        resolve: {
+          load: ['$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/main/convenioClientes/conveniosCliente.controlador.js')
+          }]
+        },
+        controller: 'controladorConvenioClientes',
+        controllerAs: 'vm'
+      })
 
       .state('main.modificarConvenios', {
         url: '/modificar-convenios',
@@ -139,7 +182,6 @@
           }]
         },
         controller: 'controladorModificarConvenios',
-
         controllerAs: 'vm'
       })
       //final de CONVENIOS
@@ -264,20 +306,6 @@
         controllerAs: 'vm'
       })
 
-      .state('registrarConvCliente', {
-        url: '/registrarConvCliente',
-        templateUrl: './components/convenioCliente/registrar/convenios.vista.html',
-        data: {
-          pageTitle: 'Registrar Convenios'
-        },
-        resolve: {
-          load: ['$ocLazyLoad', ($ocLazyLoad) => {
-            return $ocLazyLoad.load('./components/convenioCliente/registrar/convenios.controlador.js')
-          }]
-        },
-        controller: 'controladorConveniosCliente',
-        controllerAs: 'vm'
-      })
 
       .state('modificarConvCliente', {
         url: '/modificarConvCliente',
@@ -543,8 +571,6 @@
         controllerAs: 'vm'
       })
 
-      
-
       .state('mantClientes', {
         url: '/mantClientes',
         templateUrl: './components/usuarios/clientes/listarBuscar/mantClientes.vista.html',
@@ -634,9 +660,7 @@
         controller: 'controladorModEmpleados',
         controllerAs: 'vm'
       })
-      // Fin Jason
-
 
     $urlRouterProvider.otherwise('/');
-  }
+  };
 })();
