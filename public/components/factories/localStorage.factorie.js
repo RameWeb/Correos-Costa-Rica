@@ -188,20 +188,12 @@
         dataType: 'json',
         async: false,
         data: {
-          'idSucursal': data.idSucursal,
           'nombreSucursal': data.nombreSucursal,
           'position ': data.position ,
           'direccion': data.direccion,
           'telefono': data.telefono,
           
         }
-      });
-
-      peticion.done((res) => {
-        respuesta = res.success
-      });
-      peticion.fail(() => {
-        respuesta = false;
       });
 
       return respuesta;
@@ -259,10 +251,6 @@
       return listaConvenios;
     }
 
-
-  
-
-
     function _getTipoProductos() {
       let listaTipoProductos = [];
 
@@ -311,6 +299,31 @@
       });
 
       return listaSucursales;
+    }
+
+
+    function _getTipoProductos() {
+      let listaTipoProductos = [];
+
+      let peticion = $.ajax({
+        url: 'http://localhost:4000/api/get_all_productos',
+        type: 'get',
+        contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+        dataType: 'json',
+        async: false,
+        data: {}
+      });
+
+      peticion.done((productos) => {
+        console.log('datos que vienen de la base de datos');
+        console.log(productos);
+        listaTipoProductos = productos;
+      });
+      peticion.fail(() => {
+        listaTipoProductos = [];
+      });
+
+      return listaTipoProductos;
     }
 
     function _setItem(key, value) {
