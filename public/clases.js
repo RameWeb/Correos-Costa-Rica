@@ -14,11 +14,11 @@ class Courier{
 }
      
 class Sucursales{
-  constructor(pidSucursal, pnombreSucursal, platitude, plongitude, pDireccion, pTelefono){
+  constructor(pidSucursal, pnombreSucursal, pposition, pDireccion, pTelefono){
     this.idSucursal = pidSucursal;
     this.nombreSucursal = pnombreSucursal;
-    this.latitude = platitude;
-    this.longitude=plongitude;
+    this.position = pposition
+    
     this.direccion = pDireccion;
     this.telefono = pTelefono;
     

@@ -24,8 +24,8 @@
       getTipoProductos : _getTipoProductos,
       getCouriers: _getCouriers,
       setCouriers: _setCouriers,
-      agregarSucursal : _agregarSucursal,
-      obtenerSucursal : _obtenerSucursal,
+      setSucursal : _setSucursal,
+      getSucursal : _getSucursal,
       actualizarConvenio : _actualizarConvenio
     };
     return localStorageAPI;
@@ -176,7 +176,7 @@
       return respuesta;
     }
 
-    function _agregarSucursal(data) {
+    function _setSucursal(data) {
       let respuesta;
 
       let peticion = $.ajax({
@@ -257,7 +257,7 @@
     }
 
 
-    function _obtenerSucursal() {
+    function _getSucursal() {
       let listaSucursales = [];
 
       let peticion = $.ajax({

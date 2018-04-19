@@ -24,7 +24,7 @@
       console.log('Objeto con el tipo de producto');
       console.log(objNuevoTipoProducto);
       // Pasamos al servicio el nuevo obj de tipo de producto para ser almacenado en el localStorage
-      servicioTipoProductos.addTipoProducto(objNuevoTipoProducto);
+      servicioTipoProductos.setTipoProducto(objNuevoTipoProducto);
 
       // Retroalimentacion Visual para los usuarios
       swal("Registro exitoso", "el tipo de producto ha sido registrado correctamente", "success", {
