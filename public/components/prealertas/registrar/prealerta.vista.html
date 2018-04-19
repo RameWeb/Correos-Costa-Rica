@@ -77,9 +77,12 @@
 
             <div class="form-group">
               <label for="txtCourier">Courier:</label>
-              <select class="form-control" id="txtCourier" ng-model="vm.nuevaPrealerta.courier" list="listaCourier">
-                <option ng-repeat="courier in vm.courier">{{courier}}</option>
+              <select id="txtCourier" class="form-control" ng-options="courier as courier.getCouriers() for courier in vm.listaCouriers track by courier.id"
+                ng-model="vm.nuevaPrealerta.courier" required>
+                <option></option>
               </select>
+            </div>
+
               <div ng-messages="formRegistrarPrealerta.courier.$error" role="alert">
                 <div ng-message="required">
                   <small class="form-text text-muted">Este campo es requerido</small>

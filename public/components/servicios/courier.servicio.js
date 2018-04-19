@@ -4,9 +4,9 @@
   .module('correos-cr')
   .service('servicioCourier', servicioCourier);
 
-  servicioCourier.$inject = ['$log','$http'];
+  servicioCourier.$inject = ['$log','$http','localStorageFactories'];
 
-  function servicioCourier($log, $http){
+  function servicioCourier($log, $http, localStorageFactories){
     const publicAPI = {
       addCourier : _addCourier,
       getCouriers : _getCouriers 

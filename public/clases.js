@@ -130,6 +130,10 @@ class Usuario{
   getFechaNacimiento(){
     return this.fechaNacimiento;
   }
+
+  agregarPrealertas(pnuevaPrealerta) {
+    this.prealertas.push(pnuevaPrealerta);
+  }
 }
 
 class EmpleadoSucursal extends Usuario{
@@ -205,10 +209,6 @@ class Cliente extends Usuario{
 
   obtenerLongitud(){
     return this.longitud;
-  }
-
-  agregarPrealertas(pnuevaPrealerta) {
-    this.prealertas.push(pnuevaPrealerta);
   }
 
 }
