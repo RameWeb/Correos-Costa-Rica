@@ -177,6 +177,7 @@
       return respuesta;
     }
 
+
     function _setSucursal(data) {
       let respuesta;
 
@@ -187,11 +188,12 @@
         dataType: 'json',
         async: false,
         data: {
-          'idSucursal' : data.idSucursal,
-          'nombreSucursal' : data.nombreSucursal,
-          'position' : data.position,
-          'direccion' : data.direccion,
-          'telefono' : data.telefono,
+          'idSucursal': data.idSucursal,
+          'nombreSucursal': data.nombreSucursal,
+          'position ': data.position ,
+          'direccion': data.direccion,
+          'telefono': data.telefono,
+          
         }
       });
 
@@ -204,6 +206,7 @@
 
       return respuesta;
     }
+   
    
     /**
      * Funcion que obtiene los datos del back-end
@@ -257,29 +260,7 @@
     }
 
 
-    function _getSucursal() {
-      let listaSucursales = [];
-
-      let peticion = $.ajax({
-        url: 'http://localhost:4000/api/get_all_sucursales',
-        type: 'get',
-        contentType: 'application/x-www-form-urlencoded; charset=utf-8',
-        dataType: 'json',
-        async: false,
-        data: {}
-      });
-
-      peticion.done((sucursales) => {
-        console.log('datos que vienen de la base de datos');
-        console.log(sucursales);
-        listaSucursales = sucursales;
-      });
-      peticion.fail(() => {
-        listaSucursales = [];
-      });
-
-      return listaSucursales;
-    }
+  
 
 
     function _getTipoProductos() {
@@ -304,6 +285,32 @@
       });
 
       return listaTipoProductos;
+    }
+
+
+
+    function  _getSucursal() {
+      let listaSucursales = [];
+
+      let peticion = $.ajax({
+        url: 'http://localhost:4000/api/get_all_sucursales',
+        type: 'get',
+        contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+        dataType: 'json',
+        async: false,
+        data: {}
+      });
+
+      peticion.done((sucursales) => {
+        console.log('datos que vienen de la base de datos');
+        console.log(sucursales);
+        listaSucursales = sucursales;
+      });
+      peticion.fail(() => {
+        listaSucursales = [];
+      });
+
+      return listaSucursales;
     }
 
     function _setItem(key, value) {

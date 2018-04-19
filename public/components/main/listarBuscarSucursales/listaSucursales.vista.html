@@ -13,8 +13,8 @@
               <tr>
                 <th>Id</th>
                 <th>Nombre</th>
-                <th>Latitud</th>
-                <th>Longitud</th>
+                <th>Geoubicación</th>
+                
                 <th>Dirección exacta</th>
                 <th>Teléfono</th>
                 <th>Acciones</th>
@@ -24,8 +24,7 @@
             <tr ng-repeat="sucursal in vm.listaSucursales | filter:buscarSucursal">
               <td>{{sucursal.idSucursal}}</td>
               <td>{{sucursal.nombreSucursal}}</td>
-              <td>{{sucursal.latitude}}</td>
-              <td>{{sucursal.longitude}}</td>
+              <td>{{sucursal.position}}</td>
               <td>{{sucursal.direccion}}</td>
               <td>{{sucursal.telefono}}</td>
               <td>
