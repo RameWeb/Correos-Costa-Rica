@@ -119,6 +119,10 @@ class Usuario{
     return `${this.nombre1} ${this.apellido1}`;
   }
 
+  getNombre(){
+    return this.nombre1;
+  }
+  
   getFechaNacimiento(){
     return this.fechaNacimiento;
   }
