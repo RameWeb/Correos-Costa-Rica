@@ -12,7 +12,6 @@
       getDatosUsuarios: _getDatosUsuarios,
       getPrealertas: _getPrealertas,
       setPrealertas: _setPrealertas,
-      setEmpleado: _setEmpleado,
       setItem: _setItem,
       getItem: _getItem,
       setSession: _setSession,

@@ -106,7 +106,7 @@
 
       let nuevoCliente = new Cliente(pNuevoCliente.tipoIdentificacion, pNuevoCliente.identificacion, pNuevoCliente.primerNombre, pNuevoCliente.segundoNombre, pNuevoCliente.primerApellido, pNuevoCliente.segundoApellido, urlImagen, pNuevoCliente.sexo, pNuevoCliente.fechaNacimiento, pNuevoCliente.email, contrasenna, pNuevoCliente.provincia, pNuevoCliente.canton, pNuevoCliente.distrito, pNuevoCliente.direccion, 1, 'Cliente', pNuevoCliente.telefono, pNuevoCliente.sucursalPreferencia, pNuevoCliente.latitud, pNuevoCliente.longitud);
 
-      let nuevaTarjeta = new Tarjeta(pNuevoCliente.titularTarjeta, pNuevoCliente.numeroTarjeta, pNuevoCliente.mesVencimiento, pNuevoCliente.annoVencimiento, pNuevoCliente.ccv, nuevoCliente.getEmail());
+      let nuevaTarjeta = new Tarjeta(pNuevoCliente.titularTarjeta, pNuevoCliente.numeroTarjeta, pNuevoCliente.mesVencimiento, pNuevoCliente.annoVencimiento, pNuevoCliente.ccv, nuevoCliente.getCorreo());
 
       nuevoCliente.agregarTarjeta(nuevaTarjeta);
 

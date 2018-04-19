@@ -30,7 +30,7 @@
           registroExitoso;
 
       for(let i = 0; i < listaUsuarios.length; i++){
-        if(pNuevoUsuario.getEmail() == listaUsuarios[i].getEmail() ){
+        if(pNuevoUsuario.getCorreo() == listaUsuarios[i].getCorreo() ){
           usuarioRepetido = true;
         };
       };
@@ -116,7 +116,7 @@
           modificacionExitosa;
 
       for(let i = 0; i < listaUsuarios.length; i++){
-        if(pUsuarioActualizado.getEmail() === listaUsuarios[i].getEmail()){
+        if(pUsuarioActualizado.getCorreo() === listaUsuarios[i].getCorreo()){
           listaUsuarios[i] = pUsuarioActualizado;
         };
       };
