@@ -1,0 +1,36 @@
+
+	<aside id="dashboard">
+			<main id="registroSucursales">
+				<div class="col-md-12 pt-5 mt-5">
+					<h2 class="text-center">Los tipos de productos más vendidos</h2>
+								<label for="txtBuscar">Buscar por fecha</label>
+								<input type="text" id="txtBuscar" class="form-control" ng-model="buscarestadosDePaquetes.fecha">
+						</div>
+		<div class="col-12">
+				<table class="table">
+				<thead>
+						<tr>
+								<th>Tipo de producto</th>
+								<th>Impuesto</th>
+								<th>Compras realizadas</th>
+								<th>Fecha </th>
+								
+						</tr>
+				</thead>
+				<tbody>
+						<tr ng-repeat="tiposProductos in vm.ranking.tiposProductos | filter:buscarestadosDePaquetes.fecha">
+								<td>{{tiposProductos.tipoDeProducto}}</td>
+								<td>{{tiposProductos.impuesto}}</td>
+								<td>{{tiposProductos.cantidad}}</td>
+								<td>{{tiposProductos.fecha}}</td>
+								\
+								
+				</tbody>
+			</table>
+		</div>
+		</div>
+		</div>
+		</main>
+						
+						
+				 

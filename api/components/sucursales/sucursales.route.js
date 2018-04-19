@@ -19,7 +19,7 @@ router.route('/save_sucursales')
 });
 
 /**
- * Función que obtiene todos las sucursales
+ * Función que obtiene todos los sucursales
  */
 router.route('/get_all_sucursales')
   .get((req, res) => {
@@ -27,11 +27,19 @@ router.route('/get_all_sucursales')
 });
 
 /**
- * Función que actualiza las sucursales
+ * Función que actualiza los sucursales
  */
 router.route('/update_sucursales')
   .put((req, res) => {
     sucursales.actualizar(req,res);
+});
+
+/**
+ * Función que elimina las sucursales
+ */
+router.route('/delete_sucursales')
+  .put((req, res) => {
+    sucursales.eliminar(req,res);
 });
 
 router.route('/login')

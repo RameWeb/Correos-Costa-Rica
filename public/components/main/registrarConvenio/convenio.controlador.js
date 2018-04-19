@@ -24,7 +24,7 @@
       console.log('Objeto con el convenio');
       console.log(objNuevoConvenio);
       // Pasamos al servicio el nuevo obj de tipo de producto para ser almacenado en el localStorage
-      servicioConvenios.addConvenio(objNuevoConvenio);
+      servicioConvenios.setConvenios(objNuevoConvenio);
 
       // Retroalimentacion Visual para los usuarios
       swal("Registro exitoso", "el convenio ha sido registrado correctamente", "success", {

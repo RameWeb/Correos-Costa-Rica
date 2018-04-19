@@ -14,11 +14,10 @@ class Courier{
 }
      
 class Sucursales{
-  constructor(pidSucursal, pnombreSucursal, platitude, plongitude, pDireccion, pTelefono){
+  constructor(pidSucursal, pnombreSucursal, pposition, pDireccion, pTelefono){
     this.idSucursal = pidSucursal;
     this.nombreSucursal = pnombreSucursal;
-    this.latitude = platitude;
-    this.longitude=plongitude;
+    this.position = pposition;
     this.direccion = pDireccion;
     this.telefono = pTelefono;
     
@@ -119,33 +118,40 @@ class Usuario{
     return `${this.nombre1} ${this.apellido1}`;
   }
 
+  getNombre(){
+    return this.nombre1;
+  }
+  
   getFechaNacimiento(){
     return this.fechaNacimiento;
   }
 }
 
 class EmpleadoSucursal extends Usuario{
-  constructor(pTipoIdentificacion, pIdentificacion, pNombre1, pNombre2, pApellido1, pApellido2, pfoto, pSexo, pFechaNacimiento, pEmail, pContrasenna, pProvincia, pCanton, pDistrito, pDireccion, pestado, pTipoUsuario, pObjSucursal){
+  constructor(pTipoIdentificacion, pIdentificacion, pNombre1, pNombre2, pApellido1, pApellido2, pfoto, pSexo, pFechaNacimiento, pEmail, pContrasenna, pProvincia, pCanton, pDistrito, pDireccion, pestado, pTipoUsuario, pObjSucursal,pObjRol){
     super(pTipoIdentificacion, pIdentificacion, pNombre1, pNombre2, pApellido1, pApellido2, pfoto, pSexo, pFechaNacimiento, pEmail, pContrasenna, pProvincia, pCanton, pDistrito, pDireccion, pestado, pTipoUsuario);
     this.sucursal = pObjSucursal;
+    this.rol = pObjRol;
   }
 }
 
 class EmpleadoAduana extends Usuario{
-  constructor(pTipoIdentificacion, pIdentificacion, pNombre1, pNombre2, pApellido1, pApellido2, pfoto, pSexo, pFechaNacimiento, pEmail, pContrasenna, pProvincia, pCanton, pDistrito, pDireccion, pestado, pTipoUsuario, pRolAduana){
+  constructor(pTipoIdentificacion, pIdentificacion, pNombre1, pNombre2, pApellido1, pApellido2, pfoto, pSexo, pFechaNacimiento, pEmail, pContrasenna, pProvincia, pCanton, pDistrito, pDireccion, pestado, pTipoUsuario, pRolAduana, pObjRol){
     super(pTipoIdentificacion, pIdentificacion, pNombre1, pNombre2, pApellido1, pApellido2, pfoto, pSexo, pFechaNacimiento, pEmail, pContrasenna, pProvincia, pCanton, pDistrito, pDireccion, pestado, pTipoUsuario);
     this.rolAduana = pRolAduana;
+    this.rol = pObjRol;
   }
 }
 
 class Repartidor extends Usuario{
-  constructor(ppTipoIdentificacion, pIdentificacion, pNombre1, pNombre2, pApellido1, pApellido2, pfoto, pSexo, pFechaNacimiento, pEmail, pContrasenna, pProvincia, pCanton, pDistrito, pDireccion, pestado, pTipoUsuario, pTelefono,pSucursal,pLicencia,pFotoLicencia,pLicenciaVencimiento){
+  constructor(ppTipoIdentificacion, pIdentificacion, pNombre1, pNombre2, pApellido1, pApellido2, pfoto, pSexo, pFechaNacimiento, pEmail, pContrasenna, pProvincia, pCanton, pDistrito, pDireccion, pestado, pTipoUsuario, pTelefono,pSucursal,pLicencia,pFotoLicencia,pLicenciaVencimiento, pRpObjRolol){
     super(pTipoIdentificacion, pIdentificacion, pNombre1, pNombre2, pApellido1, pApellido2, pfoto, pSexo, pFechaNacimiento, pEmail, pContrasenna, pProvincia, pCanton, pDistrito, pDireccion, pestado, pTipoUsuario);
     this.telefono = pTelefono;
     this.sucursal = pSucursal;
     this.licencia = pLicencia;
     this.fotoLicencia = pFotoLicencia;
     this.licenciaVencimiento = pLicenciaVencimiento;
+    this.rol = pObjRol;
   }
 }
 

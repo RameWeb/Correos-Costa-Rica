@@ -20,10 +20,12 @@
       sendMail: _sendMail,
       setConvenios: _setConvenios,
       getConvenios: _getConvenios,
+      setTipoProducto : _setTipoProducto,
+      getTipoProductos : _getTipoProductos,
       getCouriers: _getCouriers,
       setCouriers: _setCouriers,
-      agregarSucursal : _agregarSucursal,
-      obtenerSucursal : _obtenerSucursal,
+      setSucursal : _setSucursal,
+      getSucursal : _getSucursal,
       actualizarConvenio : _actualizarConvenio
     };
     return localStorageAPI;
@@ -63,7 +65,6 @@
 
     function _setUsuario(data) {
       let respuesta;
-
       let peticion = $.ajax({
         url: 'http://localhost:4000/api/save_user',
         type: 'post',
@@ -82,13 +83,14 @@
           'fechaNacimiento' : data.fechaNacimiento,
           'email' : data.email,
           'contrasenna' : data.contrasenna,
-          'provincia' : data.provincia,
-          'canton' : data.canton,
-          'distrito' : data.distrito,
+          'provincia' : data.provincia.name,
+          'canton' : data.canton.name,
+          'distrito' : data.distrito.name,
           'direccion' : data.direccion,
           'estado' : data.estado,
           'tipoUsuario' : data.tipoUsuario,
           'sucursal' : data.sucursal,
+          'rol' : data.rol,
           'rolAduana' : data.rolAduana,
           'telefono' : data.telefono,
           'sucursal' : data.Sucursal,
@@ -149,8 +151,33 @@
       return respuesta;
     }
 
+    function _setTipoProducto(data) {
+      let respuesta;
 
-    function _agregarSucursal(data) {
+      let peticion = $.ajax({
+        url: 'http://localhost:4000/api/save_productos',
+        type: 'post',
+        contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+        dataType: 'json',
+        async: false,
+        data: {
+          'nombreTipoProducto': data.nombreTipoProducto,
+          'impuesto': data.impuesto,
+          
+        }
+      });
+
+      peticion.done((res) => {
+        respuesta = res.success
+      });
+      peticion.fail(() => {
+        respuesta = false;
+      });
+
+      return respuesta;
+    }
+
+    function _setSucursal(data) {
       let respuesta;
 
       let peticion = $.ajax({
@@ -162,10 +189,9 @@
         data: {
           'idSucursal' : data.idSucursal,
           'nombreSucursal' : data.nombreSucursal,
-          'latitude' : data.latitude,
-          'longitude' : data.longitude,
+          'position' : data.position,
           'direccion' : data.direccion,
-          'telefono' : data.telefono
+          'telefono' : data.telefono,
         }
       });
 
@@ -231,7 +257,7 @@
     }
 
 
-    function _obtenerSucursal() {
+    function _getSucursal() {
       let listaSucursales = [];
 
       let peticion = $.ajax({
@@ -253,6 +279,31 @@
       });
 
       return listaSucursales;
+    }
+
+
+    function _getTipoProductos() {
+      let listaTipoProductos = [];
+
+      let peticion = $.ajax({
+        url: 'http://localhost:4000/api/get_all_productos',
+        type: 'get',
+        contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+        dataType: 'json',
+        async: false,
+        data: {}
+      });
+
+      peticion.done((productos) => {
+        console.log('datos que vienen de la base de datos');
+        console.log(productos);
+        listaTipoProductos = productos;
+      });
+      peticion.fail(() => {
+        listaTipoProductos = [];
+      });
+
+      return listaTipoProductos;
     }
 
     function _setItem(key, value) {
@@ -429,7 +480,7 @@
       let respuesta;
 
       let peticion = $.ajax({
-        url: 'http://localhost:4000/api/save_prealertas',
+        url: 'http://localhost:4000/api/save_prealerta',
         type: 'post',
         contentType: 'application/x-www-form-urlencoded; charset=utf-8',
         dataType: 'json',
@@ -445,7 +496,7 @@
       });
 
       peticion.done((res) => {
-        response = res.success
+        respuesta = res.success
       });
       peticion.fail(() => {
         respuesta = false;

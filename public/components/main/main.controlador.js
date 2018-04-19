@@ -4,7 +4,15 @@
   .module('correos-cr')
   .controller('mainController', mainController);
 
-  function mainController(){
+  mainController.$inject = ['$state', 'inicioSesionService']
+
+  function mainController($state, inicioSesionService){
     let vm = this;
+
+    vm.authUser = inicioSesionService.getAuthUser();
+
+    if(!vm.authUser){
+      $state.go('iniciarSesion');
+    }
   }
 })();

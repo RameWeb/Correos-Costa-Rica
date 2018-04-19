@@ -25,6 +25,7 @@ let UserSchema = new mongoose.Schema({
   telefono : {type: String},
   sucursalPreferencia : {type:String},
   // tarjetas : {type: Array, required: false},
+  rol : {type: String},
   paquetes: {type: Array,},
   latitud : {type: String,},
   longitud : {type: String},

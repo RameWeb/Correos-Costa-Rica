@@ -44,7 +44,7 @@
       switch (pNuevoEmpleado.rol) {
 
         case "Encargado de Aduana":
-          let nuevoEncargadoAduana = new EmpleadoAduana(pNuevoEmpleado.tipoIdentificacion,pNuevoEmpleado.identificacion,pNuevoEmpleado.primerNombre, pNuevoEmpleado.segundoNombre, pNuevoEmpleado.primerApellido, pNuevoEmpleado.segundoApellido,urlImagen,pNuevoEmpleado.sexo, pNuevoEmpleado.fechaNacimiento,pNuevoEmpleado.email, pNuevoEmpleado.contrasenna, pNuevoEmpleado.provincia, pNuevoEmpleado.canton, pNuevoEmpleado.distrito,pNuevoEmpleado.direccion, 1,'Empleado', pNuevoEmpleado.rolAduana)
+          let nuevoEncargadoAduana = new EmpleadoAduana(pNuevoEmpleado.tipoIdentificacion,pNuevoEmpleado.identificacion,pNuevoEmpleado.primerNombre, pNuevoEmpleado.segundoNombre, pNuevoEmpleado.primerApellido, pNuevoEmpleado.segundoApellido,urlImagen,pNuevoEmpleado.sexo, pNuevoEmpleado.fechaNacimiento,pNuevoEmpleado.email, pNuevoEmpleado.contrasenna, pNuevoEmpleado.provincia, pNuevoEmpleado.canton, pNuevoEmpleado.distrito,pNuevoEmpleado.direccion, 1,'Empleado', pNuevoEmpleado.rolAduana, pNuevoEmpleado.rol)
 
           console.log(nuevoEncargadoAduana);
 
@@ -54,7 +54,7 @@
         // Encargado de Sucursal
         case "Encargado de Sucursal":
 
-          let nuevoEncargadoSucursal = new EmpleadoSucursal(pNuevoEmpleado.tipoIdentificacion,pNuevoEmpleado.identificacion,pNuevoEmpleado.primerNombre, pNuevoEmpleado.segundoNombre, pNuevoEmpleado.primerApellido, pNuevoEmpleado.segundoApellido,urlImagen, pNuevoEmpleado.sexo, pNuevoEmpleado.fechaNacimiento,pNuevoEmpleado.email, pNuevoEmpleado.contrasenna, pNuevoEmpleado.provincia, pNuevoEmpleado.canton, pNuevoEmpleado.distrito,pNuevoEmpleado.direccion, 1,'Empleado',pNuevoEmpleado.rol, pNuevoEmpleado.sucursal);
+          let nuevoEncargadoSucursal = new EmpleadoSucursal(pNuevoEmpleado.tipoIdentificacion,pNuevoEmpleado.identificacion,pNuevoEmpleado.primerNombre, pNuevoEmpleado.segundoNombre, pNuevoEmpleado.primerApellido, pNuevoEmpleado.segundoApellido,urlImagen, pNuevoEmpleado.sexo, pNuevoEmpleado.fechaNacimiento,pNuevoEmpleado.email, pNuevoEmpleado.contrasenna, pNuevoEmpleado.provincia, pNuevoEmpleado.canton, pNuevoEmpleado.distrito,pNuevoEmpleado.direccion, 1,'Empleado', pNuevoEmpleado.sucursal, pNuevoEmpleado.rol);
 
           console.log(nuevoEncargadoSucursal);
 
@@ -65,7 +65,7 @@
         // Repartidor
         case "Repartidor":
 
-          let nuevoRepartidor= new Repartidor(pNuevoEmpleado.tipoIdentificacion,pNuevoEmpleado.identificacion,pNuevoEmpleado.primerNombre, pNuevoEmpleado.segundoNombre, pNuevoEmpleado.primerApellido, pNuevoEmpleado.segundoApellido,urlImagen,pNuevoEmpleado.sexo, pNuevoEmpleado.fechaNacimiento,pNuevoEmpleado.email, pNuevoEmpleado.contrasenna, pNuevoEmpleado.provincia, pNuevoEmpleado.canton, pNuevoEmpleado.distrito,pNuevoEmpleado.direccion, 1,'Empleado',pNuevoEmpleado.telefono, pNuevoEmpleado.sucursal, pNuevoEmpleado.licencia, pNuevoEmpleado.fotoLicencia, pNuevoEmpleado.vencimientoLicencia);
+          let nuevoRepartidor= new Repartidor(pNuevoEmpleado.tipoIdentificacion,pNuevoEmpleado.identificacion,pNuevoEmpleado.primerNombre, pNuevoEmpleado.segundoNombre, pNuevoEmpleado.primerApellido, pNuevoEmpleado.segundoApellido,urlImagen,pNuevoEmpleado.sexo, pNuevoEmpleado.fechaNacimiento,pNuevoEmpleado.email, pNuevoEmpleado.contrasenna, pNuevoEmpleado.provincia, pNuevoEmpleado.canton, pNuevoEmpleado.distrito,pNuevoEmpleado.direccion, 1,'Empleado',pNuevoEmpleado.telefono, pNuevoEmpleado.sucursal, pNuevoEmpleado.licencia, pNuevoEmpleado.fotoLicencia, pNuevoEmpleado.vencimientoLicencia, pNuevoEmpleado.rol);
 
           console.log(nuevoRepartidor);
 

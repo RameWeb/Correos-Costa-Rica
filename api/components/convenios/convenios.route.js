@@ -34,6 +34,14 @@ router.route('/update_convenios')
     convenios.actualizar(req,res);
 });
 
+/**
+ * Función que elimina los convenios
+ */
+router.route('/delete_convenios')
+  .put((req, res) => {
+    convenios.eliminar(req,res);
+});
+
 router.route('/login')
   .put((req,res) => {
     convenios.iniciarSesion(req,res);

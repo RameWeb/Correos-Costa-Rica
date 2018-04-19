@@ -17,7 +17,7 @@
             <a href="" ui-sref="main.sucursales">Sucursales</a>
           </li>
           <li class="list-group-item" ng-hide="vm.rolUsuario == 'Cliente'">
-            <a href="#!/registrarTipoProducto">Productos</a>
+            <a href="" ui-sref="main.registroProducto">Productos</a>
           </li>
           <li class="list-group-item" ng-hide="vm.rolUsuario == 'Cliente'">
             <a href="" ui-sref="main.convenios" ui-sref-active="active">Convenios</a>
@@ -28,6 +28,9 @@
           <li class="list-group-item" ng-hide="vm.rolUsuario == 'Cliente'">
             <a  href="" ui-sref="main.bitacora">Bitácora</a>
           </li>
+          <li class="list-group-item" ng-hide="vm.rolUsuario == 'Cliente'">
+              <a  href="" ui-sref="main.ranking">Ranking</a>
+            </li>
           <li class="list-group-item">
             <a href="" ui-sref="main.verPerfil" ui-sref-active="active">Mi perfil</a>
           </li>

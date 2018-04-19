@@ -4,11 +4,11 @@
   .module('correos-cr')
   .service('servicioTipoProductos', servicioTipoProductos);
 
-  servicioTipoProductos.$inject =  ['$log', '$http'];
+  servicioTipoProductos.$inject =  ['$log', '$http','localStorageFactories'];
 
-  function servicioTipoProductos($log, $http){
+  function servicioTipoProductos($log, $http, localStorageFactories){
     const publicAPI = {
-      addTipoProducto : _addTipoProducto,
+      setTipoProducto : _setTipoProducto,
       getTipoProductos : _getTipoProductos,
       obtenertipoProductoSeleccionado : _obtenertipoProductoSeleccionado,
       actualizarTipoProducto : _actualizarTipoProducto
@@ -16,17 +16,17 @@
     return publicAPI;
 
     // Funcion que almacena en el localStorage todas las fiestas programadas
-    function _addTipoProducto(pnuevoTipoProducto){
+    function _setTipoProducto(pnuevoTipoProducto){
       let listaTipoProductos = _getTipoProductos();
-      listaTipoProductos.push(pnuevoTipoProducto);
-      localStorage.setItem('tipoProductoLS', JSON.stringify(listaTipoProductos));
+      let registro = localStorageFactories.setTipoProducto(pnuevoTipoProducto);
+      return registro;
     }
 
     // Funcion que trae todas las fiestas programadas del localStorage y a partir de esos datos vuelve a crear un arreglo con todos los objetos de tipo fiesta
     function _getTipoProductos(){
       let listaTipoProductos = [];
-      let listaTipoProductosLocal = JSON.parse(localStorage.getItem("tipoProductoLS"));
-
+      let listaTipoProductosLocal = localStorageFactories.getTipoProductos();
+      
       if(!listaTipoProductosLocal){
         listaTipoProductos = [];
       }else{

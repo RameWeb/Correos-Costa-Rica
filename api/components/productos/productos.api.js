@@ -1,4 +1,4 @@
-const sucursalesModel = require('./sucursales.model');
+const productosModel = require('./productos.model');
 /**
  * Se exporta la funcion de registrar para que sea entendible para el usuario.route.js
  * @param {peticion} req 
@@ -8,18 +8,16 @@ module.exports.registrar = function(req, res) {
   /**
    * Creamos un nuevo dato con el formato del UserModel
    */
-  let newsucursales = new sucursalesModel({
-    idSucursal : req.body.idSucursal ,
-    nombreSucursal: req.body.nombreSucursal,
-    position: req.body.position,
-    direccion: req.body.direccion,
-    telefono: req.body.telefono 
+  let newproductos = new productosModel({
+    nombreTipoProducto: req.body.nombreTipoProducto,
+    impuesto: req.body.impuesto,
+    
   });
-  newsucursales.save(function(error) {
+  newproductos.save(function(error) {
     if (error) {
-      res.json({ success: false, msg: 'Ha ocurrido un error en el registro de la sucursal' + error });
+      res.json({ success: false, msg: 'Ha ocurrido un error en el registro del producto' + error });
     } else {
-      res.json({ success: true, msg: 'Se registró la sucursal correctamente' });
+      res.json({ success: true, msg: 'Se registró el producto correctamente' });
     }
   })
 };
@@ -32,13 +30,13 @@ module.exports.listarTodos = function(req, res) {
   /**
    * Esta funcion busca todos los datos que tengan la misma estructura del userModel y los retorna
    */
-  sucursalesModel.find().then(function(sucursales) {
-    res.send(sucursales);
+  productosModel.find().then(function(productos) {
+    res.send(productos);
   });
 };
 
 module.exports.actualizar = function(req, res) {
-  sucursalesModel.findByIdAndUpdate(req.body.idSucursal, { $set: req.body }, function(err, user) {
+  productosModel.findByIdAndUpdate(req.body.nombreTipoProducto, { $set: req.body }, function(err, user) {
     if (err) {
       res.json({ success: false, msg: 'No se ha actualizado.' + handleError(err) });
 
@@ -49,7 +47,7 @@ module.exports.actualizar = function(req, res) {
 };
 
 module.exports.eliminar = function(req, res) {
-  sucursalesModel.remove(req.body.idSucursal, { $set: req.body }, function(err, user) {
+  productosModel.remove(req.body.nombreTipoProducto, { $set: req.body }, function(err, user) {
     if (err) {
       res.json({ success: false, msg: 'No se ha eliminado.' + handleError(err) });
 

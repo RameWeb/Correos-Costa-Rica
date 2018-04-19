@@ -9,32 +9,32 @@
   function servicioSucursales($log, $http, localStorageFactories){
 
     const publicAPI = {
-      agregarSucursal : _agregarSucursal,
-      obtenerSucursal : _obtenerSucursal,
+      setSucursal : _setSucursal,
+      getSucursal : _getSucursal,
       obtenerSucursalSeleccionada: _obtenerSucursalSeleccionada,
       actualizarSucursal: _actualizarSucursal
     }
     return publicAPI;
     
     // Funcion que almacena en el localStorage todos los usuarios
-    function _agregarSucursal(pnuevaSucursal){
-      let listaSucursales = _obtenerSucursal();
-      let registro =  localStorageFactories.agregarSucursal(pnuevaSucursal);
+    function _setSucursal(pnuevaSucursal){
+      let listaSucursales = _getSucursal();
+      let registro =  localStorageFactories.setSucursal(pnuevaSucursal);
       
        return registro;
     }
 
     // Funcion que trae todos los usuarios del localStorage y a partir de esos datos vuelve a crear un arreglo con todos los objetos de tipo usuario
-    function _obtenerSucursal(){
+    function _getSucursal(){
       let listaSucursales = [];
-      let listaSucursalesLocal = localStorageFactories.obtenerSucursal();
+      let listaSucursalesLocal = localStorageFactories.getSucursal();
 
       if(listaSucursalesLocal == null){
         listaSucursales = [];
       }else{
         listaSucursalesLocal.forEach(obj => {
           
-          let objSucursales = new Sucursales(obj.idSucursal, obj.nombreSucursal, obj.latitude, obj.longitude, obj.direccion, obj.telefono);
+          let objSucursales = new Sucursales(obj.idSucursal, obj.nombreSucursal, obj.position, obj.direccion, obj.telefono);
 
           listaSucursales.push(objSucursales);
         })

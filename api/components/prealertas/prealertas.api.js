@@ -2,7 +2,7 @@ const PreAlertaModel = require('./prealertas.model'),
       bcrypt = require('bcryptjs');
 
 module.exports.registrar = (req, res) => {
-  var newPrealerta = new preAlertaModel({
+  let newPrealerta = new PreAlertaModel({
     tracking : req.body.tracking,
     url : req.body.url,
     tipoProducto : req.body.tipoProducto,
@@ -21,13 +21,13 @@ module.exports.registrar = (req, res) => {
 };
 
 module.exports.listarTodos = (req,res) => {
-  preAlertaModel.find().then((prealerta) => {
+  PreAlertaModel.find().then((prealerta) => {
     res.send(prealerta);
   });
 };
 
 module.exports.actualizar = (req,res) => {
-  preAlertaModel.findByIdAndUpdate(req.body.tracking, { $set: req.body}, (err, user) => {
+  PreAlertaModel.findByIdAndUpdate(req.body.tracking, { $set: req.body}, (err, user) => {
     if (err){
       res.json({success:false,msg:'No se ha actualizado.' + handleError(err)});
 

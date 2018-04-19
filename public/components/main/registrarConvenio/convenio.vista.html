@@ -3,59 +3,69 @@
   <div class="col-md-12 pt-5 mt-5">
     <h2 class="text-center">Registrar un nuevo convenio</h2>
             
-            <form ng-submit=" vm.registrarConvenio(vm.nuevoConvenio)"name="formRegistrarConvenios" autocomplete="off" novalidate ></form>
+            <form ng-submit=" vm.registrarConvenio(vm.nuevoConvenio)"name="formRegistrarConvenios" autocomplete="off" novalidate >
               
               <div class="form-group">
                   <label for="">Id del convenio</label>
-                  <input type="text"id="txtIdConvenio"class="form-control col-md-8"  ng-model="vm.nuevoConvenio.idConvenios">
+                  <input type="text"id="txtIdConvenio"name="IdConvenio"class="form-control col-md-8"  ng-model="vm.nuevoConvenio.idConvenios" required>
+                  <div ng-messages="formRegistrarConvenios.idConvenios.$error" role="alert">
+                  <div ng-message="required">
+                    <small class="form-text text-muted">Este campo es requerido</small>
+                  </div>
+                </div>
               </div> 
-  
+           
+
               <div class="form-group">
                   <label for="">Tipo de convenio</label>
-                  <input type="text" min="0" id="txtTipoConvenio" class="form-control col-md-8" ng-model="vm.nuevoConvenio.tipo" pattern="[ñáéíóúA-Za-z ]+" required>
+                  <input type="text"  id="txtTipoConvenio"name="Tipo" class="form-control col-md-8" ng-model="vm.nuevoConvenio.tipo" pattern="[ñáéíóúA-Za-z ]+" required>
                   <div ng-messages="formRegistrarConvenios.tipo.$error" role="alert">
                       <div ng-message="required">
                         <small class="form-text text-muted">Este campo es requerido</small>
+                      </div>
+                      <div ng-message="pattern">
+                        <small class="form-text text-muted">Formato incorrecto, ingrese únicamente letras</small>
                       </div>
                     </div>
               </div>
 
               <div class="form-group">
                 <label for="">Nombre de la institución</label>
-                <input type="text" min="0" id="txtNombreInstitucion" class="form-control col-md-8" ng-model="vm.nuevoConvenio.nombreInstitucion" pattern="[ñáéíóúA-Za-z ]+" required=true>
+                <input type="text"  id="txtNombreInstitucion" name="nombreInstitucion" class="form-control col-md-8" ng-model="vm.nuevoConvenio.nombreInstitucion" pattern="[ñáéíóúA-Za-z ]+" required>
+                <div ng-messages="formRegistrarConvenios.nombreInstitucion.$error" role="alert">
+                  <div ng-message="required">
+                    <small class="form-text text-muted">Este campo es requerido</small>
+                  </div>
+                  <div ng-message="pattern">
+                    <small class="form-text text-muted">Formato incorrecto, ingrese únicamente letras</small>
+                  </div>
+                </div>
             </div>
 
             <div class="form-group">
-                <label for="">Tiempo de convenio (especifique cantidad de meses)</label>
-                <input type="number" min="0" id="txtTiempo" class="form-control col-md-8" ng-model="vm.nuevoConvenio.tiempo" required>
+                <label for="">Tiempo de convenio (cantidad de meses)</label>
+                <input type="number"  id="txtTiempo" class="form-control col-md-8" ng-model="vm.nuevoConvenio.tiempo" required>
+                <div ng-messages="formRegistrarConvenios.tiempo.$error" role="alert">
+                  <div ng-message="required">
+                    <small class="form-text text-muted">Este campo es requerido</small>
+                  </div>
+                </div>
             </div>
 
             <div class="form-group">
-                <label for="">Costo de transporte</label>
-                <input type="number" min="0" id="txtCosto" class="form-control col-md-8" ng-model="vm.nuevoConvenio.costo" required minlength="8"
-                maxlength="8" pattern="^[2|6|7|8]\d{7}$" required>
-              <div ng-messages="formRegistrarCliente.txtTelefono.$error" role="alert">
+                <label for="">Costo de transporte en colones</label>
+                <input type="number" min="0" id="txtCosto" class="form-control col-md-8" ng-model="vm.nuevoConvenio.costo" required minlength="2"
+                maxlength="8"  required>
+              <div ng-messages="formRegistrarCliente.costo.$error" role="alert">
                 <div ng-message="required">
                   <small class="form-text text-muted">Este campo es requerido</small>
                 </div>
-                <div ng-message="pattern">
-                  <small class="form-text text-muted">Formato de teléfono incorrecto</small>
-                </div>
               </div>
             </div>
-          </div>
-              <button type="submit" ng-click="vm.registrarConvenio(vm.nuevoConvenio)" class=" btn btnAccion" id="btnGuardar" ng-disabled="formRegistrarConvenios.$invalid">Guardar</button>
+         
+              <button type="submit" ng-click="vm.registrarConvenio(vm.nuevoConvenio)" class=" btn btnAccion" id="btnGuardar" ng-disabled="formRegistrarConvenios.$invalid">Registrar</button>
               <a href=""ui-sref="main.listaconvenios" class=" btn btnAccion">Lista de convenios</a>
-              
- 
             </form>
-          </div>
-  
-          <div class="col-6">
-
-          </div>
-        </div>
-      </div>
-    </div>
+            </div>  
   </main>
 
