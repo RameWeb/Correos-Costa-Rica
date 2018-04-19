@@ -1,0 +1,104 @@
+<div class="col-md-12 pt-5 mt-5">
+          <h2>Prealertar un paquete</h2>
+          <form name="formRegistrarPrealerta" autocomplete="off" ng-submit="vm.registrarPrealerta(vm.nuevaPrealerta)" novalidate>
+
+            <div class="form-group">
+              <label for="txtTracking">Tracking:</label>
+              <input type="text" class="form-control" name="tracking" id="txtTracking" ng-model="vm.nuevaPrealerta.tracking" maxlength="7" minlength="7" pattern="[A-Za-z0-9]+" required>
+              <div ng-messages="formRegistrarPrealerta.tracking.$error" role="alert">
+                <div ng-message="required">
+                  <small class="form-text text-muted">Este campo es requerido</small>
+                </div>
+                <div ng-message="maxlength">
+                  <small class="form-text text-muted">Máximo 25 caracteres</small>
+                </div>
+                <div ng-message="minlength">
+                  <small class="form-text text-muted">Mínimo 7 caracteres</small>
+                </div>
+                <div ng-message="pattern">
+                  <small class="form-text text-muted">Formato incorrecto, ingrese únicamente números y letras</small>
+                </div>
+              </div>
+            </div>
+    
+            <div class="form-group">
+              <label for="txtUrl">URL del producto:</label>
+              <input type="text" class="form-control" name="url" id="txtUrl" ng-model="vm.nuevaPrealerta.url" required>
+              <div ng-messages="formRegistrarPrealerta.url.$error" role="alert">
+                <div ng-message="required">
+                  <small class="form-text text-muted">Este campo es requerido</small>
+                </div>
+              </div>
+            </div>
+              
+            <div class="form-group">
+              <label for="txtTipoProdcuto">Tipo de producto:</label>
+              <select class="form-control" id="txtTipoProdcuto" ng-model="vm.nuevaPrealerta.tipoProducto" list="listaProductos">
+                <option ng-repeat="tipoProducto in vm.tipoProducto">{{tipoProducto}}</option>
+              </select>
+              <div ng-messages="formRegistrarPrealerta.tipoProducto.$error" role="alert">
+                <div ng-message="required">
+                  <small class="form-text text-muted">Este campo es requerido</small>
+                </div>
+              </div>
+            </div>
+        
+            <div class="form-group">
+              <label for=txtValor"">Valor del paquete:</label>
+              <input type="text" class="form-control" name="valor" id="txtValor" ng-model="vm.nuevaPrealerta.valor" required>
+              <div ng-messages="formRegistrarPrealerta.valor.$error" role="alert">
+                <div ng-message="required">
+                  <small class="form-text text-muted">Este campo es requerido</small>
+                </div>
+              </div>
+            </div>
+      
+            <div class="form-group">
+              <label for=txtPeso"">Peso del paquete (kg):</label>
+              <input type="text" class="form-control" name="peso" id="txtPeso" ng-model="vm.nuevaPrealerta.peso" required>
+              <div ng-messages="formRegistrarPrealerta.peso.$error" role="alert">
+                <div ng-message="required">
+                  <small class="form-text text-muted">Este campo es requerido</small>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="txtCourier">Courier:</label>
+              <select class="form-control" id="txtCourier" ng-model="vm.nuevaPrealerta.courier" list="listaCouriers">
+                <option ng-repeat="courier in vm.courier">{{courier}}</option>
+              </select>
+              <div ng-messages="formRegistrarPrealerta.tipoProducto.$error" role="alert">
+                <div ng-message="required">
+                  <small class="form-text text-muted">Este campo es requerido</small>
+                </div>
+              </div>
+            </div>
+
+            <!-- <div class="form-group">
+              <label for="txtCourier">Courier:</label>
+              <select id="txtCourier" class="form-control" ng-options="courier as courier.getCouriers() for courier in vm.listaCouriers track by courier.id"
+                ng-model="vm.nuevaPrealerta.courier" required>
+                <option></option>
+              </select>
+            </div> -->
+
+              <div ng-messages="formRegistrarPrealerta.courier.$error" role="alert">
+                <div ng-message="required">
+                  <small class="form-text text-muted">Este campo es requerido</small>
+                </div>
+              </div>
+            </div>
+      
+            <button type="submit" class="btn btnAccion" ng-disabled="formRegistrarPrealerta.$invalid" ng-click="vm.registrarPrealerta(vm.nuevaPrealerta)">Prealertar</button>
+            <a type="button" class="btn btnAccion" href="#!/main/listarPrealerta">Listar Prealerta</a>
+          </form>
+        </div>
+
+        <div class="col-6">
+        </div>
+
+      </div>
+    </div>
+  </div>
+</main>

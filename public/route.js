@@ -91,6 +91,39 @@
         controllerAs: 'vm'
       })
 
+      .state('main.listarEmpleados', {
+        url: '/mantEmpleados',
+        templateUrl: './components/main/ListarBuscarEmpleados/mantEmpleados.vista.html',
+        data: {
+          pageTitle: 'Lista de Empleados'
+        },
+        params: {
+          objUsuarioTemp: ''
+        },
+        resolve: {
+          load: ['$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/usuarios/empleados/registrar/empleados.controlador.js')
+          }]
+        },
+        controller: 'controladorEmpleados',
+        controllerAs: 'vm'
+      })
+
+      .state('main.listarPrealertas', {
+        url: '/listarPrealerta',
+        templateUrl: './components/main/ListarBuscarPrealertas/mantenimientoPrealerta.vista.html',
+        data: {
+          pageTitle: 'Listar Prealertas'
+        },
+        resolve: {
+          load: ['$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/prealertas/registrar/prealerta.controlador.js')
+          }]
+        },
+        controller: 'controladorPrealertas',
+        controllerAs: 'vm'
+      })
+
       .state('main.verPerfil', {
         url: '/miPerfil',
         templateUrl: './components/main/verPerfil/perfil.view.html',
@@ -628,9 +661,9 @@
         controllerAs: 'vm'
       })
 
-      .state('regEmpleados', {
+      .state('main.registroEmpleados', {
         url: '/regEmpleados',
-        templateUrl: './components/usuarios/empleados/registrar/regEmpleados.vista.html',
+        templateUrl: './components/main/registrarEmpleados/regEmpleados.vista.html',
         data: {
           pageTitle: 'Registro de Empleados'
         },
@@ -643,6 +676,21 @@
           }]
         },
         controller: 'controladorEmpleados',
+        controllerAs: 'vm'
+      })
+
+      .state('main.registroPrealertas', {
+        url: '/registroPrealerta',
+        templateUrl: './components/main/registrarPrealertas/prealerta.vista.html',
+        data: {
+          pageTitle: 'Registrar Prealertas'
+        },
+        resolve: {
+          load: ['$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/prealertas/registrar/prealerta.controlador.js')
+          }]
+        },
+        controller: 'controladorPrealertas',
         controllerAs: 'vm'
       })
 
