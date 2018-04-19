@@ -8,7 +8,7 @@
 
   function servicioConvenios($log, $http, localStorageFactories){
     const publicAPI = {
-      addConvenio : _addConvenio,
+      setConvenios: _setConvenios,
       getConvenios : _getConvenios,
       obtenerConvenioSeleccionado : _obtenerConvenioSeleccionado,
       actualizarConvenio : _actualizarConvenio
@@ -16,9 +16,9 @@
     return publicAPI;
 
     // Funcion que almacena en el localStorageFactorie todos los convenios
-    function _addConvenio(pnuevoConvenio){
+    function _setConvenios(pnuevoConvenio){
       let listaConvenios = _getConvenios();
-      let registro = localStorageFactories.obtenerSucursal(pnuevoConvenio);
+      let registro = localStorageFactories.setConvenios(pnuevoConvenio);
 
       return registro;
       

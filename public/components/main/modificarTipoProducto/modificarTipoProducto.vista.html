@@ -1,16 +1,9 @@
 
 
-<main id="registroSucursales">
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-md-3 py-5 px-5 panelIzquierdo">
-          <a href="/#!/ListaTipoProducto" class=" btn btnAccion">Lista de tipos de productos</a>
-          <img src="../../../sources/img/logo_slateblue.svg" class="my-5" alt="">
-        </div>
-  
-        <div class="col-md-9 py-4 px-4 contenido">
-          <div class="col-6">
-            <h2> Registrar un nuevo tipo de producto</h2>
+<aside id="dashboard">
+  <main id="registroSucursales">
+    <div class="col-md-12 pt-5 mt-5">
+      <h2 class="text-center">Modificar tipo de producto</h2>
             <form ng-submit=" vm.registrarTipoProducto(vm.nuevoTipoProducto)"></form>
               
               <div class="form-group">
@@ -20,7 +13,7 @@
   
               <div class="form-group">
                   <label for="">Impuesto del tipo de producto</label>
-                  <input type="number" min="0" id="txtImpuesto" class="form-control col-md-9" ng-model="vm.nuevoTipoProducto.impuesto" required>
+                  <input type="number" min="0" id="txtImpuesto" class="form-control col-md-8" ng-model="vm.nuevoTipoProducto.impuesto" required>
               </div>
               <button type="submit" ng-click="vm.modificarTipoProducto(vm.nuevoTipoProducto)" class=" btn btnAccion" id="btnGuardar">Guardar</button>
  

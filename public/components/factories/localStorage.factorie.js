@@ -20,10 +20,12 @@
       sendMail: _sendMail,
       setConvenios: _setConvenios,
       getConvenios: _getConvenios,
+      setTipoProducto : _setTipoProducto,
+      getTipoProductos : _getTipoProductos,
       getCouriers: _getCouriers,
       setCouriers: _setCouriers,
-      agregarSucursal : _agregarSucursal,
-      obtenerSucursal : _obtenerSucursal,
+      setSucursal : _setSucursal,
+      getSucursal : _getSucursal,
       actualizarConvenio : _actualizarConvenio
     };
     return localStorageAPI;
@@ -97,23 +99,24 @@
           'licenciaVencimiento' : data.licenciaVencimiento,
           'sucursalPreferencia' : data.sucursalPreferencia,
           'prealertas': data.prealertas,
-          // 'titularTarjeta' : data.tarjetas.titularTarjeta,
-          // 'numeroTarjeta' : data.tarjetas.numeroTarjeta,
-          // 'mesVencimiento' : data.tarjetas.mesVencimiento,
-          // 'annoVencimiento': data.tarjetas.annoVencimiento,
-          // 'ccv': data.tarjetas.ccv,
+          'paquetes': data.paquetes,
+          // 'titularTarjeta' : data.tarjetas[0].titularTarjeta,
+          // 'numeroTarjeta' : data.tarjetas[0].numeroTarjeta,
+          // 'mesVencimiento' : data.tarjetas[0].mesVencimiento,
+          // 'annoVencimiento': data.tarjetas[0].annoVencimiento,
+          // 'ccv': data.tarjetas[0].ccv,
           'latitud': data.latitud,
           'longitud': data.longitud,
         }
       });
 
       peticion.done((res) => {
-        respuesta = res.success
-        console.log('objeto registrado'+data);
+        respuesta = res.success;
+        console.log('Petición realizada con éxito');
       });
       peticion.fail(() => {
-        console.log('Prueba FAIL'+data);
         respuesta = false;
+        console.log('Ocurrió un error');
       });
 
       return respuesta;
@@ -148,8 +151,33 @@
       return respuesta;
     }
 
+    function _setTipoProducto(data) {
+      let respuesta;
 
-    function _agregarSucursal(data) {
+      let peticion = $.ajax({
+        url: 'http://localhost:4000/api/save_productos',
+        type: 'post',
+        contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+        dataType: 'json',
+        async: false,
+        data: {
+          'nombreTipoProducto': data.nombreTipoProducto,
+          'impuesto': data.impuesto,
+          
+        }
+      });
+
+      peticion.done((res) => {
+        respuesta = res.success
+      });
+      peticion.fail(() => {
+        respuesta = false;
+      });
+
+      return respuesta;
+    }
+
+    function _setSucursal(data) {
       let respuesta;
 
       let peticion = $.ajax({
@@ -161,10 +189,9 @@
         data: {
           'idSucursal' : data.idSucursal,
           'nombreSucursal' : data.nombreSucursal,
-          'latitude' : data.latitude,
-          'longitude' : data.longitude,
+          'position' : data.position,
           'direccion' : data.direccion,
-          'telefono' : data.telefono
+          'telefono' : data.telefono,
         }
       });
 
@@ -230,7 +257,7 @@
     }
 
 
-    function _obtenerSucursal() {
+    function _getSucursal() {
       let listaSucursales = [];
 
       let peticion = $.ajax({
@@ -252,6 +279,31 @@
       });
 
       return listaSucursales;
+    }
+
+
+    function _getTipoProductos() {
+      let listaTipoProductos = [];
+
+      let peticion = $.ajax({
+        url: 'http://localhost:4000/api/get_all_productos',
+        type: 'get',
+        contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+        dataType: 'json',
+        async: false,
+        data: {}
+      });
+
+      peticion.done((productos) => {
+        console.log('datos que vienen de la base de datos');
+        console.log(productos);
+        listaTipoProductos = productos;
+      });
+      peticion.fail(() => {
+        listaTipoProductos = [];
+      });
+
+      return listaTipoProductos;
     }
 
     function _setItem(key, value) {
@@ -356,7 +408,7 @@
         data: {},
       });
 
-      peticion.done(couriers => {
+      peticion.done((couriers) => {
         console.log('Datos que vienen desde la base de datos');
         console.log(couriers);
         listaCouriers = couriers;
@@ -381,15 +433,17 @@
         data: {
           idCourier: data.idCourier,
           nombreCourier: data.nombreCourier,
-          empresaCourier: data.empresaCourier
+          empresaCourier: data.empresaCourier,
         },
       });
 
-      peticion.done((res) => {
-        respuesta = res.success
+      peticion.done((datos) => {
+        respuesta = datos.msj;
+        console.log('Petición realizada con éxito');
       });
-      peticion.fail(() => {
-        respuesta = false;
+      peticion.fail((error) => {
+        respuesta = error;
+        console.log('Ocurrió un error');
       });
 
       return respuesta;

@@ -1,0 +1,35 @@
+<div class="col-md-12 pt-5 mt-5">
+  <h2>Lista couriers</h2>
+
+  <div class="form-group col-md-8">
+    <label for="txtBuscar">Buscar courier por ID</label>
+    <input type="text" id="txtBuscar" class="form-control col-md-8" ng-model="buscarCourier">
+  </div>
+  <div class="col-9">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>ID del courier</th>
+          <th>Nombre del courier</th>
+          <th>Empresa del courier</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="courier in  vm.listaCouriers| filter:buscarCourier">
+            <td>{{courier.idCourier}}</td>
+            <td>{{courier.nombreCourier}}</td>
+            <td>{{courier.empresaCourier}}</td>
+          <td>
+            <li class="nav-item dropdown btnAccion" style="list-style:none">
+              <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Acciones</a>
+              <div class="dropdown-menu">
+
+                <a class="dropdown-item" href="">Eliminar courier</a>
+              </div>
+            </li>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

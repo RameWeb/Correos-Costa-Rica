@@ -28,16 +28,16 @@ module.exports.registrar = (req, res) => {
       newUser.latitud = req.body.latitud;
       newUser.longitud = req.body.longitud;
 
-      let objTarj = {
-        titularTarjeta : req.body.titularTarjeta, 
-        numeroTarjeta: req.body.numeroTarjeta,
-        mesVencimiento: req.body.mesVencimiento,
-        annoVencimiento: req.body.annoVencimiento,
-        ccv: req.body.ccv
-      }
+      // let objTarj = {
+      //   titularTarjeta : req.body.titularTarjeta, 
+      //   numeroTarjeta: req.body.numeroTarjeta,
+      //   mesVencimiento: req.body.mesVencimiento,
+      //   annoVencimiento: req.body.annoVencimiento,
+      //   ccv: req.body.ccv
+      // }
 
-      // metodo de tarjetas al registrar cliente por primera vez
-      newUser.tarjetas.push(objTarj);
+      // // metodo de tarjetas al registrar cliente por primera vez
+      // newUser.tarjetas.push(objTarj);
     break;
     default:
     break;

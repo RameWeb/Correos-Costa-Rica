@@ -4,7 +4,7 @@
   .module('correos-cr')
   .service('servicioCourier', servicioCourier);
 
-  servicioCourier.$inject = ['$log','$http','localStorageFactories'];
+  servicioCourier.$inject = ['$log','$http', 'localStorageFactories'];
 
   function servicioCourier($log, $http, localStorageFactories){
     const publicAPI = {
@@ -20,7 +20,7 @@
         courierRepetido = false;
 
       for (let i = 0; i < listaCouriers.length; i++) {
-        if (pnuevoCourier.id == listaCouriers[i].id) {
+        if (pnuevoCourier.idCourier == listaCouriers[i].idCourier) {
 
           courierRepetido = true;
         }
