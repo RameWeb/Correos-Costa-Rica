@@ -188,10 +188,9 @@
         data: {
           'idSucursal' : data.idSucursal,
           'nombreSucursal' : data.nombreSucursal,
-          'latitude' : data.latitude,
-          'longitude' : data.longitude,
+          'position' : data.position,
           'direccion' : data.direccion,
-          'telefono' : data.telefono
+          'telefono' : data.telefono,
         }
       });
 

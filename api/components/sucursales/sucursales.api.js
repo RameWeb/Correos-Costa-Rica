@@ -9,12 +9,11 @@ module.exports.registrar = function(req, res) {
    * Creamos un nuevo dato con el formato del UserModel
    */
   let newsucursales = new sucursalesModel({
-    idSucursal: req.body.idSucursal,
+    idSucursal : req.body.idSucursal ,
     nombreSucursal: req.body.nombreSucursal,
-    latitude: req.body.latitude,
-    longitude: req.body.longitude,
-    direccion: req.body.direccion, 
-    telefono: req.body.telefono
+    position: req.body.position,
+    direccion: req.body.direccion,
+    telefono: req.body.telefono 
   });
   newsucursales.save(function(error) {
     if (error) {
@@ -48,3 +47,20 @@ module.exports.actualizar = function(req, res) {
     }
   });
 };
+
+module.exports.eliminar = function(req, res) {
+  sucursalesModel.remove(req.body.idSucursal, { $set: req.body }, function(err, user) {
+    if (err) {
+      res.json({ success: false, msg: 'No se ha eliminado.' + handleError(err) });
+
+    } else {
+      res.json({ success: true, msg: 'Se ha eliminado correctamente.' + res });
+    }
+  });
+};
+
+
+
+
+    
+

@@ -17,8 +17,7 @@ class Sucursales{
   constructor(pidSucursal, pnombreSucursal, pposition, pDireccion, pTelefono){
     this.idSucursal = pidSucursal;
     this.nombreSucursal = pnombreSucursal;
-    this.position = pposition
-    
+    this.position = pposition;
     this.direccion = pDireccion;
     this.telefono = pTelefono;
     

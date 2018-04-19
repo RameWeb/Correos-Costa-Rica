@@ -60,7 +60,7 @@ app.use( (req, res, next) => {
  */
 const index = require('./index'),
       usuarios = require('./components/usuarios/usuarios.route'),
-      sucursales = require('./components/sucursales/sucursales.route'),
+      sucursales =require('./components/sucursales/sucursales.route'),
       mail = require('./components/mail/mail.route'),
       convenios = require('./components/convenios/convenios.route'),
       prealertas = require('./components/prealertas/prealertas.route'),

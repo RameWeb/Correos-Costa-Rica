@@ -3,12 +3,12 @@ const bcryptjs = require('bcryptjs');
 //Requerimos mongoose
 let mongoose = require('mongoose');
 
-//Esquema de usuarios
+//Esquema de sucursales
 let sucursalesSchema = new mongoose.Schema({
   idSucursal        : {type: String, required: true},
-  nombreSucursal               : {type: String, required: true},
-  latitude  : {type: String, required: true},
-  longitude             : {type: String},
+  nombreSucursal              : {type: String, required: true},
+  nombreInstitucion  : {type: String, required: true},
+  position             : {type: String},
   direccion              : {type: String, required: true},
   telefono              : {type: String, required: true},
 });
