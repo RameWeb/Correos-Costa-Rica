@@ -79,7 +79,9 @@
               obj.tarjetas.forEach(objTarj => {
                 let objTempTarjeta = new Tarjeta(objTarj.titularTarjeta, objTarj.numeroTarjeta, objTarj.fechaVencimiento, objTarj.ccv);
                 objTempCliente.agregarTarjeta(objTempTarjeta);
+                objTempCliente.setPrealertas(obj.prealertas);
               })
+              
               listaUsuarios.push(objTempCliente);
             break;
 
